@@ -1,0 +1,2026 @@
+<!DOCTYPE html>
+<html lang="pt-MZ" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>NextLynx Fashion POS | Gestão de Vendas e Vestuário</title>
+    
+    <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- FontAwesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+    <style>
+        :root {
+            --bg-main: #0a0a0d;
+            --bg-secondary: #121218;
+            --bg-card: #181822;
+            --bg-card-hover: #20202e;
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --accent-red: #8B0000;
+            --accent-red-glow: rgba(139, 0, 0, 0.35);
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --accent-gold: #ffc107;
+            --text-muted-custom: #94a3b8;
+            --bottom-nav-height: 68px;
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-main);
+            color: #f8fafc;
+            touch-action: manipulation;
+        }
+
+        body {
+            padding-bottom: calc(var(--bottom-nav-height) + env(safe-area-inset-bottom) + 74px);
+        }
+
+        @media (min-width: 992px) {
+            body {
+                padding-bottom: 2rem;
+            }
+        }
+
+        .font-mono-mzn {
+            font-family: 'JetBrains Mono', monospace;
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* Navbar & Header */
+        .navbar-nextlynx {
+            background: rgba(18, 18, 24, 0.94);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--border-subtle);
+            z-index: 1030;
+        }
+
+        .brand-badge {
+            background: var(--accent-red);
+            color: #fff;
+            font-size: 0.65rem;
+            padding: 2px 7px;
+            border-radius: 6px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        /* Desktop Navigation Pills */
+        .desktop-nav-pills .nav-link {
+            color: var(--text-muted-custom);
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 0.65rem 1.25rem;
+            font-weight: 600;
+            font-size: 0.92rem;
+            transition: all 0.22s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            min-height: 44px;
+        }
+
+        .desktop-nav-pills .nav-link:hover {
+            background-color: var(--bg-card-hover);
+            color: #fff;
+            transform: translateY(-1px);
+        }
+
+        .desktop-nav-pills .nav-link.active {
+            background: var(--gradient-primary);
+            color: #fff;
+            border-color: transparent;
+            box-shadow: 0 4px 16px rgba(102, 126, 234, 0.35);
+        }
+
+        /* Mobile Bottom Navigation Bar (App Nativo) */
+        .mobile-bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: calc(var(--bottom-nav-height) + env(safe-area-inset-bottom));
+            padding-bottom: env(safe-area-inset-bottom);
+            background: rgba(18, 18, 24, 0.96);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-top: 1px solid var(--border-subtle);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            z-index: 1040;
+            box-shadow: 0 -6px 24px rgba(0, 0, 0, 0.45);
+        }
+
+        .mobile-nav-btn {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: var(--text-muted-custom);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            padding: 6px 4px;
+            min-height: 52px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            position: relative;
+            transition: color 0.2s ease;
+        }
+
+        .mobile-nav-btn i {
+            font-size: 1.15rem;
+            transition: transform 0.2s ease;
+        }
+
+        .mobile-nav-btn.active {
+            color: var(--accent-gold);
+        }
+
+        .mobile-nav-btn.active i {
+            transform: translateY(-2px);
+            color: #667eea;
+        }
+
+        .mobile-nav-btn.active::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 28px;
+            height: 3px;
+            border-radius: 0 0 4px 4px;
+            background: var(--gradient-primary);
+        }
+
+        /* Floating Cart Bar (Mobile PDV) */
+        .mobile-floating-cart-bar {
+            position: fixed;
+            left: 12px;
+            right: 12px;
+            bottom: calc(var(--bottom-nav-height) + env(safe-area-inset-bottom) + 10px);
+            background: var(--gradient-primary);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 16px;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 10px 28px rgba(102, 126, 234, 0.45);
+            z-index: 1035;
+            cursor: pointer;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+            min-height: 54px;
+        }
+
+        .mobile-floating-cart-bar:active {
+            transform: scale(0.98);
+        }
+
+        /* Cards & Containers */
+        .card-nl {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+        }
+
+        .kpi-card {
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.22s ease, border-color 0.22s ease;
+        }
+
+        .kpi-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(102, 126, 234, 0.45);
+        }
+
+        .kpi-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.15rem;
+            flex-shrink: 0;
+        }
+
+        /* Responsive KPI Grid */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+        }
+
+        @media (max-width: 359px) {
+            .kpi-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .kpi-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 1.25rem;
+            }
+        }
+
+        /* Buttons & Touch Targets */
+        .btn-touch {
+            min-width: 44px;
+            min-height: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-gradient {
+            background: var(--gradient-primary);
+            border: none;
+            color: #fff;
+            font-weight: 700;
+            border-radius: 12px;
+            transition: all 0.22s ease;
+        }
+
+        .btn-gradient:hover:not(:disabled) {
+            opacity: 0.94;
+            color: #fff;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 18px rgba(118, 75, 162, 0.45);
+        }
+
+        .btn-gold {
+            background-color: var(--accent-gold);
+            color: #0a0a0d;
+            font-weight: 700;
+            border: none;
+            border-radius: 12px;
+            transition: all 0.2s ease;
+        }
+
+        .btn-gold:hover {
+            background-color: #e0a800;
+            color: #0a0a0d;
+            transform: translateY(-1px);
+        }
+
+        .btn-crimson {
+            background-color: var(--accent-red);
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+        }
+
+        .btn-crimson:hover {
+            background-color: #a30000;
+            color: #fff;
+        }
+
+        /* Horizontal Category Chips */
+        .category-chips-scroll {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            padding-bottom: 4px;
+        }
+
+        .category-chips-scroll::-webkit-scrollbar {
+            display: none;
+        }
+
+        .cat-chip {
+            white-space: nowrap;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-muted-custom);
+            border-radius: 999px;
+            padding: 8px 16px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            min-height: 40px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .cat-chip.active {
+            background: var(--gradient-primary);
+            color: #fff;
+            border-color: transparent;
+            box-shadow: 0 3px 12px rgba(102, 126, 234, 0.35);
+        }
+
+        /* Responsive Fluid Product Grid (2 columns on 360px/375px screens) */
+        .pdv-products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 0.75rem;
+        }
+
+        @media (min-width: 576px) {
+            .pdv-products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
+                gap: 0.9rem;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .pdv-products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+                gap: 1rem;
+            }
+        }
+
+        .product-item-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 14px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 0.85rem;
+            position: relative;
+        }
+
+        .product-item-card:hover:not(.out-of-stock) {
+            border-color: #667eea;
+            background: var(--bg-card-hover);
+            transform: translateY(-2px);
+        }
+
+        .product-item-card:active:not(.out-of-stock) {
+            transform: scale(0.98);
+        }
+
+        .product-item-card.out-of-stock {
+            opacity: 0.48;
+            cursor: not-allowed;
+        }
+
+        .size-pill {
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.11);
+            color: #e2e8f0;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 2px 7px;
+            border-radius: 6px;
+        }
+
+        /* Desktop Sticky Cart & Mobile Bottom Sheet Drawer */
+        @media (min-width: 992px) {
+            .desktop-sticky-cart {
+                position: sticky;
+                top: 86px;
+            }
+        }
+
+        /* Mobile Bottom Sheet Cart */
+        .mobile-cart-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.72);
+            backdrop-filter: blur(4px);
+            z-index: 1050;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.25s ease, visibility 0.25s ease;
+        }
+
+        .mobile-cart-backdrop.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-cart-sheet {
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            max-height: 90vh;
+            background: var(--bg-card);
+            border-top: 2px solid var(--accent-gold);
+            border-radius: 24px 24px 0 0;
+            z-index: 1055;
+            transform: translateY(100%);
+            transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+            display: flex;
+            flex-direction: column;
+            padding-bottom: env(safe-area-inset-bottom);
+            box-shadow: 0 -12px 40px rgba(0, 0, 0, 0.65);
+        }
+
+        .mobile-cart-sheet.show {
+            transform: translateY(0);
+        }
+
+        .sheet-drag-handle {
+            width: 42px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.22);
+            border-radius: 999px;
+            margin: 10px auto 4px auto;
+        }
+
+        /* Chart Containers */
+        .chart-wrapper {
+            position: relative;
+            width: 100%;
+            height: 260px;
+        }
+
+        @media (min-width: 992px) {
+            .chart-wrapper {
+                height: 320px;
+            }
+        }
+
+        /* Form Controls */
+        .form-control, .form-select {
+            background-color: var(--bg-secondary);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #f8fafc;
+            border-radius: 12px;
+            min-height: 44px;
+        }
+
+        .form-control:focus, .form-select:focus {
+            background-color: #15151e;
+            border-color: #667eea;
+            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.22);
+            color: #fff;
+        }
+
+        /* Mobile Stacked Cards for Inventory & History */
+        .mobile-entity-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 14px;
+            padding: 14px;
+            margin-bottom: 10px;
+        }
+
+        /* Modals Mobile Friendly */
+        @media (max-width: 575.98px) {
+            .modal-dialog {
+                margin: 0.5rem auto;
+                max-width: 95vw;
+            }
+            .modal-bottom-sheet .modal-dialog {
+                display: flex;
+                align-items: flex-end;
+                min-height: calc(100% - 0.5rem);
+                margin-bottom: 0;
+            }
+            .modal-bottom-sheet .modal-content {
+                border-radius: 22px 22px 0 0;
+                border-bottom: none;
+            }
+        }
+
+        /* Receipt Styling */
+        .receipt-paper {
+            background: #ffffff;
+            color: #111827;
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            border-radius: 10px;
+            padding: 18px;
+            font-size: 0.82rem;
+        }
+
+        .receipt-divider {
+            border-top: 1px dashed #9ca3af;
+            margin: 10px 0;
+        }
+
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            #printableReceiptArea, #printableReceiptArea * {
+                visibility: visible;
+            }
+            #printableReceiptArea {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                box-shadow: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Navbar Compacto e Responsivo -->
+    <nav class="navbar navbar-nextlynx sticky-top py-2 py-lg-3">
+        <div class="container-fluid px-3 px-lg-5 d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center gap-2 gap-sm-3">
+                <div class="d-flex align-items-center justify-content-center rounded-3 flex-shrink-0" style="width: 40px; height: 40px; background: var(--gradient-primary);">
+                    <i class="fa-solid fa-shirt text-white fs-5"></i>
+                </div>
+                <div>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="fw-bold fs-6 fs-sm-5 text-white">NextLynx <span style="color: var(--accent-gold);">Fashion</span></span>
+                        <span class="brand-badge">POS</span>
+                    </div>
+                    <small class="text-secondary d-none d-sm-block" style="font-size: 0.75rem;">Gestão de Vendas &amp; Vestuário (MZN)</small>
+                </div>
+            </div>
+
+            <div class="d-flex align-items-center gap-2">
+                <button class="btn btn-sm btn-outline-light rounded-3 px-2 px-sm-3 btn-touch" onclick="confirmResetDemo()" title="Restaurar dados de demonstração">
+                    <i class="fa-solid fa-rotate-left text-warning"></i>
+                    <span class="ms-1 d-none d-md-inline">Resetar Demo</span>
+                </button>
+                <a href="https://nextlynx-tech-t01g.onrender.com/" target="_blank" class="btn btn-sm btn-gold px-3 btn-touch">
+                    <i class="fa-solid fa-rocket me-1"></i>
+                    <span>Criar Sistema</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container-fluid px-3 px-lg-5 pt-3 pt-lg-4">
+        
+        <!-- Desktop Navigation Pills (Visível em >= 992px) -->
+        <ul class="nav nav-pills desktop-nav-pills gap-2 mb-4 d-none d-lg-flex" id="desktopMainTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" data-tab-target="pdv-pane" onclick="switchTab('pdv-pane')">
+                    <i class="fa-solid fa-cash-register"></i> Frente de Caixa (PDV)
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" data-tab-target="dashboard-pane" onclick="switchTab('dashboard-pane')">
+                    <i class="fa-solid fa-chart-pie"></i> Dashboard &amp; Lucros
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" data-tab-target="estoque-pane" onclick="switchTab('estoque-pane')">
+                    <i class="fa-solid fa-boxes-stacked"></i> Catálogo &amp; Estoque
+                    <span class="badge bg-danger rounded-pill ms-1 low-stock-badge d-none">0</span>
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" data-tab-target="historico-pane" onclick="switchTab('historico-pane')">
+                    <i class="fa-solid fa-receipt"></i> Histórico de Vendas
+                </button>
+            </li>
+        </ul>
+
+        <!-- Views Container -->
+        <div id="viewsContainer">
+
+            <!-- =========================================================
+                 ABA 1: FRENTE DE CAIXA (PDV)
+                 ========================================================= -->
+            <section id="pdv-pane" class="app-view">
+                <div class="row g-4">
+                    <!-- Grelha de Produtos -->
+                    <div class="col-12 col-lg-7 col-xl-8">
+                        <div class="card-nl p-3 p-md-4">
+                            <!-- Barra de Busca -->
+                            <div class="d-flex flex-column flex-sm-row justify-content-between align-items-stretch align-items-sm-center gap-2 mb-3">
+                                <h5 class="fw-bold mb-0 fs-6 fs-md-5">
+                                    <i class="fa-solid fa-tags me-2 text-warning"></i>Catálogo de Venda
+                                </h5>
+                                <div class="input-group" style="max-width: 340px;">
+                                    <span class="input-group-text bg-transparent border-secondary text-secondary">
+                                        <i class="fa-solid fa-magnifying-glass"></i>
+                                    </span>
+                                    <input type="text" id="pdvSearchInput" class="form-control" placeholder="Buscar artigo, tamanho, cor..." oninput="renderPdvProducts()">
+                                </div>
+                            </div>
+
+                            <!-- Chips Horizontais de Categoria -->
+                            <div class="category-chips-scroll mb-3" id="pdvCategoryChips">
+                                <button type="button" class="cat-chip active" data-cat="Todos" onclick="selectPdvCategory('Todos', this)">
+                                    <i class="fa-solid fa-border-all"></i> Todos
+                                </button>
+                                <button type="button" class="cat-chip" data-cat="Vestuário" onclick="selectPdvCategory('Vestuário', this)">
+                                    <i class="fa-solid fa-shirt"></i> Vestuário
+                                </button>
+                                <button type="button" class="cat-chip" data-cat="Calçados" onclick="selectPdvCategory('Calçados', this)">
+                                    <i class="fa-solid fa-shoe-prints"></i> Calçados
+                                </button>
+                                <button type="button" class="cat-chip" data-cat="Acessórios" onclick="selectPdvCategory('Acessórios', this)">
+                                    <i class="fa-solid fa-gem"></i> Acessórios
+                                </button>
+                            </div>
+
+                            <!-- Grid Fluido de Artigos -->
+                            <div class="pdv-products-grid" id="pdvProductsGrid">
+                                <!-- Preenchido via JS -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Painel do Carrinho Desktop (Lado a Lado em >= 992px) -->
+                    <div class="col-lg-5 col-xl-4 d-none d-lg-block">
+                        <div class="card-nl p-4 desktop-sticky-cart" style="border-top: 3px solid var(--accent-gold);">
+                            <div id="desktopCartMountPoint"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- =========================================================
+                 ABA 2: DASHBOARD EXECUTIVO & GRÁFICOS
+                 ========================================================= -->
+            <section id="dashboard-pane" class="app-view d-none">
+                <!-- KPIs Responsivos -->
+                <div class="kpi-grid mb-4">
+                    <div class="card-nl kpi-card p-3 p-md-4">
+                        <div class="d-flex justify-content-between align-items-start gap-2">
+                            <div style="min-width: 0;">
+                                <p class="text-secondary small fw-medium mb-1 text-truncate">Faturamento Bruto</p>
+                                <h4 class="fw-bold mb-1 text-white font-mono-mzn fs-6 fs-md-4 text-truncate" id="kpiRevenue">0,00 MZN</h4>
+                                <small class="text-success" style="font-size: 0.72rem;"><i class="fa-solid fa-arrow-trend-up me-1"></i>Receita total</small>
+                            </div>
+                            <div class="kpi-icon" style="background: rgba(102, 126, 234, 0.18); color: #667eea;">
+                                <i class="fa-solid fa-coins"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-nl kpi-card p-3 p-md-4">
+                        <div class="d-flex justify-content-between align-items-start gap-2">
+                            <div style="min-width: 0;">
+                                <p class="text-secondary small fw-medium mb-1 text-truncate">Lucro Líquido</p>
+                                <h4 class="fw-bold mb-1 text-warning font-mono-mzn fs-6 fs-md-4 text-truncate" id="kpiProfit">0,00 MZN</h4>
+                                <small class="text-secondary" style="font-size: 0.72rem;" id="kpiMarginText">Margem: 0%</small>
+                            </div>
+                            <div class="kpi-icon" style="background: rgba(255, 193, 7, 0.15); color: var(--accent-gold);">
+                                <i class="fa-solid fa-sack-dollar"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-nl kpi-card p-3 p-md-4">
+                        <div class="d-flex justify-content-between align-items-start gap-2">
+                            <div style="min-width: 0;">
+                                <p class="text-secondary small fw-medium mb-1 text-truncate">Ticket Médio</p>
+                                <h4 class="fw-bold mb-1 text-info font-mono-mzn fs-6 fs-md-4 text-truncate" id="kpiAvgTicket">0,00 MZN</h4>
+                                <small class="text-secondary" style="font-size: 0.72rem;" id="kpiSalesCountText">0 vendas</small>
+                            </div>
+                            <div class="kpi-icon" style="background: rgba(56, 189, 248, 0.15); color: #38bdf8;">
+                                <i class="fa-solid fa-receipt"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-nl kpi-card p-3 p-md-4">
+                        <div class="d-flex justify-content-between align-items-start gap-2">
+                            <div style="min-width: 0;">
+                                <p class="text-secondary small fw-medium mb-1 text-truncate">Peças Vendidas</p>
+                                <h4 class="fw-bold mb-1 text-white font-mono-mzn fs-6 fs-md-4" id="kpiItemsSold">0</h4>
+                                <small class="text-danger" style="font-size: 0.72rem;" id="kpiLowStockText">0 em alerta</small>
+                            </div>
+                            <div class="kpi-icon" style="background: rgba(16, 185, 129, 0.15); color: #10b981;">
+                                <i class="fa-solid fa-bag-shopping"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gráficos Responsivos -->
+                <div class="row g-3 g-md-4">
+                    <div class="col-12 col-lg-6">
+                        <div class="card-nl p-3 p-md-4 h-100">
+                            <h6 class="fw-bold mb-3"><i class="fa-solid fa-chart-pie me-2 text-warning"></i>Receita por Categoria (MZN)</h6>
+                            <div class="chart-wrapper">
+                                <canvas id="categorySalesChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <div class="card-nl p-3 p-md-4 h-100">
+                            <h6 class="fw-bold mb-3"><i class="fa-solid fa-wallet me-2 text-info"></i>Vendas por Pagamento (MZN)</h6>
+                            <div class="chart-wrapper">
+                                <canvas id="paymentMethodsChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- =========================================================
+                 ABA 3: GESTÃO DE ESTOQUE & CATÁLOGO
+                 ========================================================= -->
+            <section id="estoque-pane" class="app-view d-none">
+                <div class="card-nl p-3 p-md-4">
+                    <div class="d-flex flex-column flex-sm-row justify-content-between align-items-stretch align-items-sm-center gap-3 mb-4">
+                        <div>
+                            <h5 class="fw-bold mb-1 fs-6 fs-md-5"><i class="fa-solid fa-shirt me-2 text-warning"></i>Inventário de Artigos</h5>
+                            <p class="text-secondary small mb-0">Controle tamanhos, margens e reposição rápida.</p>
+                        </div>
+                        <button class="btn btn-gradient px-4 btn-touch" data-bs-toggle="modal" data-bs-target="#productModal" onclick="openNewProductModal()">
+                            <i class="fa-solid fa-plus me-2"></i> Novo Artigo
+                        </button>
+                    </div>
+
+                    <!-- Filtros -->
+                    <div class="row g-2 mb-3">
+                        <div class="col-12 col-md-5">
+                            <input type="text" id="stockSearchInput" class="form-control" placeholder="Pesquisar nome, código ou cor..." oninput="renderStockViews()">
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <select id="stockCategoryFilter" class="form-select" onchange="renderStockViews()">
+                                <option value="Todos">Todas Categorias</option>
+                                <option value="Vestuário">Vestuário</option>
+                                <option value="Calçados">Calçados</option>
+                                <option value="Acessórios">Acessórios</option>
+                            </select>
+                        </div>
+                        <div class="col-6 col-md-4">
+                            <select id="stockStatusFilter" class="form-select" onchange="renderStockViews()">
+                                <option value="Todos">Todos Estados</option>
+                                <option value="Baixo">⚠️ Estoque Baixo (&le; 3)</option>
+                                <option value="Esgotado">❌ Esgotado (0)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Vista Mobile: Cards Empilhados (< 768px) -->
+                    <div class="d-md-none" id="stockMobileCardsContainer"></div>
+
+                    <!-- Vista Tablet/Desktop: Tabela Responsiva (>= 768px) -->
+                    <div class="table-responsive d-none d-md-block">
+                        <table class="table table-dark table-hover align-middle mb-0" style="--bs-table-bg: transparent;">
+                            <thead class="text-secondary small text-uppercase border-bottom border-secondary">
+                                <tr>
+                                    <th>Artigo / Cor</th>
+                                    <th>Categoria</th>
+                                    <th>Tam.</th>
+                                    <th class="text-end">Custo</th>
+                                    <th class="text-end">Venda</th>
+                                    <th class="text-center">Estoque</th>
+                                    <th class="text-end">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="stockTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- =========================================================
+                 ABA 4: HISTÓRICO DE VENDAS
+                 ========================================================= -->
+            <section id="historico-pane" class="app-view d-none">
+                <div class="card-nl p-3 p-md-4">
+                    <div class="d-flex flex-column flex-sm-row justify-content-between align-items-stretch align-items-sm-center gap-3 mb-4">
+                        <div>
+                            <h5 class="fw-bold mb-1 fs-6 fs-md-5"><i class="fa-solid fa-clock-rotate-left me-2 text-warning"></i>Histórico de Vendas</h5>
+                            <p class="text-secondary small mb-0">Reimprima talões, estorne vendas ou exporte CSV.</p>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <input type="text" id="salesSearchInput" class="form-control" placeholder="Buscar recibo/cliente..." oninput="renderSalesViews()">
+                            <button class="btn btn-gold text-nowrap px-3 btn-touch" onclick="exportSalesCSV()">
+                                <i class="fa-solid fa-file-csv me-1"></i> CSV
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Vista Mobile: Cards Empilhados (< 768px) -->
+                    <div class="d-md-none" id="salesMobileCardsContainer"></div>
+
+                    <!-- Vista Tablet/Desktop: Tabela Responsiva (>= 768px) -->
+                    <div class="table-responsive d-none d-md-block">
+                        <table class="table table-dark table-hover align-middle mb-0" style="--bs-table-bg: transparent;">
+                            <thead class="text-secondary small text-uppercase border-bottom border-secondary">
+                                <tr>
+                                    <th>Recibo</th>
+                                    <th>Data / Hora</th>
+                                    <th>Cliente</th>
+                                    <th>Artigos</th>
+                                    <th>Pagamento</th>
+                                    <th class="text-end">Total</th>
+                                    <th class="text-end">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="salesHistoryBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- =========================================================
+         BARRA FLUTUANTE DE CARRINHO (MOBILE < 992px)
+         ========================================================= -->
+    <div id="mobileFloatingCartBar" class="mobile-floating-cart-bar d-lg-none" onclick="openMobileCartSheet()">
+        <div class="d-flex align-items-center gap-2">
+            <span class="badge bg-dark text-warning rounded-pill px-2 py-1 font-mono-mzn" id="mobileFloatingCount">0</span>
+            <span class="fw-bold small">Ver Carrinho</span>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+            <span class="fw-bold font-mono-mzn" id="mobileFloatingTotal">0,00 MZN</span>
+            <i class="fa-solid fa-chevron-up"></i>
+        </div>
+    </div>
+
+    <!-- =========================================================
+         BOTTOM SHEET DRAWER DO CARRINHO (MOBILE < 992px)
+         ========================================================= -->
+    <div id="mobileCartBackdrop" class="mobile-cart-backdrop d-lg-none" onclick="closeMobileCartSheet()"></div>
+    <div id="mobileCartSheet" class="mobile-cart-sheet d-lg-none">
+        <div class="sheet-drag-handle" onclick="closeMobileCartSheet()"></div>
+        <div class="px-3 pb-3 pt-1 overflow-auto flex-grow-1" id="mobileCartMountPoint"></div>
+    </div>
+
+    <!-- =========================================================
+         NAVEGAÇÃO INFERIOR FIXA (BOTTOM NAVIGATION BAR MOBILE)
+         ========================================================= -->
+    <nav class="mobile-bottom-nav d-lg-none" aria-label="Navegação Principal Mobile">
+        <button type="button" class="mobile-nav-btn active" data-tab-target="pdv-pane" onclick="switchTab('pdv-pane')">
+            <i class="fa-solid fa-cash-register"></i>
+            <span>Caixa / PDV</span>
+        </button>
+        <button type="button" class="mobile-nav-btn" data-tab-target="dashboard-pane" onclick="switchTab('dashboard-pane')">
+            <i class="fa-solid fa-chart-pie"></i>
+            <span>Dashboard</span>
+        </button>
+        <button type="button" class="mobile-nav-btn" data-tab-target="estoque-pane" onclick="switchTab('estoque-pane')">
+            <i class="fa-solid fa-boxes-stacked"></i>
+            <span>Estoque</span>
+            <span class="position-absolute top-0 end-0 translate-middle-x badge rounded-pill bg-danger low-stock-badge d-none" style="font-size: 0.6rem; margin-top: 4px;">0</span>
+        </button>
+        <button type="button" class="mobile-nav-btn" data-tab-target="historico-pane" onclick="switchTab('historico-pane')">
+            <i class="fa-solid fa-receipt"></i>
+            <span>Histórico</span>
+        </button>
+    </nav>
+
+    <!-- =========================================================
+         TEMPLATE UNIFICADO DO CARRINHO (RENDERIZADO NO DESKTOP OU MOBILE SHEET)
+         ========================================================= -->
+    <template id="cartPanelTemplate">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h5 class="fw-bold mb-0 fs-6"><i class="fa-solid fa-bag-shopping me-2 text-warning"></i>Sacola de Venda</h5>
+            <div class="d-flex gap-2">
+                <button type="button" class="btn btn-sm btn-outline-danger rounded-3 px-2" onclick="clearCart()" id="btnClearCart">
+                    <i class="fa-solid fa-trash-can me-1"></i> Limpar
+                </button>
+                <button type="button" class="btn btn-sm btn-outline-secondary rounded-3 d-lg-none px-2" onclick="closeMobileCartSheet()">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <input type="text" id="customerNameInput" class="form-control form-control-sm" placeholder="Nome do Cliente (Opcional - ex: Cliente Balcão)">
+        </div>
+
+        <div id="cartItemsContainer" class="overflow-auto pe-1 mb-3" style="min-height: 150px; max-height: 270px;"></div>
+
+        <div class="border-top border-secondary pt-3">
+            <div class="d-flex justify-content-between text-secondary small mb-1">
+                <span>Subtotal:</span>
+                <span class="font-mono-mzn" id="cartSubtotalText">0,00 MZN</span>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="text-secondary small">Desconto (%):</span>
+                <div class="input-group input-group-sm" style="width: 115px;">
+                    <input type="number" id="discountPercentInput" class="form-control text-end font-mono-mzn" value="0" min="0" max="100" oninput="updateCartTotals()">
+                    <span class="input-group-text bg-dark border-secondary text-secondary">%</span>
+                </div>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mb-3 p-2 px-3 rounded-3" style="background: rgba(102, 126, 234, 0.14); border: 1px solid rgba(102, 126, 234, 0.3);">
+                <span class="fw-bold small">TOTAL A PAGAR:</span>
+                <span class="fw-bold fs-5 text-warning font-mono-mzn" id="cartTotalText">0,00 MZN</span>
+            </div>
+
+            <div class="row g-2 mb-3">
+                <div class="col-6">
+                    <label class="form-label small text-secondary mb-1">Pagamento</label>
+                    <select id="paymentMethodSelect" class="form-select form-select-sm" onchange="toggleCashReceived()">
+                        <option value="M-Pesa">📱 M-Pesa</option>
+                        <option value="e-Mola">📲 e-Mola</option>
+                        <option value="Dinheiro">💵 Dinheiro (Cash)</option>
+                        <option value="POS / Cartão">💳 POS / Cartão</option>
+                    </select>
+                </div>
+                <div class="col-6" id="cashReceivedGroup" style="display: none;">
+                    <label class="form-label small text-secondary mb-1">Valor Entregue</label>
+                    <input type="number" id="cashReceivedInput" class="form-control form-control-sm font-mono-mzn" placeholder="Ex: 2000" oninput="calculateChange()">
+                </div>
+            </div>
+
+            <div id="changeDisplayBox" class="alert alert-dark py-2 px-3 mb-3 d-none justify-content-between align-items-center border-secondary">
+                <span class="small text-secondary">Troco:</span>
+                <strong class="text-success font-mono-mzn" id="changeAmountText">0,00 MZN</strong>
+            </div>
+
+            <button type="button" class="btn btn-gradient w-100 py-3 fs-6 btn-touch" id="btnFinalizeSale" onclick="finalizeSale()">
+                <i class="fa-solid fa-check-circle me-2"></i> Finalizar &amp; Emitir Talão
+            </button>
+        </div>
+    </template>
+
+    <!-- =========================================================
+         MODAL: CADASTRAR / EDITAR ARTIGO (BOTTOM SHEET NO MOBILE)
+         ========================================================= -->
+    <div class="modal fade modal-bottom-sheet" id="productModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content card-nl border-secondary">
+                <div class="modal-header border-secondary">
+                    <h5 class="modal-title fw-bold fs-6" id="productModalTitle">Novo Artigo de Vestuário</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <form id="productForm" onsubmit="saveProduct(event)">
+                    <div class="modal-body">
+                        <input type="hidden" id="prodId">
+                        <div class="mb-3">
+                            <label class="form-label small text-secondary">Nome do Artigo *</label>
+                            <input type="text" id="prodName" class="form-control" placeholder="Ex: Camisa Social Slim Fit" required>
+                        </div>
+                        <div class="row g-2 mb-3">
+                            <div class="col-6">
+                                <label class="form-label small text-secondary">Categoria *</label>
+                                <select id="prodCategory" class="form-select" required>
+                                    <option value="Vestuário">Vestuário</option>
+                                    <option value="Calçados">Calçados</option>
+                                    <option value="Acessórios">Acessórios</option>
+                                </select>
+                            </div>
+                            <div class="col-6">
+                                <label class="form-label small text-secondary">Tamanho *</label>
+                                <input type="text" id="prodSize" class="form-control" placeholder="Ex: M, G, 42, Único" required>
+                            </div>
+                        </div>
+                        <div class="row g-2 mb-3">
+                            <div class="col-6">
+                                <label class="form-label small text-secondary">Cor / Estilo</label>
+                                <input type="text" id="prodColor" class="form-control" placeholder="Ex: Azul Marinho">
+                            </div>
+                            <div class="col-6">
+                                <label class="form-label small text-secondary">Qtd. Estoque *</label>
+                                <input type="number" id="prodStock" class="form-control font-mono-mzn" min="0" value="10" required>
+                            </div>
+                        </div>
+                        <div class="row g-2">
+                            <div class="col-6">
+                                <label class="form-label small text-secondary">Custo (MZN) *</label>
+                                <input type="number" id="prodCost" class="form-control font-mono-mzn" min="0" step="0.01" placeholder="650" required>
+                            </div>
+                            <div class="col-6">
+                                <label class="form-label small text-secondary">Venda (MZN) *</label>
+                                <input type="number" id="prodPrice" class="form-control font-mono-mzn" min="1" step="0.01" placeholder="1200" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer border-secondary">
+                        <button type="button" class="btn btn-outline-secondary btn-touch" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-gradient px-4 btn-touch">Salvar Artigo</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================================
+         MODAL: TALÃO / RECIBO IMPRIMÍVEL
+         ========================================================= -->
+    <div class="modal fade" id="receiptModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content card-nl border-secondary">
+                <div class="modal-header border-secondary">
+                    <h5 class="modal-title fw-bold fs-6"><i class="fa-solid fa-receipt me-2 text-warning"></i>Comprovativo de Venda</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="receipt-paper" id="printableReceiptArea">
+                        <div class="text-center mb-2">
+                            <h6 class="fw-bold mb-0">NEXTLYNX FASHION STORE</h6>
+                            <small class="d-block">Nampula, Moçambique | NUIT: 400123456</small>
+                            <small class="d-block">Tel: +258 84 000 0000</small>
+                        </div>
+                        <div class="receipt-divider"></div>
+                        <div id="receiptMeta"></div>
+                        <div class="receipt-divider"></div>
+                        <table class="table table-sm table-borderless mb-0 text-dark">
+                            <thead>
+                                <tr class="border-bottom border-dark">
+                                    <th>Artigo</th>
+                                    <th class="text-center">Qtd</th>
+                                    <th class="text-end">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody id="receiptItemsList"></tbody>
+                        </table>
+                        <div class="receipt-divider"></div>
+                        <div id="receiptTotals"></div>
+                        <div class="receipt-divider"></div>
+                        <div class="text-center mt-2">
+                            <p class="mb-0 fw-bold">Obrigado pela preferência!</p>
+                            <small>Trocas em até 7 dias com este talão.</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-secondary">
+                    <button type="button" class="btn btn-outline-light btn-touch" data-bs-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-gold btn-touch px-3" onclick="window.print()">
+                        <i class="fa-solid fa-print me-1"></i> Imprimir
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================================
+         MODAL: CONFIRMAÇÃO GENÉRICA
+         ========================================================= -->
+    <div class="modal fade" id="confirmActionModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
+            <div class="modal-content card-nl border-secondary">
+                <div class="modal-body text-center p-4">
+                    <div class="mb-3 text-warning fs-1"><i class="fa-solid fa-circle-question"></i></div>
+                    <h6 class="fw-bold mb-2" id="confirmModalTitle">Confirmar Ação</h6>
+                    <p class="text-secondary small mb-4" id="confirmModalMessage">Tem certeza que deseja prosseguir?</p>
+                    <div class="d-flex gap-2 justify-content-center">
+                        <button type="button" class="btn btn-outline-secondary px-3 btn-touch" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-crimson px-3 btn-touch" id="confirmModalBtn">Confirmar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container position-fixed top-0 end-0 p-3" id="toastContainer" style="z-index: 1090; margin-top: 56px;"></div>
+
+    <!-- Bootstrap Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // =========================================================================
+        // ESTADO E DADOS INICIAIS DE VESTUÁRIO (MOÇAMBIQUE - METICAIS)
+        // =========================================================================
+        const STORAGE_PRODUCTS_KEY = 'nextlynx_fashion_products_v2';
+        const STORAGE_SALES_KEY = 'nextlynx_fashion_sales_v2';
+
+        const DEFAULT_PRODUCTS = [
+            { id: 'ART-01', name: 'Camisa Social Slim Fit', category: 'Vestuário', size: 'M', color: 'Branco', cost: 750, price: 1450, stock: 12 },
+            { id: 'ART-02', name: 'Calça Jeans Masculina', category: 'Vestuário', size: '40', color: 'Azul Escuro', cost: 900, price: 1750, stock: 8 },
+            { id: 'ART-03', name: 'Vestido Midi Floral', category: 'Vestuário', size: 'G', color: 'Bordô', cost: 1100, price: 2200, stock: 3 },
+            { id: 'ART-04', name: 'Ténis Casual Urbano', category: 'Calçados', size: '42', color: 'Preto/Branco', cost: 1600, price: 2950, stock: 6 },
+            { id: 'ART-05', name: 'Blazer Executivo', category: 'Vestuário', size: 'G', color: 'Azul Marinho', cost: 2100, price: 3900, stock: 3 },
+            { id: 'ART-06', name: 'T-Shirt Básica Algodão', category: 'Vestuário', size: 'L', color: 'Preto', cost: 320, price: 690, stock: 18 },
+            { id: 'ART-07', name: 'Conjunto Desportivo', category: 'Vestuário', size: 'M', color: 'Cinza/Preto', cost: 1250, price: 2350, stock: 7 },
+            { id: 'ART-08', name: 'Bolsa Tiracolo Executiva', category: 'Acessórios', size: 'Único', color: 'Castanho', cost: 850, price: 1650, stock: 5 },
+            { id: 'ART-09', name: 'Sapato Social Clássico', category: 'Calçados', size: '41', color: 'Preto', cost: 1900, price: 3500, stock: 2 },
+            { id: 'ART-10', name: 'Relógio Cronógrafo Steel', category: 'Acessórios', size: 'Único', color: 'Prata', cost: 1200, price: 2400, stock: 4 }
+        ];
+
+        const DEFAULT_SALES = [
+            {
+                id: 'REC-1001',
+                date: new Date(Date.now() - 86400000 * 2).toISOString(),
+                customer: 'Carlos Mucavele',
+                paymentMethod: 'M-Pesa',
+                discountPercent: 0,
+                subtotal: 3200,
+                total: 3200,
+                totalCost: 1650,
+                items: [
+                    { id: 'ART-01', name: 'Camisa Social Slim Fit', size: 'M', category: 'Vestuário', qty: 1, price: 1450, cost: 750 },
+                    { id: 'ART-02', name: 'Calça Jeans Masculina', size: '40', category: 'Vestuário', qty: 1, price: 1750, cost: 900 }
+                ]
+            },
+            {
+                id: 'REC-1002',
+                date: new Date(Date.now() - 3600000 * 5).toISOString(),
+                customer: 'Ana Paula Sitoe',
+                paymentMethod: 'POS / Cartão',
+                discountPercent: 10,
+                subtotal: 2950,
+                total: 2655,
+                totalCost: 1600,
+                items: [
+                    { id: 'ART-04', name: 'Ténis Casual Urbano', size: '42', category: 'Calçados', qty: 1, price: 2950, cost: 1600 }
+                ]
+            },
+            {
+                id: 'REC-1003',
+                date: new Date(Date.now() - 3600000 * 1).toISOString(),
+                customer: 'Cliente Balcão',
+                paymentMethod: 'e-Mola',
+                discountPercent: 0,
+                subtotal: 2340,
+                total: 2340,
+                totalCost: 1170,
+                items: [
+                    { id: 'ART-08', name: 'Bolsa Tiracolo Executiva', size: 'Único', category: 'Acessórios', qty: 1, price: 1650, cost: 850 },
+                    { id: 'ART-06', name: 'T-Shirt Básica Algodão', size: 'L', category: 'Vestuário', qty: 1, price: 690, cost: 320 }
+                ]
+            }
+        ];
+
+        let products = [];
+        let sales = [];
+        let cart = [];
+        let activePdvCategory = 'Todos';
+        let activeTabId = 'pdv-pane';
+        let categoryChartInstance = null;
+        let paymentChartInstance = null;
+
+        // =========================================================================
+        // MONTAGEM RESPONSIVA DO CARRINHO (DESKTOP STICKY VS MOBILE SHEET)
+        // =========================================================================
+        function mountCartPanelResponsive() {
+            const isDesktop = window.innerWidth >= 992;
+            const desktopMount = document.getElementById('desktopCartMountPoint');
+            const mobileMount = document.getElementById('mobileCartMountPoint');
+            const template = document.getElementById('cartPanelTemplate');
+
+            if (isDesktop) {
+                if (!desktopMount.hasChildNodes()) {
+                    mobileMount.innerHTML = '';
+                    desktopMount.appendChild(template.content.cloneNode(true));
+                    renderCart();
+                }
+                closeMobileCartSheet();
+            } else {
+                if (!mobileMount.hasChildNodes()) {
+                    desktopMount.innerHTML = '';
+                    mobileMount.appendChild(template.content.cloneNode(true));
+                    renderCart();
+                }
+            }
+        }
+
+        window.addEventListener('resize', () => {
+            mountCartPanelResponsive();
+            updateFloatingCartVisibility();
+        });
+
+        function openMobileCartSheet() {
+            document.getElementById('mobileCartBackdrop').classList.add('show');
+            document.getElementById('mobileCartSheet').classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMobileCartSheet() {
+            document.getElementById('mobileCartBackdrop').classList.remove('show');
+            document.getElementById('mobileCartSheet').classList.remove('show');
+            document.body.style.overflow = '';
+        }
+
+        // =========================================================================
+        // NAVEGAÇÃO ENTRE ABAS (DESKTOP + BOTTOM NAV MOBILE)
+        // =========================================================================
+        function switchTab(targetId) {
+            activeTabId = targetId;
+
+            // Alternar seções
+            document.querySelectorAll('.app-view').forEach(section => {
+                section.classList.toggle('d-none', section.id !== targetId);
+            });
+
+            // Atualizar botões desktop e mobile
+            document.querySelectorAll('[data-tab-target]').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-tab-target') === targetId);
+            });
+
+            updateFloatingCartVisibility();
+
+            if (targetId === 'dashboard-pane') {
+                setTimeout(renderDashboard, 50);
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function updateFloatingCartVisibility() {
+            const bar = document.getElementById('mobileFloatingCartBar');
+            if (window.innerWidth < 992 && activeTabId === 'pdv-pane') {
+                bar.classList.remove('d-none');
+            } else {
+                bar.classList.add('d-none');
+            }
+        }
+
+        // =========================================================================
+        // INICIALIZAÇÃO E PERSISTÊNCIA
+        // =========================================================================
+        function initApp() {
+            mountCartPanelResponsive();
+
+            const savedProducts = localStorage.getItem(STORAGE_PRODUCTS_KEY);
+            const savedSales = localStorage.getItem(STORAGE_SALES_KEY);
+
+            products = savedProducts ? JSON.parse(savedProducts) : JSON.parse(JSON.stringify(DEFAULT_PRODUCTS));
+            sales = savedSales ? JSON.parse(savedSales) : JSON.parse(JSON.stringify(DEFAULT_SALES));
+
+            if (!savedProducts) saveProductsToStorage();
+            if (!savedSales) saveSalesToStorage();
+
+            refreshAllViews();
+        }
+
+        function saveProductsToStorage() {
+            localStorage.setItem(STORAGE_PRODUCTS_KEY, JSON.stringify(products));
+        }
+
+        function saveSalesToStorage() {
+            localStorage.setItem(STORAGE_SALES_KEY, JSON.stringify(sales));
+        }
+
+        function refreshAllViews() {
+            renderPdvProducts();
+            renderCart();
+            renderStockViews();
+            renderSalesViews();
+            updateLowStockBadge();
+            if (activeTabId === 'dashboard-pane') renderDashboard();
+        }
+
+        // =========================================================================
+        // UTILITÁRIOS (MZN & NOTIFICAÇÕES)
+        // =========================================================================
+        function formatMZN(value) {
+            return Number(value).toLocaleString('pt-MZ', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' MZN';
+        }
+
+        function showToast(message, type = 'success') {
+            const container = document.getElementById('toastContainer');
+            const bgClass = type === 'success' ? 'text-bg-success' : type === 'danger' ? 'text-bg-danger' : 'text-bg-warning';
+            const icon = type === 'success' ? 'fa-circle-check' : type === 'danger' ? 'fa-circle-exclamation' : 'fa-triangle-exclamation';
+
+            const toastEl = document.createElement('div');
+            toastEl.className = `toast align-items-center ${bgClass} border-0 rounded-3 shadow`;
+            toastEl.setAttribute('role', 'alert');
+            toastEl.innerHTML = `
+                <div class="d-flex">
+                    <div class="toast-body fw-semibold small">
+                        <i class="fa-solid ${icon} me-2"></i>${message}
+                    </div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+                </div>
+            `;
+            container.appendChild(toastEl);
+            const toast = new bootstrap.Toast(toastEl, { delay: 2600 });
+            toast.show();
+            toastEl.addEventListener('hidden.bs.toast', () => toastEl.remove());
+        }
+
+        function openConfirmModal(title, message, onConfirmCallback) {
+            document.getElementById('confirmModalTitle').textContent = title;
+            document.getElementById('confirmModalMessage').textContent = message;
+            const modalEl = document.getElementById('confirmActionModal');
+            const modal = new bootstrap.Modal(modalEl);
+
+            const confirmBtn = document.getElementById('confirmModalBtn');
+            const newBtn = confirmBtn.cloneNode(true);
+            confirmBtn.parentNode.replaceChild(newBtn, confirmBtn);
+
+            newBtn.addEventListener('click', () => {
+                modal.hide();
+                onConfirmCallback();
+            });
+
+            modal.show();
+        }
+
+        function confirmResetDemo() {
+            openConfirmModal(
+                'Restaurar Demonstração?',
+                'Isso apagará as vendas e edições atuais e restaurará os artigos padrão da NextLynx Tech.',
+                () => {
+                    products = JSON.parse(JSON.stringify(DEFAULT_PRODUCTS));
+                    sales = JSON.parse(JSON.stringify(DEFAULT_SALES));
+                    cart = [];
+                    saveProductsToStorage();
+                    saveSalesToStorage();
+                    refreshAllViews();
+                    showToast('Demonstração restaurada!');
+                }
+            );
+        }
+
+        // =========================================================================
+        // PONTO DE VENDA (PDV) & CARRINHO
+        // =========================================================================
+        function selectPdvCategory(category, chipEl) {
+            activePdvCategory = category;
+            document.querySelectorAll('#pdvCategoryChips .cat-chip').forEach(c => c.classList.remove('active'));
+            chipEl.classList.add('active');
+            renderPdvProducts();
+        }
+
+        function getCategoryIcon(category) {
+            if (category === 'Vestuário') return 'fa-shirt text-info';
+            if (category === 'Calçados') return 'fa-shoe-prints text-warning';
+            return 'fa-gem text-danger';
+        }
+
+        function renderPdvProducts() {
+            const grid = document.getElementById('pdvProductsGrid');
+            const query = document.getElementById('pdvSearchInput').value.toLowerCase().trim();
+
+            const filtered = products.filter(p => {
+                const matchSearch = p.name.toLowerCase().includes(query) ||
+                                    (p.color && p.color.toLowerCase().includes(query)) ||
+                                    p.size.toLowerCase().includes(query);
+                const matchCat = activePdvCategory === 'Todos' || p.category === activePdvCategory;
+                return matchSearch && matchCat;
+            });
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `<div class="text-center py-5 text-secondary" style="grid-column: 1 / -1;"><i class="fa-solid fa-box-open fs-2 mb-2 d-block"></i>Nenhum artigo encontrado.</div>`;
+                return;
+            }
+
+            grid.innerHTML = filtered.map(prod => {
+                const inCart = cart.find(c => c.id === prod.id);
+                const availableStock = prod.stock - (inCart ? inCart.qty : 0);
+                const isOut = availableStock <= 0;
+
+                return `
+                    <div class="product-item-card ${isOut ? 'out-of-stock' : ''}" onclick="${isOut ? '' : `addToCart('${prod.id}')`}">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center gap-1 mb-2">
+                                <span class="size-pill text-truncate"><i class="fa-solid ${getCategoryIcon(prod.category)} me-1"></i>${prod.size}</span>
+                                <span class="badge ${availableStock <= 3 ? 'bg-danger' : 'bg-secondary'} rounded-pill" style="font-size: 0.68rem;">
+                                    ${isOut ? 'Esgotado' : `${availableStock} un.`}
+                                </span>
+                            </div>
+                            <h6 class="fw-bold text-white mb-1" style="font-size: 0.88rem; line-height: 1.3;">${prod.name}</h6>
+                            <div class="small text-secondary mb-2 text-truncate" style="font-size: 0.74rem;">
+                                ${prod.category} • ${prod.color || 'Padrão'}
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center pt-2 border-top border-secondary mt-auto">
+                            <span class="fw-bold text-warning font-mono-mzn" style="font-size: 0.82rem;">${formatMZN(prod.price)}</span>
+                            <span class="btn btn-sm btn-outline-light rounded-circle d-flex align-items-center justify-content-center" style="width: 32px; height: 32px; padding: 0;">
+                                <i class="fa-solid fa-plus" style="font-size: 0.75rem;"></i>
+                            </span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            const existing = cart.find(item => item.id === productId);
+            const currentQty = existing ? existing.qty : 0;
+
+            if (currentQty + 1 > product.stock) {
+                showToast('Estoque máximo atingido!', 'warning');
+                return;
+            }
+
+            if (existing) {
+                existing.qty += 1;
+            } else {
+                cart.push({
+                    id: product.id,
+                    name: product.name,
+                    size: product.size,
+                    category: product.category,
+                    price: product.price,
+                    cost: product.cost,
+                    qty: 1
+                });
+            }
+
+            renderCart();
+            renderPdvProducts();
+        }
+
+        function updateCartQty(productId, delta) {
+            const index = cart.findIndex(item => item.id === productId);
+            if (index === -1) return;
+
+            const product = products.find(p => p.id === productId);
+            const newQty = cart[index].qty + delta;
+
+            if (newQty <= 0) {
+                cart.splice(index, 1);
+            } else if (product && newQty > product.stock) {
+                showToast('Estoque insuficiente.', 'warning');
+                return;
+            } else {
+                cart[index].qty = newQty;
+            }
+
+            renderCart();
+            renderPdvProducts();
+        }
+
+        function clearCart() {
+            cart = [];
+            const discInput = document.getElementById('discountPercentInput');
+            const cashInput = document.getElementById('cashReceivedInput');
+            if (discInput) discInput.value = 0;
+            if (cashInput) cashInput.value = '';
+            renderCart();
+            renderPdvProducts();
+        }
+
+        function renderCart() {
+            const container = document.getElementById('cartItemsContainer');
+            const btnClear = document.getElementById('btnClearCart');
+            const btnFinalize = document.getElementById('btnFinalizeSale');
+
+            if (!container) return;
+
+            const totalItemsCount = cart.reduce((sum, i) => sum + i.qty, 0);
+            document.getElementById('mobileFloatingCount').textContent = `${totalItemsCount} ${totalItemsCount === 1 ? 'item' : 'itens'}`;
+
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center text-secondary py-4">
+                        <i class="fa-solid fa-cart-arrow-down fs-2 mb-2 opacity-50 d-block"></i>
+                        <small>Toque nos artigos para adicionar à venda.</small>
+                    </div>
+                `;
+                if (btnClear) btnClear.disabled = true;
+                if (btnFinalize) btnFinalize.disabled = true;
+                updateCartTotals();
+                return;
+            }
+
+            if (btnClear) btnClear.disabled = false;
+            if (btnFinalize) btnFinalize.disabled = false;
+
+            container.innerHTML = cart.map(item => `
+                <div class="d-flex justify-content-between align-items-center p-2 mb-2 rounded-3" style="background: var(--bg-secondary); border: 1px solid var(--border-subtle);">
+                    <div class="me-2" style="min-width: 0;">
+                        <div class="fw-semibold text-white text-truncate small">${item.name}</div>
+                        <small class="text-secondary font-mono-mzn" style="font-size: 0.74rem;">Tam: ${item.size} • ${formatMZN(item.price)}</small>
+                    </div>
+                    <div class="d-flex align-items-center gap-1 flex-shrink-0">
+                        <button type="button" class="btn btn-sm btn-outline-secondary rounded-3" style="width: 36px; height: 36px;" onclick="updateCartQty('${item.id}', -1)">-</button>
+                        <span class="fw-bold small font-mono-mzn px-2">${item.qty}</span>
+                        <button type="button" class="btn btn-sm btn-outline-secondary rounded-3" style="width: 36px; height: 36px;" onclick="updateCartQty('${item.id}', 1)">+</button>
+                    </div>
+                </div>
+            `).join('');
+
+            updateCartTotals();
+        }
+
+        function getCartCalculation() {
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            const totalCost = cart.reduce((sum, item) => sum + (item.cost * item.qty), 0);
+            const discEl = document.getElementById('discountPercentInput');
+            let discountPercent = discEl ? (parseFloat(discEl.value) || 0) : 0;
+            discountPercent = Math.max(0, Math.min(100, discountPercent));
+            const discountAmount = subtotal * (discountPercent / 100);
+            const total = subtotal - discountAmount;
+
+            return { subtotal, discountPercent, discountAmount, total, totalCost };
+        }
+
+        function updateCartTotals() {
+            const { subtotal, total } = getCartCalculation();
+            const subEl = document.getElementById('cartSubtotalText');
+            const totEl = document.getElementById('cartTotalText');
+            if (subEl) subEl.textContent = formatMZN(subtotal);
+            if (totEl) totEl.textContent = formatMZN(total);
+            document.getElementById('mobileFloatingTotal').textContent = formatMZN(total);
+            calculateChange();
+        }
+
+        function toggleCashReceived() {
+            const methodEl = document.getElementById('paymentMethodSelect');
+            const cashGroup = document.getElementById('cashReceivedGroup');
+            const changeBox = document.getElementById('changeDisplayBox');
+            if (!methodEl || !cashGroup || !changeBox) return;
+
+            if (methodEl.value === 'Dinheiro') {
+                cashGroup.style.display = 'block';
+                changeBox.classList.remove('d-none');
+                changeBox.classList.add('d-flex');
+                calculateChange();
+            } else {
+                cashGroup.style.display = 'none';
+                changeBox.classList.add('d-none');
+                changeBox.classList.remove('d-flex');
+            }
+        }
+
+        function calculateChange() {
+            const cashInput = document.getElementById('cashReceivedInput');
+            const changeEl = document.getElementById('changeAmountText');
+            if (!cashInput || !changeEl) return;
+
+            const { total } = getCartCalculation();
+            const received = parseFloat(cashInput.value) || 0;
+            const change = received - total;
+
+            if (received === 0) {
+                changeEl.textContent = '0,00 MZN';
+                changeEl.className = 'text-secondary font-mono-mzn';
+            } else if (change < 0) {
+                changeEl.textContent = `Falta ${formatMZN(Math.abs(change))}`;
+                changeEl.className = 'text-danger font-mono-mzn';
+            } else {
+                changeEl.textContent = formatMZN(change);
+                changeEl.className = 'text-success font-mono-mzn';
+            }
+        }
+
+        function finalizeSale() {
+            if (cart.length === 0) return;
+
+            const { subtotal, discountPercent, total, totalCost } = getCartCalculation();
+            const paymentMethod = document.getElementById('paymentMethodSelect').value;
+            const customer = document.getElementById('customerNameInput').value.trim() || 'Cliente Balcão';
+
+            if (paymentMethod === 'Dinheiro') {
+                const received = parseFloat(document.getElementById('cashReceivedInput').value) || 0;
+                if (received > 0 && received < total) {
+                    showToast('Valor entregue inferior ao total da venda.', 'danger');
+                    return;
+                }
+            }
+
+            cart.forEach(cartItem => {
+                const prod = products.find(p => p.id === cartItem.id);
+                if (prod) prod.stock = Math.max(0, prod.stock - cartItem.qty);
+            });
+
+            const newSale = {
+                id: 'REC-' + (1000 + sales.length + Math.floor(Math.random() * 90)),
+                date: new Date().toISOString(),
+                customer,
+                paymentMethod,
+                discountPercent,
+                subtotal,
+                total,
+                totalCost,
+                items: JSON.parse(JSON.stringify(cart))
+            };
+
+            sales.unshift(newSale);
+            saveProductsToStorage();
+            saveSalesToStorage();
+
+            cart = [];
+            document.getElementById('customerNameInput').value = '';
+            document.getElementById('discountPercentInput').value = 0;
+            document.getElementById('cashReceivedInput').value = '';
+
+            closeMobileCartSheet();
+            refreshAllViews();
+            showToast(`Venda ${newSale.id} concluída!`);
+            openReceiptModal(newSale.id);
+        }
+
+        // =========================================================================
+        // GESTÃO DE ESTOQUE (MOBILE CARDS + DESKTOP TABLE)
+        // =========================================================================
+        function updateLowStockBadge() {
+            const lowCount = products.filter(p => p.stock <= 3).length;
+            document.querySelectorAll('.low-stock-badge').forEach(badge => {
+                if (lowCount > 0) {
+                    badge.textContent = lowCount;
+                    badge.classList.remove('d-none');
+                } else {
+                    badge.classList.add('d-none');
+                }
+            });
+        }
+
+        function renderStockViews() {
+            const tbody = document.getElementById('stockTableBody');
+            const mobileContainer = document.getElementById('stockMobileCardsContainer');
+            const query = document.getElementById('stockSearchInput').value.toLowerCase().trim();
+            const catFilter = document.getElementById('stockCategoryFilter').value;
+            const statusFilter = document.getElementById('stockStatusFilter').value;
+
+            const filtered = products.filter(p => {
+                const matchText = p.name.toLowerCase().includes(query) || p.id.toLowerCase().includes(query) || (p.color && p.color.toLowerCase().includes(query));
+                const matchCat = catFilter === 'Todos' || p.category === catFilter;
+                let matchStatus = true;
+                if (statusFilter === 'Baixo') matchStatus = p.stock > 0 && p.stock <= 3;
+                if (statusFilter === 'Esgotado') matchStatus = p.stock === 0;
+                return matchText && matchCat && matchStatus;
+            });
+
+            if (filtered.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="7" class="text-center py-4 text-secondary">Nenhum artigo encontrado.</td></tr>`;
+                mobileContainer.innerHTML = `<div class="text-center py-4 text-secondary">Nenhum artigo encontrado.</div>`;
+                return;
+            }
+
+            // Render Desktop Table
+            tbody.innerHTML = filtered.map(p => {
+                const stockBadge = p.stock === 0
+                    ? `<span class="badge bg-danger">Esgotado (0)</span>`
+                    : p.stock <= 3
+                    ? `<span class="badge bg-warning text-dark fw-bold"><i class="fa-solid fa-triangle-exclamation me-1"></i>${p.stock} un.</span>`
+                    : `<span class="badge bg-success bg-opacity-25 text-success border border-success">${p.stock} un.</span>`;
+
+                return `
+                    <tr>
+                        <td>
+                            <div class="fw-semibold text-white">${p.name}</div>
+                            <small class="text-secondary">${p.id} • Cor: ${p.color || 'N/A'}</small>
+                        </td>
+                        <td><span class="size-pill">${p.category}</span></td>
+                        <td><strong>${p.size}</strong></td>
+                        <td class="text-end text-secondary font-mono-mzn">${formatMZN(p.cost)}</td>
+                        <td class="text-end fw-bold text-warning font-mono-mzn">${formatMZN(p.price)}</td>
+                        <td class="text-center">${stockBadge}</td>
+                        <td class="text-end">
+                            <button class="btn btn-sm btn-outline-success me-1" title="Repor +5" onclick="quickRestock('${p.id}', 5)">+5</button>
+                            <button class="btn btn-sm btn-outline-info me-1" title="Editar" onclick="openEditProductModal('${p.id}')"><i class="fa-solid fa-pen"></i></button>
+                            <button class="btn btn-sm btn-outline-danger" title="Excluir" onclick="deleteProduct('${p.id}')"><i class="fa-solid fa-trash"></i></button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+
+            // Render Mobile Cards
+            mobileContainer.innerHTML = filtered.map(p => {
+                const stockBadge = p.stock === 0
+                    ? `<span class="badge bg-danger">Esgotado</span>`
+                    : p.stock <= 3
+                    ? `<span class="badge bg-warning text-dark fw-bold">${p.stock} un. (Baixo)</span>`
+                    : `<span class="badge bg-success bg-opacity-25 text-success border border-success">${p.stock} un.</span>`;
+
+                return `
+                    <div class="mobile-entity-card">
+                        <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                            <div>
+                                <div class="fw-bold text-white">${p.name}</div>
+                                <small class="text-secondary">${p.category} • Tam: <strong class="text-light">${p.size}</strong> • ${p.color || 'Padrão'}</small>
+                            </div>
+                            ${stockBadge}
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center pt-2 border-top border-secondary mt-2">
+                            <div>
+                                <small class="text-secondary d-block" style="font-size: 0.7rem;">Preço de Venda</small>
+                                <span class="fw-bold text-warning font-mono-mzn">${formatMZN(p.price)}</span>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <button class="btn btn-sm btn-outline-success btn-touch px-3 fw-bold" onclick="quickRestock('${p.id}', 5)">+5</button>
+                                <button class="btn btn-sm btn-outline-info btn-touch" onclick="openEditProductModal('${p.id}')"><i class="fa-solid fa-pen"></i></button>
+                                <button class="btn btn-sm btn-outline-danger btn-touch" onclick="deleteProduct('${p.id}')"><i class="fa-solid fa-trash"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function quickRestock(productId, amount) {
+            const prod = products.find(p => p.id === productId);
+            if (!prod) return;
+            prod.stock += amount;
+            saveProductsToStorage();
+            refreshAllViews();
+            showToast(`+${amount} un. adicionadas a "${prod.name}".`);
+        }
+
+        function openNewProductModal() {
+            document.getElementById('productModalTitle').textContent = 'Novo Artigo de Vestuário';
+            document.getElementById('productForm').reset();
+            document.getElementById('prodId').value = '';
+        }
+
+        function openEditProductModal(productId) {
+            const prod = products.find(p => p.id === productId);
+            if (!prod) return;
+
+            document.getElementById('productModalTitle').textContent = 'Editar Artigo';
+            document.getElementById('prodId').value = prod.id;
+            document.getElementById('prodName').value = prod.name;
+            document.getElementById('prodCategory').value = prod.category;
+            document.getElementById('prodSize').value = prod.size;
+            document.getElementById('prodColor').value = prod.color || '';
+            document.getElementById('prodStock').value = prod.stock;
+            document.getElementById('prodCost').value = prod.cost;
+            document.getElementById('prodPrice').value = prod.price;
+
+            new bootstrap.Modal(document.getElementById('productModal')).show();
+        }
+
+        function saveProduct(event) {
+            event.preventDefault();
+            const id = document.getElementById('prodId').value;
+            const name = document.getElementById('prodName').value.trim();
+            const category = document.getElementById('prodCategory').value;
+            const size = document.getElementById('prodSize').value.trim();
+            const color = document.getElementById('prodColor').value.trim() || 'Padrão';
+            const stock = parseInt(document.getElementById('prodStock').value, 10);
+            const cost = parseFloat(document.getElementById('prodCost').value);
+            const price = parseFloat(document.getElementById('prodPrice').value);
+
+            if (id) {
+                const index = products.findIndex(p => p.id === id);
+                if (index !== -1) {
+                    products[index] = { id, name, category, size, color, stock, cost, price };
+                    showToast('Artigo atualizado!');
+                }
+            } else {
+                const newId = 'ART-' + String(products.length + 1).padStart(2, '0') + Math.floor(Math.random() * 9);
+                products.unshift({ id: newId, name, category, size, color, stock, cost, price });
+                showToast('Novo artigo cadastrado!');
+            }
+
+            saveProductsToStorage();
+            refreshAllViews();
+            bootstrap.Modal.getInstance(document.getElementById('productModal')).hide();
+        }
+
+        function deleteProduct(productId) {
+            openConfirmModal(
+                'Excluir Artigo?',
+                'Deseja remover este artigo do catálogo de estoque?',
+                () => {
+                    products = products.filter(p => p.id !== productId);
+                    cart = cart.filter(c => c.id !== productId);
+                    saveProductsToStorage();
+                    refreshAllViews();
+                    showToast('Artigo removido.', 'warning');
+                }
+            );
+        }
+
+        // =========================================================================
+        // HISTÓRICO DE VENDAS (MOBILE CARDS + DESKTOP TABLE)
+        // =========================================================================
+        function renderSalesViews() {
+            const tbody = document.getElementById('salesHistoryBody');
+            const mobileContainer = document.getElementById('salesMobileCardsContainer');
+            const query = document.getElementById('salesSearchInput').value.toLowerCase().trim();
+
+            const filtered = sales.filter(s =>
+                s.id.toLowerCase().includes(query) ||
+                s.customer.toLowerCase().includes(query) ||
+                s.paymentMethod.toLowerCase().includes(query)
+            );
+
+            if (filtered.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="7" class="text-center py-4 text-secondary">Nenhuma venda encontrada.</td></tr>`;
+                mobileContainer.innerHTML = `<div class="text-center py-4 text-secondary">Nenhuma venda encontrada.</div>`;
+                return;
+            }
+
+            // Desktop Table
+            tbody.innerHTML = filtered.map(sale => {
+                const dateObj = new Date(sale.date);
+                const formattedDate = dateObj.toLocaleDateString('pt-MZ') + ' ' + dateObj.toLocaleTimeString('pt-MZ', { hour: '2-digit', minute: '2-digit' });
+                const totalQty = sale.items.reduce((sum, i) => sum + i.qty, 0);
+
+                return `
+                    <tr>
+                        <td><span class="fw-bold text-info font-mono-mzn">${sale.id}</span></td>
+                        <td class="small text-secondary">${formattedDate}</td>
+                        <td class="fw-medium">${sale.customer}</td>
+                        <td>
+                            <span class="badge bg-secondary rounded-pill">${totalQty} peça(s)</span>
+                            <small class="text-secondary d-block text-truncate" style="max-width: 210px;">
+                                ${sale.items.map(i => `${i.qty}x ${i.name}`).join(', ')}
+                            </small>
+                        </td>
+                        <td><span class="size-pill">${sale.paymentMethod}</span></td>
+                        <td class="text-end fw-bold text-warning font-mono-mzn">${formatMZN(sale.total)}</td>
+                        <td class="text-end">
+                            <button class="btn btn-sm btn-outline-light me-1" title="Imprimir Talão" onclick="openReceiptModal('${sale.id}')"><i class="fa-solid fa-print"></i></button>
+                            <button class="btn btn-sm btn-outline-danger" title="Estornar Venda" onclick="refundSale('${sale.id}')"><i class="fa-solid fa-rotate-left"></i></button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+
+            // Mobile Cards
+            mobileContainer.innerHTML = filtered.map(sale => {
+                const dateObj = new Date(sale.date);
+                const formattedDate = dateObj.toLocaleDateString('pt-MZ') + ' • ' + dateObj.toLocaleTimeString('pt-MZ', { hour: '2-digit', minute: '2-digit' });
+
+                return `
+                    <div class="mobile-entity-card">
+                        <div class="d-flex justify-content-between align-items-center mb-1">
+                            <span class="fw-bold text-info font-mono-mzn">${sale.id}</span>
+                            <span class="size-pill">${sale.paymentMethod}</span>
+                        </div>
+                        <div class="small text-white fw-semibold">${sale.customer}</div>
+                        <div class="small text-secondary mb-2" style="font-size: 0.74rem;">${formattedDate}</div>
+                        <div class="small text-secondary text-truncate mb-2">
+                            ${sale.items.map(i => `${i.qty}x ${i.name}`).join(', ')}
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center pt-2 border-top border-secondary">
+                            <span class="fw-bold text-warning font-mono-mzn">${formatMZN(sale.total)}</span>
+                            <div class="d-flex gap-2">
+                                <button class="btn btn-sm btn-outline-light btn-touch px-3" onclick="openReceiptModal('${sale.id}')">
+                                    <i class="fa-solid fa-print me-1"></i> Talão
+                                </button>
+                                <button class="btn btn-sm btn-outline-danger btn-touch" onclick="refundSale('${sale.id}')">
+                                    <i class="fa-solid fa-rotate-left"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function openReceiptModal(saleId) {
+            const sale = sales.find(s => s.id === saleId);
+            if (!sale) return;
+
+            const dateObj = new Date(sale.date);
+            document.getElementById('receiptMeta').innerHTML = `
+                <div><strong>Talão:</strong> ${sale.id}</div>
+                <div><strong>Data:</strong> ${dateObj.toLocaleDateString('pt-MZ')} às ${dateObj.toLocaleTimeString('pt-MZ', { hour: '2-digit', minute: '2-digit' })}</div>
+                <div><strong>Cliente:</strong> ${sale.customer}</div>
+                <div><strong>Pagamento:</strong> ${sale.paymentMethod}</div>
+            `;
+
+            document.getElementById('receiptItemsList').innerHTML = sale.items.map(item => `
+                <tr>
+                    <td>${item.name} (${item.size})</td>
+                    <td class="text-center">${item.qty}</td>
+                    <td class="text-end">${(item.price * item.qty).toFixed(2)}</td>
+                </tr>
+            `).join('');
+
+            const discountVal = sale.subtotal - sale.total;
+            document.getElementById('receiptTotals').innerHTML = `
+                <div class="d-flex justify-content-between"><span>Subtotal:</span><span>${formatMZN(sale.subtotal)}</span></div>
+                ${sale.discountPercent > 0 ? `<div class="d-flex justify-content-between"><span>Desconto (${sale.discountPercent}%):</span><span>-${formatMZN(discountVal)}</span></div>` : ''}
+                <div class="d-flex justify-content-between fw-bold fs-6 mt-1"><span>TOTAL PAGO:</span><span>${formatMZN(sale.total)}</span></div>
+            `;
+
+            new bootstrap.Modal(document.getElementById('receiptModal')).show();
+        }
+
+        function refundSale(saleId) {
+            openConfirmModal(
+                'Estornar Venda?',
+                'Os artigos desta venda serão devolvidos automaticamente ao estoque. Confirmar?',
+                () => {
+                    const index = sales.findIndex(s => s.id === saleId);
+                    if (index === -1) return;
+
+                    sales[index].items.forEach(item => {
+                        const prod = products.find(p => p.id === item.id);
+                        if (prod) prod.stock += item.qty;
+                    });
+
+                    sales.splice(index, 1);
+                    saveProductsToStorage();
+                    saveSalesToStorage();
+                    refreshAllViews();
+                    showToast(`Venda ${saleId} estornada.`, 'warning');
+                }
+            );
+        }
+
+        function exportSalesCSV() {
+            if (sales.length === 0) {
+                showToast('Não há vendas para exportar.', 'warning');
+                return;
+            }
+
+            let csv = 'Recibo;Data;Cliente;Pagamento;Desconto(%);Total(MZN);Artigos\n';
+            sales.forEach(s => {
+                const dateStr = new Date(s.date).toLocaleString('pt-MZ');
+                const itemsStr = s.items.map(i => `${i.qty}x ${i.name} (${i.size})`).join(' | ');
+                csv += `${s.id};"${dateStr}";"${s.customer}";"${s.paymentMethod}";${s.discountPercent};${s.total.toFixed(2)};"${itemsStr}"\n`;
+            });
+
+            const blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', `Vendas_NextLynx_Fashion_${new Date().toISOString().slice(0,10)}.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            showToast('Relatório CSV exportado!');
+        }
+
+        // =========================================================================
+        // DASHBOARD EXECUTIVO & GRÁFICOS RESPONSIVOS (CHART.JS)
+        // =========================================================================
+        function renderDashboard() {
+            const totalRevenue = sales.reduce((sum, s) => sum + s.total, 0);
+            const totalCost = sales.reduce((sum, s) => sum + (s.totalCost || 0), 0);
+            const totalProfit = totalRevenue - totalCost;
+            const margin = totalRevenue > 0 ? ((totalProfit / totalRevenue) * 100).toFixed(1) : 0;
+            const avgTicket = sales.length > 0 ? (totalRevenue / sales.length) : 0;
+
+            const totalItemsSold = sales.reduce((sum, s) => sum + s.items.reduce((q, i) => q + i.qty, 0), 0);
+            const lowStockCount = products.filter(p => p.stock <= 3).length;
+
+            document.getElementById('kpiRevenue').textContent = formatMZN(totalRevenue);
+            document.getElementById('kpiProfit').textContent = formatMZN(totalProfit);
+            document.getElementById('kpiMarginText').textContent = `Margem: ${margin}%`;
+            document.getElementById('kpiAvgTicket').textContent = formatMZN(avgTicket);
+            document.getElementById('kpiSalesCountText').textContent = `${sales.length} venda(s)`;
+            document.getElementById('kpiItemsSold').textContent = totalItemsSold;
+            document.getElementById('kpiLowStockText').textContent = `${lowStockCount} em alerta`;
+
+            const catTotals = { 'Vestuário': 0, 'Calçados': 0, 'Acessórios': 0 };
+            sales.forEach(s => {
+                s.items.forEach(item => {
+                    const cat = item.category || 'Vestuário';
+                    catTotals[cat] = (catTotals[cat] || 0) + (item.price * item.qty);
+                });
+            });
+
+            const payTotals = {};
+            sales.forEach(s => {
+                payTotals[s.paymentMethod] = (payTotals[s.paymentMethod] || 0) + s.total;
+            });
+
+            const ctxCat = document.getElementById('categorySalesChart');
+            if (ctxCat) {
+                if (categoryChartInstance) categoryChartInstance.destroy();
+                categoryChartInstance = new Chart(ctxCat, {
+                    type: 'doughnut',
+                    data: {
+                        labels: Object.keys(catTotals),
+                        datasets: [{
+                            data: Object.values(catTotals),
+                            backgroundColor: ['#667eea', '#ffc107', '#8B0000'],
+                            borderColor: '#181822',
+                            borderWidth: 3
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { position: 'bottom', labels: { color: '#cbd5e1', padding: 14, font: { size: 12 } } }
+                        }
+                    }
+                });
+            }
+
+            const ctxPay = document.getElementById('paymentMethodsChart');
+            if (ctxPay) {
+                if (paymentChartInstance) paymentChartInstance.destroy();
+                paymentChartInstance = new Chart(ctxPay, {
+                    type: 'bar',
+                    data: {
+                        labels: Object.keys(payTotals).length ? Object.keys(payTotals) : ['Sem vendas'],
+                        datasets: [{
+                            label: 'Receita (MZN)',
+                            data: Object.keys(payTotals).length ? Object.values(payTotals) : [0],
+                            backgroundColor: ['#764ba2', '#667eea', '#ffc107', '#10b981'],
+                            borderRadius: 8
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: { ticks: { color: '#94a3b8', font: { size: 11 } }, grid: { color: 'rgba(255,255,255,0.06)' } },
+                            x: { ticks: { color: '#cbd5e1', font: { size: 11 } }, grid: { display: false } }
+                        },
+                        plugins: {
+                            legend: { display: false }
+                        }
+                    }
+                });
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', initApp);
+    </script>
+</body>
+</html>
