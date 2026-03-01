@@ -20,59 +20,70 @@
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             font-family: 'Poppins', sans-serif;
             min-height: 100vh;
+            margin: 0;
+            padding-top: 56px; /* espaço para navbar fixa */
+            overflow-x: hidden;
         }
 
-        .navbar {
+        /* Header fixo */
+        .navbar.fixed-top {
             background: var(--gradient-primary);
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            height: 56px;
+            padding: 0.5rem 1rem;
         }
 
-        .sidebar {
+        .navbar-brand img {
+            height: 40px;
+        }
+
+        .navbar-brand span {
+            font-size: 1.25rem;
+        }
+
+        /* Sidebar / Menu colapsável */
+        .sidebar-menu {
             background: white;
-            border-right: 1px solid #dee2e6;
-            height: calc(100vh - 56px);
-            position: fixed;
-            width: 250px;
+            border-bottom: 1px solid #dee2e6;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            max-height: 80vh;
             overflow-y: auto;
         }
 
-        .sidebar .nav-link {
+        .sidebar-menu .nav-link {
             color: var(--dark);
             padding: 0.9rem 1.5rem;
             border-radius: 10px;
             margin: 0.3rem 1rem;
             transition: all 0.3s ease;
-            position: relative;
         }
 
-        .sidebar .nav-link:hover,
-        .sidebar .nav-link.active {
+        .sidebar-menu .nav-link:hover,
+        .sidebar-menu .nav-link.active {
             background: rgba(106,17,203,0.1);
             color: var(--primary);
         }
 
-        .notification-badge {
-            position: absolute;
-            top: 8px;
-            right: 8px;
-            background: #dc3545;
-            color: white;
-            font-size: 0.65rem;
+        .sidebar-logo {
+            height: 70px;
+            margin: 1rem auto;
+            display: block;
+        }
+
+        .sidebar-nome {
+            font-size: 1.2rem;
             font-weight: bold;
-            border-radius: 50%;
-            width: 18px;
-            height: 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            line-height: 1;
+            text-align: center;
+            margin-bottom: 1.5rem;
         }
 
+        /* Conteúdo principal – sem margem esquerda em mobile */
         .main-content {
-            margin-left: 250px;
-            padding: 2rem;
+            padding: 1.5rem 1rem;
+            min-height: calc(100vh - 56px);
         }
 
+        /* Cards responsivos */
         .card-dashboard {
             border: none;
             border-radius: 20px;
@@ -86,27 +97,62 @@
         }
 
         .card-icon {
-            font-size: 2.8rem;
+            font-size: clamp(2rem, 6vw, 2.8rem);
             color: var(--primary);
             margin-bottom: 1rem;
         }
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.04); }
+        /* Responsividade – sidebar desaparece em mobile */
+        @media (max-width: 991px) {
+            .main-content {
+                padding: 1rem;
+            }
+            body {
+                padding-top: 56px !important;
+            }
         }
 
-        .cursor-pointer {
-            cursor: pointer !important;
+        @media (min-width: 992px) {
+            .main-content {
+                margin-left: 250px;
+                padding: 2rem;
+            }
+            .sidebar {
+                position: fixed;
+                top: 56px;
+                bottom: 0;
+                width: 250px;
+                overflow-y: auto;
+            }
         }
 
-        .disabled {
-            cursor: not-allowed !important;
-            opacity: 0.6;
+        @media (max-width: 576px) {
+            .card-dashboard {
+                padding: 1.2rem;
+            }
+            .card-icon {
+                font-size: 2rem;
+            }
+            .main-content {
+                padding: 0.8rem;
+            }
         }
 
+        /* Evita scroll horizontal e "abanar" no celular */
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            overscroll-behavior: none;
+            -webkit-overflow-scrolling: touch;
+            touch-action: pan-y pinch-zoom;
+        }
+    
 
 
+    
         
 
         /* Responsividade */
@@ -224,6 +270,7 @@ body {
     <!-- Navbar superior -->
    
 <!-- Navbar superior – agora FIXED no topo -->
+
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <div class="container-fluid">
         <a class="navbar-brand fw-bold" href="index.html"> <!-- ← Link para página principal -->
@@ -250,6 +297,8 @@ body {
         </div>
     </div>
 </nav>
+
+
     <div class="d-flex">
         <!-- Sidebar lateral -->
         <div class="sidebar p-4">
