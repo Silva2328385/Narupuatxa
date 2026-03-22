@@ -104,27 +104,23 @@ body {
 <!-- Navbar superior – fixo no topo -->
 
 
-<!-- Navbar superior – fixo no topo -->
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top shadow-sm" style="background: var(--gradient-primary); z-index: 1030;">
     <div class="container-fluid px-3">
-        <!-- Logo + título -->
+        <!-- Logo + Título -->
         <a class="navbar-brand d-flex align-items-center fw-bold" href="index.html">
             <img src="img/logo1.png" alt="Logo" style="height: 40px;">
             <span class="ms-2 fw-bold">NextLynx Mentoria</span>
         </a>
 
-        <!-- Botão Sair e Hamburger -->
-        <div class="d-flex align-items-center ms-auto gap-3">
-            <!-- Botão Sair -->
-            <button id="logoutBtn" class="btn btn-outline-light btn-sm">
-                <i class="fas fa-sign-out-alt me-1"></i>Sair
-            </button>
+        <!-- Botão Sair desktop -->
+        <button id="logoutBtn" class="btn btn-outline-light btn-sm d-none d-lg-block me-3">
+            <i class="fas fa-sign-out-alt me-1"></i>Sair
+        </button>
 
-            <!-- Hamburger (aparece em telas pequenas) -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuAluno" aria-controls="menuAluno" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </div>
+        <!-- Hamburger -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuAluno" aria-controls="menuAluno" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
         <!-- Menu colapsável -->
         <div class="collapse navbar-collapse justify-content-end" id="menuAluno">
@@ -141,10 +137,21 @@ body {
                     </a>
                 </li>
                 <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-home me-1"></i>Página Principal</a></li>
+
+                <!-- Botão Sair dentro do menu (aparece apenas em celular) -->
+                <li class="nav-item d-lg-none mt-2">
+                    <button id="logoutBtnMobile" class="btn btn-outline-light w-100">
+                        <i class="fas fa-sign-out-alt me-1"></i>Sair
+                    </button>
+                </li>
             </ul>
         </div>
     </div>
 </nav>
+
+
+
+
         <!-- Conteúdo principal -->
        <div class="main-content container-fluid px-3 py-5">
             <!-- Boas-vindas com nome dinâmico -->
