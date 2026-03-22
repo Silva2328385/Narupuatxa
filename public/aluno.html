@@ -80,21 +80,17 @@ body {
 .card-dashboard {
     max-width: 100% !important;
 }
-
-
- .notification-badge {
-            position: absolute;
-            top: 0;
-            right: 0;
-            transform: translate(50%, -50%);
-            background-color: red;
-            color: white;
-            border-radius: 50%;
-            font-size: 0.65rem;
-            padding: 2px 6px;
-        }
-
-
+.notification-badge {
+    position: absolute;
+    top: 2px;
+    right: 0px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    font-size: 10px;
+    padding: 2px 5px;
+    z-index: 1050;
+}
         /* Botão X (fechar menu mobile) */
 .navbar-collapse .btn {
     border-radius: 50%;
@@ -144,20 +140,54 @@ body {
         <i class="fas fa-times"></i>
     </button>
 </div>
-            <ul class="navbar-nav mt-3 mt-lg-0">
-                <li class="nav-item"><a class="nav-link active" href="#"><i class="fas fa-home me-1"></i>Dashboard</a></li>
-                <li class="nav-item"><a class="nav-link active" href="#materiais"><i class="fas fa-book me-1"></i>Materiais</a></li>
-                <li class="nav-item"><a class="nav-link active" href="#agendar"><i class="fas fa-calendar-check me-1"></i>Agendar Aula</a></li>
-                <li class="nav-item"><a class="nav-link active" href="#historicoCompleto"><i class="fas fa-history me-1"></i>Histórico</a></li>
-                <li class="nav-item"><a class="nav-link active" href="#textoDuvida"><i class="fas fa-question-circle me-1"></i>Enviar Dúvida</a></li>
-                <li class="nav-item position-relative">
-                    <a class="nav-link" href="#notificacoes" id="sinoNotificacoes">
-                        <i class="fas fa-bell me-1"></i>Notificações
-                        <span id="badgeNotificacoes" class="notification-badge d-none">0</span>
-                    </a>
-                </li>
-                <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-home me-1"></i>Página Principal</a></li>
-            </ul>
+         
+<ul class="navbar-nav mt-3 mt-lg-0">
+    <li class="nav-item">
+        <a class="nav-link active" href="#" onclick="fecharMenu()">
+            <i class="fas fa-home me-1"></i>Dashboard
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link active" href="#materiais" onclick="fecharMenu()">
+            <i class="fas fa-book me-1"></i>Materiais
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link active" href="#agendar" onclick="fecharMenu()">
+            <i class="fas fa-calendar-check me-1"></i>Agendar Aula
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link active" href="#historicoCompleto" onclick="fecharMenu()">
+            <i class="fas fa-history me-1"></i>Histórico
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link active" href="#textoDuvida" onclick="fecharMenu()">
+            <i class="fas fa-question-circle me-1"></i>Enviar Dúvida
+        </a>
+    </li>
+
+    <li class="nav-item">
+    <a class="nav-link position-relative" href="#notificacoes" id="sinoNotificacoes"
+       onclick="marcarNotificacoesLidas(event); fecharMenu();">
+        <i class="fas fa-bell"></i>
+        <span id="badgeNotificacoes" class="notification-badge d-none">0</span>
+    </a>
+</li>
+
+
+    <li class="nav-item">
+        <a class="nav-link active" href="index.html" onclick="fecharMenu()">
+            <i class="fas fa-home me-1"></i>Página Principal
+        </a>
+    </li>
+</ul>
+
         </div>
     </div>
 </nav>
@@ -1571,6 +1601,43 @@ function fecharMenu() {
     bsCollapse.hide();
 }
 </script>
+
+
+
+<script>
+// Simulação de notificações (podes ligar ao backend depois)
+let notificacoesNaoLidas = 5; // exemplo inicial
+
+// Atualiza o badge
+function atualizarBadge() {
+    const badge = document.getElementById('badgeNotificacoes');
+
+    if (notificacoesNaoLidas > 0) {
+        badge.textContent = notificacoesNaoLidas;
+        badge.classList.remove('d-none');
+    } else {
+        badge.classList.add('d-none');
+    }
+}
+
+// Marcar como lidas (clicar no sino)
+function marcarNotificacoesLidas() {
+    notificacoesNaoLidas = 0;
+    atualizarBadge();
+}
+
+// Exemplo: adicionar nova notificação
+function novaNotificacao() {
+    notificacoesNaoLidas++;
+    atualizarBadge();
+}
+
+// Inicializar ao carregar página
+document.addEventListener("DOMContentLoaded", function () {
+    atualizarBadge();
+});
+</script>
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
