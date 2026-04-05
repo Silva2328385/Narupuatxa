@@ -1151,38 +1151,63 @@ nav ul {
 
 
 
-/* Botões responsivos – tamanho e padding ajustam automaticamente */
-.mentoria-btn,
-.btn-login,
-.btn-logout,
-.btn-meet {
-    padding: clamp(0.7rem, 3vw, 1rem) clamp(1.2rem, 5vw, 2rem);  /* padding responsivo */
-    font-size: clamp(0.95rem, 4vw, 1.2rem);                       /* fonte responsiva */
+
+
+
+
+.mentoria-btn {
+    font-weight: bold;
     border-radius: 50px;
-    min-width: 160px;                                             /* evita botões muito pequenos */
-    transition: all 0.4s ease;
-    white-space: nowrap;                                          /* evita quebra de texto */
+    padding: 12px 28px;
+    font-size: 1rem;
+    text-align: center;
+    display: inline-block;
 }
 
-/* Em mobile: botões ocupam mais espaço, mas não ficam gigantes */
-@media (max-width: 576px) {
-    .mentoria-btn,
-    .btn-login,
-    .btn-logout,
-    .btn-meet {
-        width: 100%;                  /* full-width em celular */
-        margin-bottom: 1rem;          /* espaçamento entre botões */
-        padding: 0.9rem 1.5rem;       /* padding fixo confortável para dedo */
-        font-size: 1rem;              /* fonte legível */
-        min-width: unset;             /* remove mínimo em mobile */
-    }
-    
-    /* Se houver vários botões juntos, empilha */
-    .d-flex.flex-wrap.gap-3 {
-        flex-direction: column !important;
-        align-items: center;
+/* Botão cadastro */
+.btn-cadastro {
+    background: linear-gradient(135deg, #ff6b00, #ff8c00);
+    color: white;
+}
+
+/* Botão entrar */
+.btn-entrar {
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+}
+
+/* 💻 Desktop */
+@media (min-width: 768px) {
+    .mentoria-btn {
+        padding: 14px 40px;
+        font-size: 1.1rem;
     }
 }
+
+/* 📱 Telemóveis */
+@media (max-width: 576px) {
+    .mentoria-btn {
+        width: 100%;
+        padding: 10px 16px;
+        font-size: 0.95rem;
+    }
+
+    .btn-container {
+        gap: 12px;
+    }
+}
+
+/* 📱 Telemóveis muito pequenos */
+@media (max-width: 400px) {
+    .mentoria-btn {
+        padding: 9px 14px;
+        font-size: 0.9rem;
+    }
+}
+
+
+
 
 /* Hover mais suave em desktop */
 @media (min-width: 577px) {
@@ -1205,6 +1230,65 @@ nav ul {
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+}
+
+
+.hero-section {
+    padding: clamp(3rem, 10vw, 6rem) 1rem;
+    text-align: center;
+    position: relative;
+}
+
+.hero-title {
+    font-size: clamp(2rem, 8vw, 3.5rem);
+    font-weight: 900;
+    margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+    font-size: clamp(1rem, 4vw, 1.3rem);
+    line-height: 1.6;
+    max-width: 700px;
+    margin: 0 auto 1.5rem;
+}
+
+.highlight {
+    color: #fff;
+    font-weight: 900;
+    background: rgba(0,0,0,0.4);
+    padding: 4px 10px;
+    border-radius: 8px;
+    display: inline-block;
+    margin: 3px;
+}
+
+.hero-btn {
+    padding: 0.9rem 2rem;
+    font-weight: 700;
+    border-radius: 50px;
+}
+
+.hero-icon {
+    font-size: clamp(2rem, 8vw, 4rem);
+    margin-top: 20px;
+    opacity: 0.8;
+}
+
+/* 📱 TELEFONES PEQUENOS */
+@media (max-width: 400px) {
+    .hero-subtitle {
+        font-size: 0.95rem;
+    }
+
+    .highlight {
+        display: block;
+        margin: 6px auto;
+    }
+
+    .hero-btn {
+        width: 100%;
+        font-size: 0.95rem;
+    }
 }
 
     </style>
@@ -1305,29 +1389,30 @@ nav ul {
 
 
    <!-- Hero Section – Linguagem de mentoria/apoio + destaque colorido VISÍVEL -->
+
+
 <section class="hero-section">
-    <div class="container position-relative">
+    <div class="container position-relative text-center">
         <h1 class="hero-title">NextLynx Tech</h1>
         
         <p class="hero-subtitle">
-    Mentoria e acompanhamento personalizado em<br>
-    <span class="highlight" style="color: #ffffff; font-weight: 900; text-shadow: 0 2px 10px rgba(0,0,0,0.8); background: rgba(0,0,0,0.4); padding: 4px 10px; border-radius: 8px;">
-        Design Gráfico
-    </span>, 
-    <span class="highlight" style="color: #ffffff; font-weight: 900; text-shadow: 0 2px 10px rgba(0,0,0,0.8); background: rgba(0,0,0,0.4); padding: 4px 10px; border-radius: 8px;">
-        Tecnologia
-    </span> e 
-    <span class="highlight" style="color: #ffffff; font-weight: 900; text-shadow: 0 2px 10px rgba(0,0,0,0.8); background: rgba(0,0,0,0.4); padding: 4px 10px; border-radius: 8px;">
-        Mentoria Académica
-    </span><br>
-    para estudantes e profissionais que querem crescer com suporte dedicado, feedback direto e materiais exclusivos.
-</p>
+            Mentoria e acompanhamento personalizado em<br>
+
+            <span class="highlight">Design Gráfico</span>, 
+            <span class="highlight">Tecnologia</span> e 
+            <span class="highlight">Mentoria Académica</span><br>
+
+            para estudantes e profissionais que querem crescer com suporte dedicado, feedback direto e materiais exclusivos.
+        </p>
+
         <a href="servicos.html" class="btn hero-btn">
             Explorar Nossas Áreas de Mentoria
         </a>
+
         <i class="fas fa-laptop-code hero-icon"></i>
     </div>
 </section>
+
 
     
 <!-- Serviços / Áreas de Mentoria – Versão profissional, destacada e listada -->
@@ -1686,7 +1771,7 @@ nav ul {
                         <div class="text-center academy-icon">
                             <i class="fas fa-graduation-cap"></i>
                         </div>
-                        <img src="https://ed.stanford.edu/sites/default/files/styles/free_crop_original/public/news_images/ldh-web.jpg?itok=zv46Afnl" class="academy-img" alt="TCC">
+                        <img src="img/TCC.jpg" class="academy-img" alt="TCC">
                         <div class="academy-body">
                             <h5 class="academy-title">TCC Aprovado na Primeira Entrega</h5>
                             <p class="academy-text">Estrutura IMRAD, pesquisa profunda, formatação ABNT/APA rigorosa. 98% de aprovação na primeira defesa.</p>
@@ -1846,15 +1931,21 @@ nav ul {
     </ul>
 </div>
 
-                    <!-- Botões de ação -->
-                    <div class="d-flex flex-column flex-md-row justify-content-center gap-4 mb-5">
-                        <a href="cadastro.html" class="mentoria-btn btn-lg px-5 py-3 fw-bold shadow-lg" style="background: linear-gradient(135deg, #ff6b00, #ff8c00); color: white;">
-                            <i class="fas fa-user-plus me-2"></i>Fazer Cadastro Agora
-                        </a>
-                        <a href="login.html" class="mentoria-btn entrar btn-lg px-5 py-3 fw-bold shadow-lg" style="background: transparent; border: 3px solid white; color: white;">
-                            <i class="fas fa-sign-in-alt me-2"></i>Entrar
-                        </a>
-                    </div>
+
+<!-- Botões de ação -->
+
+<div class="btn-container d-flex flex-column flex-md-row justify-content-center gap-3 mb-5">
+    
+    <a href="cadastro.html" class="mentoria-btn btn-cadastro">
+        <i class="fas fa-user-plus me-2"></i>Fazer Cadastro Agora
+    </a>
+
+    <a href="login.html" class="mentoria-btn btn-entrar">
+        <i class="fas fa-sign-in-alt me-2"></i>Entrar
+    </a>
+
+</div>
+
 
                     <!-- Chamada para profissionais – mais profissional, com destaques vivos -->
 <!-- Chamada final – versão remodelada e profissional -->
