@@ -9,23 +9,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
     <style>
 
-/* CORREÇÃO DE SCROLL TREMENTE / ABANAR EM TELEMÓVEL */
-html, body {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;              /* impede scroll horizontal */
-    overscroll-behavior: none;       /* desativa o "bounce" elástico nas bordas */
-    -webkit-overflow-scrolling: touch; /* melhora o scroll suave no iOS */
-    touch-action: pan-y pinch-zoom;  /* permite scroll vertical + zoom, bloqueia horizontal */
-}
-
-/* Evita recalculo louco do layout quando há elementos fixed animados */
-body {
-    position: relative;
-}
-
         :root {
             --primary: #6a11cb;
             --primary-light: #a55eea;
@@ -227,7 +210,7 @@ body {
         </div>
     </div>
 
-    <!-- Script Supabase Signup -->
+    <!-- Script Supabase Signup - CORRIGIDO -->
     <script type="module">
         import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
 
@@ -236,10 +219,14 @@ body {
             'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFnYmJsaHdvanh1a25saGtldXN5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjI5NTc1NjYsImV4cCI6MjA3ODUzMzU2Nn0.YpI8xjMqpwJSjHnrvOHfABnyMeIfxsLGJNeXrFoB3p0'
         );
 
-        document.getElementById('signupForm').addEventListener('submit', async e => {
+        const msg = document.getElementById('msgSignup');
+
+        function showMsg(text, type = 'info') {
+            msg.innerHTML = `<div class="alert alert-${type} mt-3">${text}</div>`;
+        }
+
+        document.getElementById('signupForm').addEventListener('submit', async (e) => {
             e.preventDefault();
-            const msg = document.getElementById('msgSignup');
-            msg.innerHTML = '<div class="alert alert-info d-flex align-items-center"><i class="fas fa-spinner fa-spin me-2"></i>Criando conta...</div>';
 
             const nome = document.getElementById('nomeSignup').value.trim();
             const email = document.getElementById('emailSignup').value.trim();
@@ -247,28 +234,51 @@ body {
             const confirmSenha = document.getElementById('confirmSenha').value;
 
             if (senha !== confirmSenha) {
-                msg.innerHTML = '<div class="alert alert-danger">As senhas não coincidem.</div>';
+                showMsg('As senhas não coincidem.', 'danger');
                 return;
             }
 
-            const { data, error } = await supabase.auth.signUp({
+            showMsg('Criando conta...', 'info');
+
+            // 1. Criar conta no Authentication
+            const { data: signUpData, error: signUpError } = await supabase.auth.signUp({
                 email,
                 password: senha,
-                options: {
-                    data: { nome }
-                }
+                options: { data: { nome } }
             });
 
-            if (error) {
-                msg.innerHTML = `<div class="alert alert-danger">${error.message}</div>`;
+            if (signUpError) {
+                showMsg(signUpError.message, 'danger');
                 return;
             }
 
-            msg.innerHTML = `<div class="alert alert-success">Conta criada! Verifique seu email para confirmar.</div>`;
-            setTimeout(() => window.location.href = 'login.html', 3000);
+            const userId = signUpData.user.id;
+
+            // 2. Inserir automaticamente na tabela perfis com role = 'aluno'
+            const { error: perfilError } = await supabase
+                .from('perfis')
+                .insert({
+                    id: userId,
+                    nome: nome,
+                    email: email,
+                    role: 'aluno'
+                });
+
+            if (perfilError) {
+                console.error('Erro ao criar perfil:', perfilError);
+                showMsg('Conta criada, mas perfil não foi salvo. Contacta o administrador.', 'warning');
+            } else {
+                showMsg('Conta criada com sucesso!<br>Verifique seu email para confirmar.', 'success');
+            }
+
+            // Redireciona para login
+            setTimeout(() => {
+                window.location.href = 'login.html';
+            }, 2800);
         });
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
 </body>
 </html>
