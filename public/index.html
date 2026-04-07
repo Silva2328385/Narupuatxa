@@ -1288,6 +1288,44 @@ nav ul {
     }
 }
 
+.hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin: 10px 0 15px;
+}
+
+.highlight {
+    background: rgba(0,0,0,0.4);
+    color: #fff;
+    font-weight: 800;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+}
+
+/* 📱 Telemóvel */
+@media (max-width: 576px) {
+    .hero-tags {
+        gap: 8px;
+    }
+
+    .highlight {
+        font-size: 0.85rem;
+        padding: 5px 10px;
+        max-width: 90%;
+    }
+}
+
+/* 📱 Muito pequeno */
+@media (max-width: 400px) {
+    .highlight {
+        font-size: 0.8rem;
+        padding: 4px 8px;
+    }
+}
+
     </style>
 </head>
 <body>
@@ -1393,15 +1431,18 @@ nav ul {
         <h1 class="hero-title">NextLynx Tech</h1>
         
         <p class="hero-subtitle">
-            Mentoria e acompanhamento personalizado em<br>
+    Mentoria e acompanhamento personalizado em
+</p>
 
-            <span class="highlight">Design Gráfico</span>
-            <span class="highlight">Tecnologia</span> e 
-            <span class="highlight">Mentoria Académica</span><br>
+<div class="hero-tags">
+    <span class="highlight">Design Gráfico</span>
+    <span class="highlight">Tecnologia</span>
+    <span class="highlight">Mentoria Académica</span>
+</div>
 
-            para estudantes e profissionais que querem crescer com suporte dedicado, feedback direto e materiais exclusivos.
-        </p>
-
+<p class="hero-subtitle">
+    para estudantes e profissionais que querem crescer com suporte dedicado, feedback direto e materiais exclusivos.
+</p>
         <a href="servicos.html" class="btn hero-btn">
             Explorar Nossas Áreas de Mentoria
         </a>
