@@ -1185,27 +1185,24 @@ nav ul {
     }
 }
 
-/* 📱 Telemóveis */
 @media (max-width: 576px) {
     .mentoria-btn {
         width: 100%;
+        max-width: 320px;   /* limita largura */
+        margin: 0 auto;     /* centraliza */
+        display: block;
         padding: 10px 16px;
         font-size: 0.95rem;
-    }
-
-    .btn-container {
-        gap: 12px;
     }
 }
 
 /* 📱 Telemóveis muito pequenos */
 @media (max-width: 400px) {
     .mentoria-btn {
-        padding: 9px 14px;
+        max-width: 280px;
         font-size: 0.9rem;
     }
 }
-
 
 
 
@@ -1398,7 +1395,7 @@ nav ul {
         <p class="hero-subtitle">
             Mentoria e acompanhamento personalizado em<br>
 
-            <span class="highlight">Design Gráfico</span>, 
+            <span class="highlight">Design Gráfico</span>
             <span class="highlight">Tecnologia</span> e 
             <span class="highlight">Mentoria Académica</span><br>
 
