@@ -206,7 +206,31 @@ body {
 }
 
 
+.status-select {
+    font-weight: 600;
+    border-radius: 8px;
+}
 
+/* Pendente */
+.status-pendente {
+    background-color: #fff3cd !important;
+    color: #856404 !important;
+    border: 1px solid #ffeeba !important;
+}
+
+/* Aprovado */
+.status-aprovado {
+    background-color: #cce5ff !important;
+    color: #004085 !important;
+    border: 1px solid #b8daff !important;
+}
+
+/* Concluído */
+.status-concluido {
+    background-color: #d4edda !important;
+    color: #155724 !important;
+    border: 1px solid #c3e6cb !important;
+}
 
     </style>
 </head>
@@ -371,6 +395,37 @@ body {
             </div>
         </div>
     </div>
+
+
+<!-- TABELA DE PEDIDOS RECEBIDOS (com nome do serviço) -->
+<div class="card card-admin mt-5">
+    <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">Pedidos Recebidos</h5>
+        <small id="totalPedidosTexto">Carregando...</small>
+    </div>
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table table-hover mb-0" id="tabelaPedidos">
+                <thead class="table-light">
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Telefone</th>
+        <th>Serviço</th>
+        <th>Categoria</th>
+        <th>Subcategoria</th> <!-- NOVA -->
+        <th>Mensagem</th>
+        <th>Status</th>
+        <th>Data</th>
+        <th>Ações</th>
+    </tr>
+</thead>
+                <tbody id="tabela-pedidos-body"></tbody>
+            </table>
+        </div>
+    </div>
+</div>
 
 <!-- Tabela de Pagamentos (nova) -->
             <div class="card card-admin mt-5" id="pagamentos">
@@ -1081,6 +1136,172 @@ document.querySelector('#tabelaAgendamentos').addEventListener('click', async (e
             }
         }
     });
+
+
+
+// ====================== CARREGAR PEDIDOS (SEM DUPLICADOS) ======================
+
+// ====================== CARREGAR PEDIDOS ======================
+async function carregarPedidos() {
+    const loading = document.getElementById('totalPedidosTexto');
+    if (loading) loading.textContent = 'A carregar...';
+
+    const tbody = document.getElementById('tabela-pedidos-body');
+    tbody.innerHTML = '';
+
+    try {
+        const { data: pedidos, error } = await supabase
+            .from('pedidos')
+            .select(`
+                *,
+                servicos!servico_id (
+                    titulo,
+                    categoria,
+                    subcategoria
+                )
+            `)
+            .order('created_at', { ascending: false });
+
+        if (error) throw error;
+
+        if (!pedidos || pedidos.length === 0) {
+            tbody.innerHTML = `
+                <tr>
+                    <td colspan="11" class="text-center py-4 text-muted">
+                        Nenhum pedido recebido ainda.
+                    </td>
+                </tr>`;
+            if (loading) loading.textContent = '0';
+            return;
+        }
+
+        // Remover duplicados
+        const pedidosUnicos = pedidos.filter((pedido, index, self) =>
+            index === self.findIndex(p => p.id === pedido.id)
+        );
+
+        pedidosUnicos.forEach(p => {
+            const servicoNome = p.servicos?.titulo || 'Serviço não encontrado';
+            const categoriaNome = p.servicos?.categoria || '-';
+            const subcategoriaNome = p.servicos?.subcategoria || '-';
+
+
+            setTimeout(() => {
+    const select = tr.querySelector('.status-select');
+    if (select) aplicarCorStatus(select);
+}, 0);
+
+            const tr = document.createElement('tr');
+
+            tr.innerHTML = `
+                <td>${p.id ? p.id.slice(0,8)+'...' : '-'}</td>
+                <td>${p.nome || '-'}</td>
+                <td>${p.email || '-'}</td>
+                <td>${p.telefone || '-'}</td>
+
+                <td><strong>${servicoNome}</strong></td>
+                <td>${categoriaNome}</td>
+                <td>${subcategoriaNome}</td>
+
+                <td title="${p.mensagem || ''}">
+                    ${(p.mensagem || '').substring(0, 40)}
+                    ${(p.mensagem || '').length > 40 ? '...' : ''}
+                </td>
+
+                <td>
+                    <select class="form-select form-select-sm status-select" data-id="${p.id}">
+                        <option value="Pendente" ${p.status === 'Pendente' ? 'selected' : ''}>Pendente</option>
+                        <option value="Aprovado" ${p.status === 'Aprovado' ? 'selected' : ''}>Aprovado</option>
+                        <option value="Concluído" ${p.status === 'Concluído' ? 'selected' : ''}>Concluído</option>
+                    </select>
+                </td>
+
+                <td>${new Date(p.created_at).toLocaleDateString('pt-MZ')}</td>
+
+                <td>
+                    <button class="btn btn-sm btn-danger delete-pedido-btn" data-id="${p.id}">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </td>
+            `;
+
+            tbody.appendChild(tr);
+        });
+
+        if (loading) loading.textContent = pedidosUnicos.length;
+
+    } catch (err) {
+        console.error('Erro ao carregar pedidos:', err);
+        tbody.innerHTML = `
+            <tr>
+                <td colspan="11" class="text-center py-4 text-danger">
+                    Erro ao carregar: ${err.message}
+                </td>
+            </tr>`;
+    }
+}
+
+
+// ====================== ATUALIZAR STATUS ======================
+document.addEventListener('change', async (e) => {
+    if (e.target.classList.contains('status-select')) {
+        const id = e.target.dataset.id;
+        const status = e.target.value;
+
+        const { error } = await supabase
+            .from('pedidos')
+            .update({ status: status })
+            .eq('id', id);
+
+        if (error) {
+            alert('Erro ao atualizar status: ' + error.message);
+        } else {
+           aplicarCorStatus(e.target);
+        }
+    }
+});
+
+
+// ====================== EXCLUIR PEDIDO ======================
+document.addEventListener('click', async (e) => {
+    if (e.target.closest('.delete-pedido-btn')) {
+        const btn = e.target.closest('.delete-pedido-btn');
+        const id = btn.dataset.id;
+
+        if (!confirm('Tem certeza que deseja excluir este pedido?')) return;
+
+        const { error } = await supabase
+            .from('pedidos')
+            .delete()
+            .eq('id', id);
+
+        if (error) {
+            alert('Erro ao excluir: ' + error.message);
+        } else {
+            btn.closest('tr').remove();
+            alert('Pedido excluído com sucesso!');
+        }
+    }
+});
+
+
+// ====================== INICIAR ======================
+carregarPedidos();
+
+function aplicarCorStatus(select) {
+    select.classList.remove('status-pendente', 'status-aprovado', 'status-concluido');
+
+    if (select.value === 'Pendente') {
+        select.classList.add('status-pendente');
+    } 
+    else if (select.value === 'Aprovado') {
+        select.classList.add('status-aprovado');
+    } 
+    else if (select.value === 'Concluído') {
+        select.classList.add('status-concluido');
+    }
+}
+
 </script>
 </body>
 </html>
