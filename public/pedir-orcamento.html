@@ -839,6 +839,23 @@ textarea.form-control:focus {
 </head>
 <body>
 
+
+    <div id="notification" style="
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #4CAF50;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 10px;
+    display: none;
+    z-index: 9999;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    font-weight: 600;
+">
+    <span id="notif-message"></span>
+</div>
+
 <!-- HEADER PERFEITO — MOBILE: 3 barras + 3 pontinhos | DESKTOP: menu horizontal + 3 pontinhos -->
 <!-- HEADER PERFEITO — MOBILE: Hamburger + 3 pontinhos | DESKTOP: menu horizontal + 3 pontinhos -->
 <header class="header-container">
@@ -1118,57 +1135,90 @@ textarea.form-control:focus {
 
 <!-- Teus scripts normais (mantém no final) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="js/script.js"></script>
+<!-- <script src="js/script.js"></script> -->
  
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        console.log('✅ [ORÇAMENTO] Script único ativo');
 
-
-    <script>
+        // Carrega serviços
         async function loadServicos() {
             try {
-                const response = await fetch('/api/servicos');
-                if (!response.ok) throw new Error('Erro ao carregar serviços');
-                const servicos = await response.json();
-                const select = document.querySelector('select[name="servico_id"]');
+                const res = await fetch('/api/servicos');
+                const servicos = await res.json();
+                const select = document.getElementById('servico_id');
                 if (select) {
-                    servicos.forEach(servico => {
-                        const option = document.createElement('option');
-                        option.value = servico.id;
-                        option.textContent = `${servico.categoria} - ${servico.titulo}`;
-                        select.appendChild(option);
+                    select.innerHTML = '<option value="">-- Escolha uma opção --</option>';
+                    servicos.forEach(s => {
+                        const opt = document.createElement('option');
+                        opt.value = s.id;
+                        opt.textContent = `${s.categoria} - ${s.titulo}`;
+                        select.appendChild(opt);
                     });
                 }
-            } catch (error) {
-                console.error('Erro ao carregar serviços:', error);
-                alert('Erro ao carregar serviços. Verifique o servidor.');
-            }
+            } catch (e) { console.error(e); }
         }
         loadServicos();
 
+        // ==================== ÚNICO ENVIO ====================
         const form = document.getElementById('orcamento-form');
+        let enviando = false;
+
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
-            const formData = new FormData(form);
-            const data = Object.fromEntries(formData);
-            console.log('Dados enviados para Supabase:', data);
+            e.stopImmediatePropagation();
+
+            if (enviando) return;
+            enviando = true;
+
+            const btn = form.querySelector('button[type="submit"]');
+            const textoOriginal = btn.innerHTML;
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+
+            const dados = Object.fromEntries(new FormData(form));
+
             try {
-                const response = await fetch('/submit', {
+                const res = await fetch('/submit', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(data)
+                    body: JSON.stringify(dados)
                 });
-                const result = await response.json();
-                console.log('Resposta do Supabase:', result);
+                const result = await res.json();
                 if (result.success) {
-                    alert(result.message);
-                    form.reset();
-                } else {
-                    alert('Erro: ' + (result.error || 'Falha no envio'));
-                }
+    showNotification('Pedido enviado com sucesso! Entraremos em contacto brevemente.', 'success');
+    form.reset();
+} else {
+    showNotification('Erro: ' + (result.error || 'Falha no envio'), 'error');
+}
+
             } catch (err) {
-                console.error('Erro completo:', err);
-                alert('Erro no envio: ' + err.message);
+                alert('Erro de ligação. Tente novamente.');
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = textoOriginal;
+                enviando = false;
             }
         });
-    </script>
+    });
+
+
+function showNotification(message, type = 'success') {
+    const notif = document.getElementById('notification');
+    const msg = document.getElementById('notif-message');
+
+    msg.textContent = message;
+
+    notif.style.background = type === 'success' ? '#4CAF50' : '#f44336';
+    notif.style.display = 'block';
+
+    setTimeout(() => {
+        notif.style.display = 'none';
+    }, 4000);
+}
+
+</script>
+
+    
 </body>
 </html>
