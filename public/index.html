@@ -1326,6 +1326,55 @@ nav ul {
     }
 }
 
+
+
+.ethics-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    max-width: 350px;
+    background: rgba(0,0,0,0.9);
+    color: white;
+    border-left: 5px solid #ffeb3b;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    z-index: 9999;
+
+    opacity: 0;
+    transform: translateY(-20px);
+    pointer-events: none;
+    transition: all 0.4s ease;
+}
+
+.ethics-notification.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.ethics-content strong {
+    display: block;
+    margin-bottom: 8px;
+    color: #ffeb3b;
+}
+
+.ethics-content p {
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.ethics-content button {
+    margin-top: 10px;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    background: #00f2fe;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+}
+
     </style>
 </head>
 <body>
@@ -1344,24 +1393,49 @@ nav ul {
                 <h1 class="logo-text">NextLynx Tech</h1>
             </div>
 
-            <!-- MENU HORIZONTAL — SÓ A PARTIR DE lg (≥992px) -->
-            <nav class="d-none d-lg-flex flex-grow-1 justify-content-center">
-                <ul class="nav">
-                    <li class="nav-item"><a href="index.html"      class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="servicos.html"   class="nav-link">Serviços</a></li>
-                    <li class="nav-item"><a href="portfolio.html"  class="nav-link">Portfólio</a></li>
-                    <li class="nav-item"><a href="blog.html"       class="nav-link">Blog</a></li>
-                    <li class="nav-item"><a href="contactos.html"  class="nav-link">Contactos</a></li>
-                    <li class="nav-item"><a href="testemunhos.html"class="nav-link">Testemunhos</a></li>
-                    <li class="nav-item"><a href="faq.html"        class="nav-link">FAQ</a></li>
-                </ul>
-            </nav>
+           
+
+<!-- MENU HORIZONTAL — SÓ A PARTIR DE lg (≥992px) -->
+<nav class="d-none d-lg-flex flex-grow-1 justify-content-center">
+    <ul class="nav">
+
+        <li class="nav-item">
+            <a href="index.html" class="nav-link">Home</a>
+        </li>
+
+        <li class="nav-item">
+            <a href="servicos.html" class="nav-link"> Mentoria</a>
+        </li>
+
+        <li class="nav-item">
+            <a href="portfolio.html" class="nav-link">Portfólio</a>
+        </li>
+
+        <li class="nav-item">
+            <a href="blog.html" class="nav-link">Blog</a>
+        </li>
+
+        <li class="nav-item">
+            <a href="contactos.html" class="nav-link">Contactos</a>
+        </li>
+
+        <li class="nav-item">
+            <a href="testemunhos.html" class="nav-link">Testemunhos</a>
+        </li>
+
+        <li class="nav-item">
+            <a href="faq.html" class="nav-link">FAQ</a>
+        </li>
+
+    </ul>
+</nav>
+
 
             <!-- DIREITA: Orçamento (desktop) + Hamburger (mobile) + 3 pontinhos (todas telas) -->
             <div class="d-flex align-items-center gap-3">
                 <!-- Orçamento só em desktop -->
                 <a href="pedir-orcamento.html" class="btn btn-orcamento d-none d-lg-block">
-                    Pedir Orçamento
+                   Solicitar informações 
                 </a>
 
                 <!-- Hamburger oficial — SÓ MOBILE -->
@@ -1424,34 +1498,31 @@ nav ul {
 
 
    <!-- Hero Section – Linguagem de mentoria/apoio + destaque colorido VISÍVEL -->
-
-
 <section class="hero-section">
     <div class="container position-relative text-center">
         <h1 class="hero-title">NextLynx Tech</h1>
         
         <p class="hero-subtitle">
-    Mentoria e acompanhamento personalizado em
-</p>
+            Acompanhamento personalizado e orientação prática em
+        </p>
 
-<div class="hero-tags">
-    <span class="highlight">Design Gráfico</span>
-    <span class="highlight">Tecnologia</span>
-    <span class="highlight">Mentoria Académica</span>
-</div>
+        <div class="hero-tags">
+            <span class="highlight">Design Gráfico</span>
+            <span class="highlight">Tecnologia</span>
+            <span class="highlight">Apoio Académico</span>
+        </div>
 
-<p class="hero-subtitle">
-    para estudantes e profissionais que querem crescer com suporte dedicado, feedback direto e materiais exclusivos.
-</p>
+        <p class="hero-subtitle">
+            ajudando estudantes e profissionais a desenvolver competências, melhorar trabalhos e alcançar melhores resultados com autonomia e ética.
+        </p>
+
         <a href="servicos.html" class="btn hero-btn">
-            Explorar Nossas Áreas de Mentoria
+            Ver Áreas de Apoio
         </a>
 
         <i class="fas fa-laptop-code hero-icon"></i>
     </div>
 </section>
-
-
     
 <!-- Serviços / Áreas de Mentoria – Versão profissional, destacada e listada -->
 <section class="services-section py-5" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); position: relative; overflow: visible;">
@@ -1473,29 +1544,39 @@ nav ul {
                             <i class="fas fa-paint-brush me-2"></i> Mentoria em Design Gráfico
                         </h5>
                         <ul class="list-unstyled service-list">
-                            <li class="mb-3">
-                                <i class="fas fa-check-circle text-success me-2"></i>
-                                <strong>Criação de logotipos profissionais</strong>
-                            </li>
-                            <li class="mb-3">
-                                <i class="fas fa-check-circle text-success me-2"></i>
-                                <strong>Panfletos, cartazes e banners impactantes</strong>
-                            </li>
-                            <li class="mb-3">
-                                <i class="fas fa-check-circle text-success me-2"></i>
-                                <strong>Convites digitais e materiais promocionais</strong>
-                            </li>
-                            <li class="mb-3">
-                                <i class="fas fa-check-circle text-success me-2"></i>
-                                <strong>Identidade visual completa e branding</strong>
-                            </li>
-                            <li class="mb-3">
-                                <i class="fas fa-check-circle text-success me-2"></i>
-                                <strong>Desenvolvimento de portfólio atrativo</strong>
-                            </li>
-                        </ul>
+                <li class="mb-3">
+                    <i class="fas fa-check-circle text-success me-2"></i>
+                    <strong>Aprenda a criar logotipos profissionais</strong>
+                </li>
+                <li class="mb-3">
+                    <i class="fas fa-check-circle text-success me-2"></i>
+                    <strong>Desenvolva panfletos, cartazes e banners</strong>
+                </li>
+                <li class="mb-3">
+                    <i class="fas fa-check-circle text-success me-2"></i>
+                    <strong>Crie convites digitais e materiais promocionais</strong>
+                </li>
+                <li class="mb-3">
+                    <i class="fas fa-check-circle text-success me-2"></i>
+                    <strong>Aprenda identidade visual e branding</strong>
+                </li>
+                <li class="mb-3">
+                    <i class="fas fa-check-circle text-success me-2"></i>
+                    <strong>Construa um portfólio atrativo</strong>
+                </li>
+                <li class="mb-3">
+    <i class="fas fa-check-circle text-success me-2"></i>
+    <strong>Design para redes sociais (posts e capas)</strong>
+</li>
+
+<li class="mb-3">
+    <i class="fas fa-check-circle text-success me-2"></i>
+    <strong>Edição e manipulação de imagens profissionais</strong>
+</li>
+
+            </ul>
                         <a href="servicos.html#design" class="btn service-btn mt-3 w-100">
-                            Conhecer Mentoria
+                            Ver Detalhes da Mentoria
                         </a>
                     </div>
                 </div>
@@ -1509,30 +1590,40 @@ nav ul {
                         <h5 class="service-title fw-bold text-success mb-4" style="font-size: 1.6rem; color: #38ef7d !important;">
                             <i class="fas fa-graduation-cap me-2"></i> Mentoria Académica Profissional
                         </h5>
-                        <ul class="list-unstyled service-list">
-                            <li class="mb-3">
-                                <i class="fas fa-check-circle text-success me-2"></i>
-                                <strong>Formatação de trabalhos (normas APA e ABNT)</strong>
-                            </li>
-                            <li class="mb-3">
-                                <i class="fas fa-check-circle text-success me-2"></i>
-                                <strong>Como fazer trabalhos de pesquisa e relatórios</strong>
-                            </li>
-                            <li class="mb-3">
-                                <i class="fas fa-check-circle text-success me-2"></i>
-                                <strong>Estruturação de projetos e monografias</strong>
-                            </li>
-                            <li class="mb-3">
-                                <i class="fas fa-check-circle text-success me-2"></i>
-                                <strong>Preparação para defesa e apresentação oral</strong>
-                            </li>
-                            <li class="mb-3">
-                                <i class="fas fa-check-circle text-success me-2"></i>
-                                <strong>Orientação passo a passo para aprovação</strong>
-                            </li>
-                        </ul>
+                         <ul class="list-unstyled service-list">
+                <li class="mb-3">
+                    <i class="fas fa-check-circle text-success me-2"></i>
+                    <strong>Aprenda a formatar trabalhos (normas APA e ABNT)</strong>
+                </li>
+                <li class="mb-3">
+                    <i class="fas fa-check-circle text-success me-2"></i>
+                    <strong>Desenvolva trabalhos de pesquisa e relatórios</strong>
+                </li>
+                <li class="mb-3">
+                    <i class="fas fa-check-circle text-success me-2"></i>
+                    <strong>Estruture projetos e monografias com orientação</strong>
+                </li>
+                <li class="mb-3">
+                    <i class="fas fa-check-circle text-success me-2"></i>
+                    <strong>Prepare-se para defesa e apresentação oral</strong>
+                </li>
+                <li class="mb-3">
+                    <i class="fas fa-check-circle text-success me-2"></i>
+                    <strong>Acompanhamento passo a passo com foco na autonomia</strong>
+                </li>
+
+                <li class="mb-3">
+    <i class="fas fa-check-circle text-success me-2"></i>
+    <strong>Aprenda a usar Microsoft Word para trabalhos académicos</strong>
+</li>
+
+<li class="mb-3">
+    <i class="fas fa-check-circle text-success me-2"></i>
+    <strong>Desenvolva técnicas de pesquisa e uso de referências científicas</strong>
+</li>
+ </ul>
                         <a href="servicos.html#academicos" class="btn service-btn mt-3 w-100">
-                            Conhecer Mentoria
+                             Ver Detalhes da Mentoria
                         </a>
                     </div>
                 </div>
@@ -1546,30 +1637,41 @@ nav ul {
                         <h5 class="service-title fw-bold text-info mb-4" style="font-size: 1.6rem; color: #00d4ff !important;">
                             <i class="fas fa-laptop-code me-2"></i> Mentoria em Tecnologia e Desenvolvimento
                         </h5>
-                        <ul class="list-unstyled service-list">
-                            <li class="mb-3">
-                                <i class="fas fa-check-circle text-success me-2"></i>
-                                <strong>Criação de páginas web responsivas</strong>
-                            </li>
-                            <li class="mb-3">
-                                <i class="fas fa-check-circle text-success me-2"></i>
-                                <strong>Desenvolvimento de sistemas básicos do zero</strong>
-                            </li>
-                            <li class="mb-3">
-                                <i class="fas fa-check-circle text-success me-2"></i>
-                                <strong>Programação prática e lógica de código</strong>
-                            </li>
-                            <li class="mb-3">
-                                <i class="fas fa-check-circle text-success me-2"></i>
-                                <strong>Integração de soluções digitais reais</strong>
-                            </li>
-                            <li class="mb-3">
-                                <i class="fas fa-check-circle text-success me-2"></i>
-                                <strong>Melhores práticas do mercado atual</strong>
-                            </li>
-                        </ul>
+                       <ul class="list-unstyled service-list">
+                <li class="mb-3">
+                    <i class="fas fa-check-circle text-success me-2"></i>
+                    <strong>Aprenda a criar páginas web responsivas</strong>
+                </li>
+                <li class="mb-3">
+                    <i class="fas fa-check-circle text-success me-2"></i>
+                    <strong>Desenvolva sistemas básicos do zero</strong>
+                </li>
+                <li class="mb-3">
+                    <i class="fas fa-check-circle text-success me-2"></i>
+                    <strong>Domine programação prática e lógica de código</strong>
+                </li>
+                <li class="mb-3">
+                    <i class="fas fa-check-circle text-success me-2"></i>
+                    <strong>Aprenda integração de soluções digitais reais</strong>
+                </li>
+                <li class="mb-3">
+                    <i class="fas fa-check-circle text-success me-2"></i>
+                    <strong>Conheça as melhores práticas do mercado atual</strong>
+                </li>
+
+                <!-- NOVOS SERVIÇOS -->
+                <li class="mb-3">
+                    <i class="fas fa-check-circle text-success me-2"></i>
+                    <strong>Introdução ao desenvolvimento com bases de dados</strong>
+                </li>
+                <li class="mb-3">
+                    <i class="fas fa-check-circle text-success me-2"></i>
+                    <strong>Criação de projetos práticos para portfólio</strong>
+                </li>
+            </ul>
+
                         <a href="servicos.html#tech" class="btn service-btn mt-3 w-100">
-                            Conhecer Mentoria
+                             Ver Detalhes da Mentoria
                         </a>
                     </div>
                 </div>
@@ -1580,9 +1682,8 @@ nav ul {
 
 
 
-
-    <!-- Imagens Profissionais Grandes -->
-    <section class="professional-section">
+    <!-- Imagens Profissionais Grandes - Nova Versão -->
+    <section class="professional-section py-5">
         <div class="container">
            <h2 class="section-title text-center mb-5 fw-bold" style="font-size: 2.8rem; 
      background: linear-gradient(90deg, #1e40af, #3b82f6, #60a5fa); 
@@ -1591,28 +1692,28 @@ nav ul {
      -webkit-text-fill-color: transparent;
      color: transparent;
      text-shadow: 0 6px 18px rgba(30,64,175,0.5); letter-spacing: -0.5px;">
-    Criatividade, Código e Estratégia em Ação
+    Mentoria, Orientação e Acompanhamento Personalizado
 </h2>
             <div class="row g-4">
                 <div class="col-lg-6">
-                    <img src="img/tecnologia.png" class="professional-img" alt="Equipe Profissional">
-                    <p class="img-caption">Criatividade de Design de Cvs e tecnologia unidas</p>
+                    <img src="img/tecnologia.png" class="professional-img" alt="Mentoria Acadêmica e Tecnológica">
+                    <p class="img-caption">Acompanhamento personalizado em projetos académicos e tecnológicos</p>
                 </div>
                 <div class="col-lg-6">
-                    <img src="https://blog.xpeducacao.com.br/wp-content/uploads/2022/07/analise-e-desenvolvimento-de-sistemas-o-que-faz-1024x683.jpg" class="professional-img" alt="Desenvolvimento">
-                    <p class="img-caption">Desenvolvimento de sistemas modernos com as melhores práticas</p>
+                    <img src="https://blog.xpeducacao.com.br/wp-content/uploads/2022/07/analise-e-desenvolvimento-de-sistemas-o-que-faz-1024x683.jpg" class="professional-img" alt="Desenvolvimento com Orientação">
+                    <p class="img-caption">Orientação no desenvolvimento de sistemas e soluções digitais</p>
                 </div>
                 <div class="col-lg-4">
-                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" class="professional-img" alt="Código">
-                    <p class="img-caption">Código limpo, eficiente e escalável</p>
+                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" class="professional-img" alt="Código e Metodologia">
+                    <p class="img-caption">Mentoria em boas práticas de programação e metodologia científica</p>
                 </div>
                 <div class="col-lg-4">
-                    <img src="https://www.webshare.com.br/wp-content/uploads/2024/07/design-responsivo-webshare.webp" class="professional-img" alt="Design">
-                    <p class="img-caption">Design responsivo que funciona em qualquer dispositivo</p>
+                    <img src="https://www.webshare.com.br/wp-content/uploads/2024/07/design-responsivo-webshare.webp" class="professional-img" alt="Design e Comunicação">
+                    <p class="img-caption">Orientação em design estratégico e comunicação visual</p>
                 </div>
                 <div class="col-lg-4">
-                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" class="professional-img" alt="Análise">
-                    <p class="img-caption">Análise de dados e relatórios para decisões estratégicas</p>
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" class="professional-img" alt="Análise e Estratégia">
+                    <p class="img-caption">Apoio na análise de dados, estruturação de ideias e tomada de decisões académicas</p>
                 </div>
             </div>
         </div>
@@ -1620,17 +1721,15 @@ nav ul {
 
 
 
-
-
-<!-- Estudantes em Destaque – ESTILIZADO, ANIMADO E PROFISSIONAL -->
+<!-- Testemunhos – Mentoria e Acompanhamento -->
 <section class="students-section py-5">
     <div class="container">
-        <!-- Título principal – elegante e centralizado -->
         <h2 class="section-title text-blue text-center mb-5" style="margin-top: 0; opacity: 1;">
-            Estudantes que Acreditaram no Nosso Trabalho
+            Pessoas que Evoluíram com Nossa Mentoria e Acompanhamento
         </h2>
 
         <div class="row g-4 justify-content-center">
+            
             <!-- Card 1 -->
             <div class="col-lg-3 col-md-6 col-sm-12">
                 <div class="student-card animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">
@@ -1642,7 +1741,7 @@ nav ul {
                         <div class="student-uni-badge">
                             <i class="fas fa-university me-1"></i> UEM - Design
                         </div>
-                        <p class="student-quote">"Meu TCC foi aprovado com louvor graças aos slides incríveis!"</p>
+                        <p class="student-quote">"A mentoria e as orientações de design foram fundamentais para criar slides profissionais e fazer uma excelente defesa do meu TCC."</p>
                     </div>
                 </div>
             </div>
@@ -1658,7 +1757,7 @@ nav ul {
                         <div class="student-uni-badge">
                             <i class="fas fa-university me-1"></i> UCM - Informática
                         </div>
-                        <p class="student-quote">"Sistema de gestão para meu projeto final. Nota 10!"</p>
+                        <p class="student-quote">"Recebi excelente acompanhamento técnico durante o desenvolvimento do meu sistema. Consegui nota máxima no projeto final."</p>
                     </div>
                 </div>
             </div>
@@ -1674,7 +1773,7 @@ nav ul {
                         <div class="student-uni-badge">
                             <i class="fas fa-university me-1"></i> UniLúrio - Gestão
                         </div>
-                        <p class="student-quote">"Loja online vendeu 300% mais no primeiro mês!"</p>
+                        <p class="student-quote">"A orientação em estratégia digital e marketing ajudou minha loja online a crescer de forma consistente."</p>
                     </div>
                 </div>
             </div>
@@ -1690,7 +1789,7 @@ nav ul {
                         <div class="student-uni-badge">
                             <i class="fas fa-university me-1"></i> UniSced - Agronomia
                         </div>
-                        <p class="student-quote">"Website para meu projeto rural. Aprovado com distinção!"</p>
+                        <p class="student-quote">"O acompanhamento no desenvolvimento do projeto rural foi essencial para aprovação com distinção."</p>
                     </div>
                 </div>
             </div>
@@ -1706,7 +1805,7 @@ nav ul {
                         <div class="student-uni-badge">
                             <i class="fas fa-university me-1"></i> ISCTEM - Contabilidade
                         </div>
-                        <p class="student-quote">"Artigo científico publicado na SciELO!"</p>
+                        <p class="student-quote">"A mentoria na estruturação e formatação do artigo permitiu que fosse publicado na SciELO."</p>
                     </div>
                 </div>
             </div>
@@ -1722,7 +1821,7 @@ nav ul {
                         <div class="student-uni-badge">
                             <i class="fas fa-university me-1"></i> UP - Engenharia
                         </div>
-                        <p class="student-quote">"App mobile para monitoramento de culturas. Prêmio de inovação!"</p>
+                        <p class="student-quote">"Com a orientação técnica, desenvolvi uma aplicação mobile que ganhou prêmio de inovação."</p>
                     </div>
                 </div>
             </div>
@@ -1738,7 +1837,7 @@ nav ul {
                         <div class="student-uni-badge">
                             <i class="fas fa-university me-1"></i> UCM - Relações Internacionais
                         </div>
-                        <p class="student-quote">"Monografia com pesquisa bibliográfica impecável!"</p>
+                        <p class="student-quote">"A mentoria na pesquisa bibliográfica e estruturação foi fundamental para a aprovação da monografia."</p>
                     </div>
                 </div>
             </div>
@@ -1754,7 +1853,7 @@ nav ul {
                         <div class="student-uni-badge">
                             <i class="fas fa-university me-1"></i> UniZambeze - Direito
                         </div>
-                        <p class="student-quote">"Formatação APA perfeita. Aprovado na primeira entrega!"</p>
+                        <p class="student-quote">"A orientação na formatação APA e revisão do trabalho foi essencial para aprovação na primeira entrega."</p>
                     </div>
                 </div>
             </div>
@@ -1770,7 +1869,7 @@ nav ul {
                         <div class="student-uni-badge">
                             <i class="fas fa-university me-1"></i> UCM - Gestão de Marketing
                         </div>
-                        <p class="student-quote">"Portfólio digital para defesa final. Banca impressionada!"</p>
+                        <p class="student-quote">"O acompanhamento na criação do portfólio digital ajudou-me a apresentar um trabalho de alto nível para a banca."</p>
                     </div>
                 </div>
             </div>
@@ -1786,23 +1885,23 @@ nav ul {
                         <div class="student-uni-badge">
                             <i class="fas fa-university me-1"></i> ISCTAC - Medicina
                         </div>
-                        <p class="student-quote">"Artigo médico com APA 7ª edição. Publicado em revista internacional!"</p>
+                        <p class="student-quote">"A mentoria na formatação e estruturação do artigo permitiu sua publicação em revista internacional."</p>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 </section>
 
-
-
-    <!-- Academia em Foco - NOVA SEÇÃO -->
+    <!-- Academia em Foco - Mentoria e Acompanhamento Acadêmico -->
     <section class="academy-section">
         <div class="container">
             <h2 class="section-title text-blue text-center mb-4" style="margin-top: 0 !important; opacity: 1 !important;">
-            Academia em Foco
-        </h2>
+                Academia em Foco: Mentoria e Acompanhamento Acadêmico
+            </h2>
             <div class="row g-4">
+                
                 <!-- TCC -->
                 <div class="col-lg-4 col-md-6">
                     <div class="academy-card">
@@ -1811,8 +1910,8 @@ nav ul {
                         </div>
                         <img src="img/TCC.jpg" class="academy-img" alt="TCC">
                         <div class="academy-body">
-                            <h5 class="academy-title">TCC Aprovado na Primeira Entrega</h5>
-                            <p class="academy-text">Estrutura IMRAD, pesquisa profunda, formatação ABNT/APA rigorosa. 98% de aprovação na primeira defesa.</p>
+                            <h5 class="academy-title">Orientação Completa para TCC e Monografias</h5>
+                            <p class="academy-text">Apoio na estruturação (IMRAD), metodologia, pesquisa bibliográfica e formatação ABNT/APA. Acompanhamento até a aprovação.</p>
                         </div>
                     </div>
                 </div>
@@ -1825,8 +1924,8 @@ nav ul {
                         </div>
                         <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" class="academy-img" alt="Artigo">
                         <div class="academy-body">
-                            <h5 class="academy-title">Artigos Publicados na SciELO</h5>
-                            <p class="academy-text">Redação científica, revisão por pares, submissão em revistas indexadas. +50 artigos publicados.</p>
+                            <h5 class="academy-title">Mentoria para Artigos Científicos</h5>
+                            <p class="academy-text">Orientação na redação científica, revisão de texto, normalização e preparação para submissão em revistas indexadas (SciELO, etc).</p>
                         </div>
                     </div>
                 </div>
@@ -1839,8 +1938,8 @@ nav ul {
                         </div>
                         <img src="https://elements-resized.envatousercontent.com/elements-preview-images/a8dfee8c-320a-4793-b54e-e19101af5505?w=632&cf_fit=scale-down&q=85&format=auto&s=9afd947ef2a2bdbd0f3e323b97d0a07b12e086317dedbc035ea579a0d2ccf183" class="academy-img" alt="Slides">
                         <div class="academy-body">
-                            <h5 class="academy-title">Slides que Impressionam a Banca</h5>
-                            <p class="academy-text">Animações suaves, gráficos animados, design corporativo. 100% aprovação na apresentação oral.</p>
+                            <h5 class="academy-title">Preparação de Slides e Apresentação Oral</h5>
+                            <p class="academy-text">Orientação na criação de apresentações claras, profissionais e impactantes, com design adequado e técnicas de defesa oral.</p>
                         </div>
                     </div>
                 </div>
@@ -1848,23 +1947,21 @@ nav ul {
         </div>
     </section>
 
-
-
-     <!-- NOVA SECÇÃO DE MENTORIA – adicionada aqui, antes do footer -->
+     <!-- NOVA SECÇÃO DE MENTORIA – Versão com Linguagem Ética -->
     <section class="mentoria-section py-5">
         <div class="container">
-            <!-- Cabeçalho da secção de mentoria – título azul carregado + destaques coloridos -->
+            <!-- Cabeçalho da secção de mentoria -->
 <div class="text-center mb-5 pb-4">
     <h2 class="mentoria-title mb-5 fw-black mentoria-title-responsive"
     style="color: #ffffff; text-shadow: 0 8px 25px rgba(0,0,0,0.8); letter-spacing: -1px;">
-    Programa de Mentoria Personalizada
+    Programa de Mentoria e Acompanhamento Personalizado
 </h2>
 
     <p class="lead fw-medium" style="color: #f0f0ff; font-size: 1.45rem; max-width: 950px; margin: 0 auto; line-height: 1.7; text-shadow: 0 2px 8px rgba(0,0,0,0.5);">
-        Faça o seu <strong style="color: #00f2fe; font-weight: 900; background: rgba(0,242,254,0.15); padding: 4px 10px; border-radius: 10px;">cadastro</strong> agora e acesse o nosso programa de mentoria / acompanhamento personalizado profissional,<br>
-        com direito a <strong style="color: #ffeb3b; font-weight: 800; text-shadow: 0 2px 8px rgba(255,235,59,0.6);">materiais exclusivos</strong>, 
-        <strong style="color: #00f2fe; font-weight: 800; text-shadow: 0 2px 8px rgba(0,242,254,0.6);">feedback direto</strong>, 
-        <strong style="color: #ff6b00; font-weight: 800; text-shadow: 0 2px 8px rgba(255,107,0,0.6);">plano individualizado</strong> e 
+        Faça o seu <strong style="color: #00f2fe; font-weight: 900; background: rgba(0,242,254,0.15); padding: 4px 10px; border-radius: 10px;">cadastro</strong> e aceda ao nosso programa de mentoria e acompanhamento personalizado,<br>
+        com <strong style="color: #ffeb3b; font-weight: 800; text-shadow: 0 2px 8px rgba(255,235,59,0.6);">materiais exclusivos</strong>, 
+        <strong style="color: #00f2fe; font-weight: 800; text-shadow: 0 2px 8px rgba(0,242,254,0.6);">feedback individualizado</strong>, 
+        <strong style="color: #ff6b00; font-weight: 800; text-shadow: 0 2px 8px rgba(255,107,0,0.6);">plano adaptado às suas necessidades</strong> e 
         <strong style="color: #38ef7d; font-weight: 800; text-shadow: 0 2px 8px rgba(56,239,125,0.6);">suporte contínuo</strong>.
     </p>
 </div>
@@ -1873,16 +1970,16 @@ nav ul {
                     <div class="row g-4 mb-5">
                         <!-- Design Gráfico -->
                         <div class="col-lg-4 col-md-6">
-                            <div class="area-card p-4 rounded-4 h-100" style="background: linear-gradient(135deg, #7c3aed, #a78bfa); border: 2px solid #c084fc;"">
-                                <h5 class="fw-bold mb-4" style="color: #ffeb3b; font-size: 1.8rem; ">
+                            <div class="area-card p-4 rounded-4 h-100" style="background: linear-gradient(135deg, #7c3aed, #a78bfa); border: 2px solid #c084fc;">
+                                <h5 class="fw-bold mb-4" style="color: #ffeb3b; font-size: 1.8rem;">
                                     <i class="fas fa-paint-brush me-2"></i> Design Gráfico
                                 </h5>
                                 <ul class="list-unstyled text-start">
-                                    <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> <strong style="color: #ffeb3b;">Criação de logotipos únicos e memoráveis</strong></li>
-                                    <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> <strong style="color: #ffeb3b;">Identidade visual completa e profissional</strong></li>
-                                    <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> <strong style="color: #ffeb3b;">Panfletos, cartazes, banners e materiais promocionais</strong></li>
-                                    <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> <strong style="color: #ffeb3b;">Convites digitais e design para redes sociais</strong></li>
-                                    <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> <strong style="color: #ffeb3b;">Portfólio profissional atrativo e estratégico</strong></li>
+                                    <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> <strong style="color: #ffeb3b;">Orientação na criação de logotipos únicos</strong></li>
+                                    <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> <strong style="color: #ffeb3b;">Acompanhamento na construção de identidade visual</strong></li>
+                                    <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> <strong style="color: #ffeb3b;">Mentoria em materiais promocionais (panfletos, banners, cartazes)</strong></li>
+                                    <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> <strong style="color: #ffeb3b;">Orientação para design de redes sociais e convites digitais</strong></li>
+                                    <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> <strong style="color: #ffeb3b;">Apoio na elaboração de portfólios profissionais</strong></li>
                                 </ul>
                             </div>
                         </div>
@@ -1894,11 +1991,11 @@ nav ul {
                                     <i class="fas fa-laptop-code me-2"></i> Tecnologia e Desenvolvimento
                                 </h5>
                                 <ul class="list-unstyled text-start">
-                                    <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> <strong style="color: #00f2fe;">Páginas web modernas, responsivas e funcionais</strong></li>
-                                    <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> <strong style="color: #00f2fe;">Sistemas básicos desenvolvidos do zero</strong></li>
-                                    <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> <strong style="color: #00f2fe;">Programação prática e lógica de código</strong></li>
-                                    <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> <strong style="color: #00f2fe;">Integração de soluções digitais reais para negócios</strong></li>
-                                    <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> <strong style="color: #00f2fe;">Melhores práticas e tendências atuais do mercado</strong></li>
+                                    <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> <strong style="color: #00f2fe;">Orientação no desenvolvimento de páginas web modernas</strong></li>
+                                    <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> <strong style="color: #00f2fe;">Acompanhamento na criação de sistemas e aplicações</strong></li>
+                                    <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> <strong style="color: #00f2fe;">Mentoria em programação e boas práticas de código</strong></li>
+                                    <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> <strong style="color: #00f2fe;">Orientação para integração de soluções digitais</strong></li>
+                                    <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> <strong style="color: #00f2fe;">Apoio nas melhores práticas e tendências atuais</strong></li>
                                 </ul>
                             </div>
                         </div>
@@ -1910,20 +2007,20 @@ nav ul {
                                     <i class="fas fa-graduation-cap me-2"></i> Mentoria Académica
                                 </h5>
                                 <ul class="list-unstyled text-start">
-                                    <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> <strong style="color: #ffeb3b;">Formatação profissional (normas APA e ABNT)</strong></li>
-                                    <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> <strong style="color: #ffeb3b;">Estruturação de trabalhos de pesquisa e relatórios</strong></li>
-                                    <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> <strong style="color: #ffeb3b;">Organização de projetos, monografias e TCCs</strong></li>
+                                    <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> <strong style="color: #ffeb3b;">Orientação em formatação ABNT e APA</strong></li>
+                                    <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> <strong style="color: #ffeb3b;">Acompanhamento na estruturação de trabalhos académicos</strong></li>
+                                    <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> <strong style="color: #ffeb3b;">Mentoria na organização de monografias e TCCs</strong></li>
                                     <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> <strong style="color: #ffeb3b;">Preparação para defesa e apresentação oral</strong></li>
-                                    <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> <strong style="color: #ffeb3b;">Orientação passo a passo para aprovação com distinção</strong></li>
+                                    <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> <strong style="color: #ffeb3b;">Apoio contínuo para elevada qualidade académica</strong></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
 
-                   <!-- Benefícios exclusivos – versão melhorada, visível e profissional -->
+                   <!-- Benefícios exclusivos -->
 <div class="benefits-box p-5 mb-5 rounded-4 text-center shadow-lg" style="background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25); backdrop-filter: blur(10px);">
     <h5 class="fw-bold mb-5" style="color: #ffeb3b; font-size: 2.2rem; text-shadow: 0 4px 12px rgba(0,0,0,0.5); letter-spacing: -0.5px;">
-        Benefícios Exclusivos do Programa
+        Benefícios do Programa
     </h5>
 
     <ul class="list-unstyled d-inline-block text-start mx-auto" style="max-width: 850px;">
@@ -1933,7 +2030,7 @@ nav ul {
             </div>
             <div>
                 <strong style="color: #ffeb3b; font-weight: 800; font-size: 1.25rem;">Materiais exclusivos</strong><br>
-                <span style="color: #e0e0ff; opacity: 0.9;">e constantemente atualizados para te manter à frente</span>
+                <span style="color: #e0e0ff; opacity: 0.9;">e constantemente atualizados para apoiar o seu desenvolvimento</span>
             </div>
         </li>
 
@@ -1942,8 +2039,8 @@ nav ul {
                 <i class="fas fa-comments text-info" style="font-size: 2.2rem;"></i>
             </div>
             <div>
-                <strong style="color: #00f2fe; font-weight: 800; font-size: 1.25rem;">Feedback direto</strong><br>
-                <span style="color: #e0e0ff; opacity: 0.9;">e personalizado em cada etapa do teu percurso</span>
+                <strong style="color: #00f2fe; font-weight: 800; font-size: 1.25rem;">Feedback direto e personalizado</strong><br>
+                <span style="color: #e0e0ff; opacity: 0.9;">em todas as etapas do seu percurso</span>
             </div>
         </li>
 
@@ -1953,7 +2050,7 @@ nav ul {
             </div>
             <div>
                 <strong style="color: #ff6b00; font-weight: 800; font-size: 1.25rem;">Plano individualizado</strong><br>
-                <span style="color: #e0e0ff; opacity: 0.9;">de desenvolvimento adaptado ao teu nível e objetivos</span>
+                <span style="color: #e0e0ff; opacity: 0.9;">adaptado ao seu nível e aos seus objetivos</span>
             </div>
         </li>
 
@@ -1963,7 +2060,7 @@ nav ul {
             </div>
             <div>
                 <strong style="color: #38ef7d; font-weight: 800; font-size: 1.25rem;">Suporte contínuo</strong><br>
-                <span style="color: #e0e0ff; opacity: 0.9;">durante todo o teu percurso – estamos contigo até ao sucesso</span>
+                <span style="color: #e0e0ff; opacity: 0.9;">durante todo o percurso até alcançar os seus resultados</span>
             </div>
         </li>
     </ul>
@@ -1971,9 +2068,7 @@ nav ul {
 
 
 <!-- Botões de ação -->
-
 <div class="btn-container d-flex flex-column flex-md-row justify-content-center gap-3 mb-5">
-    
     <a href="cadastro.html" class="mentoria-btn btn-cadastro">
         <i class="fas fa-user-plus me-2"></i>Fazer Cadastro Agora
     </a>
@@ -1981,127 +2076,157 @@ nav ul {
     <a href="login.html" class="mentoria-btn btn-entrar">
         <i class="fas fa-sign-in-alt me-2"></i>Entrar
     </a>
-
 </div>
 
-
-                    <!-- Chamada para profissionais – mais profissional, com destaques vivos -->
-<!-- Chamada final – versão remodelada e profissional -->
+<!-- Chamada final -->
 <div class="text-center mt-5 pt-5 px-3 px-md-5" style="background: rgba(0,0,0,0.35); border-radius: 24px; padding: 3.5rem 2.5rem; max-width: 1000px; margin: 0 auto; box-shadow: 0 15px 40px rgba(0,0,0,0.5); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.15);">
+
     <p class="lead fw-bold mb-4" style="color: #ffffff; font-size: 1.65rem; line-height: 1.6; text-shadow: 0 3px 10px rgba(0,0,0,0.6);">
-        Já és profissional e procuras serviços personalizados de 
+        Já és estudante ou profissional e procuras apoio em 
         <strong style="color: #00f2fe; font-weight: 900;">Design Gráfico</strong> 
         ou 
         <strong style="color: #00f2fe; font-weight: 900;">Tecnologia</strong>?
     </p>
 
     <p class="lead fw-medium mb-4" style="color: #e0e0ff; font-size: 1.35rem;">
-        <strong style="color: #ffeb3b; font-weight: 800;">Escolha o Serviço Ideal para o Seu Projecto</strong><br>
-        ou explore todas as nossas áreas de mentoria e acompanhamento profissional.
+        <strong style="color: #ffeb3b; font-weight: 800;">Acesso a orientação e acompanhamento personalizado</strong><br>
+        para desenvolvimento de competências e melhoria de desempenho académico e profissional.
     </p>
 
-    <!-- Botão principal – "Explorar nossas áreas de mentoria" -->
     <div class="d-flex flex-column flex-md-row justify-content-center gap-4 mb-4">
         <a href="servicos.html" class="btn btn-lg px-5 py-3 fw-bold shadow-lg transition-all" style="background: linear-gradient(135deg, #00f2fe, #667eea); color: white; border: none; border-radius: 50px; min-width: 280px;">
-            Explorar Nossas Áreas de Mentoria
+            Explorar Áreas de Apoio e Mentoria
         </a>
     </div>
 
     <p class="lead fw-medium mt-4" style="color: #e0e0ff; font-size: 1.35rem;">
         Ou simplesmente<br>
         <strong style="color: #ffeb3b; font-size: 1.6rem; font-weight: 900; text-shadow: 0 4px 12px rgba(255,235,59,0.6);">
-            Clique no botão "Pedir Orçamento"
+            Solicitar orientação personalizada
         </strong><br>
-        ou utilize o 
+        ou utilizar o 
         <strong style="color: #25d366; font-size: 1.6rem; font-weight: 900; text-shadow: 0 4px 12px rgba(37,211,102,0.6);">
-            botão flutuante do WhatsApp
+            WhatsApp para apoio direto
         </strong><br>
-        para falar diretamente connosco e receber um orçamento personalizado em minutos.
+        com a nossa equipa de mentoria.
     </p>
 </div>
     </section>
 
 
-    <!-- Promoção -->
-    <section class="promo-section">
-        <div class="container position-relative">
-            <h3 class="promo-title">Promoção Exclusiva!</h3>
-            <p class="promo-subtitle">20% de desconto em Logotipos Profissionais, Apoio Académico e Desenvolvimento Web. Garanta já o seu projecto com qualidade premium.</p>
-            <a href="contactos.html" class="btn btn-promo">
-                Aproveitar Agora
-            </a>
-        </div>
-    </section>
+<!-- Programa de Apoio -->
+<section class="promo-section">
+    <div class="container position-relative">
 
+        <h3 class="promo-title">Programa de Incentivo ao Desenvolvimento Académico</h3>
 
+        <p class="promo-subtitle">
+            Beneficie de condições especiais de acesso a apoio em 
+            <strong>Design Gráfico</strong>, 
+            <strong>Mentoria Académica</strong> e 
+            <strong>Desenvolvimento Web</strong>.
+            O objetivo é facilitar o acesso ao acompanhamento e melhoria de competências.
+        </p>
 
+        <a href="contactos.html" class="btn btn-promo">
+            Solicitar Informações
+        </a>
+
+    </div>
+</section>
 
    
     <!-- Footer - FUNDO PRETO E LETRAS BRANCAS -->
-    
 <footer class="footer-container">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 mb-4 text-center text-lg-start">
-                    <img src="img/logo footer.png" alt="NextLynx Tech" class="footer-logo d-block mx-auto mx-lg-0">
-                    <p>Soluções digitais vibrantes para estudantes e empresas em Moçambique.</p>
+    <div class="container">
 
-                       <!-- RETIFICADO LINKS-->
-                    <div class="footer-social">
-                        <a href="https://web.facebook.com/?locale=pt_BR&_rdc=1&_rdr#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/nextlynxtech/" class="social-icon"><i class="fab fa-instagram"></i></a>
-                        <a href="https://web.whatsapp.com/send?phone=258868187201&text=Olá,%20quero%20um%20orçamento%20para%20meu%20projeto!" class="social-icon"><i class="fab fa-whatsapp"></i></a>
-                        <a href="https://www.linkedin.com/in/next-lynx-tech-45442a3ab/?isSelfProfile=true" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-6 mb-4 text-center">
-                    <h5 class="footer-title">Navegação</h5>
-                    <a href="index.html" class="footer-link">Home</a>
-                    <a href="servicos.html" class="footer-link">Serviços</a>
-                    <a href="portfolio.html" class="footer-link">Portfólio</a>
-                    <a href="blog.html" class="footer-link">Blog</a>
-                </div>
-                <div class="col-lg-2 col-md-6 mb-4 text-center">
-                    <h5 class="footer-title">Suporte</h5>
-                    <a href="contactos.html" class="footer-link">Contactos</a>
-                    <a href="testemunhos.html" class="footer-link">Testemunhos</a>
-                    <a href="faq.html" class="footer-link">FAQ</a>
-                    <a href="pedir-orcamento.html" class="footer-link">Orçamento</a>
-                </div>
-                <div class="col-lg-4 mb-4 text-center text-lg-start">
-                    <div class="footer-info mx-auto mx-lg-0" style="max-width: 300px;">
-                        <h5>Localização</h5>
-                        
-                         <!-- retificado o email -->
-                        <p>Cidade de Nampula</p>
-                         <strong>Email:</strong>  <a href="mailto:nextlynxtech@gmail.com?subject=Orçamento%20NextLynx%20Tech&body=Olá,%20gostaria%20de%20saber%20mais%20sobre..." 
-   title="Enviar email para NextLynx Tech">
-    nextlynxtech@gmail.com
-</a>
-                        <p><strong>WhatsApp:</strong> +258 868 187 201</p>
-                           <p>+258 872 394 433 </p>
-                             <p>+258 868 712 546 </p>
+        <div class="row">
 
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>© 2025 NextLynx Tech. Todos os direitos reservados.</p>
-                <p class="small mt-2">
-                    <a href="politica-privacidade.html">Política de Privacidade</a> • 
-                    <a href="termos.html">Termos de Uso</a> •
-                    <a href="sobre.html">Sobre nós</a>
+            <!-- Logo e descrição -->
+            <div class="col-lg-4 mb-4 text-center text-lg-start">
+                <img src="img/logo footer.png" alt="NextLynx Tech" class="footer-logo d-block mx-auto mx-lg-0">
+
+                <p>
+                    Plataforma de apoio académico e desenvolvimento de competências digitais em Moçambique.
                 </p>
+
+                <!-- Redes sociais -->
+                <div class="footer-social">
+                    <a href="https://web.facebook.com/?locale=pt_BR&_rdc=1&_rdr#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/nextlynxtech/" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="https://web.whatsapp.com/send?phone=258868187201&text=Olá,%20gostaria%20de%20obter%20orientação%20académica%20e%20informações!" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.linkedin.com/in/next-lynx-tech-45442a3ab/?isSelfProfile=true" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                </div>
             </div>
+
+            <!-- Navegação -->
+            <div class="col-lg-2 col-md-6 mb-4 text-center">
+                <h5 class="footer-title">Navegação</h5>
+                <a href="index.html" class="footer-link">Home</a>
+                <a href="servicos.html" class="footer-link">Mentoria</a>
+                <a href="portfolio.html" class="footer-link">Portfólio</a>
+                <a href="blog.html" class="footer-link">Blog</a>
+            </div>
+
+            <!-- Suporte -->
+            <div class="col-lg-2 col-md-6 mb-4 text-center">
+                <h5 class="footer-title">Suporte</h5>
+                <a href="contactos.html" class="footer-link">Contactos</a>
+                <a href="testemunhos.html" class="footer-link">Testemunhos</a>
+                <a href="faq.html" class="footer-link">FAQ</a>
+            </div>
+
+            <!-- Contactos -->
+            <div class="col-lg-4 mb-4 text-center text-lg-start">
+                <div class="footer-info mx-auto mx-lg-0" style="max-width: 300px;">
+
+                    <h5>Contacto</h5>
+
+                    <p>Cidade de Nampula</p>
+
+                    <p>
+                        <strong>Email:</strong>
+                        <a href="mailto:nextlynxtech@gmail.com">
+                            nextlynxtech@gmail.com
+                        </a>
+                    </p>
+
+                    <p><strong>WhatsApp:</strong> +258 868 187 201</p>
+                    <p>+258 872 394 433</p>
+                    <p>+258 868 712 546</p>
+
+                </div>
+            </div>
+
         </div>
-        <div class="footer-bottom">
-    <P> <strong>Abdul Narupuaxta</strong> • Consultor Académico e Soluções Digitais em Design & Tecnologia</P>
-</div>
-    </footer>
 
+        <!-- AVISO IMPORTANTE -->
+        <div class="footer-warning text-center mt-4 p-3" style="border:1px solid rgba(255,255,255,0.2); border-radius:12px; background: rgba(255,255,255,0.05);">
+            <strong style="color:#ffeb3b;">Aviso Importante:</strong><br>
+            Esta plataforma não realiza, não vende e não fornece trabalhos académicos prontos como monografias, dissertações, testes ou exames.  
+            O nosso foco é exclusivamente o apoio, orientação e desenvolvimento de competências académicas e digitais.
+        </div>
 
-<!-- Botão WhatsApp Flutuante (único, sem duplicação) -->
-<a href="https://wa.me/258868187201?text=Olá,%20quero%20um%20orçamento%20para%20meu%20projeto!" 
+        <!-- Rodapé inferior -->
+        <div class="footer-bottom text-center mt-4">
+            <p>© 2025 NextLynx Tech. Todos os direitos reservados.</p>
+
+            <p class="small mt-2">
+                <a href="politica-privacidade.html">Política de Privacidade</a> • 
+                <a href="termos.html">Termos de Uso</a> •
+                <a href="sobre.html">Sobre nós</a>
+            </p>
+
+            <p class="mt-3">
+                <strong>NextLynx Tech</strong> • Plataforma de Apoio Académico e Soluções Digitais
+            </p>
+        </div>
+
+    </div>
+</footer>
+
+<!-- Botão WhatsApp Flutuante -->
+<a href="https://wa.me/258868187201?text=Olá,%20gostaria%20de%20obter%20orientação%20académica%20e%20informações!" 
    class="btn-whatsapp" 
    id="whatsapp-float"
    title="Fale conosco no WhatsApp">
@@ -2153,6 +2278,40 @@ nav ul {
             });
         });
     </script>
+
+
+
+<!-- Notificação de Aviso Ético -->
+<div id="ethics-notification" class="ethics-notification">
+    <div class="ethics-content">
+        <strong>Aviso Importante</strong>
+        <p>
+            Esta plataforma <b>não vende nem realiza trabalhos académicos</b> (monografias, dissertações, testes ou exames).  
+            O nosso foco é <b>apoio, orientação e mentoria académica</b>.
+        </p>
+        <button onclick="closeNotification()">Entendi</button>
+    </div>
+</div>
+
+
+
+<script>
+    // mostrar notificação ao carregar página
+    window.onload = function () {
+        const notif = document.getElementById("ethics-notification");
+        notif.classList.add("show");
+
+        // desaparecer automaticamente após 6 segundos
+        setTimeout(() => {
+            notif.classList.remove("show");
+        }, 6000);
+    };
+
+    // botão fechar manual
+    function closeNotification() {
+        document.getElementById("ethics-notification").classList.remove("show");
+    }
+</script>
 
 </body>
 </html>
