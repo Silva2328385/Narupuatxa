@@ -630,14 +630,15 @@ nav ul {
      
 
 
-/* BOTÃO "Saber Mais" - AJUSTADO AO TEXTO (compacto) */
+
+/* ====================== BOTÃO "Saber Mais" - VERSÃO FINAL AJUSTADA ====================== */
 .btn-promo {
     background: linear-gradient(135deg, #ff6b00, #ff8c00);
     color: white;
     font-weight: 700;
-    padding: 0.85rem 2.2rem;     /* padding bom mas não exagerado */
+    padding: 0.8rem 1.8rem;
     border-radius: 50px;
-    font-size: 1.08rem;
+    font-size: 1.05rem;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -645,31 +646,34 @@ nav ul {
     white-space: nowrap;
     transition: all 0.4s ease;
     box-shadow: 0 8px 25px rgba(255, 107, 0, 0.4);
-    min-width: auto;             /* importante: ajusta ao texto */
-    width: fit-content;          /* faz o botão encolher ao tamanho do texto */
+    width: fit-content !important;
+    min-width: auto !important;
+    max-width: 100% !important;
 }
 
 .btn-promo:hover {
-    transform: translateY(-6px);   /* efeito de flutuar */
+    transform: translateY(-6px);
     box-shadow: 0 15px 35px rgba(255, 107, 0, 0.5);
-    background: linear-gradient(135deg, #ff8c00, #ffaa00);
 }
 
-/* ====================== RESPONSIVIDADE ====================== */
+/* ====================== MOBILE - MUITO MAIS APERTADO ====================== */
 @media (max-width: 576px) {
     .btn-promo {
-        font-size: 1rem;
-        padding: 0.75rem 1.8rem;
+        font-size: 0.98rem;
+        padding: 0.75rem 1.5rem !important;
         margin: 15px auto 0;
+        white-space: normal;
+        line-height: 1.4;
     }
 }
 
 @media (max-width: 400px) {
     .btn-promo {
         font-size: 0.95rem;
-        padding: 0.7rem 1.6rem;
+        padding: 0.7rem 1.4rem !important;
     }
 }
+
 
 
  /* Footer — CENTRALIZADO */
