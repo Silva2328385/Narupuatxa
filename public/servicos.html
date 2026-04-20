@@ -644,7 +644,25 @@ nav ul {
             box-shadow: 0 25px 50px rgba(0,0,0,0.35);
             background: #f8f9fa;
         }
+.promo-btn {
+    font-size: 1.2rem;
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    display: inline-block;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
 
+/* 📱 MOBILE */
+@media (max-width: 768px) {
+    .promo-btn {
+        font-size: 1rem;
+        padding: 0.8rem 1.5rem;
+        width: auto;          /* evita esticar demais */
+        max-width: 90%;       /* impede sair da tela */
+        text-align: center;
+    }
+}
      
 
  /* Footer — CENTRALIZADO */
@@ -1274,7 +1292,7 @@ nav ul {
     <section class="services-section">
         <div class="container">
             <h2 class="section-title text-center mb-5 fw-bold" style="margin-top: 0 !important; opacity: 1 !important;">
-                Escolha a Sua Área de Desenvolvimento
+                Escolha a Sua Área
             </h2>
             <div class="row g-5">
                 <!-- DESIGN GRÁFICO -->
@@ -1381,7 +1399,7 @@ nav ul {
 
 <section class="publicidade-section py-5">
     <div class="container">
-        <h2 class="publicidade-title text-center mb-5">Exemplos de Trabalho Real</h2>
+        <h2 class="publicidade-title text-center mb-5">Exemplos Visuais</h2>
         
         <div class="row g-4 justify-content-center">
             <!-- Flyer -->
@@ -1436,7 +1454,7 @@ nav ul {
 <section class="promo-section">
     <div class="container position-relative">
 
-        <h3 class="promo-title">Oportunidade de Acompanhamento</h3>
+        <h3 class="promo-title">Mentoria Especial</h3>
 
         <p class="promo-subtitle">
             Condições especiais disponíveis para mentoria em Design, Apoio Académico e Desenvolvimento Web,
