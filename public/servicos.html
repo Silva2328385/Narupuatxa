@@ -639,18 +639,21 @@ nav ul {
         }
 
     
-
 @media (max-width: 768px) {
+    .btn-promo,
     .promo-btn {
-        font-size: 1.1rem;
-        padding: 0.7rem 1.4rem;   /* 🔥 reduz bastante */
+        display: inline-block !important;  /* 🔥 força */
+        width: auto !important;           /* 🔥 força */
         
-        display: inline-block;   /* 🔥 muda isso */
-        width: auto;
-        max-width: none;         /* remove limite artificial */
-        
+        padding: 0.6rem 1.2rem !important; /* 🔥 compacto */
+        font-size: 1.05rem;
+
         margin: 0 auto;
     }
+}
+
+.btn-promo {
+    padding: 0.9rem 1.8rem;  /* 🔥 reduz aqui também */
 }
 
  /* Footer — CENTRALIZADO */
