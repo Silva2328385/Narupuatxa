@@ -639,31 +639,30 @@ nav ul {
             animation: pulse 2s infinite;
         }
 
-        .btn-promo:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.35);
-            background: #f8f9fa;
-        }
+    
+
 .promo-btn {
     font-size: 1.2rem;
-    padding: 1rem 2.5rem;
+    padding: 0.9rem 2rem;
     border-radius: 50px;
     display: inline-block;
-    transition: all 0.3s ease;
-    white-space: nowrap;
+    width: auto;
+    min-width: 180px;
+    text-align: center;
 }
 
-/* 📱 MOBILE */
+/* 📱 MOBILE AJUSTADO */
 @media (max-width: 768px) {
     .promo-btn {
-        font-size: 1rem;
-        padding: 0.8rem 1.5rem;
-        width: auto;          /* evita esticar demais */
-        max-width: 90%;       /* impede sair da tela */
-        text-align: center;
+        font-size: 1.1rem;     /* aumenta o texto */
+        padding: 0.8rem 1.8rem;
+        width: auto;           /* evita ocupar toda largura */
+        max-width: 250px;      /* limita o tamanho */
+        display: block;
+        margin: 0 auto;        /* centraliza */
     }
 }
-     
+
 
  /* Footer — CENTRALIZADO */
         .footer-container {
@@ -1210,7 +1209,7 @@ nav ul {
             <div class="d-flex align-items-center gap-3">
                 <!-- Orçamento só em desktop -->
                 <a href="pedir-orcamento.html" class="btn btn-orcamento d-none d-lg-block">
-                  Solicitar informações 
+                  Solicitar Mentoria 
                 </a>
 
                 <!-- Hamburger oficial — SÓ MOBILE -->
@@ -1262,7 +1261,7 @@ nav ul {
                 <li class="nav-item my-3"><a href="faq.html"        class="nav-link text-white fs-4">FAQ</a></li>
                 <li class="mt-5">
                     <a href="pedir-orcamento.html" class="btn btn-warning btn-lg w-100 fw-bold">
-                       Solicitar informações 
+                       Solicitar Mentoria 
                     </a>
                 </li>
             </ul>
@@ -1272,24 +1271,18 @@ nav ul {
 
 
 <section class="hero-section">
-    <div class="container position-relative">
-        <h1 class="hero-title">Nossas Áreas de Atuação</h1>
-
-        <p class="hero-subtitle">
-    Mentoria em Design Gráfico, Tecnologia e Desenvolvimento Académico,
+     <div class="container position-relative"> 
+        <h1 class="hero-title">Nossas Áreas de Atuação</h1> 
+        <p class="hero-subtitle">Mentoria em Design Gráfico, Tecnologia e Desenvolvimento Académico,
     focada no fortalecimento de competências, aprendizagem prática e crescimento académico em Moçambique.
 </p>
-        <a href="#servicos" class="btn hero-btn">
-            Explorar Áreas
-        </a>
+         <a href="#servicos" class="btn hero-btn">Explorar Áreas</a>
+          <i class="fas fa-rocket hero-icon"></i> </div> </section>
 
-        <i class="fas fa-rocket hero-icon"></i>
-    </div>
-</section>
 
 
     <!-- Serviços em Destaque – textos remodelados, profissional e persuasivo -->
-    <section class="services-section">
+  <section class="services-section" id="servicos">
         <div class="container">
             <h2 class="section-title text-center mb-5 fw-bold" style="margin-top: 0 !important; opacity: 1 !important;">
                 Escolha a Sua Área
