@@ -1460,20 +1460,24 @@ nav ul {
     border: none;
     border-radius: 50px;
 
+    display: inline-block;
+    width: fit-content;   /* 🔥 chave principal */
+    max-width: 90%;       /* 🔥 evita ultrapassar tela */
+    margin: 0 auto;       /* 🔥 centraliza */
+
     padding: 10px 18px;
-    display: inline-block; /* 🔥 chave para ajustar ao texto */
-    width: auto;           /* 🔥 não estica */
-    max-width: 100%;
+    font-size: 1rem;
     text-align: center;
 }
 
-/* MOBILE */
+
 @media (max-width: 576px) {
     .btn-compact {
-        padding: 8px 14px;
-        font-size: 0.9rem;
+        padding: 10px 16px;
+        font-size: 0.95rem;
     }
 }
+
     </style>
 </head>
 <body>
@@ -2247,15 +2251,14 @@ style="color: #ffffff; text-shadow: 0 8px 25px rgba(0,0,0,0.8); letter-spacing: 
 
 
 
-        <h2 class="mentoria-title mb-5 fw-black mentoria-title-responsive" style="font-size: 2.8rem; 
-     background: linear-gradient(90deg, #1e40af, #3b82f6, #60a5fa); 
-     -webkit-background-clip: text;
-     background-clip: text;
-     -webkit-text-fill-color: transparent;
-     color: transparent;
-     text-shadow: 0 6px 18px rgba(30,64,175,0.5); letter-spacing: -0.5px;">
+       <h2 class="mentoria-title mb-5 fw-black mentoria-title-responsive"
+style="font-size: 2.2rem;
+color: #ffffff;
+text-shadow: 0 6px 18px rgba(0,0,0,0.6);
+letter-spacing: -0.5px;">
 
-    Incentivo ao Desenvolvimento Académico</h2>
+Incentivo Académico
+</h2>
 
         <p class="promo-subtitle">
             Beneficie de condições especiais de acesso a apoio em 
