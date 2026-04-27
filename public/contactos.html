@@ -933,6 +933,49 @@ nav ul {
         font-size: 1.2rem;
     }
 }
+
+
+/* ================= BOTÃO DA PROMOÇÃO ================= */
+
+.promo-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #ffffff;
+    color: #2c3e50;
+    font-weight: 700;
+    text-decoration: none;
+
+    padding: 0.85rem 1.8rem;
+    font-size: 1rem;
+
+    border-radius: 12px;
+    border: none;
+
+    white-space: nowrap;
+    min-width: 220px;
+    max-width: 100%;
+
+    margin: 0 auto;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.promo-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+}
+
+/* Responsivo */
+@media (max-width: 576px) {
+    .promo-btn {
+        min-width: 190px;
+        padding: 0.75rem 1.4rem;
+        font-size: 0.95rem;
+    }
+}
+
     </style>
 </head>
 <body>
