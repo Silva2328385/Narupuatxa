@@ -856,6 +856,53 @@ nav ul {
 
 
 
+/* ================= BOTÃO DA PROMOÇÃO ================= */
+
+.promo-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #ffffff;
+    color: #2c3e50 !important;
+    text-decoration: none;
+    font-weight: 700;
+
+    padding: 12px 24px;
+    font-size: 1rem;
+    line-height: 1.2;
+
+    border: none;
+    border-radius: 10px;
+
+    width: auto;
+    min-width: 220px;
+    max-width: fit-content;
+
+    margin: 0 auto;
+    white-space: nowrap;
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+.promo-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+}
+
+/* Responsivo */
+@media (max-width: 576px) {
+    .promo-btn {
+        min-width: auto;
+        padding: 10px 18px;
+        font-size: 0.9rem;
+    }
+}
+
+
+
+
 
 
 /* ================= PROMOÇÃO CENTRALIZADA ================= */
@@ -935,46 +982,7 @@ nav ul {
 }
 
 
-/* ================= BOTÃO DA PROMOÇÃO ================= */
 
-.promo-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    background: #ffffff;
-    color: #2c3e50;
-    font-weight: 700;
-    text-decoration: none;
-
-    padding: 0.85rem 1.8rem;
-    font-size: 1rem;
-
-    border-radius: 12px;
-    border: none;
-
-    white-space: nowrap;
-    min-width: 220px;
-    max-width: 100%;
-
-    margin: 0 auto;
-    transition: all 0.3s ease;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-}
-
-.promo-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
-}
-
-/* Responsivo */
-@media (max-width: 576px) {
-    .promo-btn {
-        min-width: 190px;
-        padding: 0.75rem 1.4rem;
-        font-size: 0.95rem;
-    }
-}
 
     </style>
 </head>
@@ -1184,9 +1192,9 @@ nav ul {
             Sessões online via Google Meet com foco em aprendizagem prática, clareza e evolução dos teus projetos.
         </p>
 
-        <a href="contactos.html" class="btn btn-light btn-lg btn-pulse">
-            Solicitar Orientação
-        </a>
+        <a href="contactos.html" class="btn promo-btn btn-pulse">
+    Solicitar Orientação
+</a>
 
     </div>
 </section>
