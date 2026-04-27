@@ -398,55 +398,7 @@ nav ul {
             text-decoration: underline;
         }
 
-        /* Notificação na Tela */
-        .notification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            min-width: 300px;
-            padding: 1.5rem;
-            border-radius: 20px;
-            color: white;
-            font-weight: 600;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-            z-index: 2000;
-            transform: translateX(120%);
-            transition: transform 0.5s ease;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .notification.show {
-            transform: translateX(0);
-        }
-
-        .notification.success {
-            background: var(--gradient-success);
-        }
-
-        .notification.error {
-            background: var(--gradient-warning);
-        }
-
-        .notification i {
-            font-size: 1.8rem;
-        }
-
-        .notification .close-btn {
-            margin-left: auto;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-            opacity: 0.8;
-            transition: opacity 0.3s ease;
-        }
-
-        .notification .close-btn:hover {
-            opacity: 1;
-        }
+        
 
         /* WhatsApp Button */
         .btn-whatsapp {
@@ -993,6 +945,96 @@ nav ul {
     font-size: 0.95rem;
 }
 
+
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    left: 20px;
+    max-width: 420px;
+    margin: auto;
+    background: #ffffff;
+    color: #333;
+    border-radius: 16px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.18);
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-30px);
+    transition: all 0.4s ease;
+}
+
+.notification.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.notification-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 18px 20px;
+}
+
+.notification.success {
+    border-left: 6px solid #28a745;
+}
+
+.notification.error {
+    border-left: 6px solid #dc3545;
+}
+
+#notif-icon {
+    font-size: 1.5rem;
+}
+
+.notification.success #notif-icon {
+    color: #28a745;
+}
+
+.notification.error #notif-icon {
+    color: #dc3545;
+}
+
+#notif-message {
+    flex: 1;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #888;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.close-btn:hover {
+    color: #333;
+}
+
+@media (max-width: 576px) {
+    .notification {
+        top: 15px;
+        left: 15px;
+        right: 15px;
+        max-width: none;
+    }
+
+    .notification-content {
+        padding: 15px;
+    }
+
+    #notif-message {
+        font-size: 0.9rem;
+    }
+}
+
+
+
     </style>
 </head>
 <body>
@@ -1211,11 +1253,12 @@ nav ul {
     
 
 
-<!-- Notificação -->
 <div id="notification" class="notification">
-    <i id="notif-icon" class="fas fa-check-circle"></i>
-    <span id="notif-message"></span>
-    <button class="close-btn" onclick="closeNotification()">&times;</button>
+    <div class="notification-content">
+        <i id="notif-icon" class="fas fa-check-circle"></i>
+        <span id="notif-message"></span>
+        <button class="close-btn" onclick="closeNotification()">&times;</button>
+    </div>
 </div>
 
 
@@ -1357,24 +1400,25 @@ nav ul {
         let isSubmitting = false;
 
         // Função para mostrar notificação
-        function showNotification(message, type = 'success') {
-            const notif = document.getElementById('notification');
-            const icon = document.getElementById('notif-icon');
-            const msg = document.getElementById('notif-message');
+       function showNotification(message, type = 'success') {
+    const notif = document.getElementById('notification');
+    const icon = document.getElementById('notif-icon');
+    const msg = document.getElementById('notif-message');
 
-            notif.className = `notification ${type}`;
-            icon.className = type === 'success' ? 'fas fa-check-circle' : 'fas fa-exclamation-triangle';
-            msg.textContent = message;
+    notif.className = `notification ${type} show`;
 
-            notif.classList.add('show');
+    icon.className = type === 'success'
+        ? 'fas fa-check-circle'
+        : 'fas fa-exclamation-circle';
 
-            // Auto-fechar após 5 segundos
-            setTimeout(() => {
-                if (notif.classList.contains('show')) {
-                    notif.classList.remove('show');
-                }
-            }, 5000);
-        }
+    msg.textContent = message;
+
+    setTimeout(closeNotification, 5000);
+}
+
+function closeNotification() {
+    document.getElementById('notification').classList.remove('show');
+}
 
         // Fechar notificação
         function closeNotification() {
