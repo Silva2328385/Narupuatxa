@@ -825,6 +825,56 @@ nav ul {
     }
 
 }
+
+
+
+.promocoes-wrapper {
+    min-height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 1rem;
+}
+
+.promocoes {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 3rem 2rem;
+    border-radius: 24px;
+    max-width: 800px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(102, 126, 234, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.promocoes h3 {
+    font-weight: 700;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+}
+
+.promocoes .btn {
+    border-radius: 50px;
+    padding: 0.9rem 2.5rem;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    white-space: nowrap;      /* impede quebra de linha */
+    display: inline-block;
+    max-width: 100%;
+}
+
+.promocoes .btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(255, 255, 255, 0.25);
+}
+
+/* Ajuste específico para telemóveis pequenos */
+@media (max-width: 576px) {
+    .promocoes .btn {
+        font-size: 0.95rem;
+        padding: 0.75rem 1.5rem;
+    }
+}
     </style>
 </head>
 <body>
@@ -846,7 +896,7 @@ nav ul {
             <nav class="d-none d-lg-flex flex-grow-1 justify-content-center">
                 <ul class="nav">
                     <li class="nav-item"><a href="index.html"      class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="servicos.html"   class="nav-link">Serviços</a></li>
+                    <li class="nav-item"><a href="servicos.html"   class="nav-link">Mentoria</a></li>
                     <li class="nav-item"><a href="portfolio.html"  class="nav-link">Portfólio</a></li>
                     <li class="nav-item"><a href="blog.html"       class="nav-link">Blog</a></li>
                     <li class="nav-item"><a href="contactos.html"  class="nav-link">Contactos</a></li>
@@ -859,7 +909,7 @@ nav ul {
             <div class="d-flex align-items-center gap-3">
                 <!-- Orçamento só em desktop -->
                 <a href="pedir-orcamento.html" class="btn btn-orcamento d-none d-lg-block">
-                    Pedir Orçamento
+                         Solicitar Mentoria 
                 </a>
 
                 <!-- Hamburger oficial — SÓ MOBILE -->
@@ -911,7 +961,7 @@ nav ul {
                 <li class="nav-item my-3"><a href="faq.html"        class="nav-link text-white fs-4">FAQ</a></li>
                 <li class="mt-5">
                     <a href="pedir-orcamento.html" class="btn btn-warning btn-lg w-100 fw-bold">
-                        Pedir Orçamento
+                             Solicitar Mentoria 
                     </a>
                 </li>
             </ul>
@@ -927,8 +977,8 @@ nav ul {
     <!-- Hero com título remodelado -->
     <section class="text-center py-5 bg-light">
         <div class="container">
-            <h1 class="display-3 fw-bold hero-title fadeInUp" style="color: var(--primary);">O que dizem quem já trabalhou connosco</h1>
-            <p class="lead text-muted fadeInUp" style="animation-delay: 0.6s;">Opiniões reais de estudantes e profissionais moçambicanos</p>
+            <h1 class="display-3 fw-bold hero-title fadeInUp" style="color: var(--primary);">Experiências e Resultados</h1>
+            <p class="lead text-muted fadeInUp" style="animation-delay: 0.6s;"> Partilhas de estudantes e profissionais que beneficiaram da nossa orientação, mentoria e acompanhamento personalizado.</p>
         </div>
     </section>
 
@@ -936,7 +986,10 @@ nav ul {
     <main class="container my-5">
         <div class="card shadow-lg mb-5 rounded-4 overflow-hidden">
             <div class="card-body p-5">
-                <h3 class="fw-bold mb-4 text-center">Deixe o Seu Testemunho ou Comentário </h3>
+                <h3 class="fw-bold mb-4 text-center">  Partilhe a Sua Experiência</h3>
+                <p class="text-muted text-center mb-4">
+                A sua opinião é importante. Conte como a orientação, mentoria ou acompanhamento contribuíram para o seu percurso.
+            </p>
                 <form id="testimonial-form">
                     <div class="row g-3">
                         <div class="col-md-6">
@@ -950,7 +1003,7 @@ nav ul {
                     </div>
 
                     <div class="mt-4">
-                        <label class="form-label fw-medium">Quantas estrelas? *</label>
+                        <label class="form-label fw-medium">Avaliação *</label>
                         <div class="d-flex gap-2" id="stars-input">
                             <i class="far fa-star star" data-value="1"></i>
                             <i class="far fa-star star" data-value="2"></i>
@@ -962,93 +1015,134 @@ nav ul {
                     </div>
 
                     <div class="mt-4">
-                        <label for="comentario" class="form-label fw-medium">Seu testemunho *</label>
+                        <label for="comentario" class="form-label fw-medium">A Sua Experiência *</label>
                         <textarea class="form-control" id="comentario" rows="4" required placeholder="Conte sua experiência..."></textarea>
                     </div>
 
                     <div class="text-center mt-4">
                         <button type="submit" class="btn btn-primary btn-lg px-5 py-3 fw-bold">
-                            <i class="fas fa-paper-plane me-2"></i> Enviar Testemunho
+                            <i class="fas fa-paper-plane me-2"></i>  Partilhar Experiência
                         </button>
                     </div>
                 </form>
             </div>
         </div>
 
-        <h2 class="text-center fw-bold mb-5" style="color: var(--primary);">Testemunhos Reais</h2>
+        <h2 class="text-center fw-bold mb-5" style="color: var(--primary);"> Experiências Partilhadas</h2>
         <div class="row g-4" id="testimonials-container"></div>
     </main>
 
-    
-
-
 
     <!-- Promoções -->
-    <section class="container promocoes animate-fade-in text-center py-5">
-        <h3 class="text-white mb-4">Promoção Exclusiva: 20% off em Logotipos e Aplicativos Web!</h3>
-        <a href="contactos.html" class="btn btn-light btn-lg btn-pulse">Aproveitar Oferta</a>
-    </section>
+ <!-- Destaque informativo CENTRALIZADO -->
+<section class="promocoes-wrapper">
+    <div class="promocoes animate-fade-in text-center">
+        <h3 class="text-white mb-4">
+            Espaço de Orientação Académica, Design Gráfico e Tecnologia
+        </h3>
+        <a href="contactos.html" class="btn btn-light btn-lg btn-pulse">
+            Aceder à Informação
+        </a>
+    </div>
+</section>
 
     <!-- Footer -->
-     <!-- Footer — CENTRALIZADO -->
-    <footer class="footer-container">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 mb-4 text-center text-lg-start">
-                    <img src="img/logo footer.png" alt="NextLynx Tech" class="footer-logo d-block mx-auto mx-lg-0">
-                    <p>Soluções digitais vibrantes para estudantes e empresas em Moçambique.</p>
+     
+    <!-- Footer - FUNDO PRETO E LETRAS BRANCAS -->
+<footer class="footer-container">
+    <div class="container">
 
-                       <!-- RETIFICADO LINKS-->
-                    <div class="footer-social">
-                        <a href="https://web.facebook.com/?locale=pt_BR&_rdc=1&_rdr#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/nextlynxtech/" class="social-icon"><i class="fab fa-instagram"></i></a>
-                        <a href="https://web.whatsapp.com/send?phone=258868187201&text=Olá,%20quero%20um%20orçamento%20para%20meu%20projeto!" class="social-icon"><i class="fab fa-whatsapp"></i></a>
-                        <a href="https://www.linkedin.com/in/next-lynx-tech-45442a3ab/?isSelfProfile=true" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-6 mb-4 text-center">
-                    <h5 class="footer-title">Navegação</h5>
-                    <a href="index.html" class="footer-link">Home</a>
-                    <a href="servicos.html" class="footer-link">Serviços</a>
-                    <a href="portfolio.html" class="footer-link">Portfólio</a>
-                    <a href="blog.html" class="footer-link">Blog</a>
-                </div>
-                <div class="col-lg-2 col-md-6 mb-4 text-center">
-                    <h5 class="footer-title">Suporte</h5>
-                    <a href="contactos.html" class="footer-link">Contactos</a>
-                    <a href="testemunhos.html" class="footer-link">Testemunhos</a>
-                    <a href="faq.html" class="footer-link">FAQ</a>
-                    <a href="pedir-orcamento.html" class="footer-link">Orçamento</a>
-                </div>
-                <div class="col-lg-4 mb-4 text-center text-lg-start">
-                    <div class="footer-info mx-auto mx-lg-0" style="max-width: 300px;">
-                        <h5>Localização</h5>
-                        
-                         <!-- retificado o email -->
-                        <p>Cidade de Nampula</p>
-                         <strong>Email:</strong>  <a href="mailto:nextlynxtech@gmail.com?subject=Orçamento%20NextLynx%20Tech&body=Olá,%20gostaria%20de%20saber%20mais%20sobre..." 
-   title="Enviar email para NextLynx Tech">
-    nextlynxtech@gmail.com
-</a>
-                        <p><strong>WhatsApp:</strong> +258 868 187 201</p>
-                           <p>+258 872 394 433 </p>
-                             <p>+258 868 712 546 </p>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>© 2025 NextLynx Tech. Todos os direitos reservados.</p>
-                <p class="small mt-2">
-                    <a href="politica-privacidade.html">Política de Privacidade</a> • 
-                    <a href="termos.html">Termos de Uso</a> •
-                    <a href="sobre.html">Sobre nós</a>
+        <div class="row">
+
+            <!-- Logo e descrição -->
+            <div class="col-lg-4 mb-4 text-center text-lg-start">
+                <img src="img/logo footer.png" alt="NextLynx Tech" class="footer-logo d-block mx-auto mx-lg-0">
+
+                <p>
+                    Plataforma de apoio académico e desenvolvimento de competências digitais em Moçambique.
                 </p>
+
+                <!-- Redes sociais -->
+                <div class="footer-social">
+                    <a href="https://web.facebook.com/?locale=pt_BR&_rdc=1&_rdr#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/nextlynxtech/" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="https://web.whatsapp.com/send?phone=258868187201&text=Olá,%20gostaria%20de%20obter%20orientação%20académica%20e%20informações!" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.linkedin.com/in/next-lynx-tech-45442a3ab/?isSelfProfile=true" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                </div>
             </div>
+
+            <!-- Navegação -->
+            <div class="col-lg-2 col-md-6 mb-4 text-center">
+                <h5 class="footer-title">Navegação</h5>
+                <a href="index.html" class="footer-link">Home</a>
+                <a href="servicos.html" class="footer-link">Mentoria</a>
+                <a href="portfolio.html" class="footer-link">Portfólio</a>
+                <a href="blog.html" class="footer-link">Blog</a>
+            </div>
+
+            <!-- Suporte -->
+            <div class="col-lg-2 col-md-6 mb-4 text-center">
+                <h5 class="footer-title">Suporte</h5>
+                <a href="contactos.html" class="footer-link">Contactos</a>
+                <a href="testemunhos.html" class="footer-link">Testemunhos</a>
+                <a href="faq.html" class="footer-link">FAQ</a>
+            </div>
+
+            <!-- Contactos -->
+            <div class="col-lg-4 mb-4 text-center text-lg-start">
+                <div class="footer-info mx-auto mx-lg-0" style="max-width: 300px;">
+
+                    <h5>Contacto</h5>
+
+                    <p>Cidade de Nampula</p>
+
+                    <p>
+                        <strong>Email:</strong>
+                        <a href="mailto:nextlynxtech@gmail.com">
+                            nextlynxtech@gmail.com
+                        </a>
+                    </p>
+
+                    <p><strong>WhatsApp:</strong> +258 868 187 201</p>
+                    <p>+258 872 394 433</p>
+                    <p>+258 868 712 546</p>
+
+                </div>
+            </div>
+
         </div>
-        <div class="footer-bottom">
-    <P> <strong>Abdul Narupuaxta</strong> • Consultor Académico e Soluções Digitais em Design & Tecnologia</P>
+
+        <!-- AVISO IMPORTANTE -->
+<div class="footer-warning text-center mt-4 p-3" style="border:1px solid rgba(255,255,255,0.2); border-radius:12px; background: rgba(255,255,255,0.05);">
+
+    <strong style="color:#ffeb3b;">
+        <i class="fas fa-exclamation-triangle" style="margin-right:6px;"></i>
+        Aviso Importante:
+    </strong>
+
+    <br>
+
+    Esta plataforma não realiza, não vende e não fornece trabalhos académicos prontos como monografias, dissertações, testes ou exames.  
+    O nosso foco é exclusivamente o apoio, orientação e desenvolvimento de competências académicas e digitais.
+
 </div>
-    </footer>
+        <!-- Rodapé inferior -->
+        <div class="footer-bottom text-center mt-4">
+            <p>© 2025 NextLynx Tech. Todos os direitos reservados.</p>
+
+            <p class="small mt-2">
+                <a href="politica-privacidade.html">Política de Privacidade</a> • 
+                <a href="termos.html">Termos de Uso</a> •
+                <a href="sobre.html">Sobre nós</a>
+            </p>
+
+            <p class="mt-3">
+                <strong>NextLynx Tech</strong> • Plataforma de Apoio Académico e Soluções Digitais
+            </p>
+        </div>
+
+    </div>
+</footer>
 
     <!-- RETIFICADO BOTAO Chat WhatsApp Flutuante — ORGANIZADO -->
    
