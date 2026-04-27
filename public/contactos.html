@@ -121,9 +121,6 @@ body {
     white-space: nowrap;
 }
 
-/* ------------------ MEDIA QUERIES – AGRESSIVAS ------------------ */
-
-/* ------------------ MEDIA QUERIES PARA HEADER – CONSISTENTE COM TODAS AS PÁGINAS ------------------ */
 
 /* Medidas IGUAIS às que funcionaram bem nos testemunhos, contactos, serviços, blog, etc. */
 @media (max-width: 992px) {
@@ -296,23 +293,48 @@ nav ul {
             transform: translateY(-2px);
         }
 
-        .btn-submit {
-            background: var(--gradient-primary);
-            color: white;
-            font-weight: 700;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            font-size: 1.2rem;
-            width: 100%;
-            transition: all 0.4s ease;
-            animation: pulse 2s infinite;
-            border: none;
-        }
+        
 
-        .btn-submit:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(106, 17, 203, 0.4);
-        }
+/* ================= BOTÃO ENVIAR MENSAGEM ================= */
+
+.btn-submit {
+    background: var(--gradient-primary);
+    color: white;
+    font-weight: 700;
+    padding: 0.9rem 1.6rem;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    width: 100%;
+    white-space: nowrap;   /* 🔥 impede quebra de linha */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: none;
+     animation: pulse 2s infinite;
+}
+
+/* EFEITO HOVER */
+.btn-submit:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(106, 17, 203, 0.35);
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 576px) {
+    .btn-submit {
+        font-size: 0.95rem;
+        padding: 0.8rem 1rem;
+        white-space: nowrap; /* garante sem quebra */
+    }
+
+    .btn-submit i {
+        font-size: 1rem;
+    }
+}
+
+
+
 
         .btn-submit:disabled {
             opacity: 0.7;
@@ -482,15 +504,6 @@ nav ul {
             50% { transform: scale(1.1); }
         }
 
-        /* Promoções */
-        .promocoes {
-            background: var(--gradient-warning);
-            color: white;
-            padding: 5rem 0;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
 
         /* Footer - COMPLETO COMO NO FAQ */
        
@@ -719,27 +732,7 @@ nav ul {
         }
 
  
-        /* LINK DO ADMIN - VISÍVEL APENAS COM ?admin=true */
-        .admin-link {
-            color: #666;
-            font-size: 0.8rem;
-            text-decoration: none;
-            display: block;
-            margin-top: 1rem;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-        }
-
-        a.admin-link[href*="admin.html"]:not([href=""]) {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .admin-link:hover {
-            color: #aaa;
-            text-decoration: underline;
-        }
+        
 
         /* Responsive */
      /* RESPONSIVO - medidas IGUAIS às da página principal e testemunhos */
@@ -806,6 +799,140 @@ nav ul {
 }
 
 
+/* ================= HERO ACTION BUTTONS ================= */
+
+.hero-actions {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;   /* centraliza */
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;           /* evita quebrar em telas pequenas */
+}
+
+/* BOTÃO BASE */
+.btn-action {
+    padding: 12px 22px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    border: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    letter-spacing: 0.5px;
+}
+
+/* CRIAR CONTA */
+.btn-cadastro {
+    background: #ffb300;
+    color: #1a1a1a;
+}
+
+/* ENTRAR */
+.btn-login {
+    background: #ffffff;
+    color: #2c3e50;
+}
+
+/* HOVER ANIMAÇÃO */
+.btn-action:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.35);
+}
+
+/* RESPONSIVO MOBILE */
+@media (max-width: 768px) {
+    .hero-actions {
+        margin-top: 1.5rem;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .btn-action {
+        width: 180px;
+        text-align: center;
+    }
+}
+
+
+
+
+
+/* ================= PROMOÇÃO CENTRALIZADA ================= */
+
+.promocoes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* CARD REALMENTE CENTRAL */
+.promo-card {
+    width: 100%;
+    max-width: 850px;
+
+    margin: 0 auto; /* 🔥 garante centro real */
+
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(10px);
+
+    padding: 2.5rem;
+    border-radius: 20px;
+
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+
+    text-align: center;
+
+    position: relative;
+    left: 0; /* garante que não há deslocamento */
+}
+
+/* TEXTO */
+.promo-title {
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.promo-subtitle {
+    color: rgba(255,255,255,0.85);
+    font-size: 1.1rem;
+    margin-bottom: 1.8rem;
+    line-height: 1.6;
+}
+
+/* BOTÃO */
+.promo-card .btn {
+    padding: 0.9rem 2rem;
+    font-weight: 700;
+    border-radius: 50px;
+    white-space: nowrap;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 768px) {
+    .promo-card {
+        padding: 1.8rem;
+        width: 95%; /* ajuda a não colar nas bordas */
+    }
+
+    .promo-title {
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .promo-card {
+        padding: 1.5rem;
+        width: 92%;
+    }
+
+    .promo-title {
+        font-size: 1.2rem;
+    }
+}
     </style>
 </head>
 <body>
@@ -825,7 +952,7 @@ nav ul {
             <nav class="d-none d-lg-flex flex-grow-1 justify-content-center">
                 <ul class="nav">
                     <li class="nav-item"><a href="index.html"      class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="servicos.html"   class="nav-link">Serviços</a></li>
+                    <li class="nav-item"><a href="servicos.html"   class="nav-link">Mentoria</a></li>
                     <li class="nav-item"><a href="portfolio.html"  class="nav-link">Portfólio</a></li>
                     <li class="nav-item"><a href="blog.html"       class="nav-link">Blog</a></li>
                     <li class="nav-item"><a href="contactos.html"  class="nav-link">Contactos</a></li>
@@ -838,7 +965,7 @@ nav ul {
             <div class="d-flex align-items-center gap-3">
                 <!-- Orçamento só em desktop -->
                 <a href="pedir-orcamento.html" class="btn btn-orcamento d-none d-lg-block">
-                    Pedir Orçamento
+                     Solicitar Mentoria
                 </a>
 
                 <!-- Hamburger oficial — SÓ MOBILE -->
@@ -882,7 +1009,7 @@ nav ul {
         <div class="offcanvas-body">
             <ul class="nav flex-column text-center">
                 <li class="nav-item my-3"><a href="index.html"      class="nav-link text-white fs-4">Home</a></li>
-                <li class="nav-item my-3"><a href="servicos.html"   class="nav-link text-white fs-4">Serviços</a></li>
+                <li class="nav-item my-3"><a href="servicos.html"   class="nav-link text-white fs-4">Mentoria</a></li>
                 <li class="nav-item my-3"><a href="portfolio.html"  class="nav-link text-white fs-4">Portfólio</a></li>
                 <li class="nav-item my-3"><a href="blog.html"       class="nav-link text-white fs-4">Blog</a></li>
                 <li class="nav-item my-3"><a href="contactos.html"  class="nav-link text-white fs-4">Contactos</a></li>
@@ -890,7 +1017,7 @@ nav ul {
                 <li class="nav-item my-3"><a href="faq.html"        class="nav-link text-white fs-4">FAQ</a></li>
                 <li class="mt-5">
                     <a href="pedir-orcamento.html" class="btn btn-warning btn-lg w-100 fw-bold">
-                        Pedir Orçamento
+                        Solicitar Mentoria
                     </a>
                 </li>
             </ul>
@@ -899,15 +1026,32 @@ nav ul {
 </header>
 
 
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="container position-relative">
-            <h1 class="hero-title">Fale Conosco</h1>
-            <p class="hero-subtitle">Estamos em Nampula, prontos para ajudar com orçamentos vibrantes e suporte imediato!</p>
-            <i class="fas fa-headset hero-icon"></i>
-        </div>
-    </section>
+<!-- Hero Section -->
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container text-center position-relative">
 
+        <h1 class="hero-title">Entre em Contacto</h1>
+
+        <p class="hero-subtitle">
+            Disponibilizamos orientação e mentoria personalizada via online (Google Meet), 
+            com foco no desenvolvimento académico, projetos de design e desenvolvimento tecnológico.
+        </p>
+
+        <!-- BOTÕES ABAIXO DO TEXTO -->
+        <div class="hero-actions">
+            <a href="cadastro.html" class="btn-action btn-cadastro">
+                Criar conta
+            </a>
+
+            <a href="login.html" class="btn-action btn-login">
+                Entrar
+            </a>
+        </div>
+
+        <i class="fas fa-headset hero-icon"></i>
+    </div>
+</section>
     <!-- Contact Section -->
     <div class="container contact-container">
         <div class="row g-5">
@@ -985,90 +1129,120 @@ nav ul {
         </div>
     </div>
 
-    <!-- Promoções -->
-    <section class="container promocoes text-center py-5">
-        <h3 class="text-white mb-4">20% de desconto em Logotipos Profissionais, Apoio Académico e Desenvolvimento Web. Garanta já o seu projecto com qualidade premium.!</h3>
-        <a href="contactos.html" class="btn btn-light btn-lg btn-pulse">Aproveitar Oferta</a>
-    </section>
+    <!-- Promoções / Destaque -->
+<section class="container promocoes py-5">
+    <div class="promo-card mx-auto text-center">
 
-<div id="notification" style="
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: #4CAF50;
-    color: white;
-    padding: 15px 20px;
-    border-radius: 10px;
-    display: none;
-    z-index: 9999;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    font-weight: 600;
-">
-    <span id="notif-message"></span>
-</div>
+        <h3 class="promo-title">
+            Acesso a orientação com ênfase em design, apoio académico e desenvolvimento web com acompanhamento personalizado.
+        </h3>
 
+        <p class="promo-subtitle">
+            Sessões online via Google Meet com foco em aprendizagem prática, clareza e evolução dos teus projetos.
+        </p>
 
+        <a href="contactos.html" class="btn btn-light btn-lg btn-pulse">
+            Solicitar Orientação
+        </a>
 
-    <!-- Footer COMPLETO COMO NO FAQ -->
+    </div>
+</section>
     
- <footer class="footer-container">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 mb-4 text-center text-lg-start">
-                    <img src="img/logo footer.png" alt="NextLynx Tech" class="footer-logo d-block mx-auto mx-lg-0">
-                    <p>Soluções digitais vibrantes para estudantes e empresas em Moçambique.</p>
 
-                       <!-- RETIFICADO LINKS-->
-                    <div class="footer-social">
-                        <a href="https://web.facebook.com/?locale=pt_BR&_rdc=1&_rdr#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/nextlynxtech/" class="social-icon"><i class="fab fa-instagram"></i></a>
-                        <a href="https://web.whatsapp.com/send?phone=258868187201&text=Olá,%20quero%20um%20orçamento%20para%20meu%20projeto!" class="social-icon"><i class="fab fa-whatsapp"></i></a>
-                        <a href="https://www.linkedin.com/in/next-lynx-tech-45442a3ab/?isSelfProfile=true" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-6 mb-4 text-center">
-                    <h5 class="footer-title">Navegação</h5>
-                    <a href="index.html" class="footer-link">Home</a>
-                    <a href="servicos.html" class="footer-link">Serviços</a>
-                    <a href="portfolio.html" class="footer-link">Portfólio</a>
-                    <a href="blog.html" class="footer-link">Blog</a>
-                </div>
-                <div class="col-lg-2 col-md-6 mb-4 text-center">
-                    <h5 class="footer-title">Suporte</h5>
-                    <a href="contactos.html" class="footer-link">Contactos</a>
-                    <a href="testemunhos.html" class="footer-link">Testemunhos</a>
-                    <a href="faq.html" class="footer-link">FAQ</a>
-                    <a href="pedir-orcamento.html" class="footer-link">Orçamento</a>
-                </div>
-                <div class="col-lg-4 mb-4 text-center text-lg-start">
-                    <div class="footer-info mx-auto mx-lg-0" style="max-width: 300px;">
-                        <h5>Localização</h5>
-                        
-                         <!-- retificado o email -->
-                        <p>Cidade de Nampula</p>
-                         <strong>Email:</strong>  <a href="mailto:nextlynxtech@gmail.com?subject=Orçamento%20NextLynx%20Tech&body=Olá,%20gostaria%20de%20saber%20mais%20sobre..." 
-   title="Enviar email para NextLynx Tech">
-    nextlynxtech@gmail.com
-</a>
-                        <p><strong>WhatsApp:</strong> +258 868 187 201</p>
-                           <p>+258 872 394 433 </p>
-                             <p>+258 868 712 546 </p>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>© 2025 NextLynx Tech. Todos os direitos reservados.</p>
-                <p class="small mt-2">
-                    <a href="politica-privacidade.html">Política de Privacidade</a> • 
-                    <a href="termos.html">Termos de Uso</a> •
-                    <a href="sobre.html">Sobre nós</a>
+<footer class="footer-container">
+    <div class="container">
+
+        <div class="row">
+
+            <!-- Logo e descrição -->
+            <div class="col-lg-4 mb-4 text-center text-lg-start">
+                <img src="img/logo footer.png" alt="NextLynx Tech" class="footer-logo d-block mx-auto mx-lg-0">
+
+                <p>
+                    Plataforma de apoio académico e desenvolvimento de competências digitais em Moçambique.
                 </p>
+
+                <!-- Redes sociais -->
+                <div class="footer-social">
+                    <a href="https://web.facebook.com/?locale=pt_BR&_rdc=1&_rdr#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/nextlynxtech/" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="https://web.whatsapp.com/send?phone=258868187201&text=Olá,%20gostaria%20de%20obter%20orientação%20académica%20e%20informações!" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.linkedin.com/in/next-lynx-tech-45442a3ab/?isSelfProfile=true" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                </div>
             </div>
+
+            <!-- Navegação -->
+            <div class="col-lg-2 col-md-6 mb-4 text-center">
+                <h5 class="footer-title">Navegação</h5>
+                <a href="index.html" class="footer-link">Home</a>
+                <a href="servicos.html" class="footer-link">Mentoria</a>
+                <a href="portfolio.html" class="footer-link">Portfólio</a>
+                <a href="blog.html" class="footer-link">Blog</a>
+            </div>
+
+            <!-- Suporte -->
+            <div class="col-lg-2 col-md-6 mb-4 text-center">
+                <h5 class="footer-title">Suporte</h5>
+                <a href="contactos.html" class="footer-link">Contactos</a>
+                <a href="testemunhos.html" class="footer-link">Testemunhos</a>
+                <a href="faq.html" class="footer-link">FAQ</a>
+            </div>
+
+            <!-- Contactos -->
+            <div class="col-lg-4 mb-4 text-center text-lg-start">
+                <div class="footer-info mx-auto mx-lg-0" style="max-width: 300px;">
+
+                    <h5>Contacto</h5>
+
+                    <p>Cidade de Nampula</p>
+
+                    <p>
+                        <strong>Email:</strong>
+                        <a href="mailto:nextlynxtech@gmail.com">
+                            nextlynxtech@gmail.com
+                        </a>
+                    </p>
+
+                    <p><strong>WhatsApp:</strong> +258 868 187 201</p>
+                    <p>+258 872 394 433</p>
+                    <p>+258 868 712 546</p>
+
+                </div>
+            </div>
+
         </div>
-        <div class="footer-bottom">
-    <P> <strong>Abdul Narupuaxta</strong> • Consultor Académico e Soluções Digitais em Design & Tecnologia</P>
+
+        <!-- AVISO IMPORTANTE -->
+<div class="footer-warning text-center mt-4 p-3" style="border:1px solid rgba(255,255,255,0.2); border-radius:12px; background: rgba(255,255,255,0.05);">
+
+    <strong style="color:#ffeb3b;">
+        <i class="fas fa-exclamation-triangle" style="margin-right:6px;"></i>
+        Aviso Importante:
+    </strong>
+
+    <br>
+
+    Esta plataforma não realiza, não vende e não fornece trabalhos académicos prontos como monografias, dissertações, testes ou exames.  
+    O nosso foco é exclusivamente o apoio, orientação e desenvolvimento de competências académicas e digitais.
+
 </div>
-    </footer>
+        <!-- Rodapé inferior -->
+        <div class="footer-bottom text-center mt-4">
+            <p>© 2025 NextLynx Tech. Todos os direitos reservados.</p>
+
+            <p class="small mt-2">
+                <a href="politica-privacidade.html">Política de Privacidade</a> • 
+                <a href="termos.html">Termos de Uso</a> •
+                <a href="sobre.html">Sobre nós</a>
+            </p>
+
+            <p class="mt-3">
+                <strong>NextLynx Tech</strong> • Plataforma de Apoio Académico e Soluções Digitais
+            </p>
+        </div>
+
+    </div>
+</footer>
 
     <!-- RETIFICADO BOTAO Chat WhatsApp Flutuante — ORGANIZADO -->
    
