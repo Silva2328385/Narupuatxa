@@ -677,67 +677,7 @@ nav ul {
             transition: opacity 0.3s ease;
         }
 
-        a.admin-link[href*="admin.html"]:not([href=""]) {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .admin-link:hover {
-            color: #aaa;
-            text-decoration: underline;
-        }
-
-         /* Promoção */
-        .promo-section {
-            background: var(--gradient-warning);
-            color: white;
-            padding: 4rem 0;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .promo-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 L0,80 Z" fill="rgba(255,255,255,0.1)"/></svg>');
-            background-size: cover;
-        }
-
-        .promo-title {
-            font-size: 2.8rem;
-            font-weight: 900;
-            margin-bottom: 1rem;
-            text-shadow: 0 4px 10px rgba(0,0,0,0.3);
-        }
-
-        .promo-subtitle {
-            font-size: 1.4rem;
-            opacity: 0.95;
-            margin-bottom: 2rem;
-        }
-
-        .btn-promo {
-            background: white;
-            color: var(--warning);
-            font-weight: 700;
-            padding: 1.2rem 3rem;
-            border-radius: 50px;
-            font-size: 1.3rem;
-            transition: all 0.4s ease;
-            box-shadow: 0 12px 30px rgba(0,0,0,0.2);
-            animation: pulse 2s infinite;
-        }
-
-        .btn-promo:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-            background: #f8f9fa;
-        }
+        
         /* Footer */
         
  /* Footer — CENTRALIZADO */
@@ -790,6 +730,148 @@ nav ul {
             .logo-animate { height: 55px; }
             .logo-text { font-size: 1.6rem; }
         }
+
+        
+.promo-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #ffffff;
+    color: #2c3e50 !important;
+    text-decoration: none;
+    font-weight: 700;
+
+    padding: 12px 24px;
+    font-size: 1rem;
+    line-height: 1.2;
+
+    border: none;
+    border-radius: 10px;
+
+    width: auto;
+    min-width: 220px;
+    max-width: fit-content;
+
+    margin: 0 auto;
+    white-space: nowrap;
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+.promo-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+}
+
+
+
+
+        
+/* ================= PROMOÇÃO CENTRALIZADA ================= */
+
+.promocoes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* CARD REALMENTE CENTRAL */
+.promo-card {
+    width: 100%;
+    max-width: 850px;
+
+    margin: 0 auto; /* 🔥 garante centro real */
+
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(10px);
+
+    padding: 2.5rem;
+    border-radius: 20px;
+
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+
+    text-align: center;
+
+    position: relative;
+    left: 0; /* garante que não há deslocamento */
+}
+
+/* TEXTO */
+.promo-title {
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.promo-subtitle {
+    color: rgba(255,255,255,0.85);
+    font-size: 1.1rem;
+    margin-bottom: 1.8rem;
+    line-height: 1.6;
+}
+
+/* BOTÃO */
+.promo-card .btn {
+    padding: 0.9rem 2rem;
+    font-weight: 700;
+    border-radius: 50px;
+    white-space: nowrap;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 768px) {
+    .promo-card {
+        padding: 1.8rem;
+        width: 95%; /* ajuda a não colar nas bordas */
+    }
+
+    .promo-title {
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .promo-card {
+        padding: 1.5rem;
+        width: 92%;
+    }
+
+    .promo-title {
+        font-size: 1.2rem;
+    }
+}
+
+
+.btn-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-action i {
+    font-size: 0.95rem;
+}
+
+
+
+.promocoes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    padding: 4rem 1.5rem;
+    border-radius: 25px;
+    max-width: 900px;
+    margin: 3rem auto;   /* CENTRALIZA O CARD NA PÁGINA */
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
     </style>
 </head>
 <body>
@@ -809,7 +891,7 @@ nav ul {
             <nav class="d-none d-lg-flex flex-grow-1 justify-content-center">
                 <ul class="nav">
                     <li class="nav-item"><a href="index.html"      class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="servicos.html"   class="nav-link">Serviços</a></li>
+                    <li class="nav-item"><a href="servicos.html"   class="nav-link">Mentoria</a></li>
                     <li class="nav-item"><a href="portfolio.html"  class="nav-link">Portfólio</a></li>
                     <li class="nav-item"><a href="blog.html"       class="nav-link">Blog</a></li>
                     <li class="nav-item"><a href="contactos.html"  class="nav-link">Contactos</a></li>
@@ -822,7 +904,7 @@ nav ul {
             <div class="d-flex align-items-center gap-3">
                 <!-- Orçamento só em desktop -->
                 <a href="pedir-orcamento.html" class="btn btn-orcamento d-none d-lg-block">
-                    Pedir Orçamento
+                    Solicitar Mentoria
                 </a>
 
                 <!-- Hamburger oficial — SÓ MOBILE -->
@@ -866,7 +948,7 @@ nav ul {
         <div class="offcanvas-body">
             <ul class="nav flex-column text-center">
                 <li class="nav-item my-3"><a href="index.html"      class="nav-link text-white fs-4">Home</a></li>
-                <li class="nav-item my-3"><a href="servicos.html"   class="nav-link text-white fs-4">Serviços</a></li>
+                <li class="nav-item my-3"><a href="servicos.html"   class="nav-link text-white fs-4">Mentoria</a></li>
                 <li class="nav-item my-3"><a href="portfolio.html"  class="nav-link text-white fs-4">Portfólio</a></li>
                 <li class="nav-item my-3"><a href="blog.html"       class="nav-link text-white fs-4">Blog</a></li>
                 <li class="nav-item my-3"><a href="contactos.html"  class="nav-link text-white fs-4">Contactos</a></li>
@@ -874,7 +956,7 @@ nav ul {
                 <li class="nav-item my-3"><a href="faq.html"        class="nav-link text-white fs-4">FAQ</a></li>
                 <li class="mt-5">
                     <a href="pedir-orcamento.html" class="btn btn-warning btn-lg w-100 fw-bold">
-                        Pedir Orçamento
+                        Solicitar Mentoria
                     </a>
                 </li>
             </ul>
@@ -883,37 +965,41 @@ nav ul {
 </header>
 
 
-
     <!-- Hero FAQ -->
     <section class="faq-header">
         <div class="container position-relative">
             <h1 class="faq-title">Perguntas Frequentes</h1>
-            <p class="faq-subtitle">Tudo sobre nossos serviços com respostas claras e profissionais</p>
+            <p class="faq-subtitle"> Esclarecimentos sobre orientação, mentoria e acompanhamento nas áreas académica, criativa e tecnológica.</p>
             <i class="fas fa-question-circle faq-icon"></i>
         </div>
     </section>
+    
 
-    <!-- Stats -->
-    <div class="container faq-stats">
-        <div class="row text-center">
-            <div class="col-md-3 stat-item">
-                <div class="stat-number">30</div>
-                <p class="stat-label">Perguntas Respondidas</p>
-            </div>
-            <div class="col-md-3 stat-item">
-                <div class="stat-number">APA</div>
-                <p class="stat-label">Formatação Profissional</p>
-            </div>
-            <div class="col-md-3 stat-item">
-                <div class="stat-number">24h</div>
-                <p class="stat-label">Resposta Média</p>
-            </div>
-            <div class="col-md-3 stat-item">
-                <div class="stat-number">100%</div>
-                <p class="stat-label">Satisfação Garantida</p>
-            </div>
+   <!-- Estatísticas -->
+<div class="container faq-stats">
+    <div class="row text-center">
+        <div class="col-md-3 stat-item">
+            <div class="stat-number">30+</div>
+            <p class="stat-label">Questões Esclarecidas</p>
+        </div>
+
+        <div class="col-md-3 stat-item">
+            <div class="stat-number">APA</div>
+            <p class="stat-label">Normas e Orientações Académicas</p>
+        </div>
+
+        <div class="col-md-3 stat-item">
+            <div class="stat-number">24h</div>
+            <p class="stat-label">Tempo Médio de Resposta</p>
+        </div>
+
+        <div class="col-md-3 stat-item">
+            <div class="stat-number">100%</div>
+            <p class="stat-label">Compromisso com a Qualidade</p>
         </div>
     </div>
+</div>
+
 
     <!-- FAQ List -->
     <main class="container faq-container">
@@ -923,70 +1009,128 @@ nav ul {
     </main>
 
     <!-- Promoções -->
-    <section class="container promocoes text-center py-5">
-        <h3 class="text-white mb-4">Dúvidas? Fale Conosco!</h3>
-        <a href="contactos.html" class="btn btn-light btn-lg btn-pulse">Fazer Pedido Agora!</a>
-    </section>
+  
+ <!-- Promoções / Destaque -->
+<section class="container promocoes py-5">
+    <div class="promo-card mx-auto text-center">
 
-    <!-- Footer Completo -->
-   <footer class="footer-container">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 mb-4 text-center text-lg-start">
-                    <img src="img/logo footer.png" alt="NextLynx Tech" class="footer-logo d-block mx-auto mx-lg-0">
-                    <p>Soluções digitais vibrantes para estudantes e empresas em Moçambique.</p>
+        <h3 class="promo-title">
+Espaço de Apoio e Esclarecimento de Dúvidas
+        </h3>
 
-                       <!-- RETIFICADO LINKS-->
-                    <div class="footer-social">
-                        <a href="https://web.facebook.com/?locale=pt_BR&_rdc=1&_rdr#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/nextlynxtech/" class="social-icon"><i class="fab fa-instagram"></i></a>
-                        <a href="https://web.whatsapp.com/send?phone=258868187201&text=Olá,%20quero%20um%20orçamento%20para%20meu%20projeto!" class="social-icon"><i class="fab fa-whatsapp"></i></a>
-                        <a href="https://www.linkedin.com/in/next-lynx-tech-45442a3ab/?isSelfProfile=true" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-6 mb-4 text-center">
-                    <h5 class="footer-title">Navegação</h5>
-                    <a href="index.html" class="footer-link">Home</a>
-                    <a href="servicos.html" class="footer-link">Serviços</a>
-                    <a href="portfolio.html" class="footer-link">Portfólio</a>
-                    <a href="blog.html" class="footer-link">Blog</a>
-                </div>
-                <div class="col-lg-2 col-md-6 mb-4 text-center">
-                    <h5 class="footer-title">Suporte</h5>
-                    <a href="contactos.html" class="footer-link">Contactos</a>
-                    <a href="testemunhos.html" class="footer-link">Testemunhos</a>
-                    <a href="faq.html" class="footer-link">FAQ</a>
-                    <a href="pedir-orcamento.html" class="footer-link">Orçamento</a>
-                </div>
-                <div class="col-lg-4 mb-4 text-center text-lg-start">
-                    <div class="footer-info mx-auto mx-lg-0" style="max-width: 300px;">
-                        <h5>Localização</h5>
-                        
-                         <!-- retificado o email -->
-                        <p>Cidade de Nampula</p>
-                         <strong>Email:</strong>  <a href="mailto:nextlynxtech@gmail.com?subject=Orçamento%20NextLynx%20Tech&body=Olá,%20gostaria%20de%20saber%20mais%20sobre..." 
-   title="Enviar email para NextLynx Tech">
-    nextlynxtech@gmail.com
+        <p class="promo-subtitle">
+             Aqui você pode obter orientação sobre design gráfico, tecnologia e desenvolvimento académico.
+        </p>
+
+        <a href="contactos.html" class="btn promo-btn btn-pulse">
+     Aceder ao Apoio
 </a>
-                        <p><strong>WhatsApp:</strong> +258 868 187 201</p>
-                           <p>+258 872 394 433 </p>
-                             <p>+258 868 712 546 </p>
-                    </div>
+
+    </div>
+</section>
+
+
+
+<footer class="footer-container">
+    <div class="container">
+
+        <div class="row">
+
+            <!-- Logo e descrição -->
+            <div class="col-lg-4 mb-4 text-center text-lg-start">
+                <img src="img/logo footer.png" alt="NextLynx Tech" class="footer-logo d-block mx-auto mx-lg-0">
+
+                <p>
+                    Plataforma de apoio académico e desenvolvimento de competências digitais em Moçambique.
+                </p>
+
+                <!-- Redes sociais -->
+                <div class="footer-social">
+                    <a href="https://web.facebook.com/?locale=pt_BR&_rdc=1&_rdr#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/nextlynxtech/" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="https://web.whatsapp.com/send?phone=258868187201&text=Olá,%20gostaria%20de%20obter%20orientação%20académica%20e%20informações!" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.linkedin.com/in/next-lynx-tech-45442a3ab/?isSelfProfile=true" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>© 2025 NextLynx Tech. Todos os direitos reservados.</p>
-                <p class="small mt-2">
-                    <a href="politica-privacidade.html">Política de Privacidade</a> • 
-                    <a href="termos.html">Termos de Uso</a> •
-                    <a href="sobre.html">Sobre nós</a>
-                </p>
+
+            <!-- Navegação -->
+            <div class="col-lg-2 col-md-6 mb-4 text-center">
+                <h5 class="footer-title">Navegação</h5>
+                <a href="index.html" class="footer-link">Home</a>
+                <a href="servicos.html" class="footer-link">Mentoria</a>
+                <a href="portfolio.html" class="footer-link">Portfólio</a>
+                <a href="blog.html" class="footer-link">Blog</a>
             </div>
+
+            <!-- Suporte -->
+            <div class="col-lg-2 col-md-6 mb-4 text-center">
+                <h5 class="footer-title">Suporte</h5>
+                <a href="contactos.html" class="footer-link">Contactos</a>
+                <a href="testemunhos.html" class="footer-link">Testemunhos</a>
+                <a href="faq.html" class="footer-link">FAQ</a>
+            </div>
+
+            <!-- Contactos -->
+            <div class="col-lg-4 mb-4 text-center text-lg-start">
+                <div class="footer-info mx-auto mx-lg-0" style="max-width: 300px;">
+
+                    <h5>Contacto</h5>
+
+                    <p>Cidade de Nampula</p>
+
+                    <p>
+                        <strong>Email:</strong>
+                        <a href="mailto:nextlynxtech@gmail.com">
+                            nextlynxtech@gmail.com
+                        </a>
+                    </p>
+
+                    <p><strong>WhatsApp:</strong> +258 868 187 201</p>
+                    <p>+258 872 394 433</p>
+                    <p>+258 868 712 546</p>
+
+                </div>
+            </div>
+
         </div>
-        <div class="footer-bottom">
-    <P> <strong>Abdul Narupuaxta</strong> • Consultor Académico e Soluções Digitais em Design & Tecnologia</P>
+
+        <!-- AVISO IMPORTANTE -->
+<div class="footer-warning text-center mt-4 p-3" style="border:1px solid rgba(255,255,255,0.2); border-radius:12px; background: rgba(255,255,255,0.05);">
+
+    <strong style="color:#ffeb3b;">
+        <i class="fas fa-exclamation-triangle" style="margin-right:6px;"></i>
+        Aviso Importante:
+    </strong>
+
+    <br>
+
+    Esta plataforma não realiza, não vende e não fornece trabalhos académicos prontos como monografias, dissertações, testes ou exames.  
+    O nosso foco é exclusivamente o apoio, orientação e desenvolvimento de competências académicas e digitais.
+
 </div>
-    </footer>
+        <!-- Rodapé inferior -->
+        <div class="footer-bottom text-center mt-4">
+            <p>© 2025 NextLynx Tech. Todos os direitos reservados.</p>
+
+            <p class="small mt-2">
+                <a href="politica-privacidade.html">Política de Privacidade</a> • 
+                <a href="termos.html">Termos de Uso</a> •
+                <a href="sobre.html">Sobre nós</a>
+            </p>
+
+            <p class="mt-3">
+                <strong>NextLynx Tech</strong> • Plataforma de Apoio Académico e Soluções Digitais
+            </p>
+        </div>
+
+    </div>
+</footer>
+
+
+
+
+
+
 
     <!-- RETIFICADO BOTAO Chat WhatsApp Flutuante — ORGANIZADO -->
    
@@ -1029,423 +1173,427 @@ nav ul {
     <!-- SCRIPT: 30 FAQs com Animações e Botões Visíveis -->
     <script>
         // 30 Perguntas Frequentes (TOD-AS COMPLETAS)
-        const faqs = [
-            // 1. APA 6ª Edição
-            { 
-                pergunta: "Vocês fazem formatação completa em APA 6ª edição?", 
-                resposta: `<p>Sim, formatação 100% conforme <strong>APA 6ª edição</strong>:</p>
-                          <ul class="faq-list">
-                            <li><strong>Título e abstract:</strong> centralizados, com running head</li>
-                            <li><strong>Citações no texto:</strong> (Autor, Ano) ou Autor (Ano)</li>
-                            <li><strong>Referências:</strong> ordem alfabética, com DOIs quando disponíveis</li>
-                            <li><strong>Tabelas e figuras:</strong> numeradas, com títulos e notas</li>
-                            <li><strong>Margens e espaçamento:</strong> 1 polegada, espaçamento duplo</li>
-                          </ul>
-                          <p>Incluímos verificação de consistência e adaptação para diferentes áreas (Psicologia, Educação, etc.).</p>`, 
-                categoria: "Trabalhos Académicos"
-            },
-            // 2. APA 7ª Edição
-            { 
-                pergunta: "E a APA 7ª edição, também oferecem?", 
-                resposta: `<p>Claro! Formatação completa conforme <strong>APA 7ª edição</strong>:</p>
-                          <ul class="faq-list">
-                            <li><strong>Título:</strong> centralizado, negrito, sem running head (exceto teses)</li>
-                            <li><strong>Citações:</strong> até 20 autores na referência</li>
-                            <li><strong>DOIs:</strong> formatados como URLs clicáveis</li>
-                            <li><strong>Fontes:</strong> flexíveis (Calibri 11, Arial 11, Times 12)</li>
-                            <li><strong>Bias-free language:</strong> linguagem inclusiva e neutra</li>
-                          </ul>
-                          <p>Atualizamos automaticamente conforme a versão solicitada.</p>`, 
-                categoria: "Trabalhos Académicos"
-            },
+        // Perguntas Frequentes
+const faqs = [
+    // 1. APA 6ª Edição
+    {
+        pergunta: "Disponibilizam orientação em formatação segundo a APA 6ª edição?",
+        resposta: `<p>Sim. Oferecemos orientação completa na aplicação das normas da <strong>APA 6ª edição</strong>, incluindo:</p>
+                   <ul class="faq-list">
+                     <li><strong>Página de título e resumo:</strong> estrutura e organização adequadas</li>
+                     <li><strong>Citações no texto:</strong> formatos narrativo e parentético</li>
+                     <li><strong>Referências bibliográficas:</strong> ordenação alfabética e padronização</li>
+                     <li><strong>Tabelas e figuras:</strong> numeração, títulos e notas explicativas</li>
+                     <li><strong>Formatação geral:</strong> margens, espaçamento e apresentação académica</li>
+                   </ul>
+                   <p>O acompanhamento é adaptado às exigências de diferentes áreas de estudo e níveis académicos.</p>`,
+        categoria: "Orientação Académica"
+    },
+
+    // 2. APA 7ª Edição
+    {
+        pergunta: "Também oferecem orientação sobre a APA 7ª edição?",
+        resposta: `<p>Sim. Prestamos orientação detalhada na aplicação das normas da <strong>APA 7ª edição</strong>, incluindo:</p>
+                   <ul class="faq-list">
+                     <li><strong>Estrutura do trabalho:</strong> organização atualizada conforme a norma</li>
+                     <li><strong>Citações e referências:</strong> regras mais recentes de apresentação</li>
+                     <li><strong>DOIs e links:</strong> formatação correta em formato URL</li>
+                     <li><strong>Opções de fonte:</strong> utilização das tipografias recomendadas</li>
+                     <li><strong>Linguagem académica:</strong> clareza, objetividade e inclusão</li>
+                   </ul>
+                   <p>A orientação é ajustada à versão exigida pela instituição ou pelo orientador.</p>`,
+        categoria: "Orientação Académica"
+    },
+
             // 3. ABNT
-            { 
-                pergunta: "Vocês seguem rigorosamente as normas ABNT?", 
-                resposta: `<p>Sim, formatação 100% conforme <strong>ABNT NBR 14724</strong> (2023):</p>
-                          <ul class="faq-list">
-                            <li><strong>Estrutura:</strong> capa, folha de rosto, sumário automático</li>
-                            <li><strong>Paginação:</strong> pré-textual em romano, textual em arábico</li>
-                            <li><strong>Margens:</strong> 3cm esquerda, 2cm direita, superior e inferior</li>
-                            <li><strong>Citações:</strong> NBR 10520 (diretas/indiretas)</li>
-                            <li><strong>Referências:</strong> NBR 6023 (livros, artigos, sites)</li>
-                          </ul>
-                          <p>Entregamos com checklist de conformidade ABNT.</p>`, 
-                categoria: "Trabalhos Académicos"
-            },
-            // 4. Artigo Científico
-            { 
-                pergunta: "Vocês criam artigos científicos para publicação?", 
-                resposta: `<p>Sim, artigos completos para revistas nacionais e internacionais:</p>
-                          <ul class="faq-list">
-                            <li><strong>Estrutura IMRAD:</strong> Introdução, Métodos, Resultados, Discussão</li>
-                            <li><strong>Redação técnica:</strong> linguagem acadêmica, precisão científica</li>
-                            <li><strong>Formatação:</strong> APA, ABNT, Vancouver ou norma da revista</li>
-                            <li><strong>Submissão:</strong> plataformas (SciELO, Elsevier, Springer)</li>
-                            <li><strong>Acompanhamento:</strong> até aprovação ou resposta a revisores</li>
-                          </ul>
-                          <p>Incluímos carta de submissão e revisão de revisores.</p>`, 
-                categoria: "Trabalhos Académicos"
-            },
+{
+    pergunta: "Disponibilizam orientação segundo as normas da ABNT?",
+    resposta: `<p>Sim. Oferecemos orientação completa na aplicação das normas da <strong>ABNT</strong>, incluindo:</p>
+               <ul class="faq-list">
+                 <li><strong>Estrutura do trabalho:</strong> elementos pré-textuais, textuais e pós-textuais</li>
+                 <li><strong>Paginação:</strong> organização e numeração conforme as normas</li>
+                 <li><strong>Configuração de página:</strong> margens, espaçamento e formatação</li>
+                 <li><strong>Citações:</strong> aplicação correta das normas para citações diretas e indiretas</li>
+                 <li><strong>Referências bibliográficas:</strong> padronização de livros, artigos, documentos e fontes digitais</li>
+               </ul>
+               <p>A orientação é realizada de forma rigorosa, assegurando conformidade com os padrões académicos exigidos.</p>`,
+    categoria: "Orientação Académica"
+},
+
+// 4. Artigo Científico
+{
+    pergunta: "Prestam orientação na elaboração de artigos científicos?",
+    resposta: `<p>Sim. Disponibilizamos orientação especializada em todas as etapas de elaboração de artigos científicos, incluindo:</p>
+               <ul class="faq-list">
+                 <li><strong>Estrutura científica:</strong> introdução, metodologia, resultados e discussão</li>
+                 <li><strong>Redação académica:</strong> clareza, rigor e linguagem científica</li>
+                 <li><strong>Formatação:</strong> adequação às normas exigidas pela instituição ou revista</li>
+                 <li><strong>Organização bibliográfica:</strong> citações e referências padronizadas</li>
+                 <li><strong>Preparação para submissão:</strong> revisão final e adequação às diretrizes editoriais</li>
+               </ul>
+               <p>O acompanhamento é personalizado, desde a conceção do artigo até à sua versão final.</p>`,
+    categoria: "Orientação Académica"
+},
             // 5. Sistema de Gestão
-            { 
-                pergunta: "O que é um sistema de gestão de negócios personalizado?", 
-                resposta: `<p>É uma solução digital sob medida para automatizar sua empresa:</p>
-                          <ul class="faq-list">
-                            <li><strong>Estoque:</strong> entrada/saída, alertas de mínimo</li>
-                            <li><strong>Faturação:</strong> emissão com IVA e retenção</li>
-                            <li><strong>CRM:</strong> cadastro de clientes, histórico de vendas</li>
-                            <li><strong>Relatórios:</strong> financeiros, gráficos, exportação</li>
-                            <li><strong>Acesso:</strong> web e app mobile, multi-usuário</li>
-                          </ul>
-                          <p>Desenvolvido conforme o seu modelo de negócio.</p>`, 
-                categoria: "Serviços de Tecnologia"
-            },
-            // 6. TCC Completo
-            { 
-                pergunta: "Como funciona o serviço de TCC completo?", 
-                resposta: `<p>Processo em 6 etapas estruturadas:</p>
-                          <ol class="faq-list" style="list-style: decimal; padding-left: 1.5rem;">
-                            <li><strong>Briefing:</strong> tema, objetivos, diretrizes</li>
-                            <li><strong>Pesquisa:</strong> bases acadêmicas nacionais/internacionais</li>
-                            <li><strong>Redação:</strong> introdução, revisão, metodologia, resultados</li>
-                            <li><strong>Formatação:</strong> ABNT ou APA conforme solicitação</li>
-                            <li><strong>Slides:</strong> apresentação com animações para defesa</li>
-                            <li><strong>Entrega:</strong> PDF, Word, revisões ilimitadas</li>
-                          </ol>
-                          <p>Acompanhamento semanal via WhatsApp.</p>`, 
-                categoria: "Trabalhos Académicos"
-            },
+{
+    pergunta: "O que é um sistema de gestão personalizado?",
+    resposta: `<p>É uma solução tecnológica desenvolvida de acordo com as necessidades específicas de cada organização, com o objetivo de otimizar processos e melhorar a gestão.</p>
+               <ul class="faq-list">
+                 <li><strong>Gestão de operações:</strong> controlo de actividades e fluxos de trabalho</li>
+                 <li><strong>Processos financeiros:</strong> acompanhamento de receitas, despesas e relatórios</li>
+                 <li><strong>Gestão de relacionamentos:</strong> organização de contactos, interações e histórico</li>
+                 <li><strong>Análise de desempenho:</strong> relatórios, indicadores e estatísticas em tempo real</li>
+                 <li><strong>Acesso integrado:</strong> utilização em diferentes dispositivos e por múltiplos utilizadores</li>
+               </ul>
+               <p>Cada solução é concebida para responder às particularidades e objectivos de cada negócio.</p>`,
+    categoria: "Tecnologia e Inovação"
+},
+
+// 6. Trabalho de Conclusão de Curso (TCC)
+{
+    pergunta: "Como funciona a orientação para o Trabalho de Conclusão de Curso (TCC)?",
+    resposta: `<p>O acompanhamento é realizado de forma estruturada e personalizada, abrangendo todas as etapas do desenvolvimento do trabalho:</p>
+               <ol class="faq-list" style="list-style: decimal; padding-left: 1.5rem;">
+                 <li><strong>Planeamento inicial:</strong> definição do tema, problema e objectivos</li>
+                 <li><strong>Pesquisa bibliográfica:</strong> levantamento e análise de fontes científicas relevantes</li>
+                 <li><strong>Desenvolvimento do conteúdo:</strong> elaboração dos capítulos com rigor académico</li>
+                 <li><strong>Normalização:</strong> adequação às normas académicas exigidas</li>
+                 <li><strong>Preparação da apresentação:</strong> organização de slides e estrutura da defesa</li>
+                 <li><strong>Revisão final:</strong> aperfeiçoamento técnico, linguístico e metodológico</li>
+               </ol>
+               <p>O processo inclui acompanhamento contínuo, com orientação em cada fase até à versão final.</p>`,
+    categoria: "Orientação Académica"
+},
             // 7. Slides de Defesa
-            { 
-                pergunta: "Vocês fazem slides para defesa de TCC?", 
-                resposta: `<p>Apresentação profissional com:</p>
-                          <ul class="faq-list">
-                            <li>Design corporativo personalizado</li>
-                            <li>Animações suaves e transições</li>
-                            <li>Gráficos, tabelas e imagens de alta qualidade</li>
-                            <li>Notas do orador para cada slide</li>
-                            <li>Compatibilidade com PowerPoint e Google Slides</li>
-                          </ul>
-                          <p>Pronta para impressionar a banca!</p>`, 
-                categoria: "Trabalhos Académicos"
-            },
-            // 8. Website Institucional
-            { 
-                pergunta: "Como é o processo de criação de um website institucional?", 
-                resposta: `<p>Processo em 5 etapas:</p>
-                          <ol class="faq-list" style="list-style: decimal; padding-left: 1.5rem;">
-                            <li>Reunião para definir objetivos e público-alvo</li>
-                            <li>Criação de wireframes e design mockups</li>
-                            <li>Desenvolvimento frontend/backend</li>
-                            <li>Testes de usabilidade e responsividade</li>
-                            <li>Lançamento com treinamento básico</li>
-                          </ol>
-                          <p>Entrega com painel admin para atualizações.</p>`, 
-                categoria: "Serviços de Tecnologia"
-            },
+{
+    pergunta: "Prestam apoio na preparação de apresentações para defesa académica?",
+    resposta: `<p>Sim. Oferecemos apoio especializado na elaboração de apresentações académicas claras, organizadas e visualmente profissionais.</p>
+               <ul class="faq-list">
+                 <li><strong>Estrutura lógica:</strong> organização sequencial e coerente do conteúdo</li>
+                 <li><strong>Design académico:</strong> apresentação visual elegante e adequada ao contexto</li>
+                 <li><strong>Elementos visuais:</strong> integração de gráficos, tabelas e imagens relevantes</li>
+                 <li><strong>Guião de apresentação:</strong> orientações para exposição oral de cada secção</li>
+                 <li><strong>Compatibilidade:</strong> utilização em PowerPoint, Google Slides e outras plataformas</li>
+               </ul>
+               <p>O objectivo é assegurar uma apresentação clara, confiante e alinhada com os padrões académicos.</p>`,
+    categoria: "Orientação Académica"
+},
+
+// 8. Website Institucional
+{
+    pergunta: "Como decorre o desenvolvimento de um website institucional?",
+    resposta: `<p>O processo é conduzido de forma estruturada, garantindo que o website represente adequadamente a identidade e os objectivos da instituição.</p>
+               <ol class="faq-list" style="list-style: decimal; padding-left: 1.5rem;">
+                 <li><strong>Levantamento de necessidades:</strong> definição de objectivos, público-alvo e funcionalidades</li>
+                 <li><strong>Planeamento visual:</strong> criação da estrutura e da proposta de design</li>
+                 <li><strong>Desenvolvimento técnico:</strong> implementação das funcionalidades e conteúdos</li>
+                 <li><strong>Testes de desempenho:</strong> verificação de usabilidade, segurança e responsividade</li>
+                 <li><strong>Publicação e orientação:</strong> disponibilização do website e apoio inicial na sua utilização</li>
+               </ol>
+               <p>Cada projecto é desenvolvido de forma personalizada, de acordo com as necessidades da organização.</p>`,
+    categoria: "Tecnologia e Inovação"
+},
             // 9. Logotipo
             { 
-                pergunta: "Vocês criam logotipos profissionais?", 
-                resposta: `<p>Sim, logotipos únicos e memoráveis:</p>
-                          <ul class="faq-list">
-                            <li>Briefing detalhado sobre a marca</li>
-                            <li>3-5 propostas de design</li>
-                            <li>Revisões ilimitadas até aprovação</li>
-                            <li>Entrega em SVG, PNG, JPG, AI</li>
-                            <li>Manual de uso da marca</li>
-                          </ul>
-                          <p>Design que reflete a essência do seu negócio.</p>`, 
-                categoria: "Design Gráfico"
-            },
+    pergunta: "Existe orientação para desenvolvimento de logotipos e identidade visual?", 
+    resposta: `<p>Sim, são abordados processos de criação de identidade visual com foco educativo:</p>
+              <ul class="faq-list">
+                <li>Estudo de marca e conceito visual</li>
+                <li>Exploração de propostas de design</li>
+                <li>Processo de revisão e melhoria contínua</li>
+                <li>Exploração de formatos digitais (SVG, PNG, JPG, etc.)</li>
+                <li>Noções de aplicação de identidade visual</li>
+              </ul>
+              <p>O objetivo é desenvolver competências em design gráfico e comunicação visual.</p>`, 
+    categoria: "Design Gráfico"
+},
             // 10. Loja Online
-            { 
-                pergunta: "Vocês fazem lojas online completas?", 
-                resposta: `<p>Loja completa com:</p>
-                          <ul class="faq-list">
-                            <li>Carrinho de compras</li>
-                            <li>Gestão de produtos/estoque</li>
-                            <li>Cupons de desconto</li>
-                            <li>Integração com transportadoras</li>
-                            <li>Painel admin intuitivo</li>
-                          </ul>
-                          <p>Pronta para vender 24h por dia.</p>`, 
-                categoria: "Serviços de Tecnologia"
-            },
-            // 11. Revisão de Texto
-            { 
-                pergunta: "Vocês fazem revisão de textos acadêmicos?", 
-                resposta: `<p>Revisão completa com 3 etapas:</p>
-                          <ul class="faq-list">
-                            <li><strong>Ortografia e gramática:</strong> correção de erros</li>
-                            <li><strong>Coerência e coesão:</strong> fluxo do texto</li>
-                            <li><strong>Normas técnicas:</strong> ABNT/APA conforme solicitação</li>
-                          </ul>
-                          <p>Relatório de alterações e sugestões de melhoria.</p>`, 
-                categoria: "Trabalhos Académicos"
-            },
+           { 
+    pergunta: "Há orientação para criação de sistemas de loja online?", 
+    resposta: `<p>Sim, são abordados conceitos e práticas de desenvolvimento de sistemas de comércio digital:</p>
+              <ul class="faq-list">
+                <li>Estrutura de carrinho de compras</li>
+                <li>Gestão de produtos e organização de dados</li>
+                <li>Conceitos de promoções e regras de desconto</li>
+                <li>Integração com sistemas de entrega (logística)</li>
+                <li>Interface de administração e gestão</li>
+              </ul>
+              <p>O foco é o desenvolvimento de competências em tecnologia e sistemas web.</p>`, 
+    categoria: "Serviços de Tecnologia"
+},
+          { 
+    pergunta: "Existe apoio na revisão e melhoria de textos académicos?", 
+    resposta: `<p>Sim, é realizado acompanhamento na melhoria de textos académicos em diferentes níveis:</p>
+              <ul class="faq-list">
+                <li><strong>Ortografia e gramática:</strong> identificação e correção de erros linguísticos</li>
+                <li><strong>Coerência e coesão:</strong> melhoria da organização e fluidez do texto</li>
+                <li><strong>Normas académicas:</strong> orientação sobre estilos como ABNT e APA</li>
+              </ul>
+              <p>O objetivo é desenvolver competências de escrita académica e melhoria da qualidade textual.</p>`, 
+    categoria: "Trabalhos Académicos"
+},
             // 12. Catálogo Digital
-            { 
-                pergunta: "Como é a criação de um catálogo digital?", 
-                resposta: `<p>Catálogo interativo com:</p>
-                          <ul class="faq-list">
-                            <li>Páginas navegáveis</li>
-                            <li>Zoom em produtos</li>
-                            <li>Busca por categoria</li>
-                            <li>Botão WhatsApp para pedidos</li>
-                            <li>Versão PDF para download</li>
-                          </ul>
-                          <p>Aumenta conversões em até 70%.</p>`, 
-                categoria: "Design Gráfico"
-            },
+           { 
+    pergunta: "Como funciona o desenvolvimento de catálogos digitais interativos?", 
+    resposta: `<p>São abordados conceitos de criação de catálogos digitais como recurso de aprendizagem em design e tecnologia:</p>
+              <ul class="faq-list">
+                <li>Estruturação de páginas navegáveis</li>
+                <li>Organização visual de produtos ou conteúdos</li>
+                <li>Sistemas de pesquisa e categorização</li>
+                <li>Integração de canais de contacto digital</li>
+                <li>Exportação para formatos digitais como PDF</li>
+              </ul>
+              <p>O foco é o desenvolvimento de competências em design de interfaces e comunicação digital.</p>`, 
+    categoria: "Design Gráfico"
+},
             // 13. Sistema de Faturação
             { 
-                pergunta: "Vocês criam sistemas de faturação?", 
-                resposta: `<p>Sistema completo de faturação:</p>
-                          <ul class="faq-list">
-                            <li>Emissão de faturas com IVA e retenção</li>
-                            <li>Integração com M-Pesa e e-Mola</li>
-                            <li>Relatórios diários, semanais e mensais</li>
-                            <li>Exportação para Excel e PDF</li>
-                            <li>Backup automático na nuvem</li>
-                          </ul>
-                          <p>Conformidade com legislação moçambicana.</p>`, 
-                categoria: "Serviços de Tecnologia"
-            },
+    pergunta: "Existe orientação no desenvolvimento de sistemas de gestão e faturação?", 
+    resposta: `<p>Sim, são abordados conceitos de desenvolvimento de sistemas de gestão empresarial e processamento de dados:</p>
+              <ul class="faq-list">
+                <li>Estrutura de registo de transações e documentos digitais</li>
+                <li>Conceitos de impostos e cálculos automatizados (IVA e retenções)</li>
+                <li>Integração de meios de pagamento digitais (M-Pesa, e-Mola)</li>
+                <li>Geração de relatórios analíticos e estatísticos</li>
+                <li>Armazenamento e backup de dados na nuvem</li>
+              </ul>
+              <p>O foco é o desenvolvimento de competências em sistemas de gestão e engenharia de software aplicada.</p>`, 
+    categoria: "Serviços de Tecnologia"
+},
             // 14. Flyer Publicitário
-            { 
-                pergunta: "Vocês fazem flyers e cartazes promocionais?", 
-                resposta: `<p>Materiais promocionais com:</p>
-                          <ul class="faq-list">
-                            <li>Design atrativo e chamativo</li>
-                            <li>Cores vibrantes e tipografia moderna</li>
-                            <li>Impressão em alta resolução</li>
-                            <li>Versões para redes sociais</li>
-                            <li>QR Code para links</li>
-                          </ul>
-                          <p>Perfeito para eventos e promoções.</p>`, 
-                categoria: "Design Gráfico"
-            },
+           { 
+    pergunta: "Como funciona a criação de materiais gráficos para comunicação visual?", 
+    resposta: `<p>São exploradas técnicas de design gráfico aplicadas à comunicação visual:</p>
+              <ul class="faq-list">
+                <li>Composição visual e hierarquia de informação</li>
+                <li>Uso de cores, tipografia e elementos gráficos</li>
+                <li>Preparação de materiais para impressão e digital</li>
+                <li>Adaptação para redes sociais e plataformas digitais</li>
+                <li>Integração de elementos interativos como QR Code</li>
+              </ul>
+              <p>O objetivo é desenvolver competências em design e comunicação visual eficaz.</p>`, 
+    categoria: "Design Gráfico"
+},
             // 15. Dashboard
             { 
-                pergunta: "O que é um dashboard administrativo?", 
-                resposta: `<p>Painel de controle com:</p>
-                          <ul class="faq-list">
-                            <li>Gráficos em tempo real</li>
-                            <li>KPIs personalizados</li>
-                            <li>Filtros por data/período</li>
-                            <li>Exportação para Excel/PDF</li>
-                            <li>Acesso seguro por login</li>
-                          </ul>
-                          <p>Visão completa do seu negócio em um clique.</p>`, 
-                categoria: "Serviços de Tecnologia"
-            },
+    pergunta: "O que é um dashboard em sistemas de informação?", 
+    resposta: `<p>Um dashboard é um painel visual utilizado em sistemas de informação para análise e monitorização de dados:</p>
+              <ul class="faq-list">
+                <li>Representação de dados através de gráficos dinâmicos</li>
+                <li>Indicadores de desempenho (KPIs)</li>
+                <li>Filtros para análise por períodos específicos</li>
+                <li>Exportação de dados para formatos como Excel e PDF</li>
+                <li>Sistema de autenticação e controlo de acesso</li>
+              </ul>
+              <p>O objetivo é apoiar a tomada de decisão através da visualização estruturada de dados.</p>`, 
+    categoria: "Serviços de Tecnologia"
+},
             // 16. Integração M-Pesa
-            { 
-                pergunta: "Vocês integram pagamentos com M-Pesa?", 
-                resposta: `<p>Integração completa com M-Pesa:</p>
-                          <ul class="faq-list">
-                            <li>Pagamentos instantâneos</li>
-                            <li>Confirmação por SMS</li>
-                            <li>Relatórios de transações</li>
-                            <li>Segurança com criptografia</li>
-                            <li>Testes em ambiente sandbox</li>
-                          </ul>
-                          <p>Checkout rápido e confiável.</p>`, 
-                categoria: "Serviços de Tecnologia"
-            },
+           { 
+    pergunta: "Como funciona a integração de sistemas com meios de pagamento digitais?", 
+    resposta: `<p>São abordados conceitos de integração de sistemas com plataformas de pagamento móvel:</p>
+              <ul class="faq-list">
+                <li>Processamento de transações digitais em tempo real</li>
+                <li>Notificações automáticas de confirmação de pagamento</li>
+                <li>Registo e análise de histórico de transações</li>
+                <li>Aplicação de medidas de segurança e encriptação de dados</li>
+                <li>Testes em ambientes simulados (sandbox)</li>
+              </ul>
+              <p>O foco é o estudo de integração de APIs e sistemas financeiros digitais.</p>`, 
+    categoria: "Serviços de Tecnologia"
+},
             // 17. Identidade Visual
             { 
-                pergunta: "Vocês criam identidades visuais completas?", 
-                resposta: `<p>Pacote completo com:</p>
-                          <ul class="faq-list">
-                            <li>Logotipo principal e variações</li>
-                            <li>Paleta de cores e tipografia</li>
-                            <li>Cartão de visita e papel timbrado</li>
-                            <li>Assinatura de email</li>
-                            <li>Manual de uso da marca</li>
-                          </ul>
-                          <p>Identidade coesa e profissional.</p>`, 
-                categoria: "Design Gráfico"
-            },
+    pergunta: "Como é abordado o estudo de identidade visual em design gráfico?", 
+    resposta: `<p>São explorados os elementos fundamentais da construção de identidade visual em design gráfico:</p>
+              <ul class="faq-list">
+                <li>Criação e variações de logotipo como estudo de marca</li>
+                <li>Definição de paleta cromática e tipografia</li>
+                <li>Aplicação de elementos visuais em suportes institucionais</li>
+                <li>Conceitos de comunicação por email e documentos</li>
+                <li>Normas de aplicação e consistência visual</li>
+              </ul>
+              <p>O objetivo é desenvolver competências em construção e gestão de identidade visual.</p>`, 
+    categoria: "Design Gráfico"
+},
             // 18. Plano de Negócios
             { 
-                pergunta: "Vocês fazem planos de negócios?", 
-                resposta: `<p>Plano completo com:</p>
-                          <ul class="faq-list">
-                            <li>Análise de mercado</li>
-                            <li>Estudo financeiro</li>
-                            <li>Plano operacional</li>
-                            <li>Estratégias de marketing</li>
-                            <li>Projeções de 3-5 anos</li>
-                          </ul>
-                          <p>Pronta para investidores.</p>`, 
-                categoria: "Trabalhos Académicos"
-            },
+    pergunta: "Como é desenvolvido o estudo de planos de negócios?", 
+    resposta: `<p>São abordados conceitos fundamentais de planeamento e gestão de negócios:</p>
+              <ul class="faq-list">
+                <li>Análise e interpretação de mercado</li>
+                <li>Noções de planeamento financeiro</li>
+                <li>Estruturação de processos operacionais</li>
+                <li>Conceitos de estratégias organizacionais e marketing</li>
+                <li>Projeção de crescimento e sustentabilidade a médio e longo prazo</li>
+              </ul>
+              <p>O foco é o desenvolvimento de competências em gestão, empreendedorismo e análise estratégica.</p>`, 
+    categoria: "Trabalhos Académicos"
+},
             // 19. Integração Transportadoras
             { 
-                pergunta: "Vocês integram com transportadoras?", 
-                resposta: `<p>Integração com:</p>
-                          <ul class="faq-list">
-                            <li>Cálculo automático de frete</li>
-                            <li>Rastreamento em tempo real</li>
-                            <li>Etiquetas de envio</li>
-                            <li>Atualização de status</li>
-                            <li>Relatórios de entregas</li>
-                          </ul>
-                          <p>Logística simplificada.</p>`, 
-                categoria: "Serviços de Tecnologia"
-            },
+    pergunta: "Como funciona a integração de sistemas com serviços de logística?", 
+    resposta: `<p>São estudados mecanismos de integração entre sistemas digitais e processos logísticos:</p>
+              <ul class="faq-list">
+                <li>Cálculo automatizado de custos de envio com base em parâmetros definidos</li>
+                <li>Sistemas de rastreamento e monitorização de encomendas</li>
+                <li>Geração de etiquetas e identificação de envios</li>
+                <li>Atualização de estados de entrega em sistemas de informação</li>
+                <li>Relatórios analíticos de desempenho logístico</li>
+              </ul>
+              <p>O foco é o desenvolvimento de competências em sistemas integrados e gestão de processos logísticos digitais.</p>`, 
+    categoria: "Serviços de Tecnologia"
+},
             // 20. Apresentações Corporativas
-            { 
-                pergunta: "Vocês fazem apresentações corporativas?", 
-                resposta: `<p>Apresentações profissionais com:</p>
-                          <ul class="faq-list">
-                            <li>Design corporativo</li>
-                            <li>Animações suaves</li>
-                            <li>Gráficos interativos</li>
-                            <li>Vídeos embed</li>
-                            <li>Notas do orador</li>
-                          </ul>
-                          <p>Perfeitas para reuniões e pitches.</p>`, 
-                categoria: "Design Gráfico"
-            },
+           { 
+    pergunta: "Como são estruturadas apresentações profissionais em contexto académico e corporativo?", 
+    resposta: `<p>São abordados princípios de design e comunicação aplicados a apresentações digitais:</p>
+              <ul class="faq-list">
+                <li>Estrutura visual e organização de conteúdo</li>
+                <li>Uso de princípios de design corporativo</li>
+                <li>Animações e transições para melhoria da comunicação visual</li>
+                <li>Integração de gráficos e elementos multimédia</li>
+                <li>Preparação de notas de apoio à apresentação</li>
+              </ul>
+              <p>O objetivo é desenvolver competências em comunicação visual e apresentação de projetos.</p>`, 
+    categoria: "Design Gráfico"
+},
             // 21. Sistema de Ponto
             { 
-                pergunta: "Vocês criam sistemas de ponto eletrônico?", 
-                resposta: `<p>Sistema biométrico ou digital com:</p>
-                          <ul class="faq-list">
-                            <li>Registro por impressão digital</li>
-                            <li>Controle de horários</li>
-                            <li>Cálculo automático de horas extras</li>
-                            <li>Relatórios para folha de pagamento</li>
-                            <li>Integração com RH</li>
-                          </ul>
-                          <p>Conformidade com legislação laboral.</p>`, 
-                categoria: "Serviços de Tecnologia"
-            },
+    pergunta: "Como funcionam sistemas digitais de controlo de assiduidade e tempo de trabalho?", 
+    resposta: `<p>São estudados sistemas digitais de registo e gestão de assiduidade em ambientes organizacionais:</p>
+              <ul class="faq-list">
+                <li>Identificação biométrica ou digital para registo de presença</li>
+                <li>Gestão de horários e controlo de tempo de atividade</li>
+                <li>Cálculo automatizado de horas de trabalho adicionais</li>
+                <li>Geração de relatórios para apoio à gestão de recursos humanos</li>
+                <li>Integração com sistemas de gestão organizacional</li>
+              </ul>
+              <p>O foco é o desenvolvimento de competências em sistemas de informação aplicados à gestão de pessoas.</p>`, 
+    categoria: "Serviços de Tecnologia"
+},
             // 22. Design de Embalagens
-            { 
-                pergunta: "Vocês fazem design de embalagens?", 
-                resposta: `<p>Embalagens personalizadas com:</p>
-                          <ul class="faq-list">
-                            <li>Mockups 3D realistas</li>
-                            <li>Dielines para impressão</li>
-                            <li>Cores Pantone</li>
-                            <li>Especificações técnicas</li>
-                            <li>Testes de legibilidade</li>
-                          </ul>
-                          <p>Prontas para produção.</p>`, 
-                categoria: "Design Gráfico"
-            },
+           { 
+    pergunta: "Como é abordado o design de embalagens em contexto de design gráfico?", 
+    resposta: `<p>São explorados princípios técnicos e criativos aplicados ao design de embalagens:</p>
+              <ul class="faq-list">
+                <li>Criação de maquetes digitais (mockups) para visualização do produto</li>
+                <li>Estruturação técnica de moldes (dielines) para produção gráfica</li>
+                <li>Estudo de cores aplicadas à identidade visual (incluindo sistemas cromáticos)</li>
+                <li>Especificações técnicas para impressão e produção</li>
+                <li>Análise de legibilidade e comunicação visual</li>
+              </ul>
+              <p>O objetivo é desenvolver competências em design de produto e comunicação visual aplicada.</p>`, 
+    categoria: "Design Gráfico"
+},
             // 23. App Mobile
             { 
-                pergunta: "Vocês desenvolvem apps mobile?", 
-                resposta: `<p>Desenvolvimento completo:</p>
-                          <ul class="faq-list">
-                            <li>Design de interfaces (UI/UX)</li>
-                            <li>Desenvolvimento nativo ou híbrido</li>
-                            <li>Integração com APIs</li>
-                            <li>Testes em dispositivos reais</li>
-                            <li>Publicação nas lojas</li>
-                          </ul>
-                          <p>App funcional e intuitivo.</p>`, 
-                categoria: "Serviços de Tecnologia"
-            },
+    pergunta: "Como é abordado o desenvolvimento de aplicações móveis?", 
+    resposta: `<p>São estudados os fundamentos e processos de desenvolvimento de aplicações móveis:</p>
+              <ul class="faq-list">
+                <li>Princípios de design de interfaces (UI) e experiência do utilizador (UX)</li>
+                <li>Conceitos de desenvolvimento nativo e híbrido</li>
+                <li>Integração de sistemas através de APIs</li>
+                <li>Testes funcionais em diferentes dispositivos móveis</li>
+                <li>Processos de publicação em plataformas digitais</li>
+              </ul>
+              <p>O objetivo é desenvolver competências em engenharia de software aplicada a dispositivos móveis.</p>`, 
+    categoria: "Serviços de Tecnologia"
+},
             // 24. Relatórios de Pesquisas
             { 
-                pergunta: "Vocês fazem relatórios de pesquisa?", 
-                resposta: `<p>Relatórios completos com:</p>
-                          <ul class="faq-list">
-                            <li>Metodologia detalhada</li>
-                            <li>Análise estatística</li>
-                            <li>Gráficos e tabelas</li>
-                            <li>Discussão de resultados</li>
-                            <li>Conclusões e recomendações</li>
-                          </ul>
-                          <p>Prontos para publicação.</p>`, 
-                categoria: "Trabalhos Académicos"
-            },
+    pergunta: "Como são estruturados relatórios de pesquisa académica?", 
+    resposta: `<p>São abordados os princípios metodológicos da elaboração de relatórios científicos:</p>
+              <ul class="faq-list">
+                <li>Definição e aplicação de metodologias de investigação</li>
+                <li>Organização e interpretação de dados estatísticos</li>
+                <li>Representação de resultados através de tabelas e gráficos</li>
+                <li>Análise crítica e discussão dos resultados obtidos</li>
+                <li>Formulação de conclusões e recomendações baseadas em evidências</li>
+              </ul>
+              <p>O foco é o desenvolvimento de competências em investigação científica e escrita académica.</p>`, 
+    categoria: "Trabalhos Académicos"
+},
             // 25. Sistema CRM
             { 
-                pergunta: "O que é um sistema CRM?", 
-                resposta: `<p>Customer Relationship Management com:</p>
-                          <ul class="faq-list">
-                            <li>Cadastro de clientes</li>
-                            <li>Histórico de interações</li>
-                            <li>Funil de vendas</li>
-                            <li>Follow-up automático</li>
-                            <li>Relatórios de conversão</li>
-                          </ul>
-                          <p>Aumenta fidelização e vendas.</p>`, 
-                categoria: "Serviços de Tecnologia"
-            },
+    pergunta: "O que é um sistema CRM em sistemas de informação?", 
+    resposta: `<p>CRM (Customer Relationship Management) é um conceito de sistemas de informação utilizado para gestão de relacionamento com utilizadores ou clientes em ambientes organizacionais:</p>
+              <ul class="faq-list">
+                <li>Estruturação e gestão de bases de dados de utilizadores</li>
+                <li>Registo de interações e histórico de comunicação</li>
+                <li>Modelação de processos de acompanhamento (funis de interação)</li>
+                <li>Automação de processos de comunicação e seguimento</li>
+                <li>Geração de relatórios analíticos de comportamento e interação</li>
+              </ul>
+              <p>O foco é o estudo de sistemas de gestão de informação e análise de dados aplicados a organizações.</p>`, 
+    categoria: "Serviços de Tecnologia"
+},
             // 26. Cartões de Visita Digitais
             { 
-                pergunta: "Vocês criam cartões de visita digitais?", 
-                resposta: `<p>Cartões interativos com:</p>
-                          <ul class="faq-list">
-                            <li>Link QR para compartilhar</li>
-                            <li>Bio, contatos e redes sociais</li>
-                            <li>Design personalizado</li>
-                            <li>Compartilhamento via WhatsApp</li>
-                            <li>Atualização em tempo real</li>
-                          </ul>
-                          <p>Profissionalismo moderno.</p>`, 
-                categoria: "Design Gráfico"
-            },
+    pergunta: "Como funcionam os cartões de visita digitais em comunicação moderna?", 
+    resposta: `<p>São estudados formatos digitais de representação de identidade profissional e comunicação digital:</p>
+              <ul class="faq-list">
+                <li>Criação de perfis digitais com informação estruturada</li>
+                <li>Utilização de códigos QR para partilha de informação</li>
+                <li>Integração de contactos e perfis em plataformas digitais</li>
+                <li>Princípios de design aplicado à identidade visual digital</li>
+                <li>Atualização dinâmica de informação em sistemas online</li>
+              </ul>
+              <p>O objetivo é desenvolver competências em comunicação digital e design de informação.</p>`, 
+    categoria: "Design Gráfico"
+},
             // 27. SEO para Sites
             { 
-                pergunta: "Sites incluem otimização para Google?", 
-                resposta: `<p>Sim, com SEO técnico:</p>
-                          <ul class="faq-list">
-                            <li>Meta tags otimizadas</li>
-                            <li>Velocidade de carregamento</li>
-                            <li>Estrutura de headings</li>
-                            <li>Sitemap e robots.txt</li>
-                            <li>Imagens otimizadas</li>
-                          </ul>
-                          <p>Melhor posicionamento orgânico.</p>`, 
-                categoria: "Serviços de Tecnologia"
-            },
+    pergunta: "Como funciona a otimização de sites para motores de busca (SEO)?", 
+    resposta: `<p>São estudados os princípios de otimização de sistemas web para melhor indexação em motores de busca:</p>
+              <ul class="faq-list">
+                <li>Estruturação de metadados (meta tags) para indexação de conteúdo</li>
+                <li>Otimização de desempenho e velocidade de carregamento</li>
+                <li>Organização semântica de conteúdo através de headings (H1, H2, H3)</li>
+                <li>Configuração de ficheiros técnicos como sitemap e robots.txt</li>
+                <li>Otimização de recursos multimédia para eficiência de carregamento</li>
+              </ul>
+              <p>O objetivo é compreender técnicas de visibilidade e indexação em sistemas de busca.</p>`, 
+    categoria: "Serviços de Tecnologia"
+},
             // 28. Hospedagem
-            { 
-                pergunta: "Vocês oferecem hospedagem para sites?", 
-                resposta: `<p>Hospedagem premium com:</p>
-                          <ul class="faq-list">
-                            <li>SSL gratuito (HTTPS)</li>
-                            <li>Backup diário</li>
-                            <li>CDN global</li>
-                            <li>Suporte 24/7</li>
-                            <li>Domínio .com incluído no 1º ano</li>
-                          </ul>
-                          <p>Site sempre online e seguro.</p>`, 
-                categoria: "Serviços de Tecnologia"
-            },
+           { 
+    pergunta: "Como funciona a hospedagem de sistemas e aplicações web?", 
+    resposta: `<p>São abordados conceitos de infraestrutura para disponibilização de sistemas na internet:</p>
+              <ul class="faq-list">
+                <li>Conceitos de servidores web e alojamento de aplicações</li>
+                <li>Implementação de segurança através de certificados SSL (HTTPS)</li>
+                <li>Estratégias de backup e recuperação de dados</li>
+                <li>Utilização de redes de distribuição de conteúdo (CDN)</li>
+                <li>Gestão de domínios e publicação de sistemas online</li>
+              </ul>
+              <p>O foco é o estudo de infraestrutura de sistemas e segurança em ambientes web.</p>`, 
+    categoria: "Serviços de Tecnologia"
+},
             // 29. Política de Revisões
             { 
-                pergunta: "Como funciona a política de revisões?", 
-                resposta: `<p>Revisões ilimitadas com:</p>
-                          <ul class="faq-list">
-                            <li>Ajustes de conteúdo</li>
-                            <li>Mudanças de design</li>
-                            <li>Alterações funcionais</li>
-                            <li>Feedback detalhado</li>
-                            <li>Prazo de 48h por revisão</li>
-                          </ul>
-                          <p>Até você aprovar 100%.</p>`, 
-                categoria: "Geral"
-            },
+    pergunta: "Como funciona o processo de revisão e melhoria contínua?", 
+    resposta: `<p>O processo de revisão é entendido como uma etapa de melhoria contínua no desenvolvimento de projetos académicos e tecnológicos:</p>
+              <ul class="faq-list">
+                <li>Realização de ajustes estruturais e de conteúdo</li>
+                <li>Refinamento de elementos de design e interface</li>
+                <li>Correções funcionais e melhorias técnicas</li>
+                <li>Feedback detalhado orientado ao desenvolvimento</li>
+                <li>Ciclos de revisão baseados em critérios de qualidade</li>
+              </ul>
+              <p>O objetivo é garantir evolução progressiva do trabalho até atingir um nível adequado de qualidade académica e técnica.</p>`, 
+    categoria: "Geral"
+},
             // 30. TEM MAIS DÚVIDAS?
             { 
-                pergunta: "Tem mais dúvidas?", 
-                resposta: `<p><strong>Sim, estamos aqui para ajudar!</strong></p>
-                          <p>Fale agora com nossa equipe via WhatsApp — resposta em até <strong>5 minutos</strong>!</p>
-                          <p>Clique no botão flutuante verde ou envie "FAQ" para <strong>86 818 7201</strong>.</p>
-                          <p>Seja sobre APA, ABNT, TCC, sistemas de gestão ou qualquer serviço — <strong>pergunte!</strong></p>`, 
-                categoria: "Geral"
-            }
-        ];
-
+    pergunta: "Onde posso obter mais esclarecimentos?", 
+    resposta: `<p><strong>Sim, existe apoio contínuo para esclarecimento de dúvidas.</strong></p>
+              <p>Os estudantes podem utilizar os canais de comunicação disponíveis para obter orientação sobre conteúdos académicos, tecnológicos ou de design gráfico.</p>
+              <p>Os temas podem incluir investigação académica, desenvolvimento de sistemas, normas de escrita científica ou design de interfaces.</p>
+              <p>O foco é o acompanhamento e esclarecimento de dúvidas ao longo do processo de aprendizagem.</p>`, 
+    categoria: "Geral"
+}
+];
         // Cria item FAQ
         function criarFAQ(faq, index) {
             const categoriaClass = faq.categoria === 'Design Gráfico' ? 'cat-design' : 
