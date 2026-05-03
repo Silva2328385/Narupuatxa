@@ -573,6 +573,32 @@ nav ul {
 
         
 
+
+.hero-btn {
+    font-size: 1.05rem;
+    padding: 0.9rem 2.2rem;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+    .hero-btn {
+        font-size: 1rem;
+        padding: 0.8rem 1.8rem;
+    }
+}
+
+/* Telemóvel pequeno */
+@media (max-width: 576px) {
+    .hero-btn {
+        font-size: 0.95rem;
+        padding: 0.7rem 1.4rem;
+        width: auto;
+    }
+}
+
         /* Footer */
         
 
@@ -841,6 +867,153 @@ nav ul {
     transform: translateY(-12px) scale(1.05);
     box-shadow: 0 20px 40px rgba(0,0,0,0.4) !important;
 }
+
+
+
+/* ===== CARD PRINCIPAL ===== */
+.cta-card {
+    background: linear-gradient(135deg, #1e3a8a, #4c1d95);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: #fff;
+    max-width: 950px;
+    margin: auto;
+}
+
+/* ===== TÍTULO ===== */
+.cta-title {
+    font-size: 2rem;
+}
+
+/* ===== TEXTO ===== */
+.cta-text {
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+
+/* ===== BOTÕES ===== */
+.cta-btn {
+    border-radius: 50px;
+    padding: 0.85rem 1.4rem;
+    font-size: 1rem;
+    min-width: 180px;
+    white-space: nowrap;
+    transition: 0.3s ease;
+}
+
+/* cores */
+.cta-apoio {
+    background: #ff8c00;
+    color: #fff;
+}
+
+.cta-mentoria {
+    background: #667eea;
+    color: #fff;
+}
+
+/* hover */
+.cta-btn:hover {
+    transform: translateY(-4px);
+    opacity: 0.95;
+}
+
+/* ===== TEXTO PEQUENO ===== */
+.cta-small {
+    font-size: 0.95rem;
+    opacity: 0.9;
+}
+
+/* ===== CONCLUSÃO ===== */
+.cta-conclusao {
+    background: linear-gradient(135deg, #1e3a8a, #4c1d95);
+    color: #fff;
+    max-width: 900px;
+    margin: auto;
+}
+
+.cta-conclusao-text {
+    font-size: 1.15rem;
+    line-height: 1.7;
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+
+    .cta-title {
+        font-size: 1.5rem;
+    }
+
+    .cta-text {
+        font-size: 1rem;
+    }
+
+    .cta-btn {
+        width: 100%;
+        max-width: 320px;
+        font-size: 0.95rem;
+        padding: 0.85rem 1rem;
+        text-align: center;
+    }
+
+    .cta-buttons {
+        width: 100%;
+    }
+
+    .cta-card {
+        padding: 2rem 1.2rem;
+    }
+}
+
+/* ================= TELAS MUITO PEQUENAS ================= */
+@media (max-width: 480px) {
+
+    .cta-title {
+        font-size: 1.3rem;
+    }
+
+    .cta-btn {
+        font-size: 0.9rem;
+    }
+}
+
+
+.btn-back {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    font-size: 0.95rem;
+    padding: 0.6rem 1.2rem;
+
+    border-radius: 50px;
+    text-decoration: none;
+
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+/* hover suave */
+.btn-back:hover {
+    transform: translateY(-3px);
+}
+
+/* 📱 MOBILE */
+@media (max-width: 768px) {
+    .btn-back {
+        font-size: 0.9rem;
+        padding: 0.55rem 1rem;
+    }
+}
+
+/* 📱 TELAS MUITO PEQUENAS */
+@media (max-width: 480px) {
+    .btn-back {
+        font-size: 0.85rem;
+        padding: 0.5rem 0.9rem;
+    }
+}
+
     </style>
 </head>
 <body>
@@ -858,7 +1031,7 @@ nav ul {
             <nav class="d-none d-lg-flex flex-grow-1 justify-content-center">
                 <ul class="nav">
                     <li class="nav-item"><a href="../index.html"      class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="../servicos.html"   class="nav-link">Serviços</a></li>
+                    <li class="nav-item"><a href="../servicos.html"   class="nav-link">Mentoria</a></li>
                     <li class="nav-item"><a href="../portfolio.html"  class="nav-link">Portfólio</a></li>
                     <li class="nav-item"><a href="../blog.html"       class="nav-link">Blog</a></li>
                     <li class="nav-item"><a href="../contactos.html"  class="nav-link">Contactos</a></li>
@@ -871,7 +1044,7 @@ nav ul {
             <div class="d-flex align-items-center gap-3">
                 <!-- Orçamento só em desktop -->
                 <a href="../pedir-orcamento.html" class="btn btn-orcamento d-none d-lg-block">
-                    Pedir Orçamento
+                    Solicitar Mentoria
                 </a>
 
                 <!-- Hamburger oficial — SÓ MOBILE -->
@@ -915,7 +1088,7 @@ nav ul {
         <div class="offcanvas-body">
             <ul class="nav flex-column text-center">
                 <li class="nav-item my-3"><a href="../index.html"      class="nav-link text-white fs-4">Home</a></li>
-                <li class="nav-item my-3"><a href="../servicos.html"   class="nav-link text-white fs-4">Serviços</a></li>
+                <li class="nav-item my-3"><a href="../servicos.html"   class="nav-link text-white fs-4">Mentoria</a></li>
                 <li class="nav-item my-3"><a href="../portfolio.html"  class="nav-link text-white fs-4">Portfólio</a></li>
                 <li class="nav-item my-3"><a href="../blog.html"       class="nav-link text-white fs-4">Blog</a></li>
                 <li class="nav-item my-3"><a href="../contactos.html"  class="nav-link text-white fs-4">Contactos</a></li>
@@ -923,7 +1096,7 @@ nav ul {
                 <li class="nav-item my-3"><a href="../faq.html"        class="nav-link text-white fs-4">FAQ</a></li>
                 <li class="mt-5">
                     <a href="../pedir-orcamento.html" class="btn btn-warning btn-lg w-100 fw-bold">
-                        Pedir Orçamento
+                        Solicitar Mentoria
                     </a>
                 </li>
             </ul>
@@ -932,186 +1105,208 @@ nav ul {
 </header>
 
     <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="container position-relative">
-            <h1 class="hero-title">Erros Comuns em Monografias</h1>
-            <p class="hero-subtitle">Evite os 7 erros que reprovam 80% dos TCCs. NextLynx Tech garante aprovação na primeira entrega!</p>
-            <a href="#artigo" class="btn hero-btn">
-                Descobrir os Erros
-            </a>
-            <i class="fas fa-graduation-cap hero-icon"></i>
-        </div>
-    </section>
+    <!-- Hero Section -->
+<section class="hero-section">
+    <div class="container position-relative">
+        <h1 class="hero-title">Erros no TCC</h1>
+        <p class="hero-subtitle">Conheça os principais erros que levam à reprovação de muitos trabalhos académicos e saiba como evitá-los com orientação adequada.</p>
+        <a href="#artigo" class="btn hero-btn">
+            Ver os Erros
+        </a>
+        <i class="fas fa-graduation-cap hero-icon"></i>
+    </div>
+</section>
 
     <!-- Article Section -->
-    <section class="article-section" id="artigo">
-        <div class="container">
-            <div class="article-container">
-                <h2 class="article-title">7 Erros Comuns em Monografias que Você Deve Evitar</h2>
-                <p class="article-meta">
-                    <i class="fas fa-calendar-alt"></i> Atualizado em 10 de Novembro de 2025  
-                    <i class="fas fa-user"></i> Por NextLynx Tech  
-                    <i class="fas fa-clock"></i> 7 min de leitura
-                </p>
+    <!-- Article Section -->
+<section class="article-section" id="artigo">
+    <div class="container">
+        <div class="article-container">
+            <h2 class="article-title">7 Erros Mais Comuns em Monografias que Deves Evitar</h2>
 
-                <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" class="article-img" alt="Monografia Acadêmica">
+            <p class="article-meta">
+                <i class="fas fa-calendar-alt"></i> Atualizado em 10 de Novembro de 2025  
+                <i class="fas fa-user"></i> Por NextLynx Tech  
+                <i class="fas fa-clock"></i> 7 min de leitura
+            </p>
 
-                <div class="article-content">
-                    <p><strong>Escrever uma monografia é um desafio — mas reprovar por erros evitáveis é frustrante.</strong> Na NextLynx Tech, já ajudamos <strong>mais de 500 estudantes</strong> a aprovar seus TCCs na primeira entrega. Neste guia, revelamos os <strong>7 erros mais comuns</strong> que você deve evitar a todo custo.</p>
+            <img src="https://qgbblhwojxuknlhkeusy.supabase.co/storage/v1/object/public/materiais/erros-comuns.png" class="article-img" alt="Monografia Académica">
 
-                    <h3>1. Falta de Estrutura Clara</h3>
-                    <p>Muitos alunos escrevem sem um esqueleto sólido. <strong>Resultado?</strong> Texto confuso, sem coesão. Use esta estrutura:</p>
-                    <ul>
-                        <li>Introdução (problema, objetivos, justificativa)</li>
-                        <li>Referencial Teórico</li>
-                        <li>Metodologia</li>
-                        <li>Resultados e Discussão</li>
-                        <li>Conclusão e Referências</li>
-                    </ul>
+            <div class="article-content">
+                <p><strong>Elaborar uma monografia exige atenção e método.</strong> Pequenos erros podem comprometer toda a avaliação. Neste conteúdo, apresentamos os <strong>7 erros mais frequentes</strong> que devem ser evitados com orientação e acompanhamento adequado.</p>
 
-                    <h3>2. Citações Erradas ou Ausentes</h3>
-                    <p>80% das reprovações são por plágio ou formatação errada. <strong>Solução:</strong> Use APA 6 edição, 7 edição (Moçambique) e NBR 10520 (Brasil). Exemplo:</p>
-                    <blockquote><em>“A citação indireta deve ser parafraseada.” (SILVA, 2023, p. 45)</em></blockquote>
+                <h3>1. Falta de Estrutura Lógica</h3>
+                <p>Um trabalho sem organização perde clareza. É essencial seguir uma estrutura académica bem definida:</p>
+                <ul>
+                    <li>Introdução (problema, objetivos e justificativa)</li>
+                    <li>Referencial teórico</li>
+                    <li>Metodologia</li>
+                    <li>Análise e discussão</li>
+                    <li>Conclusão e referências</li>
+                </ul>
 
-                    <h3>3. Formatação Inconsistente</h3>
-                    <p>Fonte diferente, espaçamento irregular, margens erradas. <strong>NextLynx Tech</strong> formata seu trabalho 100% conforme ABNT/APA.</p>
+                <h3>2. Erros em Citações e Referências</h3>
+                <p>Falhas na formatação ou ausência de citações podem comprometer a credibilidade do trabalho. O ideal é seguir normas como APA ou ABNT com consistência.</p>
 
-                    <h3>4. Objetivos Mal Definidos</h3>
-                    <p>Objetivo geral vago = trabalho sem foco. <strong>Dica:</strong> Use verbos no infinitivo: “Analisar”, “Identificar”, “Propor”.</p>
+                <h3>3. Formatação Inconsistente</h3>
+                <p>Diferenças de fonte, margens ou espaçamento prejudicam a apresentação. Um acompanhamento adequado garante padronização em todo o documento.</p>
 
-                    <h3>5. Referências Desatualizadas</h3>
-                    <p>Evite fontes de 2010. Priorize artigos dos últimos 5 anos. <strong>NextLynx Tech</strong> pesquisa em SciELO, Google Scholar e bases internacionais.</p>
+                <h3>4. Objetivos Mal Definidos</h3>
+                <p>Objetivos vagos tornam o trabalho sem direção. Recomenda-se o uso de verbos claros como: analisar, identificar, descrever e propor.</p>
 
-                    <h3>6. Falta de Revisão Ortográfica</h3>
-                    <p>Erros de português = perda de credibilidade. <strong>NextLynx Tech</strong> inclui revisão profissional com 3 rodadas.</p>
+                <h3>5. Fontes Desatualizadas</h3>
+                <p>Trabalhos académicos devem utilizar referências recentes para garantir relevância e qualidade científica.</p>
 
-                    <h3>7. Apresentação Fraca (Slides)</h3>
-                    <p>Slides cheios de texto = banca desinteressada. <strong>Solução:</strong> 1 ideia por slide, imagens impactantes, animações sutis.</p>
- 
+                <h3>6. Falta de Revisão Linguística</h3>
+                <p>Erros ortográficos e gramaticais reduzem a qualidade do trabalho. Uma revisão cuidadosa é essencial antes da entrega final.</p>
 
-<
+                <h3>7. Apresentação Inadequada dos Slides</h3>
+                <p>Uma defesa eficaz depende de uma apresentação clara, visual e objetiva, com foco nos pontos principais do trabalho.</p>
 
-
-<!-- CTA + Conclusão – botões flutuando (pulse + hover), texto visível e destaque amarelo -->
+                
+<!-- CTA -->
 <div class="text-center mt-5 mb-5">
-    <!-- CTA com fundo azul escuro -->
-    <div class="p-5 rounded-4 shadow-xl" style="background: linear-gradient(135deg, #1e3a8a, #4c1d95); border: 1px solid rgba(255,255,255,0.25); backdrop-filter: blur(10px); color: #ffffff !important; text-shadow: 0 3px 12px rgba(0,0,0,0.9) !important;">
-        <h3 class="fw-bold mb-4" style="font-size: 2.5rem; color: #ffffff !important; text-shadow: 0 6px 20px rgba(0,0,0,1) !important;">
-            Queres Aprovar na Primeira Entrega?
+    <div class="cta-card p-4 p-md-5 rounded-4 shadow-xl">
+
+        <h3 class="fw-bold mb-4 cta-title">
+            Queres Melhorar o Teu Trabalho Académico?
         </h3>
 
-        <p class="lead fw-medium mb-5" style="color: #f0f0ff !important; font-size: 1.4rem; line-height: 1.8; max-width: 850px; margin: 0 auto;">
-            Na NextLynx Tech oferecemos <strong style="color: #ffeb3b !important; font-weight: 900; text-shadow: 0 4px 14px rgba(255,235,59,0.8) !important;">orientação especializada</strong> e suporte completo em todas as fases do teu trabalho académico: pesquisa sólida e atualizada, estruturação clara da redação, aplicação rigorosa das normas ABNT/APA, elaboração de slides profissionais e revisão detalhada. Com este acompanhamento personalizado, podes apresentar um trabalho mais organizado, consistente e bem fundamentado, aumentando as tuas hipóteses de uma avaliação positiva pela banca.
+        <p class="lead mb-4 cta-text">
+            Oferecemos <strong>orientação, acompanhamento e apoio académico</strong> em todas as etapas: pesquisa, estruturação, formatação ABNT/APA, revisão e preparação para defesa.
         </p>
 
-        <!-- Botões flutuando (pulse + hover eleva) -->
-        <div class="d-flex flex-column flex-md-row justify-content-center gap-4 mb-5">
-            <a href="../pedir-orcamento.html" class="btn btn-lg px-5 py-3 fw-bold shadow-lg pulse-float" style="background: linear-gradient(135deg, #ff6b00, #ff8c00); color: white !important; border: none; border-radius: 50px; min-width: 260px; transition: all 0.4s ease;">
-    <i class="fas fa-file-invoice-dollar me-2"></i> Pedir Orçamento Personalizado
-</a>
+        <div class="cta-buttons d-flex flex-column flex-md-row justify-content-center align-items-center gap-3">
 
-
-            
-            <a href="../cadastro.html" class="btn btn-lg px-5 py-3 fw-bold shadow-lg pulse-float" style="background: linear-gradient(135deg, #00f2fe, #667eea); color: white !important; border: none; border-radius: 50px; min-width: 260px; transition: all 0.4s ease;">
-                <i class="fas fa-graduation-cap me-2"></i> Cadastrar-se na Mentoria
+            <a href="../pedir-orcamento.html" class="btn cta-btn cta-apoio">
+                <i class="fas fa-hands-helping me-2"></i> Pedir Apoio
             </a>
+
+            <a href="../cadastro.html" class="btn cta-btn cta-mentoria">
+                <i class="fas fa-graduation-cap me-2"></i> Acesso à Mentoria
+            </a>
+
         </div>
 
-        <p class="small mb-0" style="color: #e0e0ff !important; font-size: 1.15rem; opacity: 0.95;">
-            Vagas limitadas — assegura o teu lugar para um acompanhamento personalizado e resultados de qualidade académica.
+        <p class="mt-4 cta-small">
+            Acompanhamento personalizado para melhorar a qualidade do teu trabalho académico.
         </p>
+
     </div>
 
-    <!-- Conclusão com fundo azul escuro separado -->
-    <div class="mt-5 p-4 rounded-4 shadow-lg" style="background: linear-gradient(135deg, #1e3a8a, #4c1d95); border: 1px solid rgba(255,255,255,0.25); color: #ffffff !important; text-shadow: 0 3px 12px rgba(0,0,0,0.9) !important; max-width: 900px; margin: 0 auto;">
-        <p class="fw-medium" style="font-size: 1.35rem; line-height: 1.8;">
-            <strong>Conclusão:</strong> Evitar esses 7 erros comuns pode melhorar significativamente a qualidade e a clareza do teu trabalho académico. Com orientação adequada, estrutura sólida e atenção aos detalhes formais, é possível apresentar um TCC, monografia ou artigo mais consistente e bem avaliado pelas bancas e instituições em Moçambique.
+    <!-- Conclusão -->
+    <div class="mt-5 p-4 rounded-4 cta-conclusao">
+        <p class="cta-conclusao-text">
+            <strong>Conclusão:</strong> Evitar estes erros aumenta significativamente a qualidade do teu trabalho académico. Com orientação e acompanhamento adequados, o processo torna-se mais claro, organizado e eficiente.
         </p>
     </div>
 </div>
-
-
-
+                <!-- Botão voltar -->
                 <div class="text-center">
                     <a href="../blog.html" class="btn-back">
                         <i class="fas fa-arrow-left"></i> Voltar ao Blog
                     </a>
                 </div>
+
             </div>
         </div>
-    </section>
-
+    </div>
+</section>
     <!-- Footer -->
-    <!-- Footer — CENTRALIZADO -->
-    <footer class="footer-container">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 mb-4 text-center text-lg-start">
-                    <img src="../img/logo footer.png" alt="NextLynx Tech" class="footer-logo d-block mx-auto mx-lg-0">
-                    <p>Soluções digitais vibrantes para estudantes e empresas em Moçambique.</p>
+    
+  
+<footer class="footer-container">
+    <div class="container">
+        <div class="row text-center text-lg-start">
+            <div class="col-lg-4 mb-4">
+                <img src="../img/logo footer.png" alt="NextLynx Tech" class="footer-logo d-block mx-auto mx-lg-0">
+                <p class="mt-3"> Plataforma de apoio, orientação e desenvolvimento de competências académicas e digitais.
+                </p></p>
 
-                       <!-- RETIFICADO LINKS-->
-                    <div class="footer-social">
-                        <a href="https://web.facebook.com/?locale=pt_BR&_rdc=1&_rdr#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/nextlynxtech/" class="social-icon"><i class="fab fa-instagram"></i></a>
-                        <a href="https://web.whatsapp.com/send?phone=258868187201&text=Olá,%20quero%20um%20orçamento%20para%20meu%20projeto!" class="social-icon"><i class="fab fa-whatsapp"></i></a>
-                        <a href="https://www.linkedin.com/in/next-lynx-tech-45442a3ab/?isSelfProfile=true" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-6 mb-4 text-center">
-                    <h5 class="footer-title">Navegação</h5>
-                    <a href="../index.html" class="footer-link">Home</a>
-                    <a href="../servicos.html" class="footer-link">Serviços</a>
-                    <a href="../portfolio.html" class="footer-link">Portfólio</a>
-                    <a href="../blog.html" class="footer-link">Blog</a>
-                </div>
-                <div class="col-lg-2 col-md-6 mb-4 text-center">
-                    <h5 class="footer-title">Suporte</h5>
-                    <a href="../contactos.html" class="footer-link">Contactos</a>
-                    <a href="../testemunhos.html" class="footer-link">Testemunhos</a>
-                    <a href="../faq.html" class="footer-link">FAQ</a>
-                    <a href="../pedir-orcamento.html" class="footer-link">Orçamento</a>
-                </div>
-                <div class="col-lg-4 mb-4 text-center text-lg-start">
-                    <div class="footer-info mx-auto mx-lg-0" style="max-width: 300px;">
-                        <h5>Localização</h5>
-                        
-                         <!-- retificado o email -->
-                        <p>Cidade de Nampula</p>
-                         <strong>Email:</strong>  <a href="mailto:nextlynxtech@gmail.com?subject=Orçamento%20NextLynx%20Tech&body=Olá,%20gostaria%20de%20saber%20mais%20sobre..." 
-   title="Enviar email para NextLynx Tech">
-    nextlynxtech@gmail.com
-</a>
-                        <p><strong>WhatsApp:</strong> +258 868 187 201</p>
-                           <p>+258 872 394 433 </p>
-                             <p>+258 868 712 546 </p>
-                    </div>
+                <div class="footer-social mt-4">
+                    <a href="https://web.facebook.com/?locale=pt_BR&_rdc=1&_rdr#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/nextlynxtech/" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="https://web.whatsapp.com/send?phone=258868187201&text=Olá,%20quero%20um%20orçamento%20para%20meu%20projeto!" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.linkedin.com/in/next-lynx-tech-45442a3ab/?isSelfProfile=true" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>© 2025 NextLynx Tech. Todos os direitos reservados.</p>
-                <p class="small mt-2">
-                    <a href="../politica-privacidade.html">Política de Privacidade</a> • 
-                    <a href="../termos.html">Termos de Uso</a> •
-                    <a href="../sobre.html">Sobre nós</a>
-                </p>
+
+            <div class="col-lg-2 col-md-6 mb-4">
+                <h5 class="footer-title">Navegação</h5>
+                <a href="../index.html" class="footer-link">Home</a>
+                <a href="../servicos.html" class="footer-link">Mentoria</a>
+                <a href="../portfolio.html" class="footer-link">Portfólio</a>
+                <a href="../blog.html" class="footer-link">Blog</a>
+            </div>
+
+            <div class="col-lg-2 col-md-6 mb-4">
+                <h5 class="footer-title">Suporte</h5>
+                <a href="../contactos.html" class="footer-link">Contactos</a>
+                <a href="../testemunhos.html" class="footer-link">Testemunhos</a>
+                <a href="../faq.html" class="footer-link">FAQ</a>
+        
+            </div>
+
+            <div class="col-lg-4 mb-4">
+                <div class="footer-info mx-auto mx-lg-0" style="max-width: 300px;">
+                    <h5>Localização</h5>
+                    <p>Cidade de Nampula</p>
+                    <strong>Email:</strong> 
+                    <a href="mailto:nextlynxtech@gmail.com?subject=Orçamento%20NextLynx%20Tech&body=Olá,%20gostaria%20de%20saber%20mais%20sobre..." 
+                       title="Enviar email para NextLynx Tech">
+                        nextlynxtech@gmail.com
+                    </a>
+                    <p><strong>WhatsApp:</strong> +258 868 187 201</p>
+                    <p>+258 872 394 433</p>
+                    <p>+258 868 712 546</p>
+                </div>
             </div>
         </div>
-        <div class="footer-bottom">
-    <P> <strong>Abdul Narupuaxta</strong> • Consultor Académico e Soluções Digitais em Design & Tecnologia</P>
+
+
+           <!-- AVISO IMPORTANTE -->
+<div class="footer-warning text-center mt-4 p-3" style="border:1px solid rgba(255,255,255,0.2); border-radius:12px; background: rgba(255,255,255,0.05);">
+
+    <strong style="color:#ffeb3b;">
+        <i class="fas fa-exclamation-triangle" style="margin-right:6px;"></i>
+        Aviso Importante:
+    </strong>
+
+    <br>
+
+    Esta plataforma não realiza, não vende e não fornece trabalhos académicos prontos como monografias, dissertações, testes ou exames.  
+    O nosso foco é exclusivamente o apoio, orientação e desenvolvimento de competências académicas e digitais.
+
 </div>
-    </footer>
+
+        <!-- Apenas UMA .footer-bottom -->
+       <!-- Rodapé inferior -->
+        <div class="footer-bottom text-center mt-4">
+            <p>© 2025 NextLynx Tech. Todos os direitos reservados.</p>
+
+            <p class="small mt-2">
+                <a href="../politica-privacidade.html">Política de Privacidade</a> • 
+                <a href="../termos.html">Termos de Uso</a> •
+                <a href="../sobre.html">Sobre nós</a>
+            </p>
+
+            <p class="mt-3">
+                <strong>NextLynx Tech</strong> • Plataforma de apoio, orientação e desenvolvimento de competências académicas e digitais.
+            </p>
+        </div>
+    </div>
+</footer>
+
 
     <!-- RETIFICADO BOTAO Chat WhatsApp Flutuante — ORGANIZADO -->
    
 <!-- Botão WhatsApp Flutuante (único, sem duplicação) -->
-<a href="https://wa.me/258868187201?text=Olá,%20quero%20um%20orçamento%20para%20meu%20projeto!" 
+<a href="https://wa.me/258868187201?text=Olá,%20gostaria%20de%20receber%20orientação%20e%20acompanhamento%20na%20elaboração%20de%20um%20TCC,%20Dissertação!" 
    class="btn-whatsapp" 
    id="whatsapp-float"
-   title="Fale conosco no WhatsApp">
+   title="Falar sobre logotipo">
     <i class="fab fa-whatsapp"></i>
 </a>
-
 <!-- Script CORRIGIDO para WhatsApp Web (abre só uma vez no desktop) -->
 <script>
   document.addEventListener('DOMContentLoaded', function() {
