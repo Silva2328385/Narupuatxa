@@ -882,30 +882,31 @@ textarea.form-control:focus {
 /* ==========================================
    SUBTÍTULO EXCLUSIVO DA PÁGINA DE MENTORIA
 ========================================== */
-.mentoria-subtitle {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.3rem;
-    font-weight: 600;
-    color: #ffffff;
-    text-align: center;
-    line-height: 1.7;
-    max-width: 850px;
-    margin: 0 auto 2.5rem;
-    padding: 0 1rem;
-}
 
-/* Remove qualquer pseudo-elemento decorativo */
-.mentoria-subtitle::before,
-.mentoria-subtitle::after {
-    display: none !important;
-    content: none !important;
+
+.mentoria-subtitle {
+    text-align: center;
+    color: #1e293b;
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: 1.8;
+    max-width: 780px;
+    margin: 0 auto 2.5rem;
+    padding: 1.3rem 1.8rem;
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    border-left: 5px solid var(--warning);
+    border-radius: 18px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+    text-shadow: none;
+    position: relative;
 }
 
 /* Tablet */
 @media (max-width: 768px) {
     .mentoria-subtitle {
-        font-size: 1.1rem;
-        line-height: 1.6;
+        font-size: 1.05rem;
+        line-height: 1.7;
+        padding: 1.1rem 1.4rem;
         margin-bottom: 2rem;
     }
 }
@@ -913,12 +914,17 @@ textarea.form-control:focus {
 /* Mobile */
 @media (max-width: 576px) {
     .mentoria-subtitle {
-        font-size: 1rem;
-        line-height: 1.5;
-        padding: 0 0.75rem;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        padding: 1rem 1.1rem;
+        border-radius: 14px;
+        border-left-width: 4px;
         margin-bottom: 1.8rem;
     }
 }
+
+
+
 
 
 
@@ -1164,7 +1170,7 @@ textarea.form-control:focus {
         <div class="offcanvas-body">
             <ul class="nav flex-column text-center">
                 <li class="nav-item my-3"><a href="index.html"      class="nav-link text-white fs-4">Home</a></li>
-                <li class="nav-item my-3"><a href="servicos.html"   class="nav-link text-white fs-4">Serviços</a></li>
+                <li class="nav-item my-3"><a href="servicos.html"   class="nav-link text-white fs-4">Mentoria</a></li>
                 <li class="nav-item my-3"><a href="portfolio.html"  class="nav-link text-white fs-4">Portfólio</a></li>
                 <li class="nav-item my-3"><a href="blog.html"       class="nav-link text-white fs-4">Blog</a></li>
                 <li class="nav-item my-3"><a href="contactos.html"  class="nav-link text-white fs-4">Contactos</a></li>
@@ -1181,16 +1187,17 @@ textarea.form-control:focus {
 </header>
 
 <!-- ==================== FORMULÁRIO DE SOLICITAÇÃO DE MENTORIA ==================== -->
+
 <main class="container form-section">
     <h2 class="form-title text-center">
-        Solicitar Mentoria e Acompanhamento
+        Solicitar Mentoria
     </h2>
 
-    <h2 class="mentoria-subtitle">
-    Preencha o formulário abaixo para receber orientação académica, técnica ou de design gráfico.
-</h2>
-    <form id="orcamento-form" class="row g-4">
+    <p class="mentoria-subtitle">
+        Preencha o formulário para receber orientação académica, técnica em design gráfico, e Tecnologia.
+    </p>
 
+    <form id="orcamento-form" class="row g-4">
         <!-- Nome -->
         <div class="col-12 col-md-6">
             <div class="card shadow-sm border-0 h-100">
