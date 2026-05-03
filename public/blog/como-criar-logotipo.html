@@ -828,6 +828,76 @@ nav ul {
         right: 20px; 
     }
 
+
+
+    .btn-compact {
+    display: inline-block;
+    width: auto;
+    max-width: 100%;
+    padding: 12px 28px;
+    font-size: 1rem;
+    border-radius: 50px;
+    white-space: nowrap;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .btn-compact {
+        padding: 10px 22px;
+        font-size: 0.95rem;
+    }
+}
+
+
+
+
+.btn-cta.btn-compact {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    width: auto;
+    max-width: 100%;
+    padding: 12px 26px;
+    font-size: 1rem;
+
+    white-space: nowrap;
+    border-radius: 50px;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .btn-cta.btn-compact {
+        padding: 10px 20px;
+        font-size: 0.95rem;
+    }
+}
+
+
+
+.btn-back.btn-compact {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    width: auto;
+    max-width: 100%;
+    padding: 12px 26px;
+    font-size: 1rem;
+
+    white-space: nowrap;
+    border-radius: 50px;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .btn-back.btn-compact {
+        padding: 10px 20px;
+        font-size: 0.95rem;
+    }
+}
     </style>
 </head>
 <body>
@@ -847,7 +917,7 @@ nav ul {
             <nav class="d-none d-lg-flex flex-grow-1 justify-content-center">
                 <ul class="nav">
                     <li class="nav-item"><a href="../index.html"      class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="../servicos.html"   class="nav-link">Serviços</a></li>
+                    <li class="nav-item"><a href="../servicos.html"   class="nav-link">Mentoria</a></li>
                     <li class="nav-item"><a href="../portfolio.html"  class="nav-link">Portfólio</a></li>
                     <li class="nav-item"><a href="../blog.html"       class="nav-link">Blog</a></li>
                     <li class="nav-item"><a href="../contactos.html"  class="nav-link">Contactos</a></li>
@@ -860,7 +930,7 @@ nav ul {
             <div class="d-flex align-items-center gap-3">
                 <!-- Orçamento só em desktop -->
                 <a href="../pedir-orcamento.html" class="btn btn-orcamento d-none d-lg-block">
-                    Pedir Orçamento
+                    Solicitar Mentoria
                 </a>
 
                 <!-- Hamburger oficial — SÓ MOBILE -->
@@ -904,7 +974,7 @@ nav ul {
         <div class="offcanvas-body">
             <ul class="nav flex-column text-center">
                 <li class="nav-item my-3"><a href="../index.html"      class="nav-link text-white fs-4">Home</a></li>
-                <li class="nav-item my-3"><a href="../servicos.html"   class="nav-link text-white fs-4">Serviços</a></li>
+                <li class="nav-item my-3"><a href="../servicos.html"   class="nav-link text-white fs-4">Mentoria</a></li>
                 <li class="nav-item my-3"><a href="../portfolio.html"  class="nav-link text-white fs-4">Portfólio</a></li>
                 <li class="nav-item my-3"><a href="../blog.html"       class="nav-link text-white fs-4">Blog</a></li>
                 <li class="nav-item my-3"><a href="../contactos.html"  class="nav-link text-white fs-4">Contactos</a></li>
@@ -912,7 +982,7 @@ nav ul {
                 <li class="nav-item my-3"><a href="../faq.html"        class="nav-link text-white fs-4">FAQ</a></li>
                 <li class="mt-5">
                     <a href="../pedir-orcamento.html" class="btn btn-warning btn-lg w-100 fw-bold">
-                        Pedir Orçamento
+                        Solicitar Mentoria
                     </a>
                 </li>
             </ul>
@@ -923,149 +993,178 @@ nav ul {
 
 
     <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="container position-relative">
-            <h1 class="hero-title">Como Criar um Logotipo que Vende</h1>
-            <p class="hero-subtitle">Dicas vibrantes da NextLynx Tech para um design impactante e memorável</p>
-            <a href="#artigo" class="btn hero-btn">
-                Ler o Guia Completo
-            </a>
-            <i class="fas fa-palette hero-icon"></i>
-        </div>
-    </section>
-
-    <!-- Article Section -->
-    <section class="article-section" id="artigo">
-        <div class="container">
-            <div class="article-container">
-                <h2 class="article-title">Como Criar um Logotipo que Vende</h2>
-                <p class="article-meta">
-                    <i class="fas fa-calendar-alt"></i> Atualizado em 12 de Novembro de 2025  
-                    <i class="fas fa-user"></i> Por NextLynx Tech  
-                    <i class="fas fa-clock"></i> 5 min de leitura
-                </p>
-
-                <img src="../img/logo-exemplo.jpg" class="article-img" alt="Logotipo Profissional">
-
-                <div class="article-content">
-                    <p><strong>Um logotipo não é apenas uma imagem — é a cara do teu negócio.</strong> Na NextLynx Tech, acreditamos que um bom logotipo deve ser <em>simples, memorável e versátil</em>. Neste guia, vamos te mostrar <strong>5 passos práticos</strong> para criar um logotipo que não só representa a tua marca, mas também <strong>converte clientes</strong>.</p>
-
-                    <h3>1. Simplicidade é a Alma do Design</h3>
-                    <p>Os logotipos mais icônicos do mundo — como Nike, Apple e McDonald's — têm algo em comum: <strong>são simples</strong>. Evite detalhes excessivos. Um bom logotipo deve ser reconhecível até em tamanho pequeno, como no favicon do teu site.</p>
-
-                    <h3>2. Cores Elétricas que Transmitem Emoção</h3>
-                    <p>As cores influenciam 90% da primeira impressão. Use a psicologia das cores:</p>
-                    <ul>
-                        <li><strong>Vermelho:</strong> Energia, paixão, urgência</li>
-                        <li><strong>Azul:</strong> Confiança, profissionalismo</li>
-                        <li><strong>Amarelo:</strong> Otimismo, juventude</li>
-                        <li><strong>Verde:</strong> Crescimento, saúde</li>
-                    </ul>
-                    <p>Na NextLynx Tech, usamos <strong>gradientes vibrantes</strong> para dar vida aos logotipos!</p>
-
-                    <h3>3. Teste em Preto e Branco Primeiro</h3>
-                    <p>Um logotipo deve funcionar <strong>sem cores</strong>. Teste em escala de cinza. Se ainda for reconhecível, você está no caminho certo.</p>
-
-                    <h3>4. Versões Responsivas para Todos os Dispositivos</h3>
-                    <p>Crie variações do logotipo:</p>
-                    <ul>
-                        <li>Versão completa (para site)</li>
-                        <li>Versão simplificada (para app)</li>
-                        <li>Ícone (para redes sociais)</li>
-                    </ul>
-
-                    <h3>5. Inclua 3 Revisões Profissionais</h3>
-                    <p>Na NextLynx Tech, todo pacote de logotipo inclui <strong>3 revisões gratuitas</strong>. Garantimos que o resultado final seja <em>perfeito</em> para o teu negócio.</p>
-
-                    <div class="article-cta">
-                        <h3>Pronto para um Logotipo que Vende?</h3>
-                        <p>Deixe a NextLynx Tech criar o logotipo perfeito para o teu negócio. Entrega em 48h!</p>
-                        <a href="../pedir-orcamento.html" class="btn btn-cta">
-                            <i class="fas fa-bolt"></i> Pedir Orçamento Agora
-                        </a>
-                    </div>
-
-                    <p><strong>Dica Final:</strong> Um logotipo profissional pode aumentar em até <strong>30% a percepção de credibilidade</strong> da tua marca. Invista no que importa.</p>
-                </div>
-
-                <div class="text-center">
-                    <a href="../blog.html" class="btn-back">
-                        <i class="fas fa-arrow-left"></i> Voltar ao Blog
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-<!-- Footer — CENTRALIZADO -->
-    <footer class="footer-container">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 mb-4 text-center text-lg-start">
-                    <img src="../img/logo footer.png" alt="NextLynx Tech" class="footer-logo d-block mx-auto mx-lg-0">
-                    <p>Soluções digitais vibrantes para estudantes e empresas em Moçambique.</p>
-
-                       <!-- RETIFICADO LINKS-->
-                    <div class="footer-social">
-                        <a href="https://web.facebook.com/?locale=pt_BR&_rdc=1&_rdr#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/nextlynxtech/" class="social-icon"><i class="fab fa-instagram"></i></a>
-                        <a href="https://web.whatsapp.com/send?phone=258868187201&text=Olá,%20quero%20um%20orçamento%20para%20meu%20projeto!" class="social-icon"><i class="fab fa-whatsapp"></i></a>
-                        <a href="https://www.linkedin.com/in/next-lynx-tech-45442a3ab/?isSelfProfile=true" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-6 mb-4 text-center">
-                    <h5 class="footer-title">Navegação</h5>
-                    <a href="../index.html" class="footer-link">Home</a>
-                    <a href="../servicos.html" class="footer-link">Serviços</a>
-                    <a href="../portfolio.html" class="footer-link">Portfólio</a>
-                    <a href="../blog.html" class="footer-link">Blog</a>
-                </div>
-                <div class="col-lg-2 col-md-6 mb-4 text-center">
-                    <h5 class="footer-title">Suporte</h5>
-                    <a href="../contactos.html" class="footer-link">Contactos</a>
-                    <a href="../testemunhos.html" class="footer-link">Testemunhos</a>
-                    <a href="../faq.html" class="footer-link">FAQ</a>
-                    <a href="../pedir-orcamento.html" class="footer-link">Orçamento</a>
-                </div>
-                <div class="col-lg-4 mb-4 text-center text-lg-start">
-                    <div class="footer-info mx-auto mx-lg-0" style="max-width: 300px;">
-                        <h5>Localização</h5>
-                        
-                         <!-- retificado o email -->
-                        <p>Cidade de Nampula</p>
-                         <strong>Email:</strong>  <a href="mailto:nextlynxtech@gmail.com?subject=Orçamento%20NextLynx%20Tech&body=Olá,%20gostaria%20de%20saber%20mais%20sobre..." 
-   title="Enviar email para NextLynx Tech">
-    nextlynxtech@gmail.com
+    <!-- Hero Section -->
+<section class="hero-section">
+    <div class="container position-relative">
+        <h1 class="hero-title">Como Criar um Logotipo Memorável</h1>
+        <p class="hero-subtitle">Descubra os princípios essenciais para desenvolver uma identidade visual forte, estratégica e marcante para a sua marca.</p>
+        <a href="#artigo" class="btn hero-btn btn-compact">
+    Explorar o Guia
 </a>
-                        <p><strong>WhatsApp:</strong> +258 868 187 201</p>
-                           <p>+258 872 394 433 </p>
-                             <p>+258 868 712 546 </p>
-                    </div>
+<i class="fas fa-palette hero-icon"></i>
+    </div>
+</section>
+    
+
+<!-- Article Section -->
+<section class="article-section" id="artigo">
+    <div class="container">
+        <div class="article-container">
+            <h2 class="article-title">Como Criar um Logotipo Profissional e Memorável</h2>
+            <p class="article-meta">
+                <i class="fas fa-calendar-alt"></i> Atualizado em 12 de Novembro de 2025  
+                <i class="fas fa-user"></i> Por NextLynx Tech  
+                <i class="fas fa-clock"></i> 5 min de leitura
+            </p>
+
+            <img src="../img/logo-exemplo.jpg" class="article-img" alt="Logotipo Profissional">
+
+            <div class="article-content">
+                <p><strong>Um logotipo é muito mais do que um elemento visual — é a representação da identidade de uma marca.</strong> Um design eficaz deve transmitir profissionalismo, confiança e reconhecimento. Neste guia, apresentamos <strong>cinco princípios fundamentais</strong> para desenvolver um logotipo que fortaleça a presença da sua marca no mercado.</p>
+
+                <h3>1. Priorize a Simplicidade</h3>
+                <p>Os logotipos mais reconhecidos mundialmente destacam-se pela clareza e simplicidade. Um design simples é mais fácil de memorizar, adaptar e identificar em qualquer dimensão ou plataforma.</p>
+
+                <h3>2. Escolha Cores com Propósito</h3>
+                <p>As cores desempenham um papel estratégico na comunicação visual e na perceção da marca. Algumas associações comuns incluem:</p>
+                <ul>
+                    <li><strong>Vermelho:</strong> Energia, dinamismo e paixão</li>
+                    <li><strong>Azul:</strong> Confiança, estabilidade e profissionalismo</li>
+                    <li><strong>Amarelo:</strong> Otimismo, criatividade e inovação</li>
+                    <li><strong>Verde:</strong> Crescimento, equilíbrio e sustentabilidade</li>
+                </ul>
+
+                <h3>3. Garanta Eficiência em Preto e Branco</h3>
+                <p>Um logotipo bem concebido deve manter a sua identidade e legibilidade mesmo sem cores. Isso assegura versatilidade em diferentes aplicações, como documentos, impressões e materiais promocionais.</p>
+
+                <h3>4. Desenvolva Versões Adaptáveis</h3>
+                <p>Para garantir consistência em todos os canais, é recomendável criar diferentes versões do logotipo, tais como:</p>
+                <ul>
+                    <li>Versão completa para websites e materiais institucionais</li>
+                    <li>Versão simplificada para aplicações digitais</li>
+                    <li>Ícone para redes sociais e favicons</li>
+                </ul>
+
+                <h3>5. Refinamento e Revisões Profissionais</h3>
+                <p>O processo de criação deve incluir revisões estratégicas para assegurar que o resultado final esteja alinhado com os objetivos, valores e posicionamento da marca.</p>
+
+                <div class="article-cta">
+                    <h3>Pronto para Fortalecer a Sua Identidade Visual?</h3>
+                    <p>Desenvolva um logotipo profissional, exclusivo e alinhado à visão do seu negócio com acompanhamento especializado em cada etapa.</p>
+                    <a href="../pedir-orcamento.html" class="btn btn-cta btn-compact">
+    <i class="fas fa-bolt"></i> Saber Mais
+</a>
+                </div>
+
+                <p><strong>Conclusão:</strong> Um logotipo profissional é um investimento estratégico que reforça a credibilidade, diferencia a marca no mercado e contribui para uma presença sólida e memorável.</p>
+            </div>
+
+          
+                <div class="text-center">
+    <a href="../blog.html" class="btn-back btn-compact">
+        <i class="fas fa-arrow-left"></i> Voltar ao Blog
+    </a>
+</div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Footer — CENTRALIZADO -->
+   
+<footer class="footer-container">
+    <div class="container">
+        <div class="row text-center text-lg-start">
+            <div class="col-lg-4 mb-4">
+                <img src="../img/logo footer.png" alt="NextLynx Tech" class="footer-logo d-block mx-auto mx-lg-0">
+                <p class="mt-3"> Plataforma de apoio, orientação e desenvolvimento de competências académicas e digitais.
+                </p></p>
+
+                <div class="footer-social mt-4">
+                    <a href="https://web.facebook.com/?locale=pt_BR&_rdc=1&_rdr#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/nextlynxtech/" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="https://web.whatsapp.com/send?phone=258868187201&text=Olá,%20quero%20um%20orçamento%20para%20meu%20projeto!" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.linkedin.com/in/next-lynx-tech-45442a3ab/?isSelfProfile=true" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>© 2025 NextLynx Tech. Todos os direitos reservados.</p>
-                <p class="small mt-2">
-                    <a href="../politica-privacidade.html">Política de Privacidade</a> • 
-                    <a href="../termos.html">Termos de Uso</a> •
-                    <a href="../sobre.html">Sobre nós</a>
-                </p>
+
+            <div class="col-lg-2 col-md-6 mb-4">
+                <h5 class="footer-title">Navegação</h5>
+                <a href="../index.html" class="footer-link">Home</a>
+                <a href="../servicos.html" class="footer-link">Mentoria</a>
+                <a href="../portfolio.html" class="footer-link">Portfólio</a>
+                <a href="../blog.html" class="footer-link">Blog</a>
+            </div>
+
+            <div class="col-lg-2 col-md-6 mb-4">
+                <h5 class="footer-title">Suporte</h5>
+                <a href="../contactos.html" class="footer-link">Contactos</a>
+                <a href="../testemunhos.html" class="footer-link">Testemunhos</a>
+                <a href="../faq.html" class="footer-link">FAQ</a>
+        
+            </div>
+
+            <div class="col-lg-4 mb-4">
+                <div class="footer-info mx-auto mx-lg-0" style="max-width: 300px;">
+                    <h5>Localização</h5>
+                    <p>Cidade de Nampula</p>
+                    <strong>Email:</strong> 
+                    <a href="mailto:nextlynxtech@gmail.com?subject=Orçamento%20NextLynx%20Tech&body=Olá,%20gostaria%20de%20saber%20mais%20sobre..." 
+                       title="Enviar email para NextLynx Tech">
+                        nextlynxtech@gmail.com
+                    </a>
+                    <p><strong>WhatsApp:</strong> +258 868 187 201</p>
+                    <p>+258 872 394 433</p>
+                    <p>+258 868 712 546</p>
+                </div>
             </div>
         </div>
-        <div class="footer-bottom">
-    <P> <strong>Abdul Narupuaxta</strong> • Consultor Académico e Soluções Digitais em Design & Tecnologia</P>
+
+
+           <!-- AVISO IMPORTANTE -->
+<div class="footer-warning text-center mt-4 p-3" style="border:1px solid rgba(255,255,255,0.2); border-radius:12px; background: rgba(255,255,255,0.05);">
+
+    <strong style="color:#ffeb3b;">
+        <i class="fas fa-exclamation-triangle" style="margin-right:6px;"></i>
+        Aviso Importante:
+    </strong>
+
+    <br>
+
+    Esta plataforma não realiza, não vende e não fornece trabalhos académicos prontos como monografias, dissertações, testes ou exames.  
+    O nosso foco é exclusivamente o apoio, orientação e desenvolvimento de competências académicas e digitais.
+
 </div>
-    </footer>
+
+        <!-- Apenas UMA .footer-bottom -->
+       <!-- Rodapé inferior -->
+        <div class="footer-bottom text-center mt-4">
+            <p>© 2025 NextLynx Tech. Todos os direitos reservados.</p>
+
+            <p class="small mt-2">
+                <a href="../politica-privacidade.html">Política de Privacidade</a> • 
+                <a href="../termos.html">Termos de Uso</a> •
+                <a href="../sobre.html">Sobre nós</a>
+            </p>
+
+            <p class="mt-3">
+                <strong>NextLynx Tech</strong> • Plataforma de apoio, orientação e desenvolvimento de competências académicas e digitais.
+            </p>
+        </div>
+    </div>
+</footer>
 
     <!-- RETIFICADO BOTAO Chat WhatsApp Flutuante — ORGANIZADO -->
    
 <!-- Botão WhatsApp Flutuante (único, sem duplicação) -->
-<a href="https://wa.me/258868187201?text=Olá,%20quero%20um%20orçamento%20para%20meu%20projeto!" 
+
+<!-- Botão WhatsApp Flutuante (Logotipo) -->
+<a href="https://wa.me/258868187201?text=Olá,%20gostaria%20de%20receber%20orientação%20e%20acompanhamento%20na%20criação%20de%20um%20logotipo%20profissional!" 
    class="btn-whatsapp" 
    id="whatsapp-float"
-   title="Fale conosco no WhatsApp">
+   title="Falar sobre logotipo">
     <i class="fab fa-whatsapp"></i>
 </a>
-
 <!-- Script CORRIGIDO para WhatsApp Web (abre só uma vez no desktop) -->
 <script>
   document.addEventListener('DOMContentLoaded', function() {
