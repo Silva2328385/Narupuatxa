@@ -821,6 +821,68 @@ nav ul {
         bottom: 20px; 
         right: 20px; 
     }
+
+    .hero-btn {
+    display: inline-block;
+    width: auto;
+
+    padding: 0.8rem 1.6rem;
+    font-size: 1rem;
+    border-radius: 40px;
+
+    transition: all 0.3s ease;
+}
+
+/* 📱 Mobile */
+@media (max-width: 768px) {
+    .hero-btn {
+        padding: 0.7rem 1.3rem;
+        font-size: 0.95rem;
+    }
+}
+
+
+.btn-cta {
+    display: inline-block;
+    width: auto;
+
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 40px;
+
+    transition: all 0.3s ease;
+}
+
+/* 📱 Mobile */
+@media (max-width: 768px) {
+    .btn-cta {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.95rem;
+    }
+}
+
+.btn-back {
+    display: inline-block;
+    width: auto;
+
+    padding: 0.7rem 1.4rem;
+    font-size: 0.95rem;
+    border-radius: 35px;
+
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+/* 📱 Mobile */
+@media (max-width: 768px) {
+    .btn-back {
+        padding: 0.6rem 1.1rem;
+        font-size: 0.9rem;
+    }
+}
+
+
+
     </style>
 </head>
 <body>
@@ -839,7 +901,7 @@ nav ul {
             <nav class="d-none d-lg-flex flex-grow-1 justify-content-center">
                 <ul class="nav">
                     <li class="nav-item"><a href="../index.html"      class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="../servicos.html"   class="nav-link">Serviços</a></li>
+                    <li class="nav-item"><a href="../servicos.html"   class="nav-link">Mentoria</a></li>
                     <li class="nav-item"><a href="../portfolio.html"  class="nav-link">Portfólio</a></li>
                     <li class="nav-item"><a href="../blog.html"       class="nav-link">Blog</a></li>
                     <li class="nav-item"><a href="../contactos.html"  class="nav-link">Contactos</a></li>
@@ -852,7 +914,7 @@ nav ul {
             <div class="d-flex align-items-center gap-3">
                 <!-- Orçamento só em desktop -->
                 <a href="../pedir-orcamento.html" class="btn btn-orcamento d-none d-lg-block">
-                    Pedir Orçamento
+                    Solicitar Mentoria
                 </a>
 
                 <!-- Hamburger oficial — SÓ MOBILE -->
@@ -904,7 +966,7 @@ nav ul {
                 <li class="nav-item my-3"><a href="../faq.html"        class="nav-link text-white fs-4">FAQ</a></li>
                 <li class="mt-5">
                     <a href="../pedir-orcamento.html" class="btn btn-warning btn-lg w-100 fw-bold">
-                        Pedir Orçamento
+                        Solicitar Mentoria
                     </a>
                 </li>
             </ul>
@@ -915,147 +977,166 @@ nav ul {
 
 
     <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="container position-relative">
-            <h1 class="hero-title">Por Que Seu Negócio Precisa de um Website Responsivo</h1>
-            <p class="hero-subtitle">90% dos usuários acessam sites pelo celular. Um site responsivo aumenta vendas em 40%!</p>
-            <a href="#artigo" class="btn hero-btn">
-                Descobrir as Vantagens
-            </a>
-            <i class="fas fa-mobile-alt hero-icon"></i>
-        </div>
-    </section>
+    <!-- Hero Section -->
+<section class="hero-section">
+    <div class="container position-relative">
+        <h1 class="hero-title">Website Responsivo e o Teu Negócio </h1>
+        <p class="hero-subtitle">Com apoio, acompanhamento, orientação e mentoria, compreende como um website responsivo melhora a aprendizagem sobre presença digital e pode aumentar significativamente o alcance e o desempenho do teu negócio.</p>
+        <a href="#artigo" class="btn hero-btn">
+          Explorar Conteúdo
+        </a>
+        <i class="fas fa-mobile-alt hero-icon"></i>
+    </div>
+</section>
 
     <!-- Article Section -->
-    <section class="article-section" id="artigo">
-        <div class="container">
-            <div class="article-container">
-                <h2 class="article-title">6 Razões para Ter um Website Responsivo em 2025</h2>
-                <p class="article-meta">
-                    <i class="fas fa-calendar-alt"></i> Atualizado em 04 de Novembro de 2025  
-                    <i class="fas fa-user"></i> Por NextLynx Tech  
-                    <i class="fas fa-clock"></i> 7 min de leitura
-                </p>
+<section class="article-section" id="artigo">
+    <div class="container">
+        <div class="article-container">
+            <h2 class="article-title">6 Razões para Ter um Site Responsivo</h2>
+            <p class="article-meta">
+                <i class="fas fa-calendar-alt"></i> Atualizado em 04 de Novembro de 2025  
+                <i class="fas fa-user"></i> Por NextLynx Tech  
+                <i class="fas fa-clock"></i> 7 min de leitura
+            </p>
 
-                <img src="../img/deshbooord 12.png" class="article-img" alt="Website Responsivo">
+            <img src="https://qgbblhwojxuknlhkeusy.supabase.co/storage/v1/object/public/materiais/web%20site.jpg" class="article-img" alt="Website Responsivo">
 
-                <div class="article-content">
-                    <p><strong>90% dos moçambicanos acessam a internet pelo celular.</strong> Se o teu site não é responsivo, estás perdendo <strong>milhares de clientes</strong>. Na NextLynx Tech, já criamos <strong>mais de 120 websites mobile-first</strong> que geram <strong>vendas 24h por dia</strong>. Neste artigo, revelamos <strong>6 razões científicas</strong> para ter um website responsivo.</p>
+            <div class="article-content">
+                <p><strong>A maior parte dos utilizadores em Moçambique acede à internet pelo celular.</strong> Neste contexto, ter um site responsivo torna-se essencial dentro de uma estratégia de apoio, acompanhamento, orientação e mentoria para o crescimento digital e melhoria da aprendizagem sobre presença online.</p>
 
-                    <h3>1. 90% do Tráfego Vem do Celular</h3>
-                    <p>Segundo o INE Moçambique (2025), <strong>87% dos usuários</strong> navegam apenas pelo celular. Um site não responsivo = <strong>taxa de rejeição de 70%</strong>.</p>
+                <h3>1. Maioria do tráfego vem do celular</h3>
+                <p>Grande parte dos utilizadores navega apenas pelo telemóvel, o que exige adaptação total do conteúdo para melhor aprendizagem e experiência.</p>
 
-                    <h3>2. Google Prioriza Sites Responsivos</h3>
-                    <p>O algoritmo do Google (Mobile-First Index) <strong>rankeia melhor sites responsivos</strong>. Resultado: <strong>+300% de tráfego orgânico</strong> em 6 meses.</p>
+                <h3>2. Melhor posicionamento no Google</h3>
+                <p>Sites responsivos são favorecidos nos motores de busca, aumentando a visibilidade e fortalecendo o processo de aprendizagem digital e crescimento do negócio.</p>
 
-                    <h3>3. Aumenta Conversões em 40%</h3>
-                    <p>Estudos da Google mostram que:</p>
-                    <ul>
-                        <li>Site responsivo → <strong>40% mais vendas</strong></li>
-                        <li>Carregamento em < 3s → <strong>32% menos rejeição</strong></li>
-                        <li>Botões clicáveis → <strong>25% mais cliques</strong></li>
-                    </ul>
+                <h3>3. Mais conversões e resultados</h3>
+                <p>Um site bem estruturado, com apoio e orientação no design, contribui para maior interação e melhores resultados.</p>
+                <ul>
+                    <li>Mais facilidade de navegação</li>
+                    <li>Menos abandono de páginas</li>
+                    <li>Maior interação com o conteúdo</li>
+                </ul>
 
-                    <h3>4. Integração com M-Pesa e WhatsApp</h3>
-                    <p>NextLynx Tech cria sites com:</p>
-                    <ul>
-                        <li>Pagamento M-Pesa em 1 clique</li>
-                        <li>Botão WhatsApp flutuante</li>
-                        <li>Formulário de orçamento instantâneo</li>
-                    </ul>
+                <h3>4. Integração com serviços digitais</h3>
+                <p>Permite integração com ferramentas como pagamentos móveis e contacto direto, melhorando o acompanhamento do cliente.</p>
 
-                    <h3>5. Experiência do Usuário Perfeita</h3>
-                    <p>Design que se adapta a:</p>
-                    <ul>
-                        <li>Celulares (320px)</li>
-                        <li>Tablets (768px)</li>
-                        <li>Desktops (1920px)</li>
-                    </ul>
-                    <p><strong>NextLynx Tech</strong> testa em 50 dispositivos reais.</p>
+                <h3>5. Melhor experiência do utilizador</h3>
+                <p>O site adapta-se a diferentes dispositivos, promovendo uma experiência consistente e facilitando a aprendizagem do utilizador.</p>
+                <ul>
+                    <li>Telemóveis</li>
+                    <li>Tablets</li>
+                    <li>Computadores</li>
+                </ul>
 
-                    <h3>6. Custo-Benefício Imbatível</h3>
-                    <p>1 site responsivo = <strong>3 versões (mobile, tablet, desktop)</strong>. Economize tempo e dinheiro com NextLynx Tech.</p>
+                <h3>6. Eficiência e custo-benefício</h3>
+                <p>Um único site responsivo substitui várias versões, permitindo maior eficiência no processo de desenvolvimento e manutenção.</p>
 
-                    <div class="article-cta">
-                        <h3>Seu Site Responsivo em 7 Dias?</h3>
-                        <p>NextLynx Tech entrega website completo: design, M-Pesa, SEO, hospedagem. Garantia de 30 dias!</p>
-                        <a href="../pedir-orcamento.html" class="btn btn-cta">
-                            <i class="fas fa-globe"></i> Criar Meu Site Agora
-                        </a>
-                    </div>
-
-                    <p><strong>Conclusão:</strong> Um website responsivo <strong>não é luxo — é necessidade</strong>. Em 2025, <strong>quem não tem site mobile, não vende</strong>. Deixe a NextLynx Tech colocar seu negócio no bolso de milhões de clientes.</p>
-                </div>
-
-                <div class="text-center">
-                    <a href="../blog.html" class="btn-back">
-                        <i class="fas fa-arrow-left"></i> Voltar ao Blog
+                <div class="article-cta">
+                    <h3>Queres um Site Profissional?</h3>
+                    <p>Com apoio, acompanhamento, orientação e mentoria, é possível criar um site moderno, responsivo e alinhado com os objetivos do teu negócio.</p>
+                    <a href="../pedir-orcamento.html" class="btn btn-cta">
+                        <i class="fas fa-globe"></i> Solicitar Criação de Site
                     </a>
                 </div>
+
+                <p><strong>Conclusão:</strong> Um site responsivo é uma ferramenta essencial de aprendizagem digital e crescimento. Com a orientação correta, torna-se um recurso estratégico para melhorar a presença online e o desempenho do negócio.</p>
+            </div>
+
+            <div class="text-center">
+                <a href="../blog.html" class="btn-back">
+                    <i class="fas fa-arrow-left"></i> Voltar ao Blog
+                </a>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
      <!-- Footer — CENTRALIZADO -->
-    <footer class="footer-container">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 mb-4 text-center text-lg-start">
-                    <img src="../img/logo footer.png" alt="NextLynx Tech" class="footer-logo d-block mx-auto mx-lg-0">
-                    <p>Soluções digitais vibrantes para estudantes e empresas em Moçambique.</p>
+   
+   
+<footer class="footer-container">
+    <div class="container">
+        <div class="row text-center text-lg-start">
+            <div class="col-lg-4 mb-4">
+                <img src="../img/logo footer.png" alt="NextLynx Tech" class="footer-logo d-block mx-auto mx-lg-0">
+                <p class="mt-3"> Plataforma de apoio, orientação e desenvolvimento de competências académicas e digitais.
+                </p></p>
 
-                       <!-- RETIFICADO LINKS-->
-                    <div class="footer-social">
-                        <a href="https://web.facebook.com/?locale=pt_BR&_rdc=1&_rdr#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/nextlynxtech/" class="social-icon"><i class="fab fa-instagram"></i></a>
-                        <a href="https://web.whatsapp.com/send?phone=258868187201&text=Olá,%20quero%20um%20orçamento%20para%20meu%20projeto!" class="social-icon"><i class="fab fa-whatsapp"></i></a>
-                        <a href="https://www.linkedin.com/in/next-lynx-tech-45442a3ab/?isSelfProfile=true" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-6 mb-4 text-center">
-                    <h5 class="footer-title">Navegação</h5>
-                    <a href="../index.html" class="footer-link">Home</a>
-                    <a href="../servicos.html" class="footer-link">Serviços</a>
-                    <a href="../portfolio.html" class="footer-link">Portfólio</a>
-                    <a href="../blog.html" class="footer-link">Blog</a>
-                </div>
-                <div class="col-lg-2 col-md-6 mb-4 text-center">
-                    <h5 class="footer-title">Suporte</h5>
-                    <a href="../contactos.html" class="footer-link">Contactos</a>
-                    <a href="../testemunhos.html" class="footer-link">Testemunhos</a>
-                    <a href="../faq.html" class="footer-link">FAQ</a>
-                    <a href="../pedir-orcamento.html" class="footer-link">Orçamento</a>
-                </div>
-                <div class="col-lg-4 mb-4 text-center text-lg-start">
-                    <div class="footer-info mx-auto mx-lg-0" style="max-width: 300px;">
-                        <h5>Localização</h5>
-                        
-                         <!-- retificado o email -->
-                        <p>Cidade de Nampula</p>
-                         <strong>Email:</strong>  <a href="mailto:nextlynxtech@gmail.com?subject=Orçamento%20NextLynx%20Tech&body=Olá,%20gostaria%20de%20saber%20mais%20sobre..." 
-   title="Enviar email para NextLynx Tech">
-    nextlynxtech@gmail.com
-</a>
-                        <p><strong>WhatsApp:</strong> +258 868 187 201</p>
-                           <p>+258 872 394 433 </p>
-                             <p>+258 868 712 546 </p>
-                    </div>
+                <div class="footer-social mt-4">
+                    <a href="https://web.facebook.com/?locale=pt_BR&_rdc=1&_rdr#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/nextlynxtech/" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="https://web.whatsapp.com/send?phone=258868187201&text=Olá,%20quero%20um%20orçamento%20para%20meu%20projeto!" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.linkedin.com/in/next-lynx-tech-45442a3ab/?isSelfProfile=true" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>© 2025 NextLynx Tech. Todos os direitos reservados.</p>
-                <p class="small mt-2">
-                    <a href="../politica-privacidade.html">Política de Privacidade</a> • 
-                    <a href="../termos.html">Termos de Uso</a> •
-                    <a href="../sobre.html">Sobre nós</a>
-                </p>
+
+            <div class="col-lg-2 col-md-6 mb-4">
+                <h5 class="footer-title">Navegação</h5>
+                <a href="../index.html" class="footer-link">Home</a>
+                <a href="../servicos.html" class="footer-link">Mentoria</a>
+                <a href="../portfolio.html" class="footer-link">Portfólio</a>
+                <a href="../blog.html" class="footer-link">Blog</a>
+            </div>
+
+            <div class="col-lg-2 col-md-6 mb-4">
+                <h5 class="footer-title">Suporte</h5>
+                <a href="../contactos.html" class="footer-link">Contactos</a>
+                <a href="../testemunhos.html" class="footer-link">Testemunhos</a>
+                <a href="../faq.html" class="footer-link">FAQ</a>
+        
+            </div>
+
+            <div class="col-lg-4 mb-4">
+                <div class="footer-info mx-auto mx-lg-0" style="max-width: 300px;">
+                    <h5>Localização</h5>
+                    <p>Cidade de Nampula</p>
+                    <strong>Email:</strong> 
+                    <a href="mailto:nextlynxtech@gmail.com?subject=Orçamento%20NextLynx%20Tech&body=Olá,%20gostaria%20de%20saber%20mais%20sobre..." 
+                       title="Enviar email para NextLynx Tech">
+                        nextlynxtech@gmail.com
+                    </a>
+                    <p><strong>WhatsApp:</strong> +258 868 187 201</p>
+                    <p>+258 872 394 433</p>
+                    <p>+258 868 712 546</p>
+                </div>
             </div>
         </div>
-        <div class="footer-bottom">
-    <P> <strong>Abdul Narupuaxta</strong> • Consultor Académico e Soluções Digitais em Design & Tecnologia</P>
-</div>
-    </footer>
 
+
+           <!-- AVISO IMPORTANTE -->
+<div class="footer-warning text-center mt-4 p-3" style="border:1px solid rgba(255,255,255,0.2); border-radius:12px; background: rgba(255,255,255,0.05);">
+
+    <strong style="color:#ffeb3b;">
+        <i class="fas fa-exclamation-triangle" style="margin-right:6px;"></i>
+        Aviso Importante:
+    </strong>
+
+    <br>
+
+    Esta plataforma não realiza, não vende e não fornece trabalhos académicos prontos como monografias, dissertações, testes ou exames.  
+    O nosso foco é exclusivamente o apoio, orientação e desenvolvimento de competências académicas e digitais.
+
+</div>
+
+        <!-- Apenas UMA .footer-bottom -->
+       <!-- Rodapé inferior -->
+        <div class="footer-bottom text-center mt-4">
+            <p>© 2025 NextLynx Tech. Todos os direitos reservados.</p>
+
+            <p class="small mt-2">
+                <a href="../politica-privacidade.html">Política de Privacidade</a> • 
+                <a href="../termos.html">Termos de Uso</a> •
+                <a href="../sobre.html">Sobre nós</a>
+            </p>
+
+            <p class="mt-3">
+                <strong>NextLynx Tech</strong> • Plataforma de apoio, orientação e desenvolvimento de competências académicas e digitais.
+            </p>
+        </div>
+    </div>
+</footer>
     <!-- RETIFICADO BOTAO Chat WhatsApp Flutuante — ORGANIZADO -->
    
 <!-- Botão WhatsApp Flutuante (único, sem duplicação) -->

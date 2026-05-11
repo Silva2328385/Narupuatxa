@@ -403,9 +403,7 @@ nav ul {
             animation: float 15s ease-in-out infinite;
         }
 
-
-
-        /* Article Section */
+ /* Article Section */
         .article-section {
             padding: 6rem 0;
             background: white;
@@ -828,6 +826,64 @@ nav ul {
         right: 20px; 
     }
 
+    .hero-btn {
+    display: inline-block;
+    width: auto;
+
+    padding: 0.8rem 1.6rem;
+    font-size: 1rem;
+    border-radius: 40px;
+
+    transition: all 0.3s ease;
+}
+
+/* 📱 Mobile */
+@media (max-width: 768px) {
+    .hero-btn {
+        padding: 0.7rem 1.3rem;
+        font-size: 0.95rem;
+    }
+}
+
+
+.btn-cta {
+    display: inline-block;
+    width: auto;
+
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 40px;
+
+    transition: all 0.3s ease;
+}
+
+/* 📱 Mobile */
+@media (max-width: 768px) {
+    .btn-cta {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.95rem;
+    }
+}
+
+.btn-back {
+    display: inline-block;
+    width: auto;
+
+    padding: 0.7rem 1.4rem;
+    font-size: 0.95rem;
+    border-radius: 35px;
+
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+/* 📱 Mobile */
+@media (max-width: 768px) {
+    .btn-back {
+        padding: 0.6rem 1.1rem;
+        font-size: 0.9rem;
+    }
+}
     </style>
 </head>
 <body>
@@ -845,7 +901,7 @@ nav ul {
             <nav class="d-none d-lg-flex flex-grow-1 justify-content-center">
                 <ul class="nav">
                     <li class="nav-item"><a href="../index.html"      class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="../servicos.html"   class="nav-link">Serviços</a></li>
+                    <li class="nav-item"><a href="../servicos.html"   class="nav-link">Mentoria</a></li>
                     <li class="nav-item"><a href="../portfolio.html"  class="nav-link">Portfólio</a></li>
                     <li class="nav-item"><a href="../blog.html"       class="nav-link">Blog</a></li>
                     <li class="nav-item"><a href="../contactos.html"  class="nav-link">Contactos</a></li>
@@ -854,11 +910,12 @@ nav ul {
                 </ul>
             </nav>
 
+
             <!-- DIREITA: Orçamento (desktop) + Hamburger (mobile) + 3 pontinhos (todas telas) -->
             <div class="d-flex align-items-center gap-3">
                 <!-- Orçamento só em desktop -->
                 <a href="../pedir-orcamento.html" class="btn btn-orcamento d-none d-lg-block">
-                    Pedir Orçamento
+                    Solicitar Mentoria
                 </a>
 
                 <!-- Hamburger oficial — SÓ MOBILE -->
@@ -893,6 +950,8 @@ nav ul {
         </div>
     </div>
 
+
+
     <!-- MENU OFFCANVAS — MOBILE -->
     <div class="offcanvas offcanvas-end bg-dark text-white" tabindex="-1" id="mainMenu">
         <div class="offcanvas-header">
@@ -910,7 +969,7 @@ nav ul {
                 <li class="nav-item my-3"><a href="../faq.html"        class="nav-link text-white fs-4">FAQ</a></li>
                 <li class="mt-5">
                     <a href="../pedir-orcamento.html" class="btn btn-warning btn-lg w-100 fw-bold">
-                        Pedir Orçamento
+                        Solicitar Mentoria
                     </a>
                 </li>
             </ul>
@@ -918,159 +977,248 @@ nav ul {
     </div>
 </header>
 
+
     <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="container position-relative">
-            <h1 class="hero-title">Vantagens de um Sistema de Gestão Online</h1>
-            <p class="hero-subtitle">Para PMEs em Moçambique: eficiência, escalabilidade e integração com M-Pesa</p>
-            <a href="#artigo" class="btn hero-btn">
-                Conhecer os Benefícios
-            </a>
-            <i class="fas fa-cogs hero-icon"></i>
-        </div>
-    </section>
+   <!-- Hero Section -->
+<section class="hero-section">
+    <div class="container position-relative">
+        <h1 class="hero-title">Benefícios dos Sistemas Online</h1>
+
+        <p class="hero-subtitle">
+            Compreenda como os sistemas digitais podem melhorar a organização,
+            automatizar processos e facilitar a gestão de atividades em empresas
+            e instituições em Moçambique.
+        </p>
+
+        <a href="#artigo" class="btn hero-btn">
+            Explorar Conteúdo
+        </a>
+
+        <i class="fas fa-cogs hero-icon"></i>
+    </div>
+</section>
+
 
     <!-- Article Section -->
-    <section class="article-section" id="artigo">
-        <div class="container">
-            <div class="article-container">
-                <h2 class="article-title">6 Vantagens de Ter um Sistema de Gestão Online</h2>
-                <p class="article-meta">
-                    <i class="fas fa-calendar-alt"></i> Atualizado em 08 de Novembro de 2025  
-                    <i class="fas fa-user"></i> Por NextLynx Tech  
-                    <i class="fas fa-clock"></i> 6 min de leitura
+<section class="article-section" id="artigo">
+    <div class="container">
+        <div class="article-container">
+
+            <h2 class="article-title">
+                6 Benefícios de um Sistema de Gestão Online
+            </h2>
+
+            <p class="article-meta">
+                <i class="fas fa-calendar-alt"></i> Atualizado em 08 de Novembro de 2025  
+                <i class="fas fa-user"></i> Equipa NextLynx  
+                <i class="fas fa-clock"></i> 6 min de leitura
+            </p>
+
+            <img src="https://qgbblhwojxuknlhkeusy.supabase.co/storage/v1/object/public/materiais/sistema%20online.jpg" class="article-img" alt="Sistema de Gestão Online">
+
+            <div class="article-content">
+
+                <p>
+                    <strong>Os sistemas de gestão online têm se tornado ferramentas essenciais</strong>
+                    para empresas e instituições que procuram melhorar a organização,
+                    automatizar processos e facilitar o acompanhamento das atividades diárias.
+                    Neste artigo, apresentamos <strong>6 benefícios importantes</strong>
+                    da utilização de plataformas digitais de gestão.
                 </p>
 
-                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" class="article-img" alt="Sistema de Gestão Online">
+                <h3>1. Acompanhamento em Tempo Real</h3>
 
-                <div class="article-content">
-                    <p><strong>Gerir um negócio sem um sistema é como navegar sem bússola.</strong> Na NextLynx Tech, já entregamos <strong>mais de 80 sistemas personalizados</strong> para PMEs em Moçambique. Neste artigo, revelamos <strong>6 vantagens reais</strong> de um sistema de gestão online que <strong>reduz custos, aumenta vendas e escala seu negócio</strong>.</p>
+                <p>
+                    Os sistemas online permitem visualizar informações importantes
+                    em qualquer momento e local, facilitando o controlo de processos,
+                    atividades e operações.
+                </p>
 
-                    <h3>1. Controle Total em Tempo Real</h3>
-                    <p>Acesse estoque, vendas e finanças <strong>de qualquer lugar</strong>. Nosso dashboard mostra:</p>
-                    <ul>
-                        <li>Vendas do dia em tempo real</li>
-                        <li>Produtos com estoque baixo</li>
-                        <li>Relatórios de lucro por categoria</li>
-                    </ul>
+                <ul>
+                    <li>Monitoramento de vendas e atividades</li>
+                    <li>Gestão de estoque e produtos</li>
+                    <li>Relatórios atualizados automaticamente</li>
+                </ul>
 
-                    <h3>2. Integração com M-Pesa e Bancos</h3>
-                    <p>Receba pagamentos instantâneos. <strong>NextLynx Tech</strong> integra com:</p>
-                    <ul>
-                        <li>M-Pesa (automático)</li>
-                        <li>e-Mola</li>
-                        <li>Transferências bancárias</li>
-                    </ul>
-                    <p>Cliente paga → sistema atualiza → estoque diminui → fatura emitida.</p>
+                <h3>2. Integração com Pagamentos Digitais</h3>
 
-                    <h3>3. Redução de Erros Humanos</h3>
-                    <p>Elimine planilhas manuais. <strong>Erro zero</strong> em:</p>
-                    <ul>
-                        <li>Cálculo de IVA</li>
-                        <li>Emissão de faturas</li>
-                        <li>Controle de prazos de validade</li>
-                    </ul>
+                <p>
+                    Muitas plataformas modernas permitem integração com métodos
+                    de pagamento digital utilizados em Moçambique.
+                </p>
 
-                    <h3>4. Escalabilidade Sem Dor de Cabeça</h3>
-                    <p>Cresça de 10 para 1000 clientes sem mudar de sistema. <strong>NextLynx Tech</strong> usa cloud escalável.</p>
+                <ul>
+                    <li>M-Pesa</li>
+                    <li>e-Mola</li>
+                    <li>Transferências bancárias</li>
+                </ul>
 
-                    <h3>5. Acesso Multi-Usuário com Permissões</h3>
-                    <p>Defina níveis:</p>
-                    <ul>
-                        <li>Admin: tudo</li>
-                        <li>Vendedor: apenas vendas</li>
-                        <li>Armazém: apenas estoque</li>
-                    </ul>
+                <h3>3. Redução de Processos Manuais</h3>
 
-                    <h3>6. Relatórios Automáticos e Inteligentes</h3>
-                    <p>Receba por email:</p>
-                    <ul>
-                        <li>Relatório diário de vendas</li>
-                        <li>Previsão de estoque</li>
-                        <li>Clientes com dívidas</li>
-                    </ul>
+                <p>
+                    A automatização ajuda a reduzir erros e melhora a eficiência
+                    na realização de tarefas administrativas e operacionais.
+                </p>
 
-                    <div class="article-cta">
-                        <h3>Seu Negócio Merece um Sistema Profissional</h3>
-                        <p>NextLynx Tech entrega sistema completo em 15 dias: estoque, vendas, faturas, M-Pesa, relatórios. Suporte 24/7!</p>
-                        <a href="../pedir-orcamento.html" class="btn btn-cta">
-                            <i class="fas fa-rocket"></i> Solicitar Sistema Agora
-                        </a>
-                    </div>
+                <ul>
+                    <li>Registo automático de dados</li>
+                    <li>Organização de informações</li>
+                    <li>Gestão simplificada de documentos</li>
+                </ul>
 
-                    <p><strong>Conclusão:</strong> Um sistema de gestão online <strong>aumenta lucro em até 40%</strong> e <strong>reduz tempo de gestão em 70%</strong>. Deixe a NextLynx Tech automatizar seu negócio.</p>
-                </div>
+                <h3>4. Crescimento e Escalabilidade</h3>
 
-                <div class="text-center">
-                    <a href="../blog.html" class="btn-back">
-                        <i class="fas fa-arrow-left"></i> Voltar ao Blog
+                <p>
+                    Sistemas digitais podem acompanhar o crescimento de empresas
+                    e instituições, permitindo expansão sem necessidade de grandes
+                    mudanças estruturais.
+                </p>
+
+                <h3>5. Acesso Multiutilizador</h3>
+
+                <p>
+                    Diferentes utilizadores podem acessar o sistema com permissões
+                    específicas, melhorando a colaboração e a segurança.
+                </p>
+
+                <ul>
+                    <li>Administrador</li>
+                    <li>Operador</li>
+                    <li>Gestor de estoque</li>
+                </ul>
+
+                <h3>6. Relatórios e Organização de Dados</h3>
+
+                <p>
+                    Os sistemas online facilitam a geração de relatórios e o
+                    acompanhamento de indicadores importantes para tomada de decisão.
+                </p>
+
+                <ul>
+                    <li>Relatórios automáticos</li>
+                    <li>Histórico de atividades</li>
+                    <li>Análise de desempenho</li>
+                </ul>
+
+                <div class="article-cta">
+
+                    <h3>Mentoria e Apoio em Sistemas Digitais</h3>
+
+                    <p>
+                        Conheça recursos, orientações e acompanhamento relacionados
+                        ao desenvolvimento de sistemas, organização digital e utilização
+                        de ferramentas tecnológicas modernas.
+                    </p>
+
+                    <a href="../pedir-orcamento.html" class="btn btn-cta">
+                        <i class="fas fa-laptop-code"></i> Saber Mais
                     </a>
+
                 </div>
+
+                <p>
+                    <strong>Conclusão:</strong> Os sistemas de gestão online contribuem
+                    para maior organização, eficiência e modernização de processos,
+                    tornando-se ferramentas importantes para empresas e instituições
+                    em diferentes áreas.
+                </p>
+
             </div>
+
+            <div class="text-center">
+                <a href="../blog.html" class="btn-back">
+                    <i class="fas fa-arrow-left"></i> Voltar ao Blog
+                </a>
+            </div>
+
         </div>
-    </section>
+    </div>
+</section>
 
       <!-- Footer -->
-  <!-- Footer — CENTRALIZADO -->
-    <footer class="footer-container">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 mb-4 text-center text-lg-start">
-                    <img src="../img/logo footer.png" alt="NextLynx Tech" class="footer-logo d-block mx-auto mx-lg-0">
-                    <p>Soluções digitais vibrantes para estudantes e empresas em Moçambique.</p>
+  <footer class="footer-container">
+    <div class="container">
+        <div class="row text-center text-lg-start">
+            <div class="col-lg-4 mb-4">
+                <img src="../img/logo footer.png" alt="NextLynx Tech" class="footer-logo d-block mx-auto mx-lg-0">
+                <p class="mt-3"> Plataforma de apoio, orientação e desenvolvimento de competências académicas e digitais.
+                </p></p>
 
-                       <!-- RETIFICADO LINKS-->
-                    <div class="footer-social">
-                        <a href="https://web.facebook.com/?locale=pt_BR&_rdc=1&_rdr#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/nextlynxtech/" class="social-icon"><i class="fab fa-instagram"></i></a>
-                        <a href="https://web.whatsapp.com/send?phone=258868187201&text=Olá,%20quero%20um%20orçamento%20para%20meu%20projeto!" class="social-icon"><i class="fab fa-whatsapp"></i></a>
-                        <a href="https://www.linkedin.com/in/next-lynx-tech-45442a3ab/?isSelfProfile=true" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-6 mb-4 text-center">
-                    <h5 class="footer-title">Navegação</h5>
-                    <a href="../index.html" class="footer-link">Home</a>
-                    <a href="../servicos.html" class="footer-link">Serviços</a>
-                    <a href="../portfolio.html" class="footer-link">Portfólio</a>
-                    <a href="../blog.html" class="footer-link">Blog</a>
-                </div>
-                <div class="col-lg-2 col-md-6 mb-4 text-center">
-                    <h5 class="footer-title">Suporte</h5>
-                    <a href="../contactos.html" class="footer-link">Contactos</a>
-                    <a href="../testemunhos.html" class="footer-link">Testemunhos</a>
-                    <a href="../faq.html" class="footer-link">FAQ</a>
-                    <a href="../pedir-orcamento.html" class="footer-link">Orçamento</a>
-                </div>
-                <div class="col-lg-4 mb-4 text-center text-lg-start">
-                    <div class="footer-info mx-auto mx-lg-0" style="max-width: 300px;">
-                        <h5>Localização</h5>
-                        
-                         <!-- retificado o email -->
-                        <p>Cidade de Nampula</p>
-                         <strong>Email:</strong>  <a href="mailto:nextlynxtech@gmail.com?subject=Orçamento%20NextLynx%20Tech&body=Olá,%20gostaria%20de%20saber%20mais%20sobre..." 
-   title="Enviar email para NextLynx Tech">
-    nextlynxtech@gmail.com
-</a>
-                        <p><strong>WhatsApp:</strong> +258 868 187 201</p>
-                           <p>+258 872 394 433 </p>
-                             <p>+258 868 712 546 </p>
-                    </div>
+                <div class="footer-social mt-4">
+                    <a href="https://web.facebook.com/?locale=pt_BR&_rdc=1&_rdr#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/nextlynxtech/" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="https://web.whatsapp.com/send?phone=258868187201&text=Olá,%20quero%20um%20orçamento%20para%20meu%20projeto!" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.linkedin.com/in/next-lynx-tech-45442a3ab/?isSelfProfile=true" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>© 2025 NextLynx Tech. Todos os direitos reservados.</p>
-                <p class="small mt-2">
-                    <a href="../politica-privacidade.html">Política de Privacidade</a> • 
-                    <a href="../termos.html">Termos de Uso</a> •
-                    <a href="../sobre.html">Sobre nós</a>
-                </p>
+
+            <div class="col-lg-2 col-md-6 mb-4">
+                <h5 class="footer-title">Navegação</h5>
+                <a href="../index.html" class="footer-link">Home</a>
+                <a href="../servicos.html" class="footer-link">Mentoria</a>
+                <a href="../portfolio.html" class="footer-link">Portfólio</a>
+                <a href="../blog.html" class="footer-link">Blog</a>
+            </div>
+
+            <div class="col-lg-2 col-md-6 mb-4">
+                <h5 class="footer-title">Suporte</h5>
+                <a href="../contactos.html" class="footer-link">Contactos</a>
+                <a href="../testemunhos.html" class="footer-link">Testemunhos</a>
+                <a href="../faq.html" class="footer-link">FAQ</a>
+        
+            </div>
+
+            <div class="col-lg-4 mb-4">
+                <div class="footer-info mx-auto mx-lg-0" style="max-width: 300px;">
+                    <h5>Localização</h5>
+                    <p>Cidade de Nampula</p>
+                    <strong>Email:</strong> 
+                    <a href="mailto:nextlynxtech@gmail.com?subject=Orçamento%20NextLynx%20Tech&body=Olá,%20gostaria%20de%20saber%20mais%20sobre..." 
+                       title="Enviar email para NextLynx Tech">
+                        nextlynxtech@gmail.com
+                    </a>
+                    <p><strong>WhatsApp:</strong> +258 868 187 201</p>
+                    <p>+258 872 394 433</p>
+                    <p>+258 868 712 546</p>
+                </div>
             </div>
         </div>
-        <div class="footer-bottom">
-    <P> <strong>Abdul Narupuaxta</strong> • Consultor Académico e Soluções Digitais em Design & Tecnologia</P>
-</div>
-    </footer>
 
+
+           <!-- AVISO IMPORTANTE -->
+<div class="footer-warning text-center mt-4 p-3" style="border:1px solid rgba(255,255,255,0.2); border-radius:12px; background: rgba(255,255,255,0.05);">
+
+    <strong style="color:#ffeb3b;">
+        <i class="fas fa-exclamation-triangle" style="margin-right:6px;"></i>
+        Aviso Importante:
+    </strong>
+
+    <br>
+
+    Esta plataforma não realiza, não vende e não fornece trabalhos académicos prontos como monografias, dissertações, testes ou exames.  
+    O nosso foco é exclusivamente o apoio, orientação e desenvolvimento de competências académicas e digitais.
+
+</div>
+
+        <!-- Apenas UMA .footer-bottom -->
+       <!-- Rodapé inferior -->
+        <div class="footer-bottom text-center mt-4">
+            <p>© 2025 NextLynx Tech. Todos os direitos reservados.</p>
+
+            <p class="small mt-2">
+                <a href="../politica-privacidade.html">Política de Privacidade</a> • 
+                <a href="../termos.html">Termos de Uso</a> •
+                <a href="../sobre.html">Sobre nós</a>
+            </p>
+
+            <p class="mt-3">
+                <strong>NextLynx Tech</strong> • Plataforma de apoio, orientação e desenvolvimento de competências académicas e digitais.
+            </p>
+        </div>
+    </div>
+</footer>
+    
+    
     <!-- RETIFICADO BOTAO Chat WhatsApp Flutuante — ORGANIZADO -->
    
 <!-- Botão WhatsApp Flutuante (único, sem duplicação) -->
