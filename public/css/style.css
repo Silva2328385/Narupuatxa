@@ -383,3 +383,110 @@ body > header + section {
     width: auto !important;
     margin-top: 15px;
 }
+
+
+
+/* Menu abre só no topo e NÃO ocupa a tela toda */
+.compact-menu {
+    height: auto !important;
+    max-height: 45vh; /* 👈 importante: não vai até em baixo */
+    border-radius: 0 0 18px 18px;
+    padding: 10px 0;
+}
+
+/* tira layout vertical */
+.compact-menu .offcanvas-body {
+    padding: 10px;
+}
+
+/* 🔥 transforma menu em horizontal */
+.compact-menu .nav {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+}
+
+/* itens pequenos e organizados */
+.compact-menu .nav-item {
+    width: auto;
+}
+
+/* estilo compacto tipo “chips” */
+.compact-menu .nav-link {
+    font-size: 14px !important;
+    padding: 8px 12px;
+    border-radius: 20px;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* botão final também compacto */
+.compact-menu .btn-warning {
+    font-size: 14px;
+    padding: 8px 14px;
+    border-radius: 20px;
+    width: auto !important;
+    margin-top: 10px;
+}
+
+
+.compact-menu {
+    height: auto !important;
+    max-height: 35vh; /* 🔥 reduz ainda mais a altura */
+    overflow-y: auto;  /* permite scroll se passar do limite */
+    border-radius: 0 0 18px 18px;
+}
+
+
+.compact-menu .offcanvas-body {
+    max-height: 30vh;
+    overflow-y: auto;
+}
+
+
+/* força altura controlada sem quebrar Bootstrap */
+#mainMenu.offcanvas-top {
+    height: auto !important;
+    max-height: 35vh !important;
+    min-height: 0 !important;
+    transform: none !important;
+    overflow: hidden;
+    border-radius: 0 0 18px 18px;
+}
+
+/* corpo interno controlado */
+#mainMenu .offcanvas-body {
+    max-height: 30vh !important;
+    overflow-y: auto !important;
+    padding: 12px;
+}
+
+/* impede “explosão” de layout */
+#mainMenu .nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+#mainMenu.offcanvas-top {
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    border-radius: 0 0 18px 18px;
+}
+
+
+#mainMenu .offcanvas-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 16px;
+}
+
