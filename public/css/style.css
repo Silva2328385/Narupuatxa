@@ -343,3 +343,43 @@ body > header + section {
 .dropdown-divider {
     border-top-color: rgba(255,255,255,0.2) !important; /* divisor mais claro */
 }
+
+.offcanvas-top {
+    height: auto !important;
+    max-height: 75vh;
+    border-radius: 0 0 20px 20px;
+}
+
+/* 🔥 MUDANÇA PRINCIPAL: transforma lista em horizontal */
+.offcanvas-body .nav {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Remove comportamento vertical */
+.offcanvas-body .nav-item {
+    width: auto !important;
+}
+
+/* Estilo dos links como “botões compactos” */
+.offcanvas-body .nav-link {
+    font-size: 15px !important;
+    padding: 10px 14px;
+    border-radius: 12px;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Botão final */
+.offcanvas .btn-warning {
+    font-size: 15px;
+    padding: 10px 16px;
+    border-radius: 12px;
+    width: auto !important;
+    margin-top: 15px;
+}
