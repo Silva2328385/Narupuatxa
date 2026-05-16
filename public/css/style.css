@@ -451,7 +451,7 @@ body > header + section {
 /* força altura controlada sem quebrar Bootstrap */
 #mainMenu.offcanvas-top {
     height: auto !important;
-    max-height: 45vh !important;
+    max-height: 35vh !important;
     min-height: 0 !important;
     transform: none !important;
     overflow: hidden;
@@ -460,7 +460,7 @@ body > header + section {
 
 /* corpo interno controlado */
 #mainMenu .offcanvas-body {
-    max-height: 45vh !important;
+    max-height: 30vh !important;
     overflow-y: auto !important;
     padding: 12px;
 }
