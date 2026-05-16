@@ -451,7 +451,7 @@ body > header + section {
 /* força altura controlada sem quebrar Bootstrap */
 #mainMenu.offcanvas-top {
     height: auto !important;
-    max-height: 35vh !important;
+    max-height: 45vh !important;
     min-height: 0 !important;
     transform: none !important;
     overflow: hidden;
@@ -460,7 +460,7 @@ body > header + section {
 
 /* corpo interno controlado */
 #mainMenu .offcanvas-body {
-    max-height: 30vh !important;
+    max-height: 45vh !important;
     overflow-y: auto !important;
     padding: 12px;
 }
@@ -495,19 +495,38 @@ body > header + section {
 
 @media (max-width: 768px){
 
-   #mainMenu .nav-link{
-    font-size: 13px !important;
-    padding: 4px 8px !important;
-}
+    #mainMenu.offcanvas-top{
+        max-height: 160px !important;
+        height: auto !important;
+        overflow: hidden !important;
+        border-radius: 0 0 20px 20px;
+    }
+
+    #mainMenu .offcanvas-header{
+        padding: 8px 14px !important;
+    }
+
+    #mainMenu .offcanvas-title{
+        font-size: 16px !important;
+    }
+
+    #mainMenu .offcanvas-body{
+        padding: 4px 8px 10px !important;
+    }
+
+    #mainMenu .nav{
+        gap: 6px !important;
+        row-gap: 4px !important;
+    }
+
+    #mainMenu .nav-link{
+        font-size: 13px !important;
+        padding: 4px 8px !important;
+    }
 
     #mainMenu .menu-btn{
-         font-size: 11px !important;
+        font-size: 11px !important;
     padding: 5px 8px !important;
     white-space: nowrap;
     }
-
-    #mainMenu.offcanvas-top{
-        max-height: 145px !important;
-    }
-
 }
