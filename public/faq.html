@@ -904,6 +904,20 @@ nav ul {
     flex-shrink: 0 !important;
 }
 
+
+
+
+/* Remove qualquer aperto lateral que mude de página para página no mobile */
+.offcanvas-body {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+}
+
+/* Protege todos os links de texto do menu contra quebras indesejadas */
+.offcanvas-body a:not(.btn) {
+    display: inline-block !important;
+    white-space: nowrap !important;
+}
     </style>
 </head>
 <body>
@@ -978,15 +992,15 @@ nav ul {
             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Fechar"></button>
         </div>
         <div class="offcanvas-body py-3">
-            <div class="d-flex flex-wrap justify-content-center align-items-center gap-2 text-center mx-auto" style="max-width: 100%; font-family: 'Montserrat', sans-serif;">
+            <div class="d-flex flex-wrap justify-content-center align-items-center gap-2 text-center mx-auto px-1" style="max-width: 100%; font-family: 'Montserrat', sans-serif;">
                 
-                <a href="index.html" class="text-white text-decoration-none fw-semibold px-2 py-1" style="font-size: 0.85rem; white-space: nowrap;">Home</a>
-                <a href="servicos.html" class="text-white text-decoration-none fw-semibold px-2 py-1" style="font-size: 0.85rem; white-space: nowrap;">Mentoria</a>
-                <a href="portfolio.html" class="text-white text-decoration-none fw-semibold px-2 py-1" style="font-size: 0.85rem; white-space: nowrap;">Portfólio</a>
-                <a href="blog.html" class="text-white text-decoration-none fw-semibold px-2 py-1" style="font-size: 0.85rem; white-space: nowrap;">Blog</a>
-                <a href="contactos.html" class="text-white text-decoration-none fw-semibold px-2 py-1" style="font-size: 0.85rem; white-space: nowrap;">Contactos</a>
+                <a href="index.html" class="text-white text-decoration-none fw-semibold px-1 py-1" style="font-size: 0.85rem; white-space: nowrap;">Home</a>
+                <a href="servicos.html" class="text-white text-decoration-none fw-semibold px-1 py-1" style="font-size: 0.85rem; white-space: nowrap;">Mentoria</a>
+                <a href="portfolio.html" class="text-white text-decoration-none fw-semibold px-1 py-1" style="font-size: 0.85rem; white-space: nowrap;">Portfólio</a>
+                <a href="blog.html" class="text-white text-decoration-none fw-semibold px-1 py-1" style="font-size: 0.85rem; white-space: nowrap;">Blog</a>
+                <a href="contactos.html" class="text-white text-decoration-none fw-semibold px-1 py-1" style="font-size: 0.85rem; white-space: nowrap;">Contactos</a>
                 
-                <div class="w-100" style="height: 4px;"></div>
+                <div class="w-100" style="height: 6px;"></div>
                 
                 <a href="testemunhos.html" class="text-white text-decoration-none fw-semibold px-2 py-1" style="font-size: 0.85rem; white-space: nowrap;">Testemunhos</a>
                 <a href="faq.html" class="text-white text-decoration-none fw-semibold px-2 py-1" style="font-size: 0.85rem; white-space: nowrap;">FAQ</a>
