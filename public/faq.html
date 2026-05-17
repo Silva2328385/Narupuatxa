@@ -872,6 +872,20 @@ nav ul {
     margin: 3rem auto;   /* CENTRALIZA O CARD NA PÁGINA */
     box-shadow: 0 15px 40px rgba(0,0,0,0.15);
 }
+
+
+/* Proteção absoluta para o botão de solicitar no menu mobile */
+.offcanvas-body .btn-warning {
+    white-space: nowrap !important;
+    display: inline-block !important;
+}
+
+/* Deixa os links do menu do offcanvas mais confortáveis lado a lado */
+.offcanvas-body .nav-item {
+    display: inline-block;
+}
+
+
     </style>
 </head>
 <body>
@@ -940,22 +954,23 @@ nav ul {
     </div>
 
     <!-- MENU OFFCANVAS — MOBILE -->
-<div class="offcanvas offcanvas-top bg-dark text-white" tabindex="-1" id="mainMenu">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title">Menu NextLynx Tech</h5>
+<div class="offcanvas offcanvas-top bg-dark text-white" tabindex="-1" id="mainMenu" style="height: auto;">
+        <div class="offcanvas-header border-bottom border-secondary">
+            <h5 class="offcanvas-title text-warning fw-bold">Menu NextLynx Tech</h5>
             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Fechar"></button>
         </div>
-        <div class="offcanvas-body">
-            <ul class="nav">
-                <li class="nav-item my-3"><a href="index.html"      class="nav-link text-white fs-4">Home</a></li>
-                <li class="nav-item my-3"><a href="servicos.html"   class="nav-link text-white fs-4">Mentoria</a></li>
-                <li class="nav-item my-3"><a href="portfolio.html"  class="nav-link text-white fs-4">Portfólio</a></li>
-                <li class="nav-item my-3"><a href="blog.html"       class="nav-link text-white fs-4">Blog</a></li>
-                <li class="nav-item my-3"><a href="contactos.html"  class="nav-link text-white fs-4">Contactos</a></li>
-                <li class="nav-item my-3"><a href="testemunhos.html"class="nav-link text-white fs-4">Testemunhos</a></li>
-                <li class="nav-item my-3"><a href="faq.html"        class="nav-link text-white fs-4">FAQ</a></li>
-              <li class="nav-item">
-                    <a href="pedir-orcamento.html" class="btn btn-warning btn-lg w-50 fw-bold">
+        <div class="offcanvas-body py-3">
+            <ul class="nav d-flex flex-row flex-wrap align-items-center justify-content-center gap-2 w-100 m-0 p-0">
+                <li class="nav-item"><a href="index.html" class="nav-link text-white fs-6 px-2 py-1">Home</a></li>
+                <li class="nav-item"><a href="servicos.html" class="nav-link text-white fs-6 px-2 py-1">Mentoria</a></li>
+                <li class="nav-item"><a href="portfolio.html" class="nav-link text-white fs-6 px-2 py-1">Portfólio</a></li>
+                <li class="nav-item"><a href="blog.html" class="nav-link text-white fs-6 px-2 py-1">Blog</a></li>
+                <li class="nav-item"><a href="contactos.html" class="nav-link text-white fs-6 px-2 py-1">Contactos</a></li>
+                <li class="nav-item"><a href="testemunhos.html" class="nav-link text-white fs-6 px-2 py-1">Testemunhos</a></li>
+                <li class="nav-item"><a href="faq.html" class="nav-link text-white fs-6 px-2 py-1">FAQ</a></li>
+                
+                <li class="nav-item ms-2" style="flex-shrink: 0;">
+                    <a href="pedir-orcamento.html" class="btn btn-warning btn-sm fw-bold text-dark px-3 py-1.5" style="white-space: nowrap; font-size: 0.95rem; border-radius: 8px;">
                         Solicitar
                     </a>
                 </li>
