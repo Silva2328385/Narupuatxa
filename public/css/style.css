@@ -530,3 +530,46 @@ body > header + section {
     white-space: nowrap;
     }
 }
+
+
+
+
+
+
+/* --- CONFIGURAÇÃO GLOBAL DO LOGO (Todas as páginas) --- */
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-text {
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: 700 !important;
+    margin-bottom: 0 !important;
+    white-space: nowrap;
+    font-size: 1.6rem !important; /* Tamanho no Computador */
+    transition: all 0.3s ease;
+}
+
+/* --- REGRAS EXCLUSIVAS PARA TELEMÓVEL (Abaixo de 992px) --- */
+@media (max-width: 991.98px) {
+    /* Força o título a ter exatamente o mesmo tamanho em todo o lado */
+    .logo-text {
+        font-size: 1.25rem !important; 
+    }
+
+    /* Garante que o cabeçalho distribua o Logo na esquerda e os Botões na direita */
+    .header-container .d-flex.justify-content-between {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        width: 100% !important;
+    }
+
+    /* Força o bloco de botões da direita a ficar junto e alinhado no canto direito */
+    .header-container .d-flex.align-items-center.gap-3 {
+        margin-left: auto !important; /* Empurra o grupo de botões todo para a direita */
+    }
+}
