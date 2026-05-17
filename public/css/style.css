@@ -602,3 +602,22 @@ body > header + section {
         z-index: 1;
     }
 }
+
+
+
+/* ==========================================================================
+   FORÇAR FUNDO PRETO ABSOLUTO EM TODO O SISTEMA (IGNOU GRADIENTES ANTERIORES)
+   ========================================================================== */
+
+/* ==========================================================================
+   FORÇAR APENAS O FUNDO PRETO NO CORPO DO SISTEMA
+   ========================================================================== */
+
+/* Usamos o seletor combinado para ter mais peso que o estilo interno de cada página */
+html body, 
+html, 
+body {
+    background-color: #000000 !important;
+    background-image: none !important; /* Desliga o --gradient-bg antigo das páginas */
+    background: #000000 !important;       /* Garante o preto absoluto no fundo */
+}
