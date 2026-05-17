@@ -886,6 +886,24 @@ nav ul {
 }
 
 
+/* Unifica o comportamento do menu em todas as páginas do site */
+.offcanvas-body {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+}
+
+.offcanvas-body a:not(.btn) {
+    display: inline-block !important;
+    white-space: nowrap !important;
+    font-size: 0.95rem !important; /* Tamanho controlado para nunca estourar a linha de cima */
+}
+
+.offcanvas-body .btn-warning {
+    white-space: nowrap !important;
+    display: inline-block !important;
+    flex-shrink: 0 !important;
+}
+
     </style>
 </head>
 <body>
@@ -960,21 +978,24 @@ nav ul {
             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Fechar"></button>
         </div>
         <div class="offcanvas-body py-3">
-            <ul class="nav d-flex flex-row flex-wrap align-items-center justify-content-center gap-2 w-100 m-0 p-0">
-                <li class="nav-item"><a href="index.html" class="nav-link text-white fs-6 px-2 py-1">Home</a></li>
-                <li class="nav-item"><a href="servicos.html" class="nav-link text-white fs-6 px-2 py-1">Mentoria</a></li>
-                <li class="nav-item"><a href="portfolio.html" class="nav-link text-white fs-6 px-2 py-1">Portfólio</a></li>
-                <li class="nav-item"><a href="blog.html" class="nav-link text-white fs-6 px-2 py-1">Blog</a></li>
-                <li class="nav-item"><a href="contactos.html" class="nav-link text-white fs-6 px-2 py-1">Contactos</a></li>
-                <li class="nav-item"><a href="testemunhos.html" class="nav-link text-white fs-6 px-2 py-1">Testemunhos</a></li>
-                <li class="nav-item"><a href="faq.html" class="nav-link text-white fs-6 px-2 py-1">FAQ</a></li>
+            <div class="d-flex flex-wrap justify-content-center align-items-center gap-2 text-center mx-auto" style="max-width: 100%;">
                 
-                <li class="nav-item ms-2" style="flex-shrink: 0;">
-                    <a href="pedir-orcamento.html" class="btn btn-warning btn-sm fw-bold text-dark px-3 py-1.5" style="white-space: nowrap; font-size: 0.95rem; border-radius: 8px;">
-                        Solicitar
-                    </a>
-                </li>
-            </ul>
+                <a href="index.html" class="text-white fs-6 text-decoration-none px-2 py-1">Home</a>
+                <a href="servicos.html" class="text-white fs-6 text-decoration-none px-2 py-1">Mentoria</a>
+                <a href="portfolio.html" class="text-white fs-6 text-decoration-none px-2 py-1">Portfólio</a>
+                <a href="blog.html" class="text-white fs-6 text-decoration-none px-2 py-1">Blog</a>
+                <a href="contactos.html" class="text-white fs-6 text-decoration-none px-2 py-1">Contactos</a>
+                
+                <div class="w-100 d-block d-md-none" style="height: 5px;"></div>
+                
+                <a href="testemunhos.html" class="text-white fs-6 text-decoration-none px-2 py-1">Testemunhos</a>
+                <a href="faq.html" class="text-white fs-6 text-decoration-none px-2 py-1">FAQ</a>
+                
+                <a href="pedir-orcamento.html" class="btn btn-warning fw-bold text-dark px-3 py-1.5 ms-1" style="white-space: nowrap; flex-shrink: 0; font-size: 0.95rem; border-radius: 8px;">
+                    Solicitar
+                </a>
+                
+            </div>
         </div>
     </div>
 </header>
