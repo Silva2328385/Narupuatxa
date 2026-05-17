@@ -50,43 +50,49 @@ body {
 
 
 
-        :root {
-            --primary: #6a11cb;
-            --primary-light: #a55eea;
-            --secondary: #f093fb;
-            --success: #38ef7d;
-            --warning: #f5576c;
-            --info: #00f2fe;
-            --dark: #2c3e50;
-            --light: #f8f9fa;
-            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --gradient-success: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
-            --gradient-warning: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            --gradient-info: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            --gradient-bg: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
-            --gradient-hero: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --footer-bg: #1a1a1a;
-            --footer-text: #ffffff;
-            --footer-title: #ffffff;
-            --footer-muted: #cccccc;
-            --footer-border: #333333;
-            --header-bg: #8B0000; /* VERMELHO ESCURO */
-            --header-text: #ffffff; /* TEXTO BRANCO */
-        }
+       :root {
+    --primary: #6a11cb;
+    --primary-light: #a55eea;
+    --secondary: #f093fb;
+    --success: #38ef7d;
+    --warning: #f5576c;
+    --info: #00f2fe;
+    --dark: #2c3e50;
+    --light: #f8f9fa;
+    --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --gradient-success: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+    --gradient-warning: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --gradient-info: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    
+    /* MODIFICADO: Agora o gradiente de fundo é um preto profundo e elegante */
+    --gradient-bg: linear-gradient(135deg, #000000 0%, #111111 100%);
+    --gradient-hero: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    
+    --footer-bg: #1a1a1a;
+    --footer-text: #ffffff;
+    --footer-title: #ffffff;
+    --footer-muted: #cccccc;
+    --footer-border: #333333;
+    --header-bg: #8B0000; /* VERMELHO ESCURO */
+    --header-text: #ffffff; /* TEXTO BRANCO */
+}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        body {
-            background: var(--gradient-bg);
-            min-height: 100vh;
-            font-family: 'Poppins', sans-serif;
-            color: #2c3e50;
-            overflow-x: hidden;
-        }
+body {
+    /* Usa o novo gradiente escuro */
+    background: var(--gradient-bg) !important; 
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    
+    /* MODIFICADO: Texto padrão agora é branco para dar leitura sobre o preto */
+    color: #ffffff !important; 
+    overflow-x: hidden;
+}
 
              
 /* ====================== HEADER OTIMIZADO ====================== */
