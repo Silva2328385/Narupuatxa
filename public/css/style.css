@@ -576,24 +576,25 @@ body > header + section {
 
 
 
-
 /* --- REGRAS EXCLUSIVAS PARA TELEMÓVEL (Abaixo de 992px) --- */
 @media (max-width: 991.98px) {
     
-    /* 1. Criamos a referência de centralização no container do cabeçalho */
+    /* 1. Mantém a referência de centralização no cabeçalho */
     .header-container .d-flex.justify-content-between {
         position: relative !important;
     }
 
-    /* 2. Isolamos APENAS o texto e mandamos para o centro absoluto do ecrã */
+    /* 2. Título isolado, centralizado e com tamanho maior */
     .logo-text {
         font-family: 'Montserrat', sans-serif !important;
         font-weight: 700 !important;
         margin: 0 !important;
         white-space: nowrap;
-        font-size: 1.2rem !important; /* Tamanho elegante para telemóvel */
         
-        /* O truque da centralização absoluta */
+        /* Aumentado de 1.2rem para 1.4rem para dar mais destaque */
+        font-size: 1.4rem !important; 
+        
+        /* Centralização absoluta intacta */
         position: absolute !important;
         left: 50% !important;
         top: 50% !important;
