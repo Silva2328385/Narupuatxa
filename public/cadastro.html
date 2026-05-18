@@ -9,156 +9,227 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
     <style>
 
-        :root {
-            --primary: #6a11cb;
-            --primary-light: #a55eea;
-            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --dark: #2c3e50;
-            --success: #38ef7d;
-        }
+       /* ==========================================================================
+   1. CORREÇÃO DE SCROLL E COMPORTAMENTO GLOBAL DO BODY
+   ========================================================================== */
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;                /* Impede scroll horizontal de vez */
+    overscroll-behavior: none;         /* Desativa o "bounce" elástico nas bordas */
+    -webkit-overflow-scrolling: touch;  /* Melhora o scroll suave no iOS */
+    touch-action: pan-y pinch-zoom;    /* Permite scroll vertical + zoom, bloqueia horizontal */
+}
 
-        body {
-            background: var(--gradient-primary);
-            min-height: 100vh;
-            font-family: 'Poppins', sans-serif;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: clamp(1rem, 5vw, 2rem); /* padding responsivo */
-            margin: 0;
-        }
+:root {
+    --primary: #6a11cb;
+    --primary-light: #a55eea;
+    --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --gradient-bg: linear-gradient(135deg, #000000 0%, #111111 100%); /* Fundo escuro igual ao login */
+    --dark: #2c3e50;
+    --light: #f8f9fa;
+    --success: #38ef7d;
+    --danger: #dc3545;
+}
 
-        .signup-container {
-            background: rgba(255, 255, 255, 0.97);
-            border-radius: clamp(15px, 5vw, 25px);
-            box-shadow: 0 25px 70px rgba(0,0,0,0.35);
-            max-width: clamp(320px, 90vw, 500px);
-            width: 100%;
-            animation: fadeInUp 0.9s ease-out;
-            overflow: hidden;
-        }
+body {
+    background: var(--gradient-bg) !important; /* Força o fundo escuro do sistema */
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(1rem, 5vw, 2rem);
+    position: relative;
+}
 
-        .signup-header {
-            background: var(--gradient-primary);
-            padding: clamp(2rem, 8vw, 3.5rem) clamp(1.2rem, 5vw, 2rem) clamp(1.8rem, 7vw, 2.5rem);
-            text-align: center;
-        }
+/* ==========================================================================
+   2. CONTAINER DO CADASTRO (SIGNUP)
+   ========================================================================== */
+.signup-container {
+    background: rgba(255, 255, 255, 0.98);
+    border-radius: clamp(15px, 5vw, 25px);
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.55);
+    max-width: clamp(320px, 90vw, 500px);
+    width: 100%;
+    animation: fadeInUp 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+    overflow: hidden;
+}
 
-        .signup-logo {
-            height: clamp(60px, 20vw, 90px);
-            margin-bottom: clamp(0.8rem, 3vw, 1.2rem);
-            filter: drop-shadow(0 6px 12px rgba(0,0,0,0.4));
-        }
+.signup-header {
+    background: var(--gradient-primary);
+    padding: clamp(2rem, 8vw, 3.5rem) clamp(1.2rem, 5vw, 2rem) clamp(1.8rem, 7vw, 2.5rem);
+    text-align: center;
+}
 
-        .signup-title {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 900;
-            font-size: clamp(1.8rem, 7vw, 2.5rem);
-            margin-bottom: clamp(0.3rem, 2vw, 0.5rem);
-            text-shadow: 0 3px 10px rgba(0,0,0,0.5);
-        }
+.signup-logo {
+    height: clamp(60px, 20vw, 90px);
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    margin-bottom: clamp(0.8rem, 3vw, 1.2rem);
+    filter: drop-shadow(0 6px 12px rgba(0,0,0,0.4));
+}
 
-        .signup-subtitle {
-            font-size: clamp(0.95rem, 4vw, 1.15rem);
-            opacity: 0.92;
-        }
+.signup-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: clamp(1.8rem, 7vw, 2.4rem);
+    margin-bottom: clamp(0.3rem, 2vw, 0.5rem);
+    text-shadow: 0 3px 10px rgba(0,0,0,0.4);
+    letter-spacing: -0.5px;
+}
 
-        .signup-body {
-            padding: clamp(1.8rem, 6vw, 2.5rem);
-        }
+.signup-subtitle {
+    font-size: clamp(0.95rem, 4vw, 1.15rem);
+    opacity: 0.92;
+    margin: 0;
+}
 
-        .form-label {
-            font-weight: 600;
-            color: var(--dark);
-            margin-bottom: 0.5rem;
-            font-size: clamp(0.9rem, 3.5vw, 1rem);
-        }
+.signup-body {
+    padding: clamp(1.8rem, 6vw, 2.5rem);
+}
 
-        .form-control, .form-select {
-            border-radius: 15px;
-            padding: clamp(0.7rem, 3vw, 0.85rem) clamp(1rem, 4vw, 1.25rem);
-            border: 1px solid #d1d8e0;
-            transition: all 0.3s ease;
-            font-size: clamp(0.95rem, 4vw, 1rem);
-        }
+/* ==========================================================================
+   3. ELEMENTOS DE FORMULÁRIO (INPUTS, SELETS E BOTÕES)
+   ========================================================================== */
+.form-label {
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 0.5rem;
+    font-size: clamp(0.9rem, 3.5vw, 1rem);
+}
 
-        .form-control:focus, .form-select:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 0.3rem rgba(106,17,203,0.2);
-        }
+/* Ajuste para aninhar perfeitamente os ícones e campos em grupos do Bootstrap */
+.input-group {
+    border-radius: 15px;
+    overflow: hidden;
+}
 
-        .btn-signup {
-            background: var(--gradient-primary);
-            color: white;
-            font-weight: 700;
-            font-size: clamp(1rem, 4vw, 1.15rem);
-            padding: clamp(0.8rem, 3vw, 1rem) clamp(1.5rem, 5vw, 2rem);
-            border-radius: 50px;
-            border: none;
-            transition: all 0.4s ease;
-            box-shadow: 0 10px 30px rgba(106,17,203,0.35);
-            animation: pulse 2.5s infinite;
-            width: 100%;
-            min-height: 48px; /* área mínima confortável para toque */
-        }
+.input-group-text {
+    background: #f1f3f5;
+    border: 1px solid #d1d8e0;
+    border-right: none;
+    color: #8420d4;
+    padding: 0 1.1rem;
+}
 
-        .btn-signup:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 18px 45px rgba(106,17,203,0.5);
-            animation: none;
-        }
+.form-control, .form-select {
+    border-radius: 0 15px 15px 0 !important; /* Encaixe correto com o ícone lateral */
+    padding: clamp(0.7rem, 3vw, 0.85rem) clamp(1rem, 4vw, 1.25rem);
+    border: 1px solid #d1d8e0;
+    transition: all 0.3s ease;
+    font-size: clamp(0.95rem, 4vw, 1rem);
+    color: var(--dark);
+}
 
-        .alert {
-            border-radius: 15px;
-            margin-top: 1.2rem;
-            font-size: clamp(0.9rem, 3.5vw, 0.95rem);
-        }
+/* Garante os cantos corretos caso existam inputs sem ícone lateral no formulário */
+form :not(.input-group) > .form-control,
+form :not(.input-group) > .form-select {
+    border-radius: 15px !important;
+}
 
-        .link-login {
-            color: var(--primary-light);
-            font-weight: 600;
-            text-decoration: none;
-        }
+.form-control:focus, .form-select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 0.25rem rgba(106,17,203,0.15);
+    outline: none;
+}
 
-        .link-login:hover {
-            color: white;
-            text-decoration: underline;
-        }
+.btn-signup {
+    background: var(--gradient-primary);
+    color: white;
+    font-weight: 700;
+    font-size: clamp(1rem, 4vw, 1.1rem);
+    padding: clamp(0.8rem, 3vw, 1rem) clamp(1.5rem, 5vw, 2rem);
+    border-radius: 50px;
+    border: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 25px rgba(106,17,203,0.3);
+    width: 100%;
+    min-height: 48px; /* Altura ideal de clique mobile recomendada pela Google */
+}
 
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(50px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+.btn-signup:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(106,17,203,0.45);
+    background: var(--primary-light);
+}
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.04); }
-        }
+.btn-signup:active {
+    transform: translateY(-1px);
+}
 
-        /* Responsividade unificada – ajusta tudo automaticamente */
-        @media (max-width: 576px) {
-            body { padding: 1rem; }
-            .signup-container { margin: 0.5rem; border-radius: 20px; }
-            .signup-header { padding: clamp(2rem, 8vw, 2.5rem) 1.5rem 2rem; }
-            .signup-title { font-size: clamp(1.8rem, 7vw, 2.1rem); }
-            .signup-subtitle { font-size: clamp(0.95rem, 4vw, 1.1rem); }
-            .signup-body { padding: 1.8rem 1.5rem 2.5rem; }
-            .form-control, .form-select { font-size: 0.95rem; padding: 0.7rem 1rem; }
-            .btn-signup { font-size: 1rem; padding: 0.9rem 1.5rem; }
-        }
+/* Link interno para voltar ao Login */
+.link-login {
+    color: var(--primary);
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+}
 
-        @media (max-width: 400px) {
-            .signup-container { border-radius: 15px; }
-            .signup-title { font-size: 1.6rem; }
-            .signup-subtitle { font-size: 0.9rem; }
-            .btn-signup { padding: 0.8rem 1rem; font-size: 0.95rem; }
-        }
+.link-login:hover {
+    color: var(--primary-light);
+    text-decoration: underline;
+}
+
+.alert {
+    border-radius: 15px;
+    margin-top: 1.2rem;
+    font-size: clamp(0.9rem, 3.5vw, 0.95rem);
+}
+
+/* ==========================================================================
+   4. ANIMAÇÕES E TRANSICÕES
+   ========================================================================== */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================================================
+   5. AJUSTES FINOS PARA TELAS ULTRA-PEQUENAS E POUPANÇA DE ALTURA
+   ========================================================================== */
+@media (max-width: 576px) {
+    .signup-container { 
+        margin: 0.5rem; 
+        border-radius: 20px; 
+    }
+    .signup-header { 
+        padding: clamp(2rem, 8vw, 2.5rem) 1.5rem 2rem; 
+    }
+    .signup-body { 
+        padding: 1.8rem 1.5rem 2.5rem; 
+    }
+}
+
+@media (max-width: 400px) {
+    .signup-title { 
+        font-size: 1.6rem; 
+    }
+    .signup-subtitle { 
+        font-size: 0.9rem; 
+    }
+}
+
+/* Se a altura do visor for muito pequena (ex: telemóvel deitado), ativa scroll saudável */
+@media (max-height: 700px) {
+    body {
+        align-items: flex-start;
+    }
+    .signup-container {
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+}
     </style>
 </head>
 <body>
 
-    <div class="signup-container">
+    
+<div class="signup-container">
         <div class="signup-header">
             <img src="img/logo1.png" alt="NextLynx Tech" class="signup-logo">
             <h1 class="signup-title">Criar Conta</h1>
@@ -167,24 +238,43 @@
 
         <div class="signup-body">
             <form id="signupForm">
-                <div class="mb-4">
+                <div class="mb-4 position-relative">
                     <label for="nomeSignup" class="form-label">Nome Completo</label>
-                    <input type="text" class="form-control" id="nomeSignup" placeholder="Ex: João Silva" required>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        <input type="text" class="form-control" id="nomeSignup" placeholder="Ex: João Silva" required autofocus>
+                    </div>
                 </div>
 
-                <div class="mb-4">
+                <div class="mb-4 position-relative">
                     <label for="emailSignup" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="emailSignup" placeholder="seu@email.com" required>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                        <input type="email" class="form-control" id="emailSignup" placeholder="seu@email.com" required>
+                    </div>
                 </div>
 
-                <div class="mb-4">
+                <div class="mb-4 position-relative">
                     <label for="senhaSignup" class="form-label">Senha</label>
-                    <input type="password" class="form-control" id="senhaSignup" placeholder="Mínimo 6 caracteres" required minlength="6">
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                        <input type="password" class="form-control" id="senhaSignup" placeholder="Mínimo 6 caracteres" required minlength="6">
+                    </div>
                 </div>
 
-                <div class="mb-4">
+                <div class="mb-4 position-relative">
                     <label for="confirmSenha" class="form-label">Confirmar Senha</label>
-                    <input type="password" class="form-control" id="confirmSenha" placeholder="Repita a senha" required>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-key"></i></span>
+                        <input type="password" class="form-control" id="confirmSenha" placeholder="Repita a senha" required>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-start align-items-center mb-4">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="showPasswords">
+                        <label class="form-check-label small" for="showPasswords">Mostrar senhas</label>
+                    </div>
                 </div>
 
                 <div class="form-check mb-4">
@@ -209,6 +299,18 @@
             </div>
         </div>
     </div>
+
+<script>
+    const checkboxShow = document.getElementById('showPasswords');
+    const inputSenha = document.getElementById('senhaSignup');
+    const inputConfirmar = document.getElementById('confirmSenha');
+
+    checkboxShow.addEventListener('change', function() {
+        const type = this.checked ? 'text' : 'password';
+        inputSenha.type = type;
+        inputConfirmar.type = type;
+    });
+</script>
 
     <!-- Script Supabase Signup - CORRIGIDO -->
     <script type="module">
