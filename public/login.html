@@ -247,6 +247,22 @@ body {
         margin-bottom: 1rem;
     }
 }
+
+
+
+.btn-login, .btn-signup {
+    background: var(--gradient-primary);
+    color: white;
+    font-weight: 600;           /* Reduzido de 700 para 600 (texto ligeiramente mais fino) */
+    font-size: 1rem;            /* Reduzido de 1.15rem para 1rem */
+    padding: 0.65rem 1.5rem;    /* Reduzido! Menos altura (0.65rem) e boa largura lateral */
+    border-radius: 50px;
+    border: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(106,17,203,0.25);
+    width: 100%;
+    min-height: 44px;           /* Altura mínima ideal e elegante para cliques em telemóveis */
+}
     </style>
 </head>
 <body>
@@ -283,9 +299,9 @@ body {
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-login w-100">
-                    <i class="fas fa-sign-in-alt me-2"></i> Entrar na Área
-                </button>
+                <button type="submit" class="btn btn-login d-block mx-auto px-5">
+    <i class="fas fa-sign-in-alt me-2"></i> Entrar na Área
+</button>
 
                 <div id="msgLogin" class="mt-3"></div>
             </form>
@@ -293,7 +309,7 @@ body {
             <div class="text-center mt-4">
                 <p class="text-muted small mb-0">
                     Ainda não tem conta? 
-                    <a href="cadastro.html" class="link-cadastro">Criar conta gratuita</a>
+                    <a href="cadastro.html" class="link-cadastro">Criar conta</a>
                 </p>
             </div>
         </div>

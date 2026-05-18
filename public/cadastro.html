@@ -224,6 +224,21 @@ form :not(.input-group) > .form-select {
         margin-bottom: 1.5rem;
     }
 }
+
+
+.btn-signup {
+    background: var(--gradient-primary);
+    color: white;
+    font-weight: 600;           /* Texto ligeiramente mais fino e moderno */
+    font-size: 1rem;            /* Tamanho de fonte padrão e equilibrado */
+    padding: 0.65rem 1.5rem;    /* Reduzido! Menos altura, mantendo boa proporção */
+    border-radius: 50px;
+    border: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(106,17,203,0.25);
+    width: 100%;                /* Ocupa a largura total de forma elegante */
+    min-height: 44px;           /* Altura perfeita para clique em telemóveis */
+}
     </style>
 </head>
 <body>
@@ -271,11 +286,11 @@ form :not(.input-group) > .form-select {
                 </div>
 
                 <div class="d-flex justify-content-start align-items-center mb-4">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="showPasswords">
-                        <label class="form-check-label small" for="showPasswords">Mostrar senhas</label>
-                    </div>
-                </div>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="showPasswords">
+        <label class="form-check-label text-dark small" for="showPasswords">Mostrar senhas</label>
+    </div>
+</div>
 
                 <div class="form-check mb-4">
                     <input class="form-check-input" type="checkbox" id="termos" required>
