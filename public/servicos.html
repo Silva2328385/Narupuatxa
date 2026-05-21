@@ -1159,6 +1159,148 @@ nav ul {
 
 
 
+/* Container do item de publicidade */
+.pub-item {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    height: 100%; /* Garante que todos os cards tenham a mesma altura na linha */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Ajuste da Imagem para não cortar */
+.pub-img {
+    width: 100%;
+    height: 250px; /* Altura fixa para manter o alinhamento no computador */
+    object-fit: contain; /* ESSENCIAL: Faz a imagem caber inteira sem cortar */
+    background-color: #f8f9fa; /* Fundo neutro para imagens que não preenchem o espaço todo */
+    display: block;
+}
+
+/* Legenda abaixo da imagem */
+.pub-caption {
+    padding: 15px;
+    margin: 0;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #333;
+    background: #fff;
+    border-top: 1px solid #eee;
+}
+
+/* Responsividade para Celulares (iOS/Android) */
+@media (max-width: 768px) {
+    .pub-img {
+        height: auto; /* No celular, a imagem cresce conforme a largura */
+        max-height: 400px;
+    }
+    
+    .pub-item {
+        margin-bottom: 20px;
+    }
+}
+
+
+
+
+.promo-section {
+    background-color: #f4f7f6; /* Ou a cor de fundo da sua seção */
+    padding: 40px 0;
+}
+
+.promo-card {
+    background: #ffffff;
+    border-radius: 20px;
+    /* O padding é o que impede o texto de tocar nas bordas */
+    padding: 30px 20px; 
+    margin: 0 auto;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.promo-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #2d3436;
+}
+
+.promo-subtitle {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #636e72;
+    margin-bottom: 25px;
+    /* Evita que o parágrafo fique muito largo em telas grandes */
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Ajustes específicos para iPhones/Celulares Pequenos */
+@media (max-width: 480px) {
+    .promo-card {
+        padding: 25px 15px; /* Reduz um pouco o respiro interno para ganhar espaço */
+    }
+    
+    .promo-title {
+        font-size: 1.5rem;
+    }
+    
+    .promo-subtitle {
+        font-size: 0.95rem;
+    }
+}
+
+
+/* Estilo Base do Botão */
+.btn-promo {
+    background-color: #00f2fe; /* Cor chamativa */
+    color: #fff;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease; /* Transição suave para todas as propriedades */
+    box-shadow: 0 4px 15px rgba(0, 242, 254, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efeito ao passar o mouse (Hover) */
+.btn-promo:hover {
+    background-color: #00c6ff;
+    color: #fff;
+    transform: translateY(-3px); /* Sobe ligeiramente */
+    box-shadow: 0 6px 20px rgba(0, 242, 254, 0.5);
+}
+
+/* Efeito de clique (Active) */
+.btn-promo:active {
+    transform: translateY(1px);
+}
+
+/* Animação de Pulso (Opcional - para chamar atenção) */
+.btn-promo {
+    animation: pulse-promo 2s infinite;
+}
+
+@keyframes pulse-promo {
+    0% {
+        box-shadow: 0 0 0 0 rgba(0, 242, 254, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 15px rgba(0, 242, 254, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(0, 242, 254, 0);
+    }
+}
+
     </style>
 </head>
 <body>
@@ -1312,36 +1454,52 @@ nav ul {
                 </div>
 
                 <!-- TRABALHOS ACADÉMICOS -->
-                <div class="col-lg-4 col-md-6 col-12">
-                    <div class="service-card card-academico visible">
-                        <img src="img/academico-exemplo.jpg" class="service-img" alt="Trabalhos Académicos">
-                        <div class="service-body">
-                            <h5 class="service-title">Mentoria Académica </h5>
-                            <p class="service-text">Acompanhamento académico com explicações, orientação estrutural e apoio metodológico
-                para melhorar a qualidade dos trabalhos e o desempenho académico.</p>
-                            <ul class="service-list">
-                               <li>Orientação na estrutura de TCC e monografias (ABNT/APA)</li>
+               <div class="col-lg-4 col-md-6 col-12 mb-4">
+    <div class="service-card card-academico visible">
+        <img src="img/academico-exemplo.jpg" class="service-img" alt="Trabalhos Académicos">
+        <div class="service-body">
+            <h5 class="service-title">Mentoria Académica</h5>
+            
+            <p class="service-text">
+                Acompanhamento académico com explicações, orientação estrutural e apoio metodológico 
+                para melhorar a qualidade dos trabalhos e o desempenho académico.
+            </p>
+
+            <ul class="service-list">
+                <li>Orientação na estrutura de TCC e monografias (ABNT/APA)</li>
                 <li>Apoio na organização de artigos científicos e trabalhos escritos</li>
                 <li>Explicação e preparação de slides para apresentações académicas</li>
                 <li>Revisão linguística e melhoria de coerência textual</li>
                 <li>Acompanhamento passo a passo na elaboração de projetos académicos</li>
                 <li>Orientação para relatórios de estágio e trabalhos finais</li>
-                            </ul>
-                            <form class="solicitar-form" data-categoria="Trabalhos Académicos">
-                                <input type="text" class="form-control-sm" name="nome" placeholder="Seu Nome" required>
-                                <input type="email" class="form-control-sm" name="email" placeholder="Seu Email" required>
-                                <input type="tel" class="form-control-sm" name="telefone" placeholder="Seu Contacto">
-                                <select name="servico_id" class="form-select-sm" required>
-                                    <option value="">Selecione a mentoria</option>
-                                </select>
-                                <button type="submit" class="btn btn-solicitar">
-                                    Solicitar Mentoria 
-                                </button>
-                                <div class="msg-box"></div>
-                            </form>
-                        </div>
-                    </div>
+            </ul>
+
+            <form class="solicitar-form" data-categoria="Mentoria Académica">
+                <div class="mb-2">
+                    <input type="text" class="form-control form-control-sm" name="nome" placeholder="Seu Nome" required>
                 </div>
+                <div class="mb-2">
+                    <input type="email" class="form-control form-control-sm" name="email" placeholder="Seu Email" required>
+                </div>
+                <div class="mb-2">
+                    <input type="tel" class="form-control form-control-sm" name="telefone" placeholder="Seu Contacto">
+                </div>
+                <div class="mb-2">
+                    <select name="servico_id" class="form-select form-select-sm" required>
+                        <option value="">Selecione a mentoria</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="btn btn-solicitar w-100">
+                    Solicitar Mentoria 
+                </button>
+                
+                <div class="msg-box mt-2"></div>
+            </form>
+        </div>
+    </div>
+</div>
+
 
                 <!-- TECNOLOGIA -->
                 <div class="col-lg-4 col-md-6 col-12">
@@ -1434,22 +1592,29 @@ nav ul {
 </section>
 
     <!-- Promoção -->
+<section class="promo-section py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-11 col-md-10 col-lg-8">
+                <div class="promo-card text-center shadow-lg">
+                    <h3 class="promo-title">Mentoria Especial</h3>
 
-<section class="promo-section">
-    <div class="container position-relative">
-
-        <h3 class="promo-title">Mentoria Especial</h3>
-
-        <p class="promo-subtitle">
-            Condições especiais disponíveis para mentoria em Design, Apoio Académico e Desenvolvimento Web,
-            promovendo acesso facilitado a orientação e desenvolvimento de competências.
-        </p>
-        <a href="contactos.html" class="btn btn-promo">
-            Saber Mais
-        </a>
-
+                    <p class="promo-subtitle">
+                        Condições especiais disponíveis para mentoria em Design, Apoio Académico e Desenvolvimento Web,
+                        promovendo acesso facilitado a orientação e desenvolvimento de competências.
+                    </p>
+                    
+                    <a href="contactos.html" class="btn btn-promo">
+    Saber Mais
+</a>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
+
+
+
 
     <!-- Footer COMPLETO COMO NO FAQ -->
   <!-- Footer - FUNDO PRETO E LETRAS BRANCAS -->
@@ -1584,203 +1749,189 @@ nav ul {
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- <script src="js/script.js"></script> -->
 
+<script>
+document.addEventListener('DOMContentLoaded', () => {
 
+    // ================= NORMALIZAÇÃO =================
+    // Remove acentos, espaços extras e coloca em minúsculo para comparação segura
+    const normalizar = str => (str || '')
+        .toLowerCase()
+        .trim()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
 
-    <!-- SCRIPT: Animações + Carrega Serviços + Envia Form -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Animações de entrada
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, { threshold: 0.1 });
-            document.querySelectorAll('.service-card, .pub-img').forEach(el => {
-                observer.observe(el);
-            });
-            // Carrega serviços do Supabase
-            async function loadServicos() {
-                try {
-                    const res = await fetch('/api/servicos');
-                    if (!res.ok) throw new Error('Erro no servidor');
-                    const servicos = await res.json();
-                    document.querySelectorAll('.solicitar-form').forEach(form => {
-                        const categoria = form.dataset.categoria;
-                        const select = form.querySelector('select[name="servico_id"]');
-                        const msgBox = form.querySelector('.msg-box');
-                        select.innerHTML = '<option value="">Selecione a mentoria</option>';
-                        const filtered = servicos.filter(s => s.categoria === categoria);
-                        if (filtered.length === 0) {
-                            select.innerHTML += '<option value="">Nenhum serviço disponível</option>';
-                        } else {
-                            filtered.forEach(s => {
-                                const opt = document.createElement('option');
-                                opt.value = s.id;
-                                opt.textContent = s.titulo;
-                                select.appendChild(opt);
-                            });
-                        }
-                    });
-                } catch (err) {
-                    console.error('Erro ao carregar serviços:', err);
-
-                }
+    // ================= ANIMAÇÕES =================
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
             }
-            loadServicos();
-            // Envia formulário
-         
+        });
+    }, { threshold: 0.1 });
 
-document.querySelectorAll('.solicitar-form').forEach(form => {
-
-    // 🧹 remove TODOS eventos antigos
-    const newForm = form.cloneNode(true);
-    form.parentNode.replaceChild(newForm, form);
-
-    newForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-
-        if (newForm.dataset.enviando === "true") return;
-        newForm.dataset.enviando = "true";
-
-        const data = Object.fromEntries(new FormData(newForm));
-        const msgBox = newForm.querySelector('.msg-box');
-        const btn = newForm.querySelector('button');
-
-        btn.disabled = true;
-        btn.innerText = "Enviando...";
-
-        if (!data.nome || !data.email || !data.servico_id) {
-            showMessage(msgBox, 'Preencha todos os campos obrigatórios.', false);
-
-            newForm.dataset.enviando = "false";
-            btn.disabled = false;
-            btn.innerText = "Solicitar Mentoria";
-            return;
-        }
-
-        try {
-            const res = await fetch('/submit', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(data)
-            });
-
-            const result = await res.json();
-
-            showMessage(msgBox, result.message, result.success);
-
-            if (result.success) newForm.reset();
-
-        } catch (err) {
-            showMessage(msgBox, 'Erro de rede. Tente novamente.', false);
-        }
-
-        newForm.dataset.enviando = "false";
-        btn.disabled = false;
-        btn.innerText = "Solicitar Mentoria";
+    document.querySelectorAll('.service-card, .pub-img').forEach(el => {
+        observer.observe(el);
     });
 
-});
-
-
-
-// função de mensagem (mantém igual)
-function showMessage(container, msg, success = true) {
-    container.innerHTML = `<div class="alert alert-${success ? 'success' : 'danger'} alert-dismissible fade show">
-        ${msg}
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    </div>`;
-    setTimeout(() => container.innerHTML = '', 5000);
-}
-        });
-    </script>
-
-
-
-<script>
-    const mentoriaModal = document.getElementById('mentoriaModal');
-
-    mentoriaModal.addEventListener('show.bs.modal', async function (event) {
-        const button = event.relatedTarget;
-        const categoriaRaw = button.getAttribute('data-categoria')?.trim();
-        const nomeServico = button.getAttribute('data-nome-servico') || 'Serviço Selecionado';
-
-        // Normaliza categoria para matching seguro (remove acentos, espaços, maiúsculas)
-        const normalizar = str => (str || '')
-            .toLowerCase()
-            .trim()
-            .normalize("NFD")
-            .replace(/[\u0300-\u036f]/g, "");
-
-        const categoria = normalizar(categoriaRaw);
-
-        document.getElementById('categoriaSelecionada').textContent = 
-            `Aulas de ${nomeServico}`;
-
-        const container = document.getElementById('aulasContainer');
-        container.innerHTML = '<p class="text-center">A carregar opções disponíveis...</p>';
-
+    // ================= CARREGAR SERVIÇOS =================
+    async function loadServicos() {
         try {
-            // EXATAMENTE A MESMA requisição que já funciona nos formulários
-            const response = await fetch('/api/servicos');
+            const res = await fetch('/api/servicos');
+            if (!res.ok) throw new Error('Erro ao carregar serviços');
+            
+            const servicos = await res.json();
+            console.log('Dados recebidos do Banco:', servicos);
 
-            if (!response.ok) {
-                throw new Error(`Erro na requisição: ${response.status}`);
-            }
+            // Seleciona todos os formulários de solicitação
+            document.querySelectorAll('.solicitar-form').forEach(form => {
+                // Captura a categoria definida no HTML (data-categoria)
+                const categoriaRaw = form.dataset.categoria || '';
+                const categoriaBusca = normalizar(categoriaRaw);
 
-            const todosServicos = await response.json();
+                const select = form.querySelector('select[name="servico_id"]');
+                if (!select) return;
 
-            // Filtra pela categoria – mesma lógica dos dropdowns
-            const opcoesFiltradas = todosServicos.filter(servico => {
-                const catServico = normalizar(servico.categoria);
-                return catServico === categoria;
+                select.innerHTML = '<option value="">Selecione a mentoria</option>';
+
+                // FILTRAGEM DINÂMICA: Compara a categoria do banco com a do formulário atual
+                const filtered = servicos.filter(servico => {
+                    const categoriaServicoDB = normalizar(servico.categoria);
+                    return categoriaServicoDB === categoriaBusca;
+                });
+
+                console.log(`Filtrando para: ${categoriaRaw}`, filtered);
+
+                if (filtered.length === 0) {
+                    select.innerHTML += '<option value="">Nenhuma mentoria disponível</option>';
+                } else {
+                    filtered.forEach(servico => {
+                        const option = document.createElement('option');
+                        option.value = servico.id;
+                        option.textContent = servico.titulo;
+                        select.appendChild(option);
+                    });
+                }
             });
 
-            if (opcoesFiltradas.length === 0) {
-                container.innerHTML = `
-                    <p class="text-center text-muted">
-                        Ainda não há aulas disponíveis para esta categoria.<br>
-                        <small>Verifique se existem serviços com categoria "${categoriaRaw}" no painel.</small>
-                    </p>`;
+        } catch (error) {
+            console.error('Erro crítico no carregamento:', error);
+        }
+    }
+
+    loadServicos();
+
+    // ================= ENVIO DE FORMULÁRIO =================
+    document.querySelectorAll('.solicitar-form').forEach(form => {
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            if (form.dataset.enviando === "true") return;
+            form.dataset.enviando = "true";
+
+            const data = Object.fromEntries(new FormData(form));
+            const msgBox = form.querySelector('.msg-box');
+            const btn = form.querySelector('button');
+
+            btn.disabled = true;
+            const textoOriginal = btn.innerText;
+            btn.innerText = 'Enviando...';
+
+            if (!data.nome || !data.email || !data.servico_id) {
+                showMessage(msgBox, 'Preencha todos os campos obrigatórios.', false);
+                resetButton(form, btn, textoOriginal);
                 return;
             }
 
-            let html = '';
-            opcoesFiltradas.forEach(servico => {
-                html += `
-                    <div class="col-12 mb-3">
-                        <div class="card border-primary shadow-sm h-100">
-                            <div class="card-body">
-                                <h5 class="card-title mb-2">${servico.titulo || 'Opção sem título'}</h5>
-                                <p class="card-text small mb-3">
-                                    ${servico.descricao || 'Aula prática com explicação passo a passo, materiais incluídos e suporte personalizado.'}
-                                </p>
-                                <small class="text-muted d-block fw-bold">
-                                    Duração média: ${servico.duracao_estimada || '4–8 semanas'}
-                                </small>
+            try {
+                const response = await fetch('/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+                showMessage(msgBox, result.message, result.success);
+                
+                if (result.success) form.reset();
+
+            } catch (error) {
+                showMessage(msgBox, 'Erro de rede. Tente novamente.', false);
+            }
+
+            resetButton(form, btn, textoOriginal);
+        });
+    });
+
+    function resetButton(form, btn, texto) {
+        form.dataset.enviando = "false";
+        btn.disabled = false;
+        btn.innerText = texto;
+    }
+
+    // ================= ALERTAS =================
+    function showMessage(container, msg, success = true) {
+        if (!container) return;
+        container.innerHTML = `
+            <div class="alert alert-${success ? 'success' : 'danger'} alert-dismissible fade show mt-2">
+                ${msg}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        `;
+        setTimeout(() => { if (container) container.innerHTML = ''; }, 5000);
+    }
+
+    // ================= MODAL DE DETALHES =================
+    const mentoriaModal = document.getElementById('mentoriaModal');
+    if (mentoriaModal) {
+        mentoriaModal.addEventListener('show.bs.modal', async function(event) {
+            const button = event.relatedTarget;
+            const categoriaRaw = button.getAttribute('data-categoria')?.trim() || 'Mentoria Académica';
+            const nomeServico = button.getAttribute('data-nome-servico') || 'Serviço Selecionado';
+            const categoriaBusca = normalizar(categoriaRaw);
+
+            document.getElementById('categoriaSelecionada').textContent = `Aulas de ${nomeServico}`;
+            const container = document.getElementById('aulasContainer');
+            container.innerHTML = '<p class="text-center">A carregar opções...</p>';
+
+            try {
+                const response = await fetch('/api/servicos');
+                const todosServicos = await response.json();
+
+                const opcoesFiltradas = todosServicos.filter(servico =>
+                    normalizar(servico.categoria) === categoriaBusca
+                );
+
+                if (opcoesFiltradas.length === 0) {
+                    container.innerHTML = '<p class="text-center text-muted">Ainda não existem mentorias nesta categoria.</p>';
+                } else {
+                    container.innerHTML = opcoesFiltradas.map(servico => `
+                        <div class="col-12 mb-3">
+                            <div class="card border-primary shadow-sm h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title mb-2">${servico.titulo || 'Sem título'}</h5>
+                                    <p class="card-text small mb-3">${servico.descricao || 'Mentoria personalizada'}</p>
+                                    <small class="text-muted d-block fw-bold">Duração: ${servico.duracao_estimada || '4–8 semanas'}</small>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                `;
-            });
+                    `).join('');
+                }
+            } catch (error) {
+                container.innerHTML = '<p class="text-center text-danger">Erro ao carregar mentorias.</p>';
+            }
 
-            container.innerHTML = html;
-
-        } catch (error) {
-            console.error('Erro ao carregar aulas:', error);
-            container.innerHTML = `
-                <p class="text-center text-danger">
-                    Erro ao carregar as opções.<br>
-                    <small>Tente novamente ou verifique a conexão.</small>
-                </p>`;
-        }
-
-        // Botão "Pedir Orçamento Agora" redireciona para a página com parâmetros
-        const btnOrcamento = document.getElementById('btnOrcamentoMentoria');
-        btnOrcamento.href = `pedir-orcamento.html?tipo=mentoria&categoria=${encodeURIComponent(categoriaRaw)}&servico=${encodeURIComponent(nomeServico)}`;
-    });
+            const btnOrcamento = document.getElementById('btnOrcamentoMentoria');
+            if (btnOrcamento) {
+                btnOrcamento.href = `pedir-orcamento.html?tipo=mentoria&categoria=${encodeURIComponent(categoriaRaw)}&servico=${encodeURIComponent(nomeServico)}`;
+            }
+        });
+    }
+});
 </script>
 </body>
 </html>
+
+
+
+
+

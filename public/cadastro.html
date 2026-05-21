@@ -10,40 +10,43 @@
     <style>
 
        /* ==========================================================================
+
+/* ==========================================================================
    1. CORREÇÃO DE SCROLL E COMPORTAMENTO GLOBAL DO BODY
    ========================================================================== */
-html, body {
+html {
     width: 100%;
-    height: 100%;
+    height: -webkit-fill-available; /* Ajuste específico para iOS */
+}
+
+body {
+    width: 100%;
     margin: 0;
     padding: 0;
-    overflow-x: hidden;                /* Impede scroll horizontal de vez */
-    overscroll-behavior: none;         /* Desativa o "bounce" elástico nas bordas */
-    -webkit-overflow-scrolling: touch;  /* Melhora o scroll suave no iOS */
-    touch-action: pan-y pinch-zoom;    /* Permite scroll vertical + zoom, bloqueia horizontal */
+    /* Unidade DVH resolve o problema da barra do Safari/Chrome no mobile */
+    min-height: 100dvh; 
+    overflow-x: hidden;
+    overflow-y: auto; /* Permite o scroll vertical sempre */
+    -webkit-overflow-scrolling: touch;
+    /* Removido o overscroll-behavior que travava o scroll */
+    background: var(--gradient-bg) !important;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    display: flex;
+    align-items: center; /* Centraliza no PC */
+    justify-content: center;
+    padding: clamp(1rem, 5vw, 2rem);
 }
 
 :root {
     --primary: #6a11cb;
     --primary-light: #a55eea;
     --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    --gradient-bg: linear-gradient(135deg, #000000 0%, #111111 100%); /* Fundo escuro igual ao login */
+    --gradient-bg: linear-gradient(135deg, #000000 0%, #111111 100%);
     --dark: #2c3e50;
     --light: #f8f9fa;
     --success: #38ef7d;
     --danger: #dc3545;
-}
-
-body {
-    background: var(--gradient-bg) !important; /* Força o fundo escuro do sistema */
-    min-height: 100vh;
-    font-family: 'Poppins', sans-serif;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: clamp(1rem, 5vw, 2rem);
-    position: relative;
 }
 
 /* ==========================================================================
@@ -56,41 +59,114 @@ body {
     max-width: clamp(320px, 90vw, 500px);
     width: 100%;
     animation: fadeInUp 0.7s cubic-bezier(0.25, 1, 0.5, 1);
-    overflow: hidden;
+    /* Removido overflow: hidden para não cortar sombras ou tooltips no mobile */
 }
 
 .signup-header {
     background: var(--gradient-primary);
-    padding: clamp(2rem, 8vw, 3.5rem) clamp(1.2rem, 5vw, 2rem) clamp(1.8rem, 7vw, 2.5rem);
+    padding: clamp(1.5rem, 6vw, 2.5rem) 1.5rem;
     text-align: center;
+    border-radius: clamp(15px, 5vw, 25px) clamp(15px, 5vw, 25px) 0 0;
 }
 
 .signup-logo {
-    height: clamp(60px, 20vw, 90px);
+    height: clamp(50px, 15vw, 80px);
     width: auto;
-    max-width: 100%;
-    object-fit: contain;
-    margin-bottom: clamp(0.8rem, 3vw, 1.2rem);
-    filter: drop-shadow(0 6px 12px rgba(0,0,0,0.4));
+    margin-bottom: 0.8rem;
+    filter: drop-shadow(0 6px 12px rgba(0,0,0,0.3));
 }
 
 .signup-title {
     font-family: 'Montserrat', sans-serif;
     font-weight: 900;
-    font-size: clamp(1.8rem, 7vw, 2.4rem);
-    margin-bottom: clamp(0.3rem, 2vw, 0.5rem);
-    text-shadow: 0 3px 10px rgba(0,0,0,0.4);
-    letter-spacing: -0.5px;
+    font-size: clamp(1.6rem, 6vw, 2.2rem);
+    margin-bottom: 0.3rem;
+    color: white;
 }
 
 .signup-subtitle {
-    font-size: clamp(0.95rem, 4vw, 1.15rem);
-    opacity: 0.92;
-    margin: 0;
+    font-size: clamp(0.85rem, 3.5vw, 1rem);
+    opacity: 0.9;
 }
 
 .signup-body {
-    padding: clamp(1.8rem, 6vw, 2.5rem);
+    padding: clamp(1.2rem, 5vw, 2rem);
+}
+
+/* ==========================================================================
+   3. ELEMENTOS DE FORMULÁRIO
+   ========================================================================== */
+.form-label {
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 0.4rem;
+    font-size: 0.9rem;
+}
+
+.input-group {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #d1d8e0;
+}
+
+.input-group-text {
+    background: #f8f9fa;
+    border: none;
+    color: var(--primary);
+    padding: 0 1rem;
+}
+
+.form-control {
+    border: none !important;
+    padding: 0.75rem 1rem;
+    font-size: 16px !important; /* CRUCIAL: Impede o zoom automático indesejado no iPhone */
+    color: var(--dark);
+}
+
+.form-control:focus {
+    box-shadow: none;
+    background-color: #fff;
+}
+
+.btn-signup {
+    background: var(--gradient-primary);
+    color: white;
+    font-weight: 700;
+    padding: 0.8rem;
+    border-radius: 50px;
+    border: none;
+    width: 100%;
+    margin-top: 1rem;
+    transition: transform 0.2s;
+}
+
+.btn-signup:active {
+    transform: scale(0.98);
+}
+
+/* ==========================================================================
+   4. RESPONSIVIDADE E AJUSTES PARA IPHONE (TECLADO)
+   ========================================================================== */
+@media (max-width: 576px) {
+    body {
+        align-items: flex-start; /* Alinha no topo para o teclado não cobrir tudo */
+        padding-top: 1rem;
+        padding-bottom: 2rem;
+    }
+    
+    .signup-container {
+        margin-bottom: 2rem; /* Espaço extra no fim para conseguir rolar após o último campo */
+    }
+}
+
+@media (max-height: 600px) {
+    .signup-header { padding: 1rem; }
+    .signup-logo { height: 40px; }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 /* ==========================================================================
@@ -138,29 +214,6 @@ form :not(.input-group) > .form-select {
     outline: none;
 }
 
-.btn-signup {
-    background: var(--gradient-primary);
-    color: white;
-    font-weight: 700;
-    font-size: clamp(1rem, 4vw, 1.1rem);
-    padding: clamp(0.8rem, 3vw, 1rem) clamp(1.5rem, 5vw, 2rem);
-    border-radius: 50px;
-    border: none;
-    transition: all 0.3s ease;
-    box-shadow: 0 10px 25px rgba(106,17,203,0.3);
-    width: 100%;
-    min-height: 48px; /* Altura ideal de clique mobile recomendada pela Google */
-}
-
-.btn-signup:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 15px 35px rgba(106,17,203,0.45);
-    background: var(--primary-light);
-}
-
-.btn-signup:active {
-    transform: translateY(-1px);
-}
 
 /* Link interno para voltar ao Login */
 .link-login {
@@ -182,64 +235,9 @@ form :not(.input-group) > .form-select {
 }
 
 /* ==========================================================================
-   4. ANIMAÇÕES E TRANSICÕES
-   ========================================================================== */
-@keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-}
+ 
 
-/* ==========================================================================
-   5. AJUSTES FINOS PARA TELAS ULTRA-PEQUENAS E POUPANÇA DE ALTURA
-   ========================================================================== */
-@media (max-width: 576px) {
-    .signup-container { 
-        margin: 0.5rem; 
-        border-radius: 20px; 
-    }
-    .signup-header { 
-        padding: clamp(2rem, 8vw, 2.5rem) 1.5rem 2rem; 
-    }
-    .signup-body { 
-        padding: 1.8rem 1.5rem 2.5rem; 
-    }
-}
-
-@media (max-width: 400px) {
-    .signup-title { 
-        font-size: 1.6rem; 
-    }
-    .signup-subtitle { 
-        font-size: 0.9rem; 
-    }
-}
-
-/* Se a altura do visor for muito pequena (ex: telemóvel deitado), ativa scroll saudável */
-@media (max-height: 700px) {
-    body {
-        align-items: flex-start;
-    }
-    .signup-container {
-        margin-top: 1.5rem;
-        margin-bottom: 1.5rem;
-    }
-}
-
-
-.btn-signup {
-    background: var(--gradient-primary);
-    color: white;
-    font-weight: 600;           /* Texto ligeiramente mais fino e moderno */
-    font-size: 1rem;            /* Tamanho de fonte padrão e equilibrado */
-    padding: 0.65rem 1.5rem;    /* Reduzido! Menos altura, mantendo boa proporção */
-    border-radius: 50px;
-    border: none;
-    transition: all 0.3s ease;
-    box-shadow: 0 8px 20px rgba(106,17,203,0.25);
-    width: 100%;                /* Ocupa a largura total de forma elegante */
-    min-height: 44px;           /* Altura perfeita para clique em telemóveis */
-}
-    </style>
+ </style>
 </head>
 <body>
 
